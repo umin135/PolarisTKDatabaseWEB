@@ -414,10 +414,11 @@ function CommonItemsTab({ data, loc }: { data: CustomizeItemCommonEntry[]; loc: 
       if (lq &&
         !(e.asset_name ?? '').toLowerCase().includes(lq) &&
         !(e.text_key ?? '').toLowerCase().includes(lq) &&
+        !resolveLoc(e.text_key, loc).toLowerCase().includes(lq) &&
         !String(e.char_item_id).includes(lq)) return false
       return true
     })
-  }, [data, charFilter, posFilter, q])
+  }, [data, charFilter, posFilter, q, loc])
 
   const paged = filtered.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE)
 
@@ -591,10 +592,11 @@ function UniqueItemsTab({
       if (lq &&
         !(e.asset_name ?? '').toLowerCase().includes(lq) &&
         !(e.text_key ?? '').toLowerCase().includes(lq) &&
+        !resolveLoc(e.text_key, loc).toLowerCase().includes(lq) &&
         !String(e.char_item_id ?? 0).includes(lq)) return false
       return true
     })
-  }, [entries, charFilter, posFilter, q])
+  }, [entries, charFilter, posFilter, q, loc])
 
   const paged = filtered.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE)
 

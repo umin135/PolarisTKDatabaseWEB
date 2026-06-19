@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useData } from '../hooks/useData'
-import type { CharacterList, CustomizeItemCommonList, CustomizeItemUniqueList } from '../lib/types'
+import type { CustomizeItemCommonList, CustomizeItemUniqueList } from '../lib/types'
 
 interface StatCardProps {
   label: string
@@ -28,11 +28,9 @@ function StatCard({ label, value, to, accent }: StatCardProps) {
 }
 
 export function HomePage() {
-  const chars   = useData<CharacterList>('character_list')
-  const common  = useData<CustomizeItemCommonList>('customize_item_common_list')
-  const unique  = useData<CustomizeItemUniqueList>('customize_item_unique_list')
+  const common = useData<CustomizeItemCommonList>('customize_item_common_list')
+  const unique = useData<CustomizeItemUniqueList>('customize_item_unique_list')
 
-  const charCount   = chars.data?.data?.entries?.length ?? '...'
   const commonCount = common.data?.data?.entries?.length ?? '...'
   const uniqueCount = unique.data?.data?.entries?.length ?? '...'
 
@@ -55,9 +53,8 @@ export function HomePage() {
       <section className="mb-10">
         <h2 className="text-xs font-semibold text-slate-500 uppercase tracking-widest mb-3">Data Overview</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-          <StatCard label="Characters"          value={charCount}   to="/items"  accent="#a78bfa" />
-          <StatCard label="Common Items"        value={commonCount} to="/items"  accent="#fb923c" />
-          <StatCard label="Unique Items"        value={uniqueCount} to="/items"  accent="#f472b6" />
+          <StatCard label="Common Items" value={commonCount} to="/items" accent="#fb923c" />
+          <StatCard label="Unique Items" value={uniqueCount} to="/items" accent="#f472b6" />
         </div>
       </section>
 
@@ -68,7 +65,6 @@ export function HomePage() {
           {[
             { name: 'Common Customize Items', file: 'customize_item_common_list', to: '/items' },
             { name: 'Unique Customize Items', file: 'customize_item_unique_list', to: '/items' },
-            { name: 'Characters',             file: 'character_list',             to: '/items' },
           ].map((row, i) => (
             <Link
               key={row.file}

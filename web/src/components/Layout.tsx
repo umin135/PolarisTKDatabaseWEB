@@ -41,16 +41,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
       >
         <div className="px-4 py-5 border-b" style={{ borderColor: 'rgba(255,255,255,0.07)' }}>
           <div className="flex items-center gap-2">
-            <div
-              className="w-7 h-7 rounded-md flex items-center justify-center text-xs font-bold"
-              style={{ background: 'linear-gradient(135deg,#7c3aed,#4f46e5)' }}
-            >
-              T8
-            </div>
-            <div>
-              <p className="text-sm font-semibold text-slate-100">Polaris TK</p>
-              <p className="text-[10px] text-slate-500 leading-none">Database</p>
-            </div>
+            <img
+              src={`${import.meta.env.BASE_URL}favicon.png`}
+              alt="TKDB"
+              style={{ width: 32, height: 32 }}
+            />
+            <p className="text-sm font-semibold text-slate-100">TKDatabase</p>
           </div>
         </div>
 
