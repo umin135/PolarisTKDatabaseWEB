@@ -1,0 +1,21 @@
+// schemas/fate_drama_player_start_list.fbs
+namespace Polaris.FbsData;
+
+table FateDramaPlayerStartEntry {
+    character1_hash:uint32            (id: 0);
+    character2_hash:uint32            (id: 1);
+    value_0:uint32           (id: 2);
+    hash_2:uint32            (id: 3);
+    value_4:bool             (id: 4);
+}
+
+table FateDramaPlayerStartList {
+    entries:[FateDramaPlayerStartEntry] (id: 0);
+}
+
+table FateDramaPlayerStartListRoot {
+    version:ubyte                     (id: 0);
+    data:FateDramaPlayerStartList     (id: 1);
+}
+
+root_type FateDramaPlayerStartListRoot;

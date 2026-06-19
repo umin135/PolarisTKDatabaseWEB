@@ -1,0 +1,57 @@
+// schemas/battle_common_list.fbs
+// Shared battle tuning/config values for Tekken 8.
+// Binary: Binary/fbsdata/battle_common_list.bin
+namespace Polaris.FbsData;
+
+table BattleCommonSingleValueEntry {
+    value:uint32                   (id: 0);
+}
+
+table BattleCommonCharacterScaleEntry {
+    hash_0:uint32                  (id: 0);
+    value_1:float                  (id: 1);
+    value_2:float                  (id: 2);
+    value_3:float                  (id: 3);
+    value_4:float                  (id: 4);
+    value_5:float                  (id: 5);
+    value_6:float                  (id: 6);
+    value_7:float                  (id: 7);
+}
+
+table BattleCommonPairEntry {
+    value_0:uint32                (id: 0);
+    value_1:uint32                (id: 1);
+    value_2:uint32                (id: 2);
+}
+
+table BattleCommonMiscEntry {
+    value_0:float                 (id: 0);
+    value_1:float                 (id: 1);
+    value_2:float                 (id: 2);
+}
+
+table BattleCommonList {
+    single_value_entries:[BattleCommonSingleValueEntry]    (id: 0); // count: 1
+    character_scale_entries:[BattleCommonCharacterScaleEntry] (id: 1); // count: 20
+    pair_entries:[BattleCommonPairEntry]                   (id: 2); // count: 3
+
+    value_3:uint32                  (id: 3);
+    value_4:uint32                  (id: 4);
+    misc_entries:[BattleCommonMiscEntry]                   (id: 5); // count: 17
+
+    value_6:float                   (id: 6);
+    value_7:float                   (id: 7);
+    value_8:float                   (id: 8);
+    value_9:uint32                  (id: 9);
+    value_10:float                  (id: 10);
+    value_11:uint32                 (id: 11);
+    value_12:uint32                 (id: 12);
+    value_13:uint32                 (id: 13);
+}
+
+table BattleCommonListRoot {
+    version:ubyte                  (id: 0);
+    data:BattleCommonList          (id: 1);
+}
+
+root_type BattleCommonListRoot;

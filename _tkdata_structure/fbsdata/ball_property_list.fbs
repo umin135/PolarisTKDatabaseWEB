@@ -1,0 +1,39 @@
+// schemas/ball_property_list.fbs
+// Ball property definitions for Tekken 8 customization.
+// Binary: Binary/fbsdata/ball_property_list.bin
+namespace Polaris.FbsData;
+
+table BallPropertyEntry {
+    ball_hash:uint32               (id: 0);
+    ball_code:string               (id: 1); // e.g. bal_000000
+    effect_name:string             (id: 2); // e.g. beach, firework
+    hash_3:uint32                  (id: 3);
+    hash_4:uint32                  (id: 4);
+    unk_5:uint32                   (id: 5);
+    unk_6:uint32                   (id: 6);
+    hash_7:uint32                  (id: 7);
+    item_no:uint32                 (id: 8); // observed: 80000+
+    rarity:uint32                  (id: 9);
+
+    value_10:float                 (id: 10); // often 600.0
+    value_11:float                 (id: 11); // often 600.0
+    value_12:float                 (id: 12); // often 120.0
+    unk_13:uint32                  (id: 13);
+    value_14:float                 (id: 14); // often 544.0
+    value_15:float                 (id: 15); // often 352.0
+    value_16:float                 (id: 16); // often 682.0
+    value_17:float                 (id: 17); // often 100.0
+    value_18:float                 (id: 18); // often 2000.0
+}
+
+table BallPropertyList {
+    entries:[BallPropertyEntry]    (id: 0); // 27 entries
+    unk_value_1:uint32             (id: 1); // observed: 180
+}
+
+table BallPropertyListRoot {
+    version:ubyte                  (id: 0);
+    data:BallPropertyList          (id: 1);
+}
+
+root_type BallPropertyListRoot;

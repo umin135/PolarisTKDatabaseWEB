@@ -1,0 +1,32 @@
+// schemas/customize_item_exclusive_list.fbs
+// Customization item exclusivity rules for Tekken 8
+// Binary: Binary_3_00/fbsdata/customize_item_exclusive_list.bin
+namespace Polaris.FbsData;
+
+table CustomizeExclusiveRuleEntry {
+    item_id:uint32         (id: 0);
+    hash:uint32            (id: 1); // Asset Hash. e.g, bdf, sho, ex0, btm etc...
+    link_type:uint32       (id: 2);
+    ref_item_id:uint32     (id: 3);
+}
+
+table CustomizeExclusivePairEntry {
+    item_id_a:uint32       (id: 0);
+    item_id_b:uint32       (id: 1);
+    flag:uint32            (id: 2);
+}
+
+table CustomizeItemExclusiveList {
+    rule_entries:[CustomizeExclusiveRuleEntry]         (id: 0);
+    pair_entries:[CustomizeExclusivePairEntry]         (id: 1);
+    group_rule_entries:[CustomizeExclusiveRuleEntry]   (id: 2);
+    group_pair_entries:[CustomizeExclusivePairEntry]   (id: 3);
+    set_rule_entries:[CustomizeExclusiveRuleEntry]     (id: 4);
+}
+
+table CustomizeItemExclusiveListRoot {
+    version:ubyte                           (id: 0);
+    data:CustomizeItemExclusiveList         (id: 1);
+}
+
+root_type CustomizeItemExclusiveListRoot;

@@ -1,0 +1,43 @@
+// schemas/body_cylinder_data_list.fbs
+// Body collision cylinder parameters by character.
+// Binary: Binary/fbsdata/body_cylinder_data_list.bin
+namespace Polaris.FbsData;
+
+table BodyCylinderDataEntry {
+    character_hash:uint32          (id: 0);
+
+    cyl0_radius:float              (id: 1);  // commonly 150.0
+    cyl0_height:float              (id: 2);  // commonly 500.0
+    cyl0_offset_y:float            (id: 3);  // commonly 1500.0
+    cyl0_type_hash:uint32          (id: 4);  // often constant, hash 33706710 means "Trans"
+
+    unk_5:uint32                   (id: 5);
+    unk_6:uint32                   (id: 6);
+    unk_7:uint32                   (id: 7);
+
+    cyl1_radius:float              (id: 8);  // commonly 150.0
+    cyl1_height:float              (id: 9);  // commonly 200.0
+    cyl1_offset_y:float            (id: 10); // commonly 200.0
+    cyl1_type_hash:uint32          (id: 11); // often constant, hash 33706710 means "Trans"
+
+    unk_12:uint32                  (id: 12);
+    unk_13:uint32                  (id: 13);
+    unk_14:uint32                  (id: 14);
+
+    cyl2_radius:float              (id: 15); // commonly 150.0
+    cyl2_height:float              (id: 16); // commonly 100.0
+    cyl2_offset_y:float            (id: 17); // commonly 100.0
+    cyl2_type_hash:uint32          (id: 18); // often constant, hash 33706710 means "Trans"
+}
+
+table BodyCylinderDataList {
+    global_scale:float             (id: 0); // observed 2.0
+    entries:[BodyCylinderDataEntry] (id: 1); // 87 entries
+}
+
+table BodyCylinderDataListRoot {
+    version:ubyte                  (id: 0);
+    data:BodyCylinderDataList      (id: 1);
+}
+
+root_type BodyCylinderDataListRoot;

@@ -1,0 +1,56 @@
+// schemas/game_camera_data_list.fbs
+// Game camera data/config for Tekken 8.
+// Binary: Binary/fbsdata/game_camera_data_list.bin
+namespace Polaris.FbsData;
+
+// Small float config table.
+// Three float slots exist, but some are omitted depending on the entry.
+table CameraFloatConfig {
+  value_0:float = 0;
+  value_1:float = 0;
+  value_2:float = 0;
+}
+
+table GameCameraData {
+  // Observed: { value_0 = 3400.0, value_2 = 10000.0 }
+  config_00:CameraFloatConfig;
+
+  // Observed: { value_0 = 200.0, value_2 = 10000.0 }
+  config_01:CameraFloatConfig;
+
+  // Observed: { value_0 = 2000.0, value_2 = 10000.0 }
+  config_02:CameraFloatConfig;
+
+  // Observed: { value_0 = 10000.0, value_2 = 10000.0 }
+  config_03:CameraFloatConfig;
+
+  // Observed: { value_0 = 65.0, value_1 = 10.0, value_2 = 180.0 }
+  config_04:CameraFloatConfig;
+
+  // Observed: { value_0 = 65.0, value_1 = 10.0, value_2 = 180.0 }
+  config_05:CameraFloatConfig;
+
+  // Observed: { value_0 = 3400.0, value_2 = 10000.0 }
+  config_06:CameraFloatConfig;
+
+  // Observed: { value_1 = -30000.0, value_2 = 30000.0 }
+  config_07:CameraFloatConfig;
+
+  // Observed: { value_1 = -30000.0, value_2 = 30000.0 }
+  config_08:CameraFloatConfig;
+
+  // Observed: { value_0 = 100.0, value_1 = -30000.0, value_2 = 30000.0 }
+  config_09:CameraFloatConfig;
+
+  // Observed: { value_1 = -30000.0, value_2 = 30000.0 }
+  config_10:CameraFloatConfig;
+}
+
+table GameCameraDataList {
+  // Root flag/version byte. Observed value: 1.
+  version:ubyte = 1;
+
+  data:GameCameraData;
+}
+
+root_type GameCameraDataList;

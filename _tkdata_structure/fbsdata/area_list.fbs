@@ -1,0 +1,20 @@
+// schemas/area_list.fbs
+// Area/region code list for Tekken 8.
+// Binary: Binary/fbsdata/area_list.bin
+namespace Polaris.FbsData;
+
+table AreaEntry {
+    area_hash:uint32              (id: 0);
+    area_code:string              (id: 1); // e.g. AS, EU, NA
+}
+
+table AreaList {
+    entries:[AreaEntry]           (id: 0);
+}
+
+table AreaListRoot {
+    version:ubyte                 (id: 0);
+    data:AreaList                 (id: 1);
+}
+
+root_type AreaListRoot;

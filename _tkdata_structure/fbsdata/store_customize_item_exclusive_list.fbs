@@ -1,0 +1,49 @@
+// store_customize_item_exclusive_list.fbs
+// type_id = 22
+// Store-specific exclusion rules for customization items.
+// Three sub-vectors in the list table (id=0, id=1, id=2).
+
+namespace TkFbs;
+
+// Vector[0] (id=0): Character-exclusive items.
+// Associates a character (by hash) with an item available only to that character.
+table StoreExclCharItemEntry {
+    char_hash : uint32;  // id=0  Character identity hash
+    item_id   : uint32;  // id=1  Item ID (same format as common_list item_id)
+}
+
+// Vector[1] (id=1): Character + condition hash exclusive items.
+// Associates a character + secondary hash (e.g. position/category) with an item.
+table StoreExclCharSlotItemEntry {
+    char_hash : uint32;  // id=0  Character identity hash
+    hash      : uint32;  // id=1  Secondary condition hash (position / category)
+    item_id   : uint32;  // id=2  Item ID
+}
+
+// Vector[2] (id=2): Complex rule entries.
+// Defines mutual exclusion or requirement rules between items or item groups.
+//   type_a / type_b : 0 = individual item_id, 1 = group/category id
+//   link_type       : 3 or 4 (same semantics as exclusive_list link_type);
+//                     absent when type_b = 0
+//   ref_id          : referenced item/group; absent when type_b = 0
+table StoreExclRuleEntry {
+    type_a    : uint32;  // id=0  Left-side type flag  (0=item, 1=group)
+    id_a      : uint32;  // id=1  Left-side item_id or group_id
+    type_b    : uint32;  // id=2  Right-side type flag (0=item, 1=group); 0 may be absent
+    id_b      : uint32;  // id=3  Right-side item_id or group_id
+    link_type : uint32;  // id=4  Rule link type (3 or 4); absent when type_b = 0
+    ref_id    : uint32;  // id=5  Referenced item/group id; absent when type_b = 0
+}
+
+table StoreCustomizeItemExclusiveListData {
+    char_item_entries      : [StoreExclCharItemEntry];      // id=0  vector[0]  13 entries
+    char_slot_item_entries : [StoreExclCharSlotItemEntry];  // id=1  vector[1]  23 entries
+    rule_entries           : [StoreExclRuleEntry];          // id=2  vector[2]  92 entries
+}
+
+table StoreCustomizeItemExclusiveListRoot {
+    version : uint8;                              // id=0  offset=7
+    data    : StoreCustomizeItemExclusiveListData; // id=1  offset=8
+}
+
+root_type StoreCustomizeItemExclusiveListRoot;

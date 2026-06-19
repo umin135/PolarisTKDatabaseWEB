@@ -1,0 +1,25 @@
+// schemas/character_select_list.fbs
+// Character-select related hash lists and small param entries.
+// Binary: Binary/fbsdata/character_select_list.bin
+namespace Polaris.FbsData;
+
+table CharacterSelectHashEntry {
+    character_hash:uint32          (id: 0);
+}
+
+table CharacterSelectParamEntry {
+    game_version:uint32            (id: 0); // 103 -> 1.03, 106 -> 1.06, etc.
+    value_1:uint32                 (id: 1); // observed constant 4 in current binary
+}
+
+table CharacterSelectList {
+    character_entries:[CharacterSelectHashEntry] (id: 0); // 40 entries
+    param_entries:[CharacterSelectParamEntry]    (id: 1); // 9 entries
+}
+
+table CharacterSelectListRoot {
+    version:ubyte                  (id: 0);
+    data:CharacterSelectList       (id: 1);
+}
+
+root_type CharacterSelectListRoot;

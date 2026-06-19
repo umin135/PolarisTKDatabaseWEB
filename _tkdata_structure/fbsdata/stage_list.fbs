@@ -1,0 +1,52 @@
+namespace Polaris.FbsData;
+
+table StageEntry {
+    stage_code:string        (id: 0);
+    stage_hash:uint32        (id: 1);
+    is_selectable:bool       (id: 2);
+    camera_offset:float      (id: 3);
+    parent_stage_index:uint32(id: 4);
+    variant_hash:uint32      (id: 5);
+    has_weather:bool         (id: 6);
+    is_active:bool           (id: 7);
+    flag_interlocked:bool    (id: 8);
+    flag_ocean:bool          (id: 9);
+    flag_10:bool             (id: 10);
+    flag_infinite:bool       (id: 11);
+    flag_battle:bool         (id: 12);
+    flag_13:bool             (id: 13);
+    flag_balcony:bool        (id: 14);
+    flag_15:bool             (id: 15);
+    reserved_16:bool         (id: 16);
+    is_online_enabled:bool   (id: 17);
+    is_ranked_enabled:bool   (id: 18);
+    reserved_19:bool         (id: 19);
+    reserved_20:bool         (id: 20);
+    arena_width:uint32       (id: 21);
+    arena_depth:uint32       (id: 22);
+    reserved_23:uint32       (id: 23);
+    arena_param:uint32       (id: 24);
+    extra_width:uint32       (id: 25);
+    extra_group:string       (id: 26);
+    extra_depth:uint32       (id: 27);
+    group_id:string          (id: 28);
+    stage_name_key:string    (id: 29);
+    level_name:string        (id: 30);
+    sound_bank:string        (id: 31);
+    wall_distance_a:uint32   (id: 32);
+    wall_distance_b:uint32   (id: 33);
+    stage_mode:uint32        (id: 34);
+    reserved_35:uint32       (id: 35);
+    is_default_variant:bool  (id: 36);
+}
+
+table StageList {
+    entries:[StageEntry]     (id: 0);
+}
+
+table StageListRoot {
+    version:ubyte            (id: 0);
+    data:StageList           (id: 1);
+}
+
+root_type StageListRoot;

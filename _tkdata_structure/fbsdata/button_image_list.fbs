@@ -1,0 +1,26 @@
+// schemas/button_image_list.fbs
+// Button/icon image key mappings for Tekken 8 UI guides.
+// Binary: Binary/fbsdata/button_image_list.bin
+namespace Polaris.FbsData;
+
+table ButtonImageEntry {
+    gaiji_char:string               (id: 0); // UTF-8 gaiji glyph used for inline icon display
+    gaiji_code:uint32               (id: 1); // codepoint-ish id (e.g. 0x000080EE)
+    context_hash:uint32             (id: 2); // unknown/hash-like value
+    image_key:string                (id: 3); // e.g. GAIJI_03
+    image_light_alt:string          (id: 4); // e.g. $03 / $34_PS4
+    image_dark_alt:string           (id: 5); // e.g. $03_DARK / $34_DARK_PS4
+    image_light:string              (id: 6); // e.g. $03 / $34_PS4
+    image_dark:string               (id: 7); // e.g. $03_DARK / $34_DARK
+}
+
+table ButtonImageList {
+    entries:[ButtonImageEntry]      (id: 0); // 44 entries in current binary
+}
+
+table ButtonImageListRoot {
+    version:ubyte                   (id: 0);
+    data:ButtonImageList            (id: 1);
+}
+
+root_type ButtonImageListRoot;

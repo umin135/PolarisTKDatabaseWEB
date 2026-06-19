@@ -1,0 +1,48 @@
+// schemas/customize_item_unique_list.fbs
+// Character-unique customization items for Tekken 8.
+// Binary: Binary/fbsdata/customize_item_unique_list.bin
+namespace Polaris.FbsData;
+
+table CustomizeItemUniqueEntry {
+    // Primary item id (often present; absent on some rows).
+    char_item_id:uint32           (id: 0);
+    // Internal item code/path-like token (e.g. IP_wkz_bdf_1p).
+    asset_name:string             (id: 1);
+    character_hash:uint32         (id: 2);
+    hash_1:uint32                 (id: 3);
+    text_key:string               (id: 4);
+    extra_text_key_1:string       (id: 5);
+    extra_text_key_2:string       (id: 6);
+    flag_7:uint32                 (id: 7); // Marks default/base item for slot; shares physical offset with unk_8 (mutually exclusive)
+    unk_8:uint32                  (id: 8);
+    flag_9:bool                   (id: 9);
+    unk_10:uint32                 (id: 10);
+    price:uint32                  (id: 11);
+    unk_12:uint32                 (id: 12);
+    unk_13:uint32                 (id: 13);
+    hash_2:uint32                 (id: 14); // Hash, always "3229833922" -> "NONE"
+    flag_15:bool                  (id: 15);
+    unk_16:uint32                 (id: 16);
+    hash_3:uint32                 (id: 17);
+    unk_18:uint32                 (id: 18);
+    unk_19:uint32                 (id: 19);
+    unk_20:uint32                 (id: 20);
+    unk_21:uint32                 (id: 21);
+}
+
+table CustomizeItemUniqueBodyEntry {
+    asset_name:string         (id: 0); // e.g. IP_grf_bdf_2p
+    char_item_id:uint32       (id: 1); // e.g. 10006001
+}
+
+table CustomizeItemUniqueList {
+    entries:[CustomizeItemUniqueEntry]              (id: 0);
+    body_entries:[CustomizeItemUniqueBodyEntry]     (id: 1);
+}
+
+table CustomizeItemUniqueListRoot {
+    version:ubyte                             (id: 0);
+    data:CustomizeItemUniqueList              (id: 1);
+}
+
+root_type CustomizeItemUniqueListRoot;

@@ -1,0 +1,46 @@
+// schemas/arcade_cpu_list.fbs
+// Arcade CPU configuration data for Tekken 8.
+// Binary: Binary/fbsdata/arcade_cpu_list.bin
+namespace Polaris.FbsData;
+
+table ArcadeCpuSettings {
+    unk_0:uint32                   (id: 0); // observed: 1
+    unk_1:uint32                   (id: 1); // observed: 4
+    unk_2:uint32                   (id: 2); // observed: 10
+}
+
+table ArcadeCpuCharacterEntry {
+    character_hash:uint32          (id: 0);
+    ai_level:uint32                (id: 1);
+    float_1:float                  (id: 2);
+    uint_2:uint32                  (id: 3);
+    float_2:float                  (id: 4);
+    uint_3:uint32                  (id: 5);
+    float_3:float                  (id: 6);
+}
+
+table ArcadeCpuHashEntry {
+    value_hash:uint32              (id: 0);
+}
+
+table ArcadeCpuRuleEntry {
+    flag_0:ubyte                   (id: 0);
+    flag_1:ubyte                   (id: 1);
+    value_2:uint32                 (id: 2);
+    value_3:uint32                 (id: 3);
+}
+
+table ArcadeCpuList {
+    settings:ArcadeCpuSettings                     (id: 0);
+    character_entries:[ArcadeCpuCharacterEntry]    (id: 1); // 32 entries
+    hash_group_a:[ArcadeCpuHashEntry]              (id: 2); // 1 entry
+    hash_group_b:[ArcadeCpuHashEntry]              (id: 3); // 1 entry
+    rule_entries:[ArcadeCpuRuleEntry]              (id: 4); // 8 entries
+}
+
+table ArcadeCpuListRoot {
+    version:ubyte                  (id: 0);
+    data:ArcadeCpuList             (id: 1);
+}
+
+root_type ArcadeCpuListRoot;

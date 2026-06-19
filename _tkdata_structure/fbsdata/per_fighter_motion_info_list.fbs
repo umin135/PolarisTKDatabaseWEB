@@ -1,0 +1,29 @@
+// schemas/per_fighter_motion_info_list.fbs
+// Per-fighter motion tuning/info values for Tekken 8.
+// Binary: Binary/fbsdata/per_fighter_motion_info_list.bin
+// Usage: make file NAME=per_fighter_motion_info_list
+namespace Polaris.FbsData;
+
+table PerFighterMotionInfoEntry {
+    fighter_code_hash:uint32        (id: 0);
+    value_1:uint32                  (id: 1); // absent in current binary
+    value_2:uint32                  (id: 2);
+    value_3:uint32                  (id: 3);
+    value_4:uint32                  (id: 4);
+    value_5:uint32                  (id: 5);
+    value_6:uint32                  (id: 6); // absent in current binary
+    value_7:uint32                  (id: 7);
+    value_8:uint32                  (id: 8);
+    value_9:uint32                  (id: 9);
+}
+
+table PerFighterMotionInfoList {
+    entries:[PerFighterMotionInfoEntry] (id: 0); // 52 entries
+}
+
+table PerFighterMotionInfoListRoot {
+    version:ubyte                    (id: 0);
+    data:PerFighterMotionInfoList    (id: 1);
+}
+
+root_type PerFighterMotionInfoListRoot;

@@ -1,0 +1,81 @@
+// schemas/customize_item_acc_parameter_list.fbs
+// Accessory tuning: rig/socket byte masks + per-item scalar limits (min/max pairs).
+// Binary: Binary/fbsdata/customize_item_acc_parameter_list.bin
+namespace Polaris.FbsData;
+
+/// Per-socket or per-bone byte flags plus a content hash. Narrow rows only store
+/// hash (id 0) and unk_1; wide rows add the ubyte block used by the rig.
+table CustomizeItemAccParameterAuxEntry {
+    content_hash:uint32 (id: 0);
+    unk_1:ubyte (id: 1);
+    unk_2:ubyte (id: 2);
+    unk_3:ubyte (id: 3);
+    unk_4:ubyte (id: 4);
+    unk_5:ubyte (id: 5);
+    unk_6:ubyte (id: 6);
+    unk_7:ubyte (id: 7);
+    unk_8:ubyte (id: 8);
+    unk_9:ubyte (id: 9);
+    unk_10:ubyte (id: 10);
+    unk_11:ubyte (id: 11);
+    unk_12:ubyte (id: 12);
+    unk_13:ubyte (id: 13);
+    unk_14:ubyte (id: 14);
+    unk_15:ubyte (id: 15);
+    unk_16:ubyte (id: 16);
+    unk_17:ubyte (id: 17);
+    unk_18:ubyte (id: 18);
+    unk_19:ubyte (id: 19);
+    unk_20:ubyte (id: 20);
+    unk_21:ubyte (id: 21);
+    unk_22:ubyte (id: 22);
+    unk_23:ubyte (id: 23);
+    unk_24:ubyte (id: 24);
+    unk_25:ubyte (id: 25);
+    unk_26:ubyte (id: 26);
+    unk_27:ubyte (id: 27);
+    unk_28:ubyte (id: 28);
+    unk_29:ubyte (id: 29);
+    unk_30:ubyte (id: 30);
+    unk_31:ubyte (id: 31);
+    unk_32:ubyte (id: 32);
+}
+
+/// Numeric limits for one accessory item. Most rows use id 1 as the item id; high
+/// ids (14xxxxxx) use id 0 instead. id 2 is -1 on typical rows. Trailing rows may
+/// only populate ids 0 and 2.
+table CustomizeItemAccParameterEntry {
+    item_id:uint32 (id: 0);
+    local_item_id:uint32 (id: 1);
+    unk_2:int32 (id: 2);
+    unk_3:int32 (id: 3);
+    unk_4:int32 (id: 4);
+    unk_5:int32 (id: 5);
+    unk_6:int32 (id: 6);
+    unk_7:int32 (id: 7);
+    unk_8:int32 (id: 8);
+    unk_9:int32 (id: 9);
+    unk_10:int32 (id: 10);
+    unk_11:int32 (id: 11);
+    unk_12:int32 (id: 12);
+    unk_13:int32 (id: 13);
+    unk_14:int32 (id: 14);
+    unk_15:int32 (id: 15);
+    unk_16:int32 (id: 16);
+    unk_17:int32 (id: 17);
+    unk_18:int32 (id: 18);
+}
+
+table CustomizeItemAccParameterList {
+    /// Auxiliary rig/socket table (182 rows in shipping data).
+    aux_entries:[CustomizeItemAccParameterAuxEntry] (id: 0);
+    /// Per-item limit table (282 rows in shipping data).
+    parameter_entries:[CustomizeItemAccParameterEntry] (id: 1);
+}
+
+table CustomizeItemAccParameterListRoot {
+    version:ubyte (id: 0);
+    data:CustomizeItemAccParameterList (id: 1);
+}
+
+root_type CustomizeItemAccParameterListRoot;

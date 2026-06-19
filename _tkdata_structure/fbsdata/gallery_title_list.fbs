@@ -1,0 +1,40 @@
+// schemas/gallery_title_list.fbs
+// Gallery title metadata/config for Tekken 8.
+// Binary: Binary/fbsdata/gallery_title_list.bin
+namespace Polaris.FbsData;
+
+table GalleryTitleRecord {
+  // Unknown hash/id.
+  // Observed values:
+  //   3012255468
+  //   2376562786
+  title_hash:uint;
+
+  // UI logo/title resource key.
+  // Examples:
+  //   "T_UI_GA_Title_Logo_8"
+  //   "T_UI_GA_Title_Logo_Special"
+  title_logo_key:string;
+
+  // UI key/label resource key.
+  // Examples:
+  //   "T_UI_GA_Key_8"
+  //   "T_UI_GA_Key_Special"
+  title_key:string;
+
+  // Observed value: 4 for all records in this file.
+  unk03:int = 0;
+}
+
+table GalleryTitleTable {
+  records:[GalleryTitleRecord];
+}
+
+table GalleryTitleList {
+  // Observed value: 1.
+  version:ubyte = 1;
+
+  data:GalleryTitleTable;
+}
+
+root_type GalleryTitleList;

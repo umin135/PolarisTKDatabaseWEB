@@ -1,0 +1,126 @@
+// schemas/character_episode_list.fbs
+// Character Episode metadata/config for Tekken 8.
+// Binary: Binary/fbsdata/character_episode_list.bin
+namespace Polaris.FbsData;
+
+// 195 total records observed.
+// Records 0..159 are populated (32 groups x 5 chapters).
+// Records 160..194 are empty placeholder entries.
+//
+// Many strings are literal IDs used by the game, for example:
+//   epi_$F_op
+//   $F_epent_arena_master
+//   epi_$F_ed
+//   $F_sta_00_vr00
+//   $C_sta_02
+//   $F_win_00_vr01
+//
+// Field names below are based on binary patterns and string contents.
+// Unknown / partially-understood fields intentionally keep conservative names.
+
+table CharacterEpisodeRecord {
+  // Character Episode owner.
+  // Matches a character_list.name_hash on episode header rows.
+  // In practice this identifies the player/main character for the 5-battle episode.
+  player_character_hash:uint;
+
+  // Present on the first record of a character episode group.
+  // Example: "epi_$F_op"
+  opening_sequence_id:string;
+
+  // Present on the first record of a character episode group.
+  // Example: "$F_epent_arena_master"
+  arena_entry_sequence_id:string;
+
+  // Always "0" in this file, probably opponent's entry sequence ID
+  reserved_string_0:string;
+
+  // Present on the first record of a character episode group.
+  // Example: "epi_$F_ed"
+  ending_sequence_id:string;
+
+  // Only present on group-header rows; always 5 in this file.
+  // Considering it's always 5, probably denote the number of battles in the episode.
+  battles_count:int = 0;
+
+  // Present on populated records; usually 1..5.
+  // Likely battle index within the character episode.
+  battle_index:int = 0;
+
+  // Present on populated records; always 2 in this file.
+  mode:int = 0;
+
+  // Character Episode stage hash.
+  // Confirmed to control which stage a battle uses, but does not match
+  // stage_list.json.stage_hash or variant_hash values directly.
+  // Likely an episode-mode-specific stage/scene hash namespace.
+  episode_stage_hash:uint;
+
+  opponent_character_hash:uint;
+
+  // Optional int seen in a small subset of records only.
+  // Semantics unknown.
+  unk10:int = 0;
+
+  // Optional int, often -1 when present on placeholder-like records.
+  // Semantics unknown.
+  unk11:int = 0;
+
+  // Player intro ID.
+  // Examples:
+  //   "$F_sta_00_vr00"
+  //   "fate_$F_$Fvs$C_00_vr00"
+  player_intro_id:string;
+
+  // Rare optional int; seen as 26 in a few records, -1 in placeholder-ish rows.
+  unk13:int = 0;
+
+  // Opponent  intro ID.
+  // Examples:
+  //   "$C_sta_02"
+  //   "$C_sta_00_vr00"
+  //   "fate_$F_$Fvs$C_10_vr00"
+  opponent_intro_id:string;
+
+  // Optional win/result sequence.
+  // Examples:
+  //   "$F_win_00_vr01"
+  //   "$F_win_02_vr00"
+  player_win_id:string;
+
+  // Progression value set #1.
+  // Repeating patterns include 1,2,3,4.
+  progress_value_1:int = 0;
+
+  // Progression value set #2.
+  // Repeating patterns include 2,3,5,7,9.
+  progress_value_2:int = 0;
+
+  // Progression value set #3.
+  // Repeating patterns include 4,5,7,10,14.
+  progress_value_3:int = 0;
+
+  // Always "0" in this file.
+  player_costume_path:string;
+
+  // Optional asset path; only populated in a few records.
+  // Example:
+  //   "$D/CS_$C_ant_naked.CS_$C_ant_naked"
+  opponent_costume_path:string;
+}
+
+table CharacterEpisodeRecordTable {
+  // Unknown wrapper value. Observed: 0x00008384.
+  unk00:uint;
+
+  records:[CharacterEpisodeRecord];
+}
+
+table CharacterEpisodeList {
+  // Root flag/version byte. Observed value: 1.
+  version:ubyte = 1;
+
+  data:CharacterEpisodeRecordTable;
+}
+
+root_type CharacterEpisodeList;

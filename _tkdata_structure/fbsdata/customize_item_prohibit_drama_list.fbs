@@ -1,0 +1,20 @@
+// schemas/customize_item_prohibit_drama_list.fbs
+namespace Polaris.FbsData;
+
+table CustomizeItemProhibitDramaEntry {
+    value_0:int32 (id: 0);
+    value_1:int32 (id: 1);
+}
+
+table CustomizeItemProhibitDramaList {
+    entry_group_0:[CustomizeItemProhibitDramaEntry] (id: 0);
+    entry_group_1:[CustomizeItemProhibitDramaEntry] (id: 1);
+    category_values:[uint32]                        (id: 2);
+}
+
+table CustomizeItemProhibitDramaListRoot {
+    version:ubyte                    (id: 0);
+    data:CustomizeItemProhibitDramaList (id: 1);
+}
+
+root_type CustomizeItemProhibitDramaListRoot;

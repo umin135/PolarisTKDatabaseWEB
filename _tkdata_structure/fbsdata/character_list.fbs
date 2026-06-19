@@ -1,0 +1,30 @@
+namespace Polaris.FbsData;
+
+table CharacterEntry {
+    character_code:string    (id: 0);
+    name_hash:uint32         (id: 1);
+    is_enabled:bool          (id: 2);
+    is_selectable:bool       (id: 3);
+    group:string             (id: 4);
+    camera_offset:float      (id: 5);
+    is_playable:bool         (id: 6);
+    sort_order:uint32        (id: 7);
+    full_name_key:string     (id: 8);
+    short_name_jp_key:string (id: 9);
+    short_name_key:string    (id: 10);
+    origin_key:string        (id: 11);
+    fighting_style_key:string(id: 12);
+    height_key:string        (id: 13);
+    weight_key:string        (id: 14);
+}
+
+table CharacterList {
+    entries:[CharacterEntry] (id: 0);
+}
+
+table CharacterListRoot {
+    version:ubyte            (id: 0);
+    data:CharacterList       (id: 1);
+}
+
+root_type CharacterListRoot;

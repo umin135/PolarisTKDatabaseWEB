@@ -1,0 +1,49 @@
+// schemas/customize_item_color_slot_list.fbs
+// Per-item color slot / channel mapping (two parallel lists in shipping data).
+// Binary: Binary/fbsdata/customize_item_color_slot_list.bin
+namespace Polaris.FbsData;
+
+table CustomizeItemColorSlotEntry {
+    item_id:uint32 (id: 0);
+    /// Often -1 (0xFFFFFFFF) when unused.
+    unk_1:int32 (id: 1);
+    unk_2:uint32 (id: 2);
+    unk_3:uint32 (id: 3);
+    unk_4:uint32 (id: 4);
+    unk_5:uint32 (id: 5);
+    unk_6:uint32 (id: 6);
+    unk_7:uint32 (id: 7);
+    unk_8:uint32 (id: 8);
+    unk_9:uint32 (id: 9);
+    unk_10:uint32 (id: 10);
+    unk_11:uint32 (id: 11);
+    unk_12:uint32 (id: 12);
+    unk_13:uint32 (id: 13);
+    unk_14:uint32 (id: 14);
+    unk_15:uint32 (id: 15);
+    unk_16:uint32 (id: 16);
+    unk_17:uint32 (id: 17);
+    unk_18:uint32 (id: 18);
+    unk_19:uint32 (id: 19);
+    unk_20:uint32 (id: 20);
+    unk_21:uint32 (id: 21);
+    unk_22:uint32 (id: 22);
+    unk_23:uint32 (id: 23);
+    unk_24:uint32 (id: 24);
+    unk_25:uint32 (id: 25);
+    unk_26:uint32 (id: 26);
+}
+
+table CustomizeItemColorSlotList {
+    /// Primary slot rows (2948 entries in shipping data).
+    entries:[CustomizeItemColorSlotEntry] (id: 0);
+    /// Secondary slot rows (2557 entries in shipping data).
+    secondary_entries:[CustomizeItemColorSlotEntry] (id: 1);
+}
+
+table CustomizeItemColorSlotListRoot {
+    version:ubyte (id: 0);
+    data:CustomizeItemColorSlotList (id: 1);
+}
+
+root_type CustomizeItemColorSlotListRoot;

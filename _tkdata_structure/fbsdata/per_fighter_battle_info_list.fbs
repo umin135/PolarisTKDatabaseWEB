@@ -1,0 +1,97 @@
+// schemas/per_fighter_battle_info_list.fbs
+// Per-fighter battle tuning/info values for Tekken 8.
+// Binary: Binary/fbsdata/per_fighter_battle_info_list.bin
+// Usage: make file NAME=per_fighter_battle_info_list
+namespace Polaris.FbsData;
+
+table PerFighterBattleInfoEntry {
+    fighter_code_hash:uint32        (id: 0);
+
+    value_1:uint32                  (id: 1);
+    value_2:uint32                  (id: 2);
+    value_3:uint32                  (id: 3);
+    value_4:uint32                  (id: 4);
+    value_5:uint32                  (id: 5);  // absent in current binary
+    value_6:float                   (id: 6);
+    value_7:float                   (id: 7);
+    value_8:float                   (id: 8);
+    value_9:float                   (id: 9);
+    value_10:float                  (id: 10);
+    value_11:float                  (id: 11);
+    value_12:float                  (id: 12);
+    value_13:float                  (id: 13);
+    value_14:uint32                 (id: 14);
+    value_15:uint32                 (id: 15);
+    value_16:uint32                 (id: 16);
+    value_17:uint32                 (id: 17);
+    value_18:uint32                 (id: 18);
+    value_19:uint32                 (id: 19);
+    value_20:uint32                 (id: 20);
+    value_21:uint32                 (id: 21);
+    value_22:uint32                 (id: 22);
+    value_23:uint32                 (id: 23);
+    value_24:uint32                 (id: 24);
+    value_25:uint32                 (id: 25);
+    value_26:uint32                 (id: 26);
+    value_27:uint32                 (id: 27);
+    value_28:uint32                 (id: 28);
+    value_29:uint32                 (id: 29);
+    value_30:uint32                 (id: 30);
+    value_31:uint32                 (id: 31);
+    value_32:uint32                 (id: 32);
+    value_33:uint32                 (id: 33);
+    value_34:uint32                 (id: 34);
+    value_35:uint32                 (id: 35);
+    value_36:uint32                 (id: 36);
+    value_37:uint32                 (id: 37);
+    value_38:uint32                 (id: 38);
+    value_39:uint32                 (id: 39);
+    value_40:uint32                 (id: 40);
+    value_41:uint32                 (id: 41);
+    value_42:uint32                 (id: 42);
+    value_43:uint32                 (id: 43);
+    value_44:uint32                 (id: 44);
+    value_45:uint32                 (id: 45);
+    value_46:uint32                 (id: 46);
+    value_47:uint32                 (id: 47);
+    value_48:uint32                 (id: 48);
+    value_49:uint32                 (id: 49);
+    value_50:uint32                 (id: 50);
+    value_51:uint32                 (id: 51);
+    value_52:uint32                 (id: 52);
+    value_53:uint32                 (id: 53);
+    value_54:uint32                 (id: 54);
+    value_55:uint32                 (id: 55);
+    value_56:uint32                 (id: 56);
+    value_57:uint32                 (id: 57);
+    value_58:uint32                 (id: 58);
+    value_59:uint32                 (id: 59);
+    value_60:uint32                 (id: 60);
+    value_61:uint32                 (id: 61);
+    value_62:uint32                 (id: 62);
+    value_63:uint32                 (id: 63);
+    value_64:uint32                 (id: 64);
+    value_65:uint32                 (id: 65);
+    value_66:uint32                 (id: 66);
+    value_67:uint32                 (id: 67);
+    value_68:uint32                 (id: 68);
+    value_69:uint32                 (id: 69);
+    value_70:float                  (id: 70);
+    value_71:float                  (id: 71);
+    value_72:float                  (id: 72);
+    value_73:float                  (id: 73);
+    value_74:float                  (id: 74);
+    value_75:float                  (id: 75);
+    value_76:float                  (id: 76);
+}
+
+table PerFighterBattleInfoList {
+    entries:[PerFighterBattleInfoEntry] (id: 0); // 52 entries
+}
+
+table PerFighterBattleInfoListRoot {
+    version:ubyte                    (id: 0);
+    data:PerFighterBattleInfoList    (id: 1);
+}
+
+root_type PerFighterBattleInfoListRoot;

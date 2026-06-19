@@ -1,0 +1,25 @@
+// schemas/drama_voice_change_list.fbs
+// Drama voice change metadata/config for Tekken 8.
+// Binary: Binary/fbsdata/drama_voice_change_list.bin
+namespace Polaris.FbsData;
+
+table DramaVoiceChangeRecord {
+  // Matches character_list.name_hash.
+  character_hash:uint;
+
+  // Example observed: "grf_sta_02_vr00"
+  voice_change_id:string;
+
+  counterpart_character_hash:uint;
+}
+
+table DramaVoiceChangeTable {
+  records:[DramaVoiceChangeRecord];
+}
+
+table DramaVoiceChangeList {
+  version:ubyte = 1;
+  data:DramaVoiceChangeTable;
+}
+
+root_type DramaVoiceChangeList;

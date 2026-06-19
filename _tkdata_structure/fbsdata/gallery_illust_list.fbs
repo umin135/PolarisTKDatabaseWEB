@@ -1,0 +1,61 @@
+// schemas/gallery_illust_list.fbs
+// Gallery illustration metadata/config for Tekken 8.
+// Binary: Binary/fbsdata/gallery_illust_list.bin
+namespace Polaris.FbsData;
+
+table GalleryIllustRecord {
+  // Matches gallery_title_list.title_hash.
+  // 3012255468 = standard gallery
+  // 2376562786 = special gallery
+  title_hash:uint;
+
+  // Unique illustration ID.
+  // Observed: 200000+
+  illust_id:uint;
+
+  // Thumbnail/UI asset key.
+  // Examples:
+  //   "T_UI_GA_Thumb_Character_mnt_PUB"
+  //   "T_UI_GA_Thumb_Special_00"
+  thumbnail_key:string;
+
+  // Full illustration/UI resource key.
+  // Examples:
+  //   "T_UI_GA_Character_mnt_PUB"
+  //   "T_UI_GA_Special_00"
+  resource_id:string;
+
+  // Per-entry unlock/sort/index value.
+  // Observed: 55000-range, unique per record.
+  entry_index:uint;
+
+  // Present only on 5 records.
+  // Observed value: true
+  special_flag:bool = false;
+
+  // Present on 320 records.
+  // Observed value: 50000
+  unlock_price:uint = 0;
+
+  // Observed constant on all records: 20
+  category:int = 0;
+
+  // Small display index as a string.
+  // Observed: "0", "1", "2", ...
+  sub_index:string;
+
+  // Usually 1611006924, but 1806241895 on 4 records.
+  // Likely a group/owner hash, not a string.
+  group_hash:uint;
+}
+
+table GalleryIllustTable {
+  records:[GalleryIllustRecord];
+}
+
+table GalleryIllustList {
+  version:ubyte = 1;
+  data:GalleryIllustTable;
+}
+
+root_type GalleryIllustList;

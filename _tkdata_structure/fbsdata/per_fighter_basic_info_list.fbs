@@ -1,0 +1,36 @@
+// schemas/per_fighter_basic_info_list.fbs
+// Per-fighter basic tuning/info values for Tekken 8.
+// Binary: Binary/fbsdata/per_fighter_basic_info_list.bin
+// Usage: make file NAME=per_fighter_basic_info_list
+namespace Polaris.FbsData;
+
+table PerFighterBasicInfoEntry {
+    fighter_code_hash:uint32        (id: 0);
+
+    value_1:uint32                  (id: 1);
+    value_2:uint32                  (id: 2);
+    value_3:float                   (id: 3);
+    value_4:float                   (id: 4);
+    value_5:float                   (id: 5);  // sparse in current binary
+    value_6:uint32                  (id: 6);
+    value_7:float                   (id: 7);
+    value_8:uint32                  (id: 8);
+    value_9:uint32                  (id: 9);
+    value_10:float                  (id: 10);
+    value_11:uint32                 (id: 11);
+    value_12:uint32                 (id: 12); // sparse in current binary
+    value_13:float                  (id: 13); // sparse in current binary
+    value_14:uint32                 (id: 14);
+    value_15:uint32                 (id: 15);
+}
+
+table PerFighterBasicInfoList {
+    entries:[PerFighterBasicInfoEntry] (id: 0); // 52 entries
+}
+
+table PerFighterBasicInfoListRoot {
+    version:ubyte                   (id: 0);
+    data:PerFighterBasicInfoList    (id: 1);
+}
+
+root_type PerFighterBasicInfoListRoot;

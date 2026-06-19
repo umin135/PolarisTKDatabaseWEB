@@ -1,0 +1,20 @@
+// schemas/battle_subtitle_info.fbs
+// Battle subtitle metadata mappings for Tekken 8.
+// Binary: Binary/fbsdata/battle_subtitle_info.bin
+namespace Polaris.FbsData;
+
+table BattleSubtitleInfoEntry {
+    subtitle_hash:uint32           (id: 0);
+    subtitle_type:uint32           (id: 1); // constant 4 in current binary
+}
+
+table BattleSubtitleInfoList {
+    entries:[BattleSubtitleInfoEntry] (id: 0); // 617 entries
+}
+
+table BattleSubtitleInfoListRoot {
+    version:ubyte                  (id: 0);
+    data:BattleSubtitleInfoList    (id: 1);
+}
+
+root_type BattleSubtitleInfoListRoot;

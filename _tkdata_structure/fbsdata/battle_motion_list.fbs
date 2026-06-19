@@ -1,0 +1,35 @@
+// schemas/battle_motion_list.fbs
+// Battle motion tuning values for Tekken 8.
+// Binary: Binary/fbsdata/battle_motion_list.bin
+namespace Polaris.FbsData;
+
+table BattleMotionEntry {
+    motion_id:ubyte                (id: 0);
+    value_1:uint32                 (id: 1);
+    value_2:uint32                 (id: 2);
+}
+
+table BattleMotionList {
+    entries:[BattleMotionEntry]    (id: 0); // 17 entries
+
+    value_1:float                  (id: 1);
+    value_2:float                  (id: 2);
+    value_3:float                  (id: 3);
+    value_4:float                  (id: 4);
+    value_5:float                  (id: 5);
+    value_6:float                  (id: 6);
+    value_7:float                  (id: 7);
+    value_8:float                  (id: 8);
+    value_9:float                  (id: 9);
+    value_10:float                 (id: 10);
+
+    value_11:uint32                (id: 11);
+    entries_alt:[BattleMotionEntry] (id: 12); // points to same vector in current binary
+}
+
+table BattleMotionListRoot {
+    version:ubyte                  (id: 0);
+    data:BattleMotionList          (id: 1);
+}
+
+root_type BattleMotionListRoot;

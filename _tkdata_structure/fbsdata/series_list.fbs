@@ -1,0 +1,23 @@
+// schemas/series_list.fbs
+// Jukebox series metadata for Tekken 8.
+// Binary: Binary/fbsdata/series_list.bin
+namespace Polaris.FbsData;
+
+table SeriesEntry {
+    series_hash:uint32             (id: 0);
+    jacket_text_key:string         (id: 1); // e.g. TEXT_000_UI_JUKEBOX_011
+    jacket_icon_key:string         (id: 2); // e.g. T_UI_JB_Jacket_TK1
+    logo_text_key:string           (id: 3); // e.g. TEXT_000_UI_JUKEBOX_029
+    logo_icon_key:string           (id: 4); // e.g. T_UI_JB_Logo_TK1
+}
+
+table SeriesList {
+    entries:[SeriesEntry]          (id: 0);
+}
+
+table SeriesListRoot {
+    version:ubyte                  (id: 0);
+    data:SeriesList                (id: 1);
+}
+
+root_type SeriesListRoot;

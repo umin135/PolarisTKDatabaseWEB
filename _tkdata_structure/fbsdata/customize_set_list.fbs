@@ -1,0 +1,83 @@
+// schemas/customize_set_list.fbs
+// Full-body customization set definitions (asset tokens per slot + lookup row).
+// Binary: Binary/fbsdata/customize_set_list.bin
+namespace Polaris.FbsData;
+
+table CustomizeSetEntry {
+    character_hash:uint32 (id: 0);
+    set_0:string (id: 1);
+    set_1:string (id: 2);
+    set_2:string (id: 3);
+    set_3:string (id: 4);
+    set_4:string (id: 5);
+    set_5:string (id: 6);
+    set_6:string (id: 7);
+    set_7:string (id: 8);
+    set_8:string (id: 9);
+    set_9:string (id: 10);
+    set_10:string (id: 11);
+    set_11:string (id: 12);
+    set_12:string (id: 13);
+    set_13:string (id: 14);
+    set_14:string (id: 15);
+    set_15:string (id: 16);
+    set_16:string (id: 17);
+    set_17:string (id: 18);
+    set_18:string (id: 19);
+    set_19:string (id: 20);
+    set_20:string (id: 21);
+    set_21:string (id: 22);
+    set_22:string (id: 23);
+    set_23:string (id: 24);
+    set_24:string (id: 25);
+    set_25:string (id: 26);
+    set_26:string (id: 27);
+    set_27:string (id: 28);
+    set_28:string (id: 29);
+    set_29:string (id: 30);
+    set_30:string (id: 31);
+    set_31:string (id: 32);
+    set_32:string (id: 33);
+    set_33:string (id: 34);
+    set_34:string (id: 35);
+    set_35:string (id: 36);
+    set_36:string (id: 37);
+    set_37:string (id: 38);
+    set_38:string (id: 39);
+    set_39:string (id: 40);
+    set_40:string (id: 41);
+    set_41:string (id: 42);
+    set_42:string (id: 43);
+    set_43:string (id: 44);
+    set_44:string (id: 45);
+    set_45:string (id: 46);
+    set_46:string (id: 47);
+    set_47:string (id: 48);
+    set_48:string (id: 49);
+    set_49:string (id: 50);
+    /// Observed as 4 on every row in shipping data.
+    unk_50:uint32 (id: 51);
+}
+
+/// Descending offsets into the table blob (48 values + sentinel); used with the third list slot.
+table CustomizeSetSectionOffsets {
+    /// Unused in shipping data (vtable slot 0 absent).
+    reserved_0:uint32 (id: 0);
+    offsets:[uint32] (id: 1);
+}
+
+table CustomizeSetList {
+    /// Primary set rows (48 in shipping data).
+    entries:[CustomizeSetEntry] (id: 0);
+    /// Secondary set rows (49 in shipping data); same entry shape as `entries`.
+    secondary_entries:[CustomizeSetEntry] (id: 1);
+    /// Single packed offset table in shipping data.
+    section_index:[CustomizeSetSectionOffsets] (id: 2);
+}
+
+table CustomizeSetListRoot {
+    version:ubyte (id: 0);
+    data:CustomizeSetList (id: 1);
+}
+
+root_type CustomizeSetListRoot;

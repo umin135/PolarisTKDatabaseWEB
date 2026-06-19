@@ -1,0 +1,42 @@
+// schemas/customize_item_common_list.fbs
+namespace Polaris.FbsData;
+
+table CustomizeItemCommonEntry {
+    char_item_id:uint32       (id: 0); // 2XXYYZZZ
+    base_id:uint32            (id: 1); // YYZZZ
+    asset_name:string         (id: 2);
+    character_hash:uint32     (id: 3);
+    hash_1:uint32             (id: 4); // Asset Hash. e.g, bdf, sho, ex0, btm etc...
+    text_key:string           (id: 5);
+    extra_text_key_1:string   (id: 6);
+    extra_text_key_2:string   (id: 7);
+    unk_8:uint32              (id: 8);
+    shop_sort_id:uint32       (id: 9);
+    is_enabled:bool           (id: 10);
+    unk_11:uint32             (id: 11); // rarity?
+    price:uint32              (id: 12);
+    unk_13:bool               (id: 13);
+    unk_14:uint32             (id: 14);
+    unk_15:uint32             (id: 15); // Hash, always "3229833922" -> "NONE"
+    unk_16:bool               (id: 16);
+    unk_17:uint32             (id: 17); // only present in accessories. Values spotted: 1, 2, 5-7
+    hash_3:uint32             (id: 18);
+    unk_19:uint32             (id: 19);
+    unk_20:uint32             (id: 20);
+    unk_21:uint32             (id: 21);
+    unk_22:uint32             (id: 22);
+    hash_4:uint32             (id: 23);
+    unk_24:uint32             (id: 24);
+    sort_group:uint32         (id: 25);
+}
+
+table CustomizeItemCommonList {
+    entries:[CustomizeItemCommonEntry] (id: 0);
+}
+
+table CustomizeItemCommonListRoot {
+    version:ubyte                    (id: 0);
+    data:CustomizeItemCommonList     (id: 1);
+}
+
+root_type CustomizeItemCommonListRoot;

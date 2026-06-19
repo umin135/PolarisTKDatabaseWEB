@@ -1,0 +1,77 @@
+// schemas/assist_input_list.fbs
+// Assist input tuning/config rows for Tekken 8.
+// Binary: Binary/fbsdata/assist_input_list.bin
+namespace Polaris.FbsData;
+
+table AssistInputEntry {
+    character_hash:uint32          (id: 0);
+    value_1:int32                  (id: 1);
+    value_2:int32                  (id: 2);
+    value_3:int32                  (id: 3);
+    value_4:int32                  (id: 4);
+    value_5:int32                  (id: 5);
+    value_6:int32                  (id: 6);
+    value_7:int32                  (id: 7);
+    value_8:int32                  (id: 8);
+    value_9:int32                  (id: 9);
+    value_10:int32                 (id: 10);
+    value_11:int32                 (id: 11);
+    value_12:int32                 (id: 12);
+    value_13:int32                 (id: 13);
+    value_14:int32                 (id: 14);
+    value_15:int32                 (id: 15);
+    value_16:int32                 (id: 16);
+    value_17:int32                 (id: 17);
+    value_18:int32                 (id: 18);
+    value_19:int32                 (id: 19);
+    value_20:int32                 (id: 20);
+    value_21:int32                 (id: 21);
+    value_22:int32                 (id: 22);
+    value_23:int32                 (id: 23);
+    value_24:int32                 (id: 24);
+    value_25:int32                 (id: 25);
+    value_26:int32                 (id: 26);
+    value_27:int32                 (id: 27);
+    value_28:int32                 (id: 28);
+    value_29:int32                 (id: 29);
+    value_30:int32                 (id: 30);
+    value_31:int32                 (id: 31);
+    value_32:int32                 (id: 32);
+    value_33:int32                 (id: 33);
+    value_34:int32                 (id: 34);
+    value_35:int32                 (id: 35);
+    value_36:int32                 (id: 36);
+    value_37:int32                 (id: 37);
+    value_38:int32                 (id: 38);
+    value_39:int32                 (id: 39);
+    value_40:int32                 (id: 40);
+    value_41:int32                 (id: 41);
+    value_42:int32                 (id: 42);
+    value_43:int32                 (id: 43);
+    value_44:int32                 (id: 44);
+    value_45:int32                 (id: 45);
+    value_46:int32                 (id: 46);
+    value_47:int32                 (id: 47);
+    value_48:int32                 (id: 48);
+    value_49:int32                 (id: 49);
+    value_50:int32                 (id: 50);
+    value_51:int32                 (id: 51);
+    value_52:int32                 (id: 52);
+    value_53:int32                 (id: 53);
+    value_54:int32                 (id: 54);
+    value_55:int32                 (id: 55);
+    value_56:int32                 (id: 56);
+    value_57:int32                 (id: 57);
+    value_58:int32                 (id: 58); // present only on some rows
+}
+
+table AssistInputList {
+    entries:[AssistInputEntry]     (id: 0); // 60 rows
+}
+
+table AssistInputListRoot {
+    version:ubyte                  (id: 0);
+    data:AssistInputList           (id: 1);
+}
+
+root_type AssistInputListRoot;

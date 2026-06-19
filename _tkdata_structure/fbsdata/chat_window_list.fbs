@@ -1,0 +1,21 @@
+// schemas/chat_window_list.fbs
+// Chat window sizing/placement records for Tekken 8.
+// Binary: Binary/fbsdata/chat_window_list.bin
+namespace Polaris.FbsData;
+
+table ChatWindowEntry {
+    context_hash:uint32             (id: 0); // hash-like key
+    value_1:uint32                  (id: 1); // often 316 in current binary
+    value_2:uint32                  (id: 2); // often 316 in current binary
+}
+
+table ChatWindowList {
+    entries:[ChatWindowEntry]       (id: 0); // 5 entries in current binary
+}
+
+table ChatWindowListRoot {
+    version:ubyte                   (id: 0);
+    data:ChatWindowList             (id: 1);
+}
+
+root_type ChatWindowListRoot;

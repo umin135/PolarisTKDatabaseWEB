@@ -1,0 +1,34 @@
+// schemas/customize_item_shop_camera_list.fbs
+// Shop / try-on camera parameters keyed by customization item (56 rows in shipping data).
+// Binary: Binary/fbsdata/customize_item_shop_camera_list.bin
+namespace Polaris.FbsData;
+
+/// Camera row: optional ids, shared item_pos_hash 0x92C79AE7, then float tuning.
+table CustomizeItemShopCameraEntry {
+    item_id:int32 (id: 0);
+    local_item_id:int32 (id: 1);
+    /// Observed constant 0x92C79AE7 ("none") on every row (bit-pattern shared with some camera tables).
+    item_pos_hash:uint32 (id: 2);
+    /// Present on one row (`1`); omitted elsewhere.
+    unk_3:ubyte (id: 3);
+    unk_4:uint32 (id: 4);
+    unk_5:uint32 (id: 5);
+    unk_6:float (id: 6);
+    unk_7:float (id: 7);
+    unk_8:float (id: 8);
+    unk_9:float (id: 9);
+    unk_10:float (id: 10);
+    unk_11:float (id: 11);
+    unk_12:float (id: 12);
+}
+
+table CustomizeItemShopCameraList {
+    entries:[CustomizeItemShopCameraEntry] (id: 0);
+}
+
+table CustomizeItemShopCameraListRoot {
+    version:ubyte (id: 0);
+    data:CustomizeItemShopCameraList (id: 1);
+}
+
+root_type CustomizeItemShopCameraListRoot;

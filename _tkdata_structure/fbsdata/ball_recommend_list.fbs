@@ -1,0 +1,26 @@
+// schemas/ball_recommend_list.fbs
+// Recommended movelist commands for ball interactions.
+// Binary: Binary/fbsdata/ball_recommend_list.bin
+namespace Polaris.FbsData;
+
+table BallRecommendEntry {
+    character_hash:uint32          (id: 0);
+    move_name_key:string           (id: 1);    // TEXT_*_MOVELIST_NAME_*
+    command_text_key:string        (id: 2);    // TEXT_*_MOVELIST_COMMAND_*
+    unk_3:uint32                   (id: 3);    // optional
+    unk_4:uint32                   (id: 4);    // optional
+}
+
+table BallRecommendList {
+    recommend_group_0:[BallRecommendEntry] (id: 0); // 160 entries
+    recommend_group_1:[BallRecommendEntry] (id: 1); // 160 entries
+    recommend_group_2:[BallRecommendEntry] (id: 2); // 144 entries
+    unk_values:[uint32]                    (id: 3); // 3 values
+}
+
+table BallRecommendListRoot {
+    version:ubyte                  (id: 0);
+    data:BallRecommendList         (id: 1);
+}
+
+root_type BallRecommendListRoot;

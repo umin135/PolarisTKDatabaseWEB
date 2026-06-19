@@ -1,0 +1,85 @@
+// schemas/gallery_movie_list.fbs
+// Gallery movie metadata/config for Tekken 8.
+// Binary: Binary/fbsdata/gallery_movie_list.bin
+namespace Polaris.FbsData;
+
+table GalleryMovieRecord {
+  // Matches gallery_title_list.title_hash.
+  // 3012255468 = standard gallery movies
+  // 2376562786 = special gallery movies
+  title_hash:uint;
+
+  // Unique movie ID.
+  // Observed range: 100000..100163
+  movie_id:uint;
+
+  // Thumbnail resource key.
+  // Examples:
+  //   "T_UI_GA_Movie_Thumb_ac00_Opening"
+  //   "T_UI_GA_Movie_Thumb_epi_mnt_op"
+  //   "T_UI_GA_Movie_Thumb_Digest_TK1"
+  thumbnail_key:string;
+
+  // Movie playback/resource ID.
+  // Examples:
+  //   "MT_Mov_UI_SU_Opmovie"
+  //   "MT_ac01_p01"
+  //   "MT_epi_mnt_op"
+  //   "MT_UI_GA_Digest_TK1"
+  movie_resource_id:string;
+
+  // High-level movie category.
+  // Observed values:
+  //   967851035  = opening movie
+  //   3837450819 = main story chapter movies
+  //   2508598081 = character episode movies
+  //   3480763725 = DLC story movies
+  //   3175067529 = special movies (Digest / Side)
+  movie_category_hash:uint;
+
+  // Constant in this file. Observed: 3295342236
+  unk05:uint;
+
+  // Constant in this file. Observed: 3242530409
+  unk06:uint;
+
+  // Optional unlock/sort/content index.
+  // Present on most records, absent on opening and digest movies.
+  // Examples:
+  //   51000
+  //   52000
+  //   52085
+  unlock_index:uint = 0;
+
+  // Optional subgroup hash.
+  // Usually 2338253825, but 2809684481 on a few special side-story movies.
+  subgroup_hash:uint;
+
+  // Slot exists in the binary layout but is unused in this file.
+  reserved_09:uint = 0;
+
+  // Localized text key for the gallery entry.
+  // Examples:
+  //   "TEXT_000_UI_GALLERY_040"
+  //   "TEXT_000_UI_GALLERY_125"
+  //   "TEXT_008_UI_DLC_STORY_TIPS_TITLE_025"
+  text_key:string;
+
+  // Small per-group display index.
+  // Observed values are string digits like "0", "1", "2", ...
+  sub_index:string;
+
+  // Constant in this file. Observed: 3229833922
+  unk12:uint;
+}
+
+table GalleryMovieTable {
+  records:[GalleryMovieRecord];
+}
+
+table GalleryMovieList {
+  version:ubyte = 1;
+  data:GalleryMovieTable;
+}
+
+root_type GalleryMovieList;

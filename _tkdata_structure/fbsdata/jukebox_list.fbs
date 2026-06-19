@@ -1,0 +1,30 @@
+// schemas/jukebox_list.fbs
+// Jukebox BGM list for Tekken 8.
+// Binary: Binary/fbsdata/jukebox_list.bin
+namespace Polaris.FbsData;
+
+table JukeboxEntry {
+    // Unique hash per track row.
+    bgm_hash:uint32                (id: 0);
+    // Group/series hash (e.g. constant across T1/T8 groups).
+    series_hash:uint32             (id: 1);
+    // Absent in current binary rows (kept for flatc consecutive id requirement).
+    unk_2:uint32                   (id: 2);
+    cue_name:string                (id: 3); // e.g. T8_bgm_34
+    arrangement:string             (id: 4); // usually "Normal"
+    alt_cue_name_1:string          (id: 5); // usually "null"
+    alt_cue_name_2:string          (id: 6); // usually "null"
+    alt_cue_name_3:string          (id: 7); // usually "null"
+    display_text_key:string        (id: 8); // e.g. TEXT_000_UI_JUKEBOX_BGM_430
+}
+
+table JukeboxList {
+    entries:[JukeboxEntry]         (id: 0);
+}
+
+table JukeboxListRoot {
+    version:ubyte                  (id: 0);
+    data:JukeboxList               (id: 1);
+}
+
+root_type JukeboxListRoot;

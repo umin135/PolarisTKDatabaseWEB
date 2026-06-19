@@ -1,0 +1,23 @@
+// customize_unique_exclusion_list.fbs
+// type_id = 59
+// Defines pairs of unique items that cannot be equipped simultaneously.
+// Field id=1 (unk_1) is always ABSENT in the game binary (default 0).
+
+namespace TkFbs;
+
+table CustomizeUniqueExclusionEntry {
+    item_id_a : uint32;  // id=0  first item of the exclusion pair
+    unk_1     : uint32;  // id=1  always absent (default 0)
+    item_id_b : uint32;  // id=2  second item of the exclusion pair
+}
+
+table CustomizeUniqueExclusionListData {
+    entries : [CustomizeUniqueExclusionEntry];  // id=0
+}
+
+table CustomizeUniqueExclusionListRoot {
+    version : uint8;                           // id=0  offset=7
+    data    : CustomizeUniqueExclusionListData; // id=1  offset=8
+}
+
+root_type CustomizeUniqueExclusionListRoot;
