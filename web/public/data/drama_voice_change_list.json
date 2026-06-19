@@ -1,0 +1,522 @@
+{
+  "version": 1,
+  "data": {
+    "records": [
+      {
+        "character_hash": 2802412287,
+        "voice_change_id": "grf_sta_02_vr00",
+        "counterpart_character_hash": 3155198250
+      },
+      {
+        "character_hash": 3909547504,
+        "voice_change_id": "pig_sta_00_vr00",
+        "counterpart_character_hash": 3155198250
+      },
+      {
+        "character_hash": 1009826274,
+        "voice_change_id": "aml_sta_00_vr00",
+        "counterpart_character_hash": 1633518270
+      },
+      {
+        "character_hash": 1009826274,
+        "voice_change_id": "aml_win_01_vr01",
+        "counterpart_character_hash": 3283482507
+      },
+      {
+        "character_hash": 1009826274,
+        "voice_change_id": "aml_win_01_vr02",
+        "counterpart_character_hash": 1633518270
+      },
+      {
+        "character_hash": 1009826274,
+        "voice_change_id": "aml_win_02_vr01",
+        "counterpart_character_hash": 748126445
+      },
+      {
+        "character_hash": 1791216549,
+        "voice_change_id": "ant_win_02_vr00",
+        "counterpart_character_hash": 26846036
+      },
+      {
+        "character_hash": 1791216549,
+        "voice_change_id": "ant_win_02_vr01",
+        "counterpart_character_hash": 1862528861
+      },
+      {
+        "character_hash": 1791216549,
+        "voice_change_id": "ant_win_00_vr01",
+        "counterpart_character_hash": 3716978005
+      },
+      {
+        "character_hash": 1862528861,
+        "voice_change_id": "lzd_sta_00_vr02",
+        "counterpart_character_hash": 1230214467
+      },
+      {
+        "character_hash": 1862528861,
+        "voice_change_id": "lzd_sta_00_vr03",
+        "counterpart_character_hash": 2172508408
+      },
+      {
+        "character_hash": 1862528861,
+        "voice_change_id": "lzd_win_00_vr00",
+        "counterpart_character_hash": 3283482507
+      },
+      {
+        "character_hash": 1862528861,
+        "voice_change_id": "lzd_win_02_vr00",
+        "counterpart_character_hash": 2172508408
+      },
+      {
+        "character_hash": 1862528861,
+        "voice_change_id": "lzd_win_00_vr03",
+        "counterpart_character_hash": 1791216549
+      },
+      {
+        "character_hash": 748126445,
+        "voice_change_id": "pgn_sta_01_vr00",
+        "counterpart_character_hash": 3098177400
+      },
+      {
+        "character_hash": 748126445,
+        "voice_change_id": "pgn_win_01_vr00",
+        "counterpart_character_hash": 3155198250
+      },
+      {
+        "character_hash": 748126445,
+        "voice_change_id": "pgn_win_02_vr00",
+        "counterpart_character_hash": 3155198250
+      },
+      {
+        "character_hash": 3283482507,
+        "voice_change_id": "grl_sta_02_vr03",
+        "counterpart_character_hash": 1862528861
+      },
+      {
+        "character_hash": 3283482507,
+        "voice_change_id": "grl_win_00_vr00",
+        "counterpart_character_hash": 1791216549
+      },
+      {
+        "character_hash": 3283482507,
+        "voice_change_id": "grl_win_02_vr01",
+        "counterpart_character_hash": 1009826274
+      },
+      {
+        "character_hash": 1230214467,
+        "voice_change_id": "swl_win_01_vr00",
+        "counterpart_character_hash": 1791216549
+      },
+      {
+        "character_hash": 1230214467,
+        "voice_change_id": "swl_win_02_vr00",
+        "counterpart_character_hash": 3283482507
+      },
+      {
+        "character_hash": 2262000005,
+        "voice_change_id": "ghp_sta_02_vr01",
+        "counterpart_character_hash": 3283482507
+      },
+      {
+        "character_hash": 2262000005,
+        "voice_change_id": "ghp_win_01_vr02",
+        "counterpart_character_hash": 3098177400
+      },
+      {
+        "character_hash": 2172508408,
+        "voice_change_id": "mnt_sta_00_vr01",
+        "counterpart_character_hash": 1862528861
+      },
+      {
+        "character_hash": 2172508408,
+        "voice_change_id": "mnt_sta_01_vr01",
+        "counterpart_character_hash": 1791216549
+      },
+      {
+        "character_hash": 2172508408,
+        "voice_change_id": "mnt_win_00_vr01",
+        "counterpart_character_hash": 1791216549
+      },
+      {
+        "character_hash": 3480598787,
+        "voice_change_id": "wlf_sta_01_vr00",
+        "counterpart_character_hash": 3283482507
+      },
+      {
+        "character_hash": 3480598787,
+        "voice_change_id": "wlf_sta_00_vr00",
+        "counterpart_character_hash": 1791216549
+      },
+      {
+        "character_hash": 3480598787,
+        "voice_change_id": "wlf_win_00_vr00",
+        "counterpart_character_hash": 1862528861
+      },
+      {
+        "character_hash": 26846036,
+        "voice_change_id": "zbr_sta_00_vr00",
+        "counterpart_character_hash": 1791216549
+      },
+      {
+        "character_hash": 26846036,
+        "voice_change_id": "zbr_sta_02_vr00",
+        "counterpart_character_hash": 1862528861
+      },
+      {
+        "character_hash": 26846036,
+        "voice_change_id": "zbr_sta_01_vr00",
+        "counterpart_character_hash": 840871906
+      },
+      {
+        "character_hash": 26846036,
+        "voice_change_id": "zbr_sta_02_vr01",
+        "counterpart_character_hash": 1633518270
+      },
+      {
+        "character_hash": 26846036,
+        "voice_change_id": "zbr_win_02_vr02",
+        "counterpart_character_hash": 1862528861
+      },
+      {
+        "character_hash": 26846036,
+        "voice_change_id": "zbr_win_02_vr01",
+        "counterpart_character_hash": 1009826274
+      },
+      {
+        "character_hash": 26846036,
+        "voice_change_id": "zbr_win_02_vr03",
+        "counterpart_character_hash": 3283482507
+      },
+      {
+        "character_hash": 26846036,
+        "voice_change_id": "zbr_win_02_vr00",
+        "counterpart_character_hash": 1791216549
+      },
+      {
+        "character_hash": 840871906,
+        "voice_change_id": "lon_sta_01_vr01",
+        "counterpart_character_hash": 3283482507
+      },
+      {
+        "character_hash": 840871906,
+        "voice_change_id": "lon_sta_00_vr01",
+        "counterpart_character_hash": 1230214467
+      },
+      {
+        "character_hash": 840871906,
+        "voice_change_id": "lon_sta_00_vr03",
+        "counterpart_character_hash": 2046353711
+      },
+      {
+        "character_hash": 840871906,
+        "voice_change_id": "lon_sta_01_vr00",
+        "counterpart_character_hash": 97192667
+      },
+      {
+        "character_hash": 840871906,
+        "voice_change_id": "lon_win_00_vr00",
+        "counterpart_character_hash": 3283482507
+      },
+      {
+        "character_hash": 840871906,
+        "voice_change_id": "lon_win_00_vr01",
+        "counterpart_character_hash": 1941891036
+      },
+      {
+        "character_hash": 840871906,
+        "voice_change_id": "lon_win_00_vr02",
+        "counterpart_character_hash": 731112246
+      },
+      {
+        "character_hash": 840871906,
+        "voice_change_id": "lon_win_01_vr00",
+        "counterpart_character_hash": 97192667
+      },
+      {
+        "character_hash": 840871906,
+        "voice_change_id": "lon_win_01_vr01",
+        "counterpart_character_hash": 1791216549
+      },
+      {
+        "character_hash": 840871906,
+        "voice_change_id": "lon_win_01_vr02",
+        "counterpart_character_hash": 2046353711
+      },
+      {
+        "character_hash": 840871906,
+        "voice_change_id": "lon_win_02_vr02",
+        "counterpart_character_hash": 3283482507
+      },
+      {
+        "character_hash": 840871906,
+        "voice_change_id": "lon_sta_00_vr04",
+        "counterpart_character_hash": 1941891036
+      },
+      {
+        "character_hash": 3109625382,
+        "voice_change_id": "snk_sta_01_vr00",
+        "counterpart_character_hash": 1230214467
+      },
+      {
+        "character_hash": 3109625382,
+        "voice_change_id": "snk_win_00_vr00",
+        "counterpart_character_hash": 1791216549
+      },
+      {
+        "character_hash": 3716978005,
+        "voice_change_id": "rat_sta_02_vr00",
+        "counterpart_character_hash": 1230214467
+      },
+      {
+        "character_hash": 3716978005,
+        "voice_change_id": "rat_sta_02_vr01",
+        "counterpart_character_hash": 97192667
+      },
+      {
+        "character_hash": 3716978005,
+        "voice_change_id": "rat_win_00_vr00",
+        "counterpart_character_hash": 1791216549
+      },
+      {
+        "character_hash": 3716978005,
+        "voice_change_id": "rat_win_01_vr00",
+        "counterpart_character_hash": 97192667
+      },
+      {
+        "character_hash": 3716978005,
+        "voice_change_id": "rat_win_01_vr01",
+        "counterpart_character_hash": 1597287972
+      },
+      {
+        "character_hash": 3716978005,
+        "voice_change_id": "rat_win_02_vr00",
+        "counterpart_character_hash": 236224321
+      },
+      {
+        "character_hash": 2691931401,
+        "voice_change_id": "ccn_sta_00_vr00",
+        "counterpart_character_hash": 3480598787
+      },
+      {
+        "character_hash": 2691931401,
+        "voice_change_id": "ccn_win_00_vr00",
+        "counterpart_character_hash": 1941891036
+      },
+      {
+        "character_hash": 2691931401,
+        "voice_change_id": "ccn_win_01_vr00",
+        "counterpart_character_hash": 3480598787
+      },
+      {
+        "character_hash": 2691931401,
+        "voice_change_id": "ccn_win_00_vr01",
+        "counterpart_character_hash": 1633518270
+      },
+      {
+        "character_hash": 2620373223,
+        "voice_change_id": "der_win_01_vr01",
+        "counterpart_character_hash": 1870866276
+      },
+      {
+        "character_hash": 97192667,
+        "voice_change_id": "ctr_sta_02_vr02",
+        "counterpart_character_hash": 3716978005
+      },
+      {
+        "character_hash": 97192667,
+        "voice_change_id": "ctr_win_00_vr00",
+        "counterpart_character_hash": 840871906
+      },
+      {
+        "character_hash": 3098177400,
+        "voice_change_id": "cat_sta_01_vr00",
+        "counterpart_character_hash": 1941891036
+      },
+      {
+        "character_hash": 3098177400,
+        "voice_change_id": "cat_win_01_vr01",
+        "counterpart_character_hash": 1941891036
+      },
+      {
+        "character_hash": 3098177400,
+        "voice_change_id": "cat_win_00_vr02",
+        "counterpart_character_hash": 2262000005
+      },
+      {
+        "character_hash": 3098177400,
+        "voice_change_id": "cat_win_00_vr01",
+        "counterpart_character_hash": 1870866276
+      },
+      {
+        "character_hash": 3098177400,
+        "voice_change_id": "cat_win_00_vr00",
+        "counterpart_character_hash": 1941891036
+      },
+      {
+        "character_hash": 310559474,
+        "voice_change_id": "hrs_win_01_vr01",
+        "counterpart_character_hash": 3283482507
+      },
+      {
+        "character_hash": 1066975102,
+        "voice_change_id": "kal_sta_02_vr01",
+        "counterpart_character_hash": 3155198250
+      },
+      {
+        "character_hash": 1066975102,
+        "voice_change_id": "kal_win_00_vr00",
+        "counterpart_character_hash": 3155198250
+      },
+      {
+        "character_hash": 1281269543,
+        "voice_change_id": "crw_sta_01_vr01",
+        "counterpart_character_hash": 3283482507
+      },
+      {
+        "character_hash": 1281269543,
+        "voice_change_id": "crw_sta_01_vr02",
+        "counterpart_character_hash": 1791216549
+      },
+      {
+        "character_hash": 1281269543,
+        "voice_change_id": "crw_sta_01_vr03",
+        "counterpart_character_hash": 3716978005
+      },
+      {
+        "character_hash": 1281269543,
+        "voice_change_id": "crw_win_00_vr01",
+        "counterpart_character_hash": 3716978005
+      },
+      {
+        "character_hash": 1597287972,
+        "voice_change_id": "jly_sta_01_vr02",
+        "counterpart_character_hash": 3283482507
+      },
+      {
+        "character_hash": 1597287972,
+        "voice_change_id": "jly_win_02_vr00",
+        "counterpart_character_hash": 3716978005
+      },
+      {
+        "character_hash": 1597287972,
+        "voice_change_id": "jly_win_02_vr01",
+        "counterpart_character_hash": 1870866276
+      },
+      {
+        "character_hash": 1941891036,
+        "voice_change_id": "cml_sta_01_vr00",
+        "counterpart_character_hash": 2262000005
+      },
+      {
+        "character_hash": 1941891036,
+        "voice_change_id": "cml_sta_01_vr01",
+        "counterpart_character_hash": 3098177400
+      },
+      {
+        "character_hash": 1941891036,
+        "voice_change_id": "cml_sta_01_vr02",
+        "counterpart_character_hash": 1941891036
+      },
+      {
+        "character_hash": 1941891036,
+        "voice_change_id": "cml_sta_01_vr04",
+        "counterpart_character_hash": 2046353711
+      },
+      {
+        "character_hash": 1941891036,
+        "voice_change_id": "cml_sta_00_vr00",
+        "counterpart_character_hash": 2172508408
+      },
+      {
+        "character_hash": 1941891036,
+        "voice_change_id": "cml_win_01_vr00",
+        "counterpart_character_hash": 823174094
+      },
+      {
+        "character_hash": 1941891036,
+        "voice_change_id": "cml_win_01_vr01",
+        "counterpart_character_hash": 840871906
+      },
+      {
+        "character_hash": 1941891036,
+        "voice_change_id": "cml_win_01_vr02",
+        "counterpart_character_hash": 2046353711
+      },
+      {
+        "character_hash": 1941891036,
+        "voice_change_id": "cml_win_01_vr03",
+        "counterpart_character_hash": 2172508408
+      },
+      {
+        "character_hash": 1941891036,
+        "voice_change_id": "cml_sta_01_vr06",
+        "counterpart_character_hash": 840871906
+      },
+      {
+        "character_hash": 3155198250,
+        "voice_change_id": "bsn_sta_00_vr00",
+        "counterpart_character_hash": 2802412287
+      },
+      {
+        "character_hash": 3155198250,
+        "voice_change_id": "bsn_sta_00_vr01",
+        "counterpart_character_hash": 3909547504
+      },
+      {
+        "character_hash": 3155198250,
+        "voice_change_id": "bsn_sta_00_vr02",
+        "counterpart_character_hash": 1066975102
+      },
+      {
+        "character_hash": 3155198250,
+        "voice_change_id": "bsn_win_00_vr01",
+        "counterpart_character_hash": 1066975102
+      },
+      {
+        "character_hash": 1633518270,
+        "voice_change_id": "rbt_sta_00_vr00",
+        "counterpart_character_hash": 2802412287
+      },
+      {
+        "character_hash": 1633518270,
+        "voice_change_id": "rbt_sta_00_vr01",
+        "counterpart_character_hash": 2802412287
+      },
+      {
+        "character_hash": 1633518270,
+        "voice_change_id": "rbt_sta_02_vr00",
+        "counterpart_character_hash": 26846036
+      },
+      {
+        "character_hash": 1633518270,
+        "voice_change_id": "rbt_sta_02_vr01",
+        "counterpart_character_hash": 3716978005
+      },
+      {
+        "character_hash": 1633518270,
+        "voice_change_id": "rbt_win_00_vr00",
+        "counterpart_character_hash": 3716978005
+      },
+      {
+        "character_hash": 2046353711,
+        "voice_change_id": "bbn_sta_00_vr02",
+        "counterpart_character_hash": 1941891036
+      },
+      {
+        "character_hash": 2046353711,
+        "voice_change_id": "bbn_win_01_vr00",
+        "counterpart_character_hash": 731112246
+      },
+      {
+        "character_hash": 2046353711,
+        "voice_change_id": "bbn_win_02_vr00",
+        "counterpart_character_hash": 1941891036
+      },
+      {
+        "character_hash": 2046353711,
+        "voice_change_id": "bbn_win_02_vr03",
+        "counterpart_character_hash": 840871906
+      }
+    ]
+  }
+}

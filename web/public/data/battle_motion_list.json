@@ -1,0 +1,138 @@
+{
+  "version": 1,
+  "data": {
+    "entries": [
+      {
+        "motion_id": 1
+      },
+      {
+        "motion_id": 1,
+        "value_1": 1,
+        "value_2": 1
+      },
+      {
+        "motion_id": 1,
+        "value_1": 2,
+        "value_2": 2
+      },
+      {
+        "motion_id": 1,
+        "value_1": 3,
+        "value_2": 3
+      },
+      {
+        "motion_id": 1,
+        "value_1": 4,
+        "value_2": 4
+      },
+      {
+        "motion_id": 1,
+        "value_1": 5,
+        "value_2": 5
+      },
+      {
+        "motion_id": 1,
+        "value_1": 6,
+        "value_2": 6
+      },
+      {
+        "motion_id": 1,
+        "value_1": 7,
+        "value_2": 7
+      },
+      {
+        "motion_id": 1,
+        "value_1": 8,
+        "value_2": 8
+      },
+      {
+        "motion_id": 1,
+        "value_1": 9,
+        "value_2": 9
+      },
+      {},
+      {},
+      {},
+      {},
+      {
+        "motion_id": 1
+      },
+      {
+        "motion_id": 1
+      },
+      {}
+    ],
+    "value_1": 8.0,
+    "value_2": 5.0,
+    "value_3": 5.0,
+    "value_4": 8.0,
+    "value_5": 5.0,
+    "value_6": 5.0,
+    "value_7": 2.0,
+    "value_8": 2.0,
+    "value_9": 5.0,
+    "value_10": 5.0,
+    "value_11": 6,
+    "entries_alt": [
+      {
+        "motion_id": 1
+      },
+      {
+        "motion_id": 1,
+        "value_1": 1,
+        "value_2": 1
+      },
+      {
+        "motion_id": 1,
+        "value_1": 2,
+        "value_2": 2
+      },
+      {
+        "motion_id": 1,
+        "value_1": 3,
+        "value_2": 3
+      },
+      {
+        "motion_id": 1,
+        "value_1": 4,
+        "value_2": 4
+      },
+      {
+        "motion_id": 1,
+        "value_1": 5,
+        "value_2": 5
+      },
+      {
+        "motion_id": 1,
+        "value_1": 6,
+        "value_2": 6
+      },
+      {
+        "motion_id": 1,
+        "value_1": 7,
+        "value_2": 7
+      },
+      {
+        "motion_id": 1,
+        "value_1": 8,
+        "value_2": 8
+      },
+      {
+        "motion_id": 1,
+        "value_1": 9,
+        "value_2": 9
+      },
+      {},
+      {},
+      {},
+      {},
+      {
+        "motion_id": 1
+      },
+      {
+        "motion_id": 1
+      },
+      {}
+    ]
+  }
+}

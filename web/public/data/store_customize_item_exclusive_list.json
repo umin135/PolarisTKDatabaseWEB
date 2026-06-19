@@ -1,0 +1,852 @@
+{
+  "version": 1,
+  "data": {
+    "char_item_entries": [
+      {
+        "char_hash": 205484721,
+        "item_id": 12200001
+      },
+      {
+        "char_hash": 205484721,
+        "item_id": 12204001
+      },
+      {
+        "char_hash": 3021359203,
+        "item_id": 11004001
+      },
+      {
+        "char_hash": 3021359203,
+        "item_id": 11010001
+      },
+      {
+        "char_hash": 438908296,
+        "item_id": 12000001
+      },
+      {
+        "char_hash": 2189974110,
+        "item_id": 13004001
+      },
+      {
+        "char_hash": 1639196166,
+        "item_id": 13104001
+      },
+      {
+        "char_hash": 1639196166,
+        "item_id": 13100001
+      },
+      {
+        "char_hash": 1187632699,
+        "item_id": 11100001
+      },
+      {
+        "char_hash": 2039819775,
+        "item_id": 12104001
+      },
+      {
+        "char_hash": 3356924583,
+        "item_id": 12500001
+      },
+      {
+        "char_hash": 1653178056,
+        "item_id": 13800001
+      },
+      {
+        "char_hash": 756257351,
+        "item_id": 13910001
+      },
+      {
+        "char_hash": 3280560318,
+        "item_id": 14100001
+      },
+      {
+        "char_hash": 3280560318,
+        "item_id": 14104001
+      }
+    ],
+    "char_slot_item_entries": [
+      {
+        "char_hash": 1710651000,
+        "item_id": 4136406133
+      },
+      {
+        "char_hash": 2039819775,
+        "item_id": 4136406133
+      },
+      {
+        "char_hash": 2189974110,
+        "item_id": 4136406133
+      },
+      {
+        "char_hash": 205484721,
+        "item_id": 4136406133
+      },
+      {
+        "char_hash": 3021359203,
+        "item_id": 4136406133
+      },
+      {
+        "char_hash": 1639196166,
+        "item_id": 4136406133
+      },
+      {
+        "char_hash": 308454872,
+        "item_id": 2682927175
+      },
+      {
+        "char_hash": 3021359203,
+        "item_id": 2325958612
+      },
+      {
+        "char_hash": 205484721,
+        "item_id": 2325958612
+      },
+      {
+        "char_hash": 1710651000,
+        "item_id": 2325958612
+      },
+      {
+        "char_hash": 1639196166,
+        "item_id": 2325958612
+      },
+      {
+        "char_hash": 2189974110,
+        "item_id": 2325958612
+      },
+      {
+        "char_hash": 2039819775,
+        "item_id": 3104230581
+      },
+      {
+        "char_hash": 3021359203,
+        "item_id": 3104230581
+      },
+      {
+        "char_hash": 205484721,
+        "item_id": 3104230581
+      },
+      {
+        "char_hash": 1710651000,
+        "item_id": 3104230581
+      },
+      {
+        "char_hash": 1639196166,
+        "item_id": 3104230581
+      },
+      {
+        "char_hash": 2189974110,
+        "item_id": 3104230581
+      },
+      {
+        "char_hash": 1710651000,
+        "item_id": 1208725833
+      },
+      {
+        "char_hash": 1187632699,
+        "item_id": 3859820991
+      },
+      {
+        "char_hash": 1187632699,
+        "item_id": 952745790
+      },
+      {
+        "char_hash": 1710651000,
+        "item_id": 3519381360
+      },
+      {
+        "char_hash": 1710651000,
+        "item_id": 2615564137
+      },
+      {
+        "char_hash": 3280560318,
+        "item_id": 2715668717
+      },
+      {
+        "char_hash": 3280560318,
+        "item_id": 2615564137
+      }
+    ],
+    "rule_entries": [
+      {
+        "type_a": 1,
+        "id_a": 16072,
+        "type_b": 1,
+        "id_b": 15002,
+        "link_type": 3,
+        "ref_id": 21615059
+      },
+      {
+        "type_a": 1,
+        "id_a": 16072,
+        "type_b": 1,
+        "id_b": 15003,
+        "link_type": 4,
+        "ref_id": 15037
+      },
+      {
+        "type_a": 1,
+        "id_a": 16082,
+        "type_b": 1,
+        "id_b": 15002,
+        "link_type": 3,
+        "ref_id": 21615059
+      },
+      {
+        "type_a": 1,
+        "id_a": 16082,
+        "type_b": 1,
+        "id_b": 15003,
+        "link_type": 4,
+        "ref_id": 15037
+      },
+      {
+        "type_a": 1,
+        "id_a": 16083,
+        "type_b": 1,
+        "id_b": 15002,
+        "link_type": 4,
+        "ref_id": 15059
+      },
+      {
+        "type_a": 1,
+        "id_a": 16093,
+        "type_b": 1,
+        "id_b": 15003,
+        "link_type": 4,
+        "ref_id": 15037
+      },
+      {
+        "type_a": 1,
+        "id_a": 16092,
+        "type_b": 1,
+        "id_b": 15002,
+        "link_type": 4,
+        "ref_id": 15059
+      },
+      {
+        "type_a": 1,
+        "id_a": 16095,
+        "type_b": 1,
+        "id_b": 15003,
+        "link_type": 4,
+        "ref_id": 15037
+      },
+      {
+        "type_a": 1,
+        "id_a": 17020,
+        "id_b": 12005001
+      },
+      {
+        "type_a": 1,
+        "id_a": 17020,
+        "id_b": 10005001
+      },
+      {
+        "type_a": 1,
+        "id_a": 17020,
+        "id_b": 12605001
+      },
+      {
+        "type_a": 1,
+        "id_a": 17020,
+        "id_b": 13005001
+      },
+      {
+        "type_a": 1,
+        "id_a": 17020,
+        "id_b": 13505001
+      },
+      {
+        "id_a": 12714001,
+        "type_b": 1,
+        "id_b": 16002,
+        "link_type": 4,
+        "ref_id": 16022
+      },
+      {
+        "id_a": 10615001,
+        "type_b": 1,
+        "id_b": 16004,
+        "link_type": 4,
+        "ref_id": 16006
+      },
+      {
+        "id_a": 13115001,
+        "type_b": 1,
+        "id_b": 16004,
+        "link_type": 4,
+        "ref_id": 16006
+      },
+      {
+        "id_a": 10915001,
+        "type_b": 1,
+        "id_b": 16004,
+        "link_type": 4,
+        "ref_id": 16006
+      },
+      {
+        "id_a": 12914001,
+        "type_b": 1,
+        "id_b": 16002,
+        "link_type": 4,
+        "ref_id": 16022
+      },
+      {
+        "id_a": 11015001,
+        "type_b": 1,
+        "id_b": 16004,
+        "link_type": 4,
+        "ref_id": 16006
+      },
+      {
+        "id_a": 10715001,
+        "type_b": 1,
+        "id_b": 16004,
+        "link_type": 4,
+        "ref_id": 16006
+      },
+      {
+        "id_a": 10315001,
+        "type_b": 1,
+        "id_b": 16004,
+        "link_type": 4,
+        "ref_id": 16006
+      },
+      {
+        "id_a": 12514001,
+        "type_b": 1,
+        "id_b": 16002,
+        "link_type": 4,
+        "ref_id": 16022
+      },
+      {
+        "id_a": 11915001,
+        "type_b": 1,
+        "id_b": 16004,
+        "link_type": 4,
+        "ref_id": 16006
+      },
+      {
+        "id_a": 11114001,
+        "type_b": 1,
+        "id_b": 16002,
+        "link_type": 4,
+        "ref_id": 16022
+      },
+      {
+        "id_a": 11614001,
+        "type_b": 1,
+        "id_b": 16002,
+        "link_type": 4,
+        "ref_id": 16022
+      },
+      {
+        "id_a": 10014001,
+        "type_b": 1,
+        "id_b": 16004,
+        "link_type": 4,
+        "ref_id": 16006
+      },
+      {
+        "id_a": 10815001,
+        "type_b": 1,
+        "id_b": 16004,
+        "link_type": 4,
+        "ref_id": 16006
+      },
+      {
+        "id_a": 11414001,
+        "type_b": 1,
+        "id_b": 16002,
+        "link_type": 4,
+        "ref_id": 16022
+      },
+      {
+        "id_a": 12014001,
+        "type_b": 1,
+        "id_b": 16004,
+        "link_type": 4,
+        "ref_id": 16006
+      },
+      {
+        "id_a": 12615002,
+        "type_b": 1,
+        "id_b": 16004,
+        "link_type": 4,
+        "ref_id": 16006
+      },
+      {
+        "id_a": 12114001,
+        "type_b": 1,
+        "id_b": 16002,
+        "link_type": 4,
+        "ref_id": 16022
+      },
+      {
+        "id_a": 11315001,
+        "type_b": 1,
+        "id_b": 16004,
+        "link_type": 4,
+        "ref_id": 16006
+      },
+      {
+        "id_a": 11515001,
+        "type_b": 1,
+        "id_b": 16004,
+        "link_type": 4,
+        "ref_id": 16006
+      },
+      {
+        "id_a": 13015001,
+        "type_b": 1,
+        "id_b": 16004,
+        "link_type": 4,
+        "ref_id": 16006
+      },
+      {
+        "id_a": 11715001,
+        "type_b": 1,
+        "id_b": 16004,
+        "link_type": 4,
+        "ref_id": 16006
+      },
+      {
+        "id_a": 11814001,
+        "type_b": 1,
+        "id_b": 16002,
+        "link_type": 4,
+        "ref_id": 16022
+      },
+      {
+        "id_a": 10215001,
+        "type_b": 1,
+        "id_b": 16004,
+        "link_type": 4,
+        "ref_id": 16006
+      },
+      {
+        "id_a": 10114002,
+        "type_b": 1,
+        "id_b": 16004,
+        "link_type": 4,
+        "ref_id": 16006
+      },
+      {
+        "id_a": 10514001,
+        "type_b": 1,
+        "id_b": 16002,
+        "link_type": 4,
+        "ref_id": 16022
+      },
+      {
+        "id_a": 10415001,
+        "type_b": 1,
+        "id_b": 16004,
+        "link_type": 4,
+        "ref_id": 16006
+      },
+      {
+        "id_a": 11215001,
+        "type_b": 1,
+        "id_b": 16004,
+        "link_type": 4,
+        "ref_id": 16006
+      },
+      {
+        "id_a": 12215001,
+        "type_b": 1,
+        "id_b": 16004,
+        "link_type": 4,
+        "ref_id": 16006
+      },
+      {
+        "id_a": 12814001,
+        "type_b": 1,
+        "id_b": 16002,
+        "link_type": 4,
+        "ref_id": 16022
+      },
+      {
+        "id_a": 13315001,
+        "type_b": 1,
+        "id_b": 16004,
+        "link_type": 4,
+        "ref_id": 16006
+      },
+      {
+        "id_a": 13414001,
+        "type_b": 1,
+        "id_b": 16002,
+        "link_type": 4,
+        "ref_id": 16022
+      },
+      {
+        "id_a": 13515001,
+        "type_b": 1,
+        "id_b": 16004,
+        "link_type": 4,
+        "ref_id": 16006
+      },
+      {
+        "id_a": 13615001,
+        "type_b": 1,
+        "id_b": 16004,
+        "link_type": 4,
+        "ref_id": 16006
+      },
+      {
+        "id_a": 13714001,
+        "type_b": 1,
+        "id_b": 16002,
+        "link_type": 4,
+        "ref_id": 16022
+      },
+      {
+        "id_a": 13815001,
+        "type_b": 1,
+        "id_b": 16004,
+        "link_type": 4,
+        "ref_id": 16006
+      },
+      {
+        "id_a": 10615001,
+        "type_b": 1,
+        "id_b": 14003,
+        "link_type": 4,
+        "ref_id": 14020
+      },
+      {
+        "id_a": 13115001,
+        "type_b": 1,
+        "id_b": 14003,
+        "link_type": 4,
+        "ref_id": 14020
+      },
+      {
+        "id_a": 10915001,
+        "type_b": 1,
+        "id_b": 14003,
+        "link_type": 4,
+        "ref_id": 14020
+      },
+      {
+        "id_a": 11015001,
+        "type_b": 1,
+        "id_b": 14003,
+        "link_type": 4,
+        "ref_id": 14020
+      },
+      {
+        "id_a": 10715001,
+        "type_b": 1,
+        "id_b": 14003,
+        "link_type": 4,
+        "ref_id": 14020
+      },
+      {
+        "id_a": 10315001,
+        "type_b": 1,
+        "id_b": 14003,
+        "link_type": 4,
+        "ref_id": 14020
+      },
+      {
+        "id_a": 11915001,
+        "type_b": 1,
+        "id_b": 14003,
+        "link_type": 4,
+        "ref_id": 14020
+      },
+      {
+        "id_a": 10815001,
+        "type_b": 1,
+        "id_b": 14003,
+        "link_type": 4,
+        "ref_id": 14020
+      },
+      {
+        "id_a": 12615002,
+        "type_b": 1,
+        "id_b": 14003,
+        "link_type": 4,
+        "ref_id": 14020
+      },
+      {
+        "id_a": 11315001,
+        "type_b": 1,
+        "id_b": 14003,
+        "link_type": 4,
+        "ref_id": 14020
+      },
+      {
+        "id_a": 11515001,
+        "type_b": 1,
+        "id_b": 14003,
+        "link_type": 4,
+        "ref_id": 14020
+      },
+      {
+        "id_a": 13015001,
+        "type_b": 1,
+        "id_b": 14003,
+        "link_type": 4,
+        "ref_id": 14020
+      },
+      {
+        "id_a": 11715001,
+        "type_b": 1,
+        "id_b": 14003,
+        "link_type": 4,
+        "ref_id": 14020
+      },
+      {
+        "id_a": 10215001,
+        "type_b": 1,
+        "id_b": 14003,
+        "link_type": 4,
+        "ref_id": 14020
+      },
+      {
+        "id_a": 10415001,
+        "type_b": 1,
+        "id_b": 14003,
+        "link_type": 4,
+        "ref_id": 14020
+      },
+      {
+        "id_a": 11215001,
+        "type_b": 1,
+        "id_b": 14003,
+        "link_type": 4,
+        "ref_id": 14020
+      },
+      {
+        "id_a": 12215001,
+        "type_b": 1,
+        "id_b": 14003,
+        "link_type": 4,
+        "ref_id": 14020
+      },
+      {
+        "id_a": 13315001,
+        "type_b": 1,
+        "id_b": 14003,
+        "link_type": 4,
+        "ref_id": 14020
+      },
+      {
+        "id_a": 13515001,
+        "type_b": 1,
+        "id_b": 14003,
+        "link_type": 4,
+        "ref_id": 14020
+      },
+      {
+        "id_a": 13615001,
+        "type_b": 1,
+        "id_b": 14003,
+        "link_type": 4,
+        "ref_id": 14020
+      },
+      {
+        "id_a": 13815001,
+        "type_b": 1,
+        "id_b": 14003,
+        "link_type": 4,
+        "ref_id": 14020
+      },
+      {
+        "type_a": 1,
+        "id_a": 16102,
+        "type_b": 1,
+        "id_b": 15003,
+        "link_type": 4,
+        "ref_id": 15037
+      },
+      {
+        "type_a": 1,
+        "id_a": 16101,
+        "type_b": 1,
+        "id_b": 15002,
+        "link_type": 4,
+        "ref_id": 15059
+      },
+      {
+        "type_a": 1,
+        "id_a": 16101,
+        "type_b": 1,
+        "id_b": 15002,
+        "link_type": 3,
+        "ref_id": 21615059
+      },
+      {
+        "type_a": 1,
+        "id_a": 46,
+        "id_b": 12909001,
+        "link_type": 3,
+        "ref_id": 12909000
+      },
+      {
+        "type_a": 1,
+        "id_a": 47,
+        "id_b": 12909001,
+        "link_type": 3,
+        "ref_id": 12909000
+      },
+      {
+        "type_a": 1,
+        "id_a": 38,
+        "id_b": 12909001,
+        "link_type": 3,
+        "ref_id": 12909000
+      },
+      {
+        "type_a": 1,
+        "id_a": 39,
+        "id_b": 12909001,
+        "link_type": 3,
+        "ref_id": 12909000
+      },
+      {
+        "type_a": 1,
+        "id_a": 16110,
+        "type_b": 1,
+        "id_b": 15003,
+        "link_type": 4,
+        "ref_id": 15037
+      },
+      {
+        "type_a": 1,
+        "id_a": 16102,
+        "type_b": 1,
+        "id_b": 15002,
+        "link_type": 3,
+        "ref_id": 21615059
+      },
+      {
+        "type_a": 1,
+        "id_a": 17023,
+        "id_b": 12005001
+      },
+      {
+        "type_a": 1,
+        "id_a": 17023,
+        "id_b": 10005001
+      },
+      {
+        "type_a": 1,
+        "id_a": 17023,
+        "id_b": 12605001
+      },
+      {
+        "type_a": 1,
+        "id_a": 17023,
+        "id_b": 13005001
+      },
+      {
+        "type_a": 1,
+        "id_a": 17023,
+        "id_b": 13305001
+      },
+      {
+        "id_a": 22624116,
+        "id_b": 12604001
+      },
+      {
+        "type_a": 1,
+        "id_a": 16094,
+        "type_b": 1,
+        "id_b": 15003,
+        "link_type": 4,
+        "ref_id": 15037
+      },
+      {
+        "type_a": 1,
+        "id_a": 14230,
+        "type_b": 1,
+        "id_b": 16002,
+        "link_type": 4,
+        "ref_id": 16064
+      },
+      {
+        "type_a": 1,
+        "id_a": 16113,
+        "type_b": 1,
+        "id_b": 15003,
+        "link_type": 4,
+        "ref_id": 15037
+      },
+      {
+        "type_a": 1,
+        "id_a": 16113,
+        "type_b": 1,
+        "id_b": 15002,
+        "link_type": 3,
+        "ref_id": 21615059
+      },
+      {
+        "type_a": 1,
+        "id_a": 16104,
+        "type_b": 1,
+        "id_b": 15002,
+        "link_type": 4,
+        "ref_id": 15059
+      },
+      {
+        "type_a": 1,
+        "id_a": 16105,
+        "type_b": 1,
+        "id_b": 15003,
+        "link_type": 4,
+        "ref_id": 15037
+      },
+      {
+        "type_a": 1,
+        "id_a": 16105,
+        "type_b": 1,
+        "id_b": 15002,
+        "link_type": 3,
+        "ref_id": 21615059
+      },
+      {
+        "type_a": 1,
+        "id_a": 16115,
+        "type_b": 1,
+        "id_b": 15003,
+        "link_type": 4,
+        "ref_id": 15037
+      },
+      {
+        "type_a": 1,
+        "id_a": 16115,
+        "type_b": 1,
+        "id_b": 15002,
+        "link_type": 3,
+        "ref_id": 21615059
+      },
+      {
+        "type_a": 1,
+        "id_a": 15089,
+        "type_b": 1,
+        "id_b": 14004,
+        "link_type": 4,
+        "ref_id": 14173
+      },
+      {
+        "type_a": 1,
+        "id_a": 15089,
+        "type_b": 1,
+        "id_b": 16002,
+        "link_type": 4,
+        "ref_id": 16064
+      },
+      {
+        "type_a": 1,
+        "id_a": 14241,
+        "type_b": 1,
+        "id_b": 16002,
+        "link_type": 4,
+        "ref_id": 16064
+      }
+    ]
+  }
+}

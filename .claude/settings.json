@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem -Path \"a:\\\\Z_GitProjects\\\\PolarisTKDatabaseWEB\\\\_extract\" -File | Format-Table Name, @{Name=\"Size \\(MB\\)\"; Expression={[math]::Round\\($_.Length/1MB, 2\\)}} -AutoSize)",
+      "PowerShell($json = Get-Content -Path \"a:\\\\Z_GitProjects\\\\PolarisTKDatabaseWEB\\\\_extract\\\\name_hash.json\" -Raw | ConvertFrom-Json; $json.PSObject.Properties.Count)",
+      "Bash(dir \"a:\\\\Z_GitProjects\\\\PolarisTKDatabaseWEB\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173/PolarisTKDatabaseWEB/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173/PolarisTKDatabaseWEB/data/character_list.json)",
+      "Bash(curl -s http://localhost:5173/PolarisTKDatabaseWEB/data/character_list.json)",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(f'  characters: {len\\(d[\\\\\"data\\\\\"][\\\\\"entries\\\\\"]\\)}'\\)\")",
+      "Bash(ls \"C:/Users/KooMinu/.claude/projects/a--Z-GitProjects-PolarisTKDatabaseWEB/\" 2>/dev/null || echo \"Directory does not exist\")",
+      "Read(//c/Users/KooMinu/.claude/projects/a--Z-GitProjects-PolarisTKDatabaseWEB/**)"
+    ]
+  }
+}

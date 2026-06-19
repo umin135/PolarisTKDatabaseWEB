@@ -1,0 +1,172 @@
+{
+  "version": 1,
+  "data": {
+    "character_entries": [
+      {
+        "character_hash": 2172508408
+      },
+      {
+        "character_hash": 2620373223
+      },
+      {
+        "character_hash": 3098177400
+      },
+      {
+        "character_hash": 823174094
+      },
+      {
+        "character_hash": 97192667
+      },
+      {
+        "character_hash": 1230214467
+      },
+      {
+        "character_hash": 731112246
+      },
+      {
+        "character_hash": 3826916785
+      },
+      {
+        "character_hash": 3109625382
+      },
+      {
+        "character_hash": 2691931401
+      },
+      {
+        "character_hash": 1791216549
+      },
+      {
+        "character_hash": 1009826274
+      },
+      {
+        "character_hash": 3283482507
+      },
+      {
+        "character_hash": 748126445
+      },
+      {
+        "character_hash": 1633518270
+      },
+      {
+        "character_hash": 1862528861
+      },
+      {
+        "character_hash": 3909547504
+      },
+      {
+        "character_hash": 3480598787
+      },
+      {
+        "character_hash": 2262000005
+      },
+      {
+        "character_hash": 1597287972
+      },
+      {
+        "character_hash": 1870866276
+      },
+      {
+        "character_hash": 1066975102
+      },
+      {
+        "character_hash": 236224321
+      },
+      {
+        "character_hash": 2802412287
+      },
+      {
+        "character_hash": 2046353711
+      },
+      {
+        "character_hash": 26846036
+      },
+      {
+        "character_hash": 310559474
+      },
+      {
+        "character_hash": 3155198250
+      },
+      {
+        "character_hash": 840871906
+      },
+      {
+        "character_hash": 3716978005
+      },
+      {
+        "character_hash": 1941891036
+      },
+      {
+        "character_hash": 1281269543
+      },
+      {
+        "character_hash": 3651497509
+      },
+      {
+        "character_hash": 3013172036
+      },
+      {
+        "character_hash": 1575337196
+      },
+      {
+        "character_hash": 1806241895
+      },
+      {
+        "character_hash": 3302278637
+      },
+      {
+        "character_hash": 2508721799
+      },
+      {
+        "character_hash": 3908942186
+      },
+      {
+        "character_hash": 761728323
+      },
+      {
+        "character_hash": 3099443275
+      }
+    ],
+    "param_entries": [
+      {
+        "game_version": 1,
+        "value_1": 4
+      },
+      {
+        "game_version": 103,
+        "value_1": 4
+      },
+      {
+        "game_version": 106,
+        "value_1": 4
+      },
+      {
+        "game_version": 108,
+        "value_1": 4
+      },
+      {
+        "game_version": 110,
+        "value_1": 4
+      },
+      {
+        "game_version": 200,
+        "value_1": 4
+      },
+      {
+        "game_version": 203,
+        "value_1": 4
+      },
+      {
+        "game_version": 206,
+        "value_1": 4
+      },
+      {
+        "game_version": 208,
+        "value_1": 4
+      },
+      {
+        "game_version": 301,
+        "value_1": 4
+      }
+    ]
+  }
+}
