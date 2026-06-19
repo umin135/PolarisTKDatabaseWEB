@@ -10,7 +10,11 @@
       "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(f'  characters: {len\\(d[\\\\\"data\\\\\"][\\\\\"entries\\\\\"]\\)}'\\)\")",
       "Bash(ls \"C:/Users/KooMinu/.claude/projects/a--Z-GitProjects-PolarisTKDatabaseWEB/\" 2>/dev/null || echo \"Directory does not exist\")",
       "Read(//c/Users/KooMinu/.claude/projects/a--Z-GitProjects-PolarisTKDatabaseWEB/**)",
-      "PowerShell($env:PATH = $env:PATH + \";C:\\\\Program Files\\\\nodejs\"; cd \"a:\\\\Z_GitProjects\\\\PolarisTKDatabaseWEB\\\\web\"; npm run build 2>&1)"
+      "PowerShell($env:PATH = $env:PATH + \";C:\\\\Program Files\\\\nodejs\"; cd \"a:\\\\Z_GitProjects\\\\PolarisTKDatabaseWEB\\\\web\"; npm run build 2>&1)",
+      "Bash(Select-String \"cm0\")",
+      "Bash(python3 -c \"import json,sys; data=json.load\\(sys.stdin\\); entries=data['data']['entries']; print\\([e.get\\('asset_name',''\\) for e in entries[:20]]\\)\")",
+      "Bash(python3 -c \"import os; total=sum\\(os.path.getsize\\(os.path.join\\(r,f\\)\\) for r,d,fs in os.walk\\(r'a:\\\\Z_GitProjects\\\\PolarisTKDatabaseWEB\\\\res\\\\CUS_CH_Item'\\) for f in fs\\); print\\(f'{total/1024/1024:.1f} MB, files: {sum\\(1 for r,d,fs in os.walk\\(r\\\\\"a:\\\\Z_GitProjects\\\\PolarisTKDatabaseWEB\\\\res\\\\CUS_CH_Item\\\\\"\\) for f in fs\\)}'\\)\")",
+      "PowerShell(cmd /c mklink /J \"a:\\\\Z_GitProjects\\\\PolarisTKDatabaseWEB\\\\web\\\\public\\\\items\" \"a:\\\\Z_GitProjects\\\\PolarisTKDatabaseWEB\\\\res\\\\CUS_CH_Item\")"
     ]
   }
 }

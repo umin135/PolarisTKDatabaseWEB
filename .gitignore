@@ -1,10 +1,14 @@
 # Raw game data & extraction output (large binaries, not needed for website)
 /_extract
 /extracted
+/.claude
 
 # Web build artifacts
 /web/node_modules
 /web/dist
+
+# Item images junction (local dev only – 1.9 GB, too large for git)
+/web/public/items
 
 # Python artifacts
 /scripts/__pycache__

@@ -99,6 +99,23 @@ function boolVal(v: boolean | undefined): string {
   return String(v ?? false)
 }
 
+function handleCellClick(e: React.MouseEvent<HTMLTableElement>) {
+  const td = (e.target as HTMLElement).closest('td')
+  if (!td) return
+  navigator.clipboard.writeText(td.innerText.trim())
+}
+
+// asset_name "IP_grf_hed_hachimaki" → "{base}items/grf/T_UI_CUS_CH_item_grf_hed_hachimaki.png"
+// cf0/cm0/cmn all live in the "cmn" subfolder
+const CMN_PREFIXES = new Set(['cf0', 'cm0', 'cmn'])
+function imageUrl(assetName: string | undefined | null): string | null {
+  if (!assetName || !assetName.startsWith('IP_')) return null
+  const rest = assetName.slice(3)
+  const char = rest.split('_')[0]
+  const folder = CMN_PREFIXES.has(char) ? 'cmn' : char
+  return `${import.meta.env.BASE_URL}items/${folder}/T_UI_CUS_CH_item_${rest}.png`
+}
+
 // ---------------------------------------------------------------------------
 // Sub-components
 // ---------------------------------------------------------------------------
@@ -128,8 +145,8 @@ function FilterSelect({
       onChange={e => onChange(e.target.value)}
       className="text-xs rounded-lg px-3 py-1.5 outline-none cursor-pointer"
       style={{
-        background: 'rgba(255,255,255,0.05)',
-        border: '1px solid rgba(255,255,255,0.1)',
+        background: '#16161f',
+        border: '1px solid rgba(255,255,255,0.12)',
         color: value ? '#e2e8f0' : '#64748b',
       }}
     >
@@ -174,6 +191,81 @@ const TH_STYLE = { borderColor: 'rgba(255,255,255,0.07)' }
 const ROW_STYLE = { borderBottom: '1px solid rgba(255,255,255,0.04)' }
 
 // ---------------------------------------------------------------------------
+// Grid card
+// ---------------------------------------------------------------------------
+
+function ItemCard({ assetName, label, pos }: { assetName: string | undefined; label: string; pos: string }) {
+  const src = imageUrl(assetName)
+  const color = ITEM_POS_COLORS[pos]
+  const [imgError, setImgError] = useState(false)
+
+  return (
+    <div
+      className="flex flex-col rounded-lg overflow-hidden transition-all duration-150 hover:scale-[1.03] hover:shadow-lg"
+      style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}
+    >
+      <div
+        className="relative flex items-center justify-center"
+        style={{ background: 'rgba(0,0,0,0.3)', aspectRatio: '1' }}
+      >
+        {src && !imgError ? (
+          <img
+            src={src}
+            alt={label}
+            className="w-full h-full object-contain p-1"
+            onError={() => setImgError(true)}
+          />
+        ) : (
+          <div className="text-slate-700 text-[10px] font-mono text-center px-2 leading-tight">
+            {assetName ?? '—'}
+          </div>
+        )}
+        {pos && pos !== 'none' && pos !== 'NONE' && (
+          <span
+            className="absolute top-1 right-1 text-[9px] px-1 py-0.5 rounded font-medium"
+            style={{
+              background: `${color ?? '#94a3b8'}18`,
+              color: color ?? '#94a3b8',
+              border: `1px solid ${color ?? '#94a3b8'}40`,
+            }}
+          >
+            {ITEM_POS_LABEL[pos] ?? pos}
+          </span>
+        )}
+      </div>
+      <div className="px-2 py-1.5">
+        <p className="text-[10px] font-mono text-slate-400 truncate leading-tight">{label}</p>
+      </div>
+    </div>
+  )
+}
+
+type ViewMode = 'table' | 'grid'
+
+function ViewToggle({ mode, onChange }: { mode: ViewMode; onChange: (m: ViewMode) => void }) {
+  return (
+    <div
+      className="flex rounded-md overflow-hidden text-xs"
+      style={{ border: '1px solid rgba(255,255,255,0.12)' }}
+    >
+      {(['table', 'grid'] as ViewMode[]).map(m => (
+        <button
+          key={m}
+          onClick={() => onChange(m)}
+          className="px-3 py-1.5 transition-colors"
+          style={{
+            background: mode === m ? 'rgba(124,58,237,0.25)' : 'transparent',
+            color: mode === m ? '#a78bfa' : '#64748b',
+          }}
+        >
+          {m === 'table' ? '≡ Table' : '⊞ Grid'}
+        </button>
+      ))}
+    </div>
+  )
+}
+
+// ---------------------------------------------------------------------------
 // Common Items Tab
 // ---------------------------------------------------------------------------
 
@@ -182,6 +274,7 @@ function CommonItemsTab({ data }: { data: CustomizeItemCommonEntry[] }) {
   const [posFilter, setPosFilter] = useState('')
   const [q, setQ] = useState('')
   const [page, setPage] = useState(0)
+  const [view, setView] = useState<ViewMode>('table')
 
   const charOptions = useMemo(() => {
     const hashes = new Set(data.map(e => e.character_hash).filter((h): h is number => h !== undefined))
@@ -213,6 +306,8 @@ function CommonItemsTab({ data }: { data: CustomizeItemCommonEntry[] }) {
   function handlePosChange(v: string)  { setPosFilter(v);  setPage(0) }
   function handleSearch(v: string)     { setQ(v);          setPage(0) }
 
+  const GRID_PAGE_SIZE = 200
+
   return (
     <>
       <div className="flex items-center gap-2 px-4 py-3 border-b flex-wrap flex-shrink-0"
@@ -233,85 +328,106 @@ function CommonItemsTab({ data }: { data: CustomizeItemCommonEntry[] }) {
           <SearchBar value={q} onChange={handleSearch} placeholder="Search asset / key / ID…" />
         </div>
 
-        <span className="text-xs text-slate-500 ml-auto">
-          {filtered.length.toLocaleString()} items
-        </span>
+        <span className="text-xs text-slate-500">{filtered.length.toLocaleString()} items</span>
+        <ViewToggle mode={view} onChange={v => { setView(v); setPage(0) }} />
       </div>
 
-      <div className="flex-1 overflow-auto">
-        <table className="text-xs border-collapse" style={{ minWidth: '2400px' }}>
-          <thead>
-            <tr className="sticky top-0" style={{ background: 'rgba(15,15,22,0.97)', backdropFilter: 'blur(8px)' }}>
-              {[
-                'Item ID', 'Local Item ID', 'AssetName', 'Character ID', 'ItemPosition ID',
-                'Name Key', 'Extra Text Key 1', 'Extra Text Key 2',
-                'isDefaultKey', 'shop_sort_id', 'Visiblity', 'Rarity', 'Price', 'unk_13',
-                'category_no', 'hash_2', 'isColorable', 'unk_17',
-                'hash_3', 'unk_19', 'unk_20', 'unk_21', 'unk_22', 'hash_4', 'unk_24', 'Game Version',
-              ].map(h => (
-                <th key={h} className={TH} style={TH_STYLE}>{h}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {paged.map(e => {
-              const pos = posCode(e.hash_1)
-              return (
-                <tr key={e.char_item_id} className="hover:bg-white/[0.03] transition-colors" style={ROW_STYLE}>
-                  <td className="px-3 py-2 font-mono text-violet-300 whitespace-nowrap">{e.char_item_id}</td>
-                  <td className="px-3 py-2 font-mono text-slate-500 whitespace-nowrap text-right">{e.base_id ?? 0}</td>
-                  <td className="px-3 py-2 font-mono text-slate-300 whitespace-nowrap" style={{ maxWidth: 220 }}>
-                    <span className="block truncate">{e.asset_name ?? 0}</span>
-                  </td>
-                  <td className="px-3 py-2 font-mono text-slate-300 whitespace-nowrap">{charLabel(e.character_hash)}</td>
-                  <td className="px-3 py-2 whitespace-nowrap"><PosBadge pos={pos} /></td>
-                  <td className="px-3 py-2 font-mono text-slate-400 whitespace-nowrap" style={{ maxWidth: 220 }}>
-                    <span className="block truncate">{e.text_key ?? 0}</span>
-                  </td>
-                  <td className="px-3 py-2 font-mono text-slate-500 whitespace-nowrap" style={{ maxWidth: 200 }}>
-                    <span className="block truncate">{e.extra_text_key_1 ?? 0}</span>
-                  </td>
-                  <td className="px-3 py-2 font-mono text-slate-500 whitespace-nowrap" style={{ maxWidth: 200 }}>
-                    <span className="block truncate">{e.extra_text_key_2 ?? 0}</span>
-                  </td>
-                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_8 ?? 0}</td>
-                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.shop_sort_id ?? 0}</td>
-                  <td className="px-3 py-2 whitespace-nowrap" style={{ color: e.is_enabled === true ? '#34d399' : '#f87171' }}>
-                    {boolVal(e.is_enabled)}
-                  </td>
-                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_11 ?? 0}</td>
-                  <td className="px-3 py-2 text-slate-300 whitespace-nowrap text-right">
-                    {(e.price ?? 0).toLocaleString()}
-                  </td>
-                  <td className="px-3 py-2 whitespace-nowrap" style={{ color: e.unk_13 === true ? '#34d399' : '#f87171' }}>
-                    {boolVal(e.unk_13)}
-                  </td>
-                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_14 ?? 0}</td>
-                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_15 ?? 0}</td>
-                  <td className="px-3 py-2 whitespace-nowrap" style={{ color: e.unk_16 === true ? '#34d399' : '#f87171' }}>
-                    {boolVal(e.unk_16)}
-                  </td>
-                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_17 ?? 0}</td>
-                  <td className="px-3 py-2 font-mono text-slate-600 whitespace-nowrap">{hexStr(e.hash_3)}</td>
-                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_19 ?? 0}</td>
-                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_20 ?? 0}</td>
-                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_21 ?? 0}</td>
-                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_22 ?? 0}</td>
-                  <td className="px-3 py-2 font-mono text-slate-600 whitespace-nowrap">{hexStr(e.hash_4)}</td>
-                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_24 ?? 0}</td>
-                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.sort_group ?? 0}</td>
-                </tr>
-              )
-            })}
-          </tbody>
-        </table>
+      {view === 'table' ? (
+        <div className="flex-1 overflow-auto">
+          <table className="text-xs border-collapse" style={{ minWidth: '2400px' }} onClick={handleCellClick}>
+            <thead>
+              <tr className="sticky top-0" style={{ background: 'rgba(15,15,22,0.97)', backdropFilter: 'blur(8px)' }}>
+                {[
+                  'Item ID', 'Local Item ID', 'AssetName', 'Character ID', 'ItemPosition ID',
+                  'Name Key', 'Extra Text Key 1', 'Extra Text Key 2',
+                  'isDefaultKey', 'shop_sort_id', 'Visiblity', 'Rarity', 'Price', 'unk_13',
+                  'category_no', 'hash_2', 'isColorable', 'unk_17',
+                  'hash_3', 'unk_19', 'unk_20', 'unk_21', 'unk_22', 'hash_4', 'unk_24', 'Game Version',
+                ].map(h => (
+                  <th key={h} className={TH} style={TH_STYLE}>{h}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody style={{ cursor: 'pointer' }}>
+              {paged.map(e => {
+                const pos = posCode(e.hash_1)
+                return (
+                  <tr key={e.char_item_id} className="hover:bg-white/[0.03] transition-colors" style={ROW_STYLE}>
+                    <td className="px-3 py-2 font-mono text-violet-300 whitespace-nowrap">{e.char_item_id}</td>
+                    <td className="px-3 py-2 font-mono text-slate-500 whitespace-nowrap text-right">{e.base_id ?? 0}</td>
+                    <td className="px-3 py-2 font-mono text-slate-300 whitespace-nowrap" style={{ maxWidth: 220 }}>
+                      <span className="block truncate">{e.asset_name ?? 0}</span>
+                    </td>
+                    <td className="px-3 py-2 font-mono text-slate-300 whitespace-nowrap">{charLabel(e.character_hash)}</td>
+                    <td className="px-3 py-2 whitespace-nowrap"><PosBadge pos={pos} /></td>
+                    <td className="px-3 py-2 font-mono text-slate-400 whitespace-nowrap" style={{ maxWidth: 220 }}>
+                      <span className="block truncate">{e.text_key ?? 0}</span>
+                    </td>
+                    <td className="px-3 py-2 font-mono text-slate-500 whitespace-nowrap" style={{ maxWidth: 200 }}>
+                      <span className="block truncate">{e.extra_text_key_1 ?? 0}</span>
+                    </td>
+                    <td className="px-3 py-2 font-mono text-slate-500 whitespace-nowrap" style={{ maxWidth: 200 }}>
+                      <span className="block truncate">{e.extra_text_key_2 ?? 0}</span>
+                    </td>
+                    <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_8 ?? 0}</td>
+                    <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.shop_sort_id ?? 0}</td>
+                    <td className="px-3 py-2 whitespace-nowrap" style={{ color: e.is_enabled === true ? '#34d399' : '#f87171' }}>
+                      {boolVal(e.is_enabled)}
+                    </td>
+                    <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_11 ?? 0}</td>
+                    <td className="px-3 py-2 text-slate-300 whitespace-nowrap text-right">
+                      {(e.price ?? 0).toLocaleString()}
+                    </td>
+                    <td className="px-3 py-2 whitespace-nowrap" style={{ color: e.unk_13 === true ? '#34d399' : '#f87171' }}>
+                      {boolVal(e.unk_13)}
+                    </td>
+                    <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_14 ?? 0}</td>
+                    <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_15 ?? 0}</td>
+                    <td className="px-3 py-2 whitespace-nowrap" style={{ color: e.unk_16 === true ? '#34d399' : '#f87171' }}>
+                      {boolVal(e.unk_16)}
+                    </td>
+                    <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_17 ?? 0}</td>
+                    <td className="px-3 py-2 font-mono text-slate-600 whitespace-nowrap">{hexStr(e.hash_3)}</td>
+                    <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_19 ?? 0}</td>
+                    <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_20 ?? 0}</td>
+                    <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_21 ?? 0}</td>
+                    <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_22 ?? 0}</td>
+                    <td className="px-3 py-2 font-mono text-slate-600 whitespace-nowrap">{hexStr(e.hash_4)}</td>
+                    <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_24 ?? 0}</td>
+                    <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.sort_group ?? 0}</td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
+          {paged.length === 0 && (
+            <div className="text-center text-slate-600 py-16 text-sm">No items match filters</div>
+          )}
+        </div>
+      ) : (
+        <div className="flex-1 overflow-auto p-4">
+          <div className="grid gap-2" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))' }}>
+            {filtered.slice(page * GRID_PAGE_SIZE, (page + 1) * GRID_PAGE_SIZE).map(e => (
+              <ItemCard
+                key={e.char_item_id}
+                assetName={e.asset_name}
+                label={e.asset_name?.replace(/^IP_/, '') ?? String(e.char_item_id)}
+                pos={posCode(e.hash_1)}
+              />
+            ))}
+          </div>
+          {filtered.length === 0 && (
+            <div className="text-center text-slate-600 py-16 text-sm">No items match filters</div>
+          )}
+        </div>
+      )}
 
-        {paged.length === 0 && (
-          <div className="text-center text-slate-600 py-16 text-sm">No items match filters</div>
-        )}
-      </div>
-
-      <Pagination page={page} total={filtered.length} pageSize={PAGE_SIZE} onChange={setPage} />
+      <Pagination
+        page={page}
+        total={filtered.length}
+        pageSize={view === 'table' ? PAGE_SIZE : GRID_PAGE_SIZE}
+        onChange={setPage}
+      />
     </>
   )
 }
@@ -330,6 +446,7 @@ function UniqueItemsTab({
   const [posFilter, setPosFilter] = useState('')
   const [q, setQ] = useState('')
   const [page, setPage] = useState(0)
+  const [view, setView] = useState<ViewMode>('table')
 
   const charOptions = useMemo(() => {
     const hashes = new Set(entries.map(e => e.character_hash).filter((h): h is number => h !== undefined))
@@ -361,6 +478,8 @@ function UniqueItemsTab({
   function handlePosChange(v: string)  { setPosFilter(v);  setPage(0) }
   function handleSearch(v: string)     { setQ(v);          setPage(0) }
 
+  const GRID_PAGE_SIZE = 200
+
   return (
     <>
       <div className="flex items-center gap-2 px-4 py-3 border-b flex-wrap flex-shrink-0"
@@ -381,78 +500,94 @@ function UniqueItemsTab({
           <SearchBar value={q} onChange={handleSearch} placeholder="Search asset / key / ID…" />
         </div>
 
-        <span className="text-xs text-slate-500 ml-auto">
-          {filtered.length.toLocaleString()} items
-        </span>
+        <span className="text-xs text-slate-500">{filtered.length.toLocaleString()} items</span>
+        <ViewToggle mode={view} onChange={v => { setView(v); setPage(0) }} />
       </div>
 
-      <div className="flex-1 overflow-auto">
-        <table className="text-xs border-collapse" style={{ minWidth: '2200px' }}>
-          <thead>
-            <tr className="sticky top-0" style={{ background: 'rgba(15,15,22,0.97)', backdropFilter: 'blur(8px)' }}>
-              {[
-                'Item ID', 'AssetName', 'Character ID', 'ItemPosition ID',
-                'Name Key', 'Extra Text Key 1', 'Extra Text Key 2',
-                'IsDefault', 'unk_8', 'Visiblity', 'Rarity', 'Price', 'unk_12', 'unk_13',
-                'hash_2', 'isColorable', 'unk_16', 'hash_3', 'unk_18', 'unk_19', 'unk_20', 'Game Version',
-              ].map(h => (
-                <th key={h} className={TH} style={TH_STYLE}>{h}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {paged.map((e, i) => {
-              const pos = posCode(e.hash_1)
-              return (
-                <tr key={e.char_item_id ?? i} className="hover:bg-white/[0.03] transition-colors" style={ROW_STYLE}>
-                  <td className="px-3 py-2 font-mono text-violet-300 whitespace-nowrap">{e.char_item_id ?? 0}</td>
-                  <td className="px-3 py-2 font-mono text-slate-300 whitespace-nowrap" style={{ maxWidth: 220 }}>
-                    <span className="block truncate">{e.asset_name || ''}</span>
-                  </td>
-                  <td className="px-3 py-2 font-mono text-slate-300 whitespace-nowrap">{charLabel(e.character_hash)}</td>
-                  <td className="px-3 py-2 whitespace-nowrap"><PosBadge pos={pos} /></td>
-                  <td className="px-3 py-2 font-mono text-slate-400 whitespace-nowrap" style={{ maxWidth: 220 }}>
-                    <span className="block truncate">{e.text_key ?? 0}</span>
-                  </td>
-                  <td className="px-3 py-2 font-mono text-slate-500 whitespace-nowrap" style={{ maxWidth: 200 }}>
-                    <span className="block truncate">{e.extra_text_key_1 ?? 0}</span>
-                  </td>
-                  <td className="px-3 py-2 font-mono text-slate-500 whitespace-nowrap" style={{ maxWidth: 200 }}>
-                    <span className="block truncate">{e.extra_text_key_2 ?? 0}</span>
-                  </td>
-                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.flag_7 ?? 0}</td>
-                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_8 ?? 0}</td>
-                  <td className="px-3 py-2 whitespace-nowrap" style={{ color: e.flag_9 === true ? '#34d399' : '#f87171' }}>
-                    {boolVal(e.flag_9)}
-                  </td>
-                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_10 ?? 0}</td>
-                  <td className="px-3 py-2 text-slate-300 whitespace-nowrap text-right">
-                    {(e.price ?? 0).toLocaleString()}
-                  </td>
-                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_12 ?? 0}</td>
-                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_13 ?? 0}</td>
-                  <td className="px-3 py-2 font-mono text-slate-600 whitespace-nowrap">{hexStr(e.hash_2)}</td>
-                  <td className="px-3 py-2 whitespace-nowrap" style={{ color: e.flag_15 === true ? '#34d399' : '#f87171' }}>
-                    {boolVal(e.flag_15)}
-                  </td>
-                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_16 ?? 0}</td>
-                  <td className="px-3 py-2 font-mono text-slate-600 whitespace-nowrap">{hexStr(e.hash_3)}</td>
-                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_18 ?? 0}</td>
-                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_19 ?? 0}</td>
-                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_20 ?? 0}</td>
-                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_21 ?? 0}</td>
-                </tr>
-              )
-            })}
-          </tbody>
-        </table>
+      {view === 'table' ? (
+        <div className="flex-1 overflow-auto">
+          <table className="text-xs border-collapse" style={{ minWidth: '2200px' }} onClick={handleCellClick}>
+            <thead>
+              <tr className="sticky top-0" style={{ background: 'rgba(15,15,22,0.97)', backdropFilter: 'blur(8px)' }}>
+                {[
+                  'Item ID', 'AssetName', 'Character ID', 'ItemPosition ID',
+                  'Name Key', 'Extra Text Key 1', 'Extra Text Key 2',
+                  'IsDefault', 'unk_8', 'Visiblity', 'Rarity', 'Price', 'unk_12', 'unk_13',
+                  'hash_2', 'isColorable', 'unk_16', 'hash_3', 'unk_18', 'unk_19', 'unk_20', 'Game Version',
+                ].map(h => (
+                  <th key={h} className={TH} style={TH_STYLE}>{h}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody style={{ cursor: 'pointer' }}>
+              {paged.map((e, i) => {
+                const pos = posCode(e.hash_1)
+                return (
+                  <tr key={e.char_item_id ?? i} className="hover:bg-white/[0.03] transition-colors" style={ROW_STYLE}>
+                    <td className="px-3 py-2 font-mono text-violet-300 whitespace-nowrap">{e.char_item_id ?? 0}</td>
+                    <td className="px-3 py-2 font-mono text-slate-300 whitespace-nowrap" style={{ maxWidth: 220 }}>
+                      <span className="block truncate">{e.asset_name || ''}</span>
+                    </td>
+                    <td className="px-3 py-2 font-mono text-slate-300 whitespace-nowrap">{charLabel(e.character_hash)}</td>
+                    <td className="px-3 py-2 whitespace-nowrap"><PosBadge pos={pos} /></td>
+                    <td className="px-3 py-2 font-mono text-slate-400 whitespace-nowrap" style={{ maxWidth: 220 }}>
+                      <span className="block truncate">{e.text_key ?? 0}</span>
+                    </td>
+                    <td className="px-3 py-2 font-mono text-slate-500 whitespace-nowrap" style={{ maxWidth: 200 }}>
+                      <span className="block truncate">{e.extra_text_key_1 ?? 0}</span>
+                    </td>
+                    <td className="px-3 py-2 font-mono text-slate-500 whitespace-nowrap" style={{ maxWidth: 200 }}>
+                      <span className="block truncate">{e.extra_text_key_2 ?? 0}</span>
+                    </td>
+                    <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.flag_7 ?? 0}</td>
+                    <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_8 ?? 0}</td>
+                    <td className="px-3 py-2 whitespace-nowrap" style={{ color: e.flag_9 === true ? '#34d399' : '#f87171' }}>
+                      {boolVal(e.flag_9)}
+                    </td>
+                    <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_10 ?? 0}</td>
+                    <td className="px-3 py-2 text-slate-300 whitespace-nowrap text-right">
+                      {(e.price ?? 0).toLocaleString()}
+                    </td>
+                    <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_12 ?? 0}</td>
+                    <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_13 ?? 0}</td>
+                    <td className="px-3 py-2 font-mono text-slate-600 whitespace-nowrap">{hexStr(e.hash_2)}</td>
+                    <td className="px-3 py-2 whitespace-nowrap" style={{ color: e.flag_15 === true ? '#34d399' : '#f87171' }}>
+                      {boolVal(e.flag_15)}
+                    </td>
+                    <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_16 ?? 0}</td>
+                    <td className="px-3 py-2 font-mono text-slate-600 whitespace-nowrap">{hexStr(e.hash_3)}</td>
+                    <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_18 ?? 0}</td>
+                    <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_19 ?? 0}</td>
+                    <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_20 ?? 0}</td>
+                    <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_21 ?? 0}</td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
+          {paged.length === 0 && (
+            <div className="text-center text-slate-600 py-16 text-sm">No items match filters</div>
+          )}
+        </div>
+      ) : (
+        <div className="flex-1 overflow-auto p-4">
+          <div className="grid gap-2" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))' }}>
+            {filtered.slice(page * GRID_PAGE_SIZE, (page + 1) * GRID_PAGE_SIZE).map((e, i) => (
+              <ItemCard
+                key={e.char_item_id ?? i}
+                assetName={e.asset_name}
+                label={e.asset_name?.replace(/^IP_/, '') ?? String(e.char_item_id ?? i)}
+                pos={posCode(e.hash_1)}
+              />
+            ))}
+          </div>
+          {filtered.length === 0 && (
+            <div className="text-center text-slate-600 py-16 text-sm">No items match filters</div>
+          )}
+        </div>
+      )}
 
-        {paged.length === 0 && (
-          <div className="text-center text-slate-600 py-16 text-sm">No items match filters</div>
-        )}
-      </div>
-
-      {bodyEntries.length > 0 && (
+      {bodyEntries.length > 0 && view === 'table' && (
         <details className="border-t flex-shrink-0" style={{ borderColor: 'rgba(255,255,255,0.07)' }}>
           <summary className="px-4 py-2.5 text-xs text-slate-400 cursor-pointer hover:text-slate-200 select-none">
             Body Entries ({bodyEntries.length})
@@ -469,7 +604,12 @@ function UniqueItemsTab({
         </details>
       )}
 
-      <Pagination page={page} total={filtered.length} pageSize={PAGE_SIZE} onChange={setPage} />
+      <Pagination
+        page={page}
+        total={filtered.length}
+        pageSize={view === 'table' ? PAGE_SIZE : GRID_PAGE_SIZE}
+        onChange={setPage}
+      />
     </>
   )
 }
