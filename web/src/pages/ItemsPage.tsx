@@ -1,5 +1,5 @@
 import { useState, useMemo, useRef } from 'react'
-import { useData } from '../hooks/useData'
+import { useGameData } from '../hooks/useGameData'
 import { SearchBar } from '../components/SearchBar'
 import { LoadingState, ErrorState } from '../components/LoadingState'
 import { clsx } from '../lib/utils'
@@ -51,7 +51,6 @@ export const SERIES_HASH: Record<number, string> = {
 // Display constants
 // ---------------------------------------------------------------------------
 
-const PAGE_SIZE = 100
 
 const ITEM_POS_LABEL: Record<string, string> = {
   hed: 'Head',        har: 'Hair',         hef: 'Full-Face',
@@ -387,12 +386,14 @@ function ViewToggle({ mode, onChange }: { mode: ViewMode; onChange: (m: ViewMode
 // Common Items Tab
 // ---------------------------------------------------------------------------
 
+
 function CommonItemsTab({ data, loc }: { data: CustomizeItemCommonEntry[]; loc: LocDict }) {
   const [charFilter, setCharFilter] = useState('')
   const [posFilter, setPosFilter] = useState('')
   const [q, setQ] = useState('')
   const [page, setPage] = useState(0)
   const [view, setView] = useState<ViewMode>('table')
+  const [pageSize, setPageSize] = useState(100)
   const { handleCellClick, copyText } = useCopyToast()
 
   const charOptions = useMemo(() => {
@@ -420,13 +421,12 @@ function CommonItemsTab({ data, loc }: { data: CustomizeItemCommonEntry[]; loc: 
     })
   }, [data, charFilter, posFilter, q, loc])
 
-  const paged = filtered.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE)
+  const paged = filtered.slice(page * pageSize, (page + 1) * pageSize)
 
   function handleCharChange(v: string) { setCharFilter(v); setPage(0) }
   function handlePosChange(v: string)  { setPosFilter(v);  setPage(0) }
   function handleSearch(v: string)     { setQ(v);          setPage(0) }
-
-  const GRID_PAGE_SIZE = 200
+  function handlePageSize(v: number)   { setPageSize(v);   setPage(0) }
 
   return (
     <>
@@ -449,6 +449,20 @@ function CommonItemsTab({ data, loc }: { data: CustomizeItemCommonEntry[]; loc: 
         </div>
 
         <span className="text-xs text-slate-500">{filtered.length.toLocaleString()} items</span>
+        <label className="flex items-center gap-1.5 text-xs text-slate-400"
+          style={{ border: '1px solid rgba(255,255,255,0.12)', borderRadius: 8, background: '#16161f', padding: '0 10px' }}>
+          <span>Show</span>
+          <input
+            type="number"
+            min={1}
+            defaultValue={pageSize}
+            onBlur={e => handlePageSize(Math.max(1, Number(e.target.value) || 1))}
+            onKeyDown={e => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur() }}
+            className="text-xs py-1.5 outline-none w-14 text-center bg-transparent"
+            style={{ color: '#e2e8f0' }}
+          />
+          <span>/ page</span>
+        </label>
         <ViewToggle mode={view} onChange={v => { setView(v); setPage(0) }} />
       </div>
 
@@ -527,7 +541,7 @@ function CommonItemsTab({ data, loc }: { data: CustomizeItemCommonEntry[]; loc: 
       ) : (
         <div className="flex-1 overflow-auto p-4">
           <div className="grid gap-2" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))' }}>
-            {filtered.slice(page * GRID_PAGE_SIZE, (page + 1) * GRID_PAGE_SIZE).map(e => (
+            {filtered.slice(page * pageSize, (page + 1) * pageSize).map(e => (
               <ItemCard
                 key={e.char_item_id}
                 assetName={e.asset_name}
@@ -547,7 +561,7 @@ function CommonItemsTab({ data, loc }: { data: CustomizeItemCommonEntry[]; loc: 
       <Pagination
         page={page}
         total={filtered.length}
-        pageSize={view === 'table' ? PAGE_SIZE : GRID_PAGE_SIZE}
+        pageSize={pageSize}
         onChange={setPage}
       />
       {copyText && <CopyToast text={copyText} />}
@@ -571,6 +585,7 @@ function UniqueItemsTab({
   const [q, setQ] = useState('')
   const [page, setPage] = useState(0)
   const [view, setView] = useState<ViewMode>('table')
+  const [pageSize, setPageSize] = useState(100)
   const { handleCellClick, copyText } = useCopyToast()
 
   const charOptions = useMemo(() => {
@@ -598,13 +613,12 @@ function UniqueItemsTab({
     })
   }, [entries, charFilter, posFilter, q, loc])
 
-  const paged = filtered.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE)
+  const paged = filtered.slice(page * pageSize, (page + 1) * pageSize)
 
   function handleCharChange(v: string) { setCharFilter(v); setPage(0) }
   function handlePosChange(v: string)  { setPosFilter(v);  setPage(0) }
   function handleSearch(v: string)     { setQ(v);          setPage(0) }
-
-  const GRID_PAGE_SIZE = 200
+  function handlePageSize(v: number)   { setPageSize(v);   setPage(0) }
 
   return (
     <>
@@ -627,6 +641,20 @@ function UniqueItemsTab({
         </div>
 
         <span className="text-xs text-slate-500">{filtered.length.toLocaleString()} items</span>
+        <label className="flex items-center gap-1.5 text-xs text-slate-400"
+          style={{ border: '1px solid rgba(255,255,255,0.12)', borderRadius: 8, background: '#16161f', padding: '0 10px' }}>
+          <span>Show</span>
+          <input
+            type="number"
+            min={1}
+            defaultValue={pageSize}
+            onBlur={e => handlePageSize(Math.max(1, Number(e.target.value) || 1))}
+            onKeyDown={e => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur() }}
+            className="text-xs py-1.5 outline-none w-14 text-center bg-transparent"
+            style={{ color: '#e2e8f0' }}
+          />
+          <span>/ page</span>
+        </label>
         <ViewToggle mode={view} onChange={v => { setView(v); setPage(0) }} />
       </div>
 
@@ -698,7 +726,7 @@ function UniqueItemsTab({
       ) : (
         <div className="flex-1 overflow-auto p-4">
           <div className="grid gap-2" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))' }}>
-            {filtered.slice(page * GRID_PAGE_SIZE, (page + 1) * GRID_PAGE_SIZE).map((e, i) => (
+            {filtered.slice(page * pageSize, (page + 1) * pageSize).map((e, i) => (
               <ItemCard
                 key={e.char_item_id ?? i}
                 assetName={e.asset_name}
@@ -735,7 +763,7 @@ function UniqueItemsTab({
       <Pagination
         page={page}
         total={filtered.length}
-        pageSize={view === 'table' ? PAGE_SIZE : GRID_PAGE_SIZE}
+        pageSize={pageSize}
         onChange={setPage}
       />
       {copyText && <CopyToast text={copyText} />}
@@ -752,9 +780,9 @@ type Tab = 'common' | 'unique'
 export function ItemsPage() {
   const [tab, setTab] = useState<Tab>('common')
 
-  const commonResult = useData<CustomizeItemCommonList>('customize_item_common_list')
-  const uniqueResult = useData<CustomizeItemUniqueList>('customize_item_unique_list')
-  const locResult    = useData<LocDict>('loc_en')
+  const commonResult = useGameData<CustomizeItemCommonList>('fbsdata', 'customize_item_common_list')
+  const uniqueResult = useGameData<CustomizeItemUniqueList>('fbsdata', 'customize_item_unique_list')
+  const locResult    = useGameData<LocDict>('localize', 'loc_en')
 
   const commonEntries = commonResult.data?.data?.entries ?? []
   const uniqueEntries = uniqueResult.data?.data?.entries ?? []

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { useData } from '../hooks/useData'
+import { useGameData } from '../hooks/useGameData'
 import type { CustomizeItemCommonList, CustomizeItemUniqueList } from '../lib/types'
 
 interface StatCardProps {
@@ -28,8 +28,8 @@ function StatCard({ label, value, to, accent }: StatCardProps) {
 }
 
 export function HomePage() {
-  const common = useData<CustomizeItemCommonList>('customize_item_common_list')
-  const unique = useData<CustomizeItemUniqueList>('customize_item_unique_list')
+  const common = useGameData<CustomizeItemCommonList>('fbsdata', 'customize_item_common_list')
+  const unique = useGameData<CustomizeItemUniqueList>('fbsdata', 'customize_item_unique_list')
 
   const commonCount = common.data?.data?.entries?.length ?? '...'
   const uniqueCount = unique.data?.data?.entries?.length ?? '...'

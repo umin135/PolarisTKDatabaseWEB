@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom'
 import { Home, Shirt, ChevronRight } from 'lucide-react'
 import { clsx } from '../lib/utils'
+import { useVersion } from '../contexts/VersionContext'
 
 const NAV = [
   { to: '/',      icon: Home,  label: 'Home' },
@@ -29,6 +30,8 @@ function NavItem({ to, icon: Icon, label }: { to: string; icon: typeof Home; lab
 }
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const { version, setVersion, versions } = useVersion()
+
   return (
     <div className="flex h-screen overflow-hidden" style={{ background: '#0f0f13' }}>
       <aside
@@ -53,6 +56,22 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <nav className="flex-1 overflow-y-auto px-2 py-3 space-y-0.5">
           {NAV.map(item => <NavItem key={item.to} {...item} />)}
         </nav>
+
+        {versions.length > 1 && (
+          <div className="px-3 pb-3 border-t pt-3" style={{ borderColor: 'rgba(255,255,255,0.07)' }}>
+            <p className="text-[10px] text-slate-600 mb-1.5 px-1">Game Version</p>
+            <select
+              value={version}
+              onChange={e => setVersion(e.target.value)}
+              className="w-full text-xs rounded-lg px-3 py-1.5 text-slate-300 outline-none cursor-pointer"
+              style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.10)' }}
+            >
+              {versions.map(v => (
+                <option key={v.id} value={v.id} style={{ background: '#1a1a24' }}>{v.label}</option>
+              ))}
+            </select>
+          </div>
+        )}
 
         <div className="px-4 py-3 border-t text-[10px] text-slate-600" style={{ borderColor: 'rgba(255,255,255,0.07)' }}>
           Tekken 8 Game Data Viewer

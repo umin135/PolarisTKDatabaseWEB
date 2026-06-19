@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-type DataState<T> = { data: T | null; loading: boolean; error: string | null }
+export type DataState<T> = { data: T | null; loading: boolean; error: string | null }
 
 const cache = new Map<string, unknown>()
 
@@ -8,6 +8,8 @@ export function useData<T>(name: string): DataState<T> {
   const [state, setState] = useState<DataState<T>>({ data: null, loading: true, error: null })
 
   useEffect(() => {
+    if (!name) return
+
     if (cache.has(name)) {
       setState({ data: cache.get(name) as T, loading: false, error: null })
       return

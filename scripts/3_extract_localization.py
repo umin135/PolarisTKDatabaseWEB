@@ -62,13 +62,17 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('--lang', default='en',
         help='Language code matching _extract/Localize/{lang}/ (default: en)')
+    parser.add_argument('--version', default='3.01.01',
+        help='Game version string used for output path (default: 3.01.01)')
     args = parser.parse_args()
 
     print(f'[*] Extracting: {args.lang}', file=sys.stderr)
     loc = extract_lang(args.lang)
     print(f'[*] Total keys: {len(loc)}', file=sys.stderr)
 
-    out = ROOT / 'web' / 'public' / 'data' / f'loc_{args.lang}.json'
+    out_dir = ROOT / 'web' / 'public' / 'data' / args.version / 'localize'
+    out_dir.mkdir(parents=True, exist_ok=True)
+    out = out_dir / f'loc_{args.lang}.json'
     with open(out, 'w', encoding='utf-8') as f:
         json.dump(loc, f, ensure_ascii=False, separators=(',', ':'))
     print(f'[+] Written: {out}', file=sys.stderr)

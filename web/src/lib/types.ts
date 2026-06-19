@@ -1,6 +1,16 @@
 // --- localization ---
 export type LocDict = Record<string, string>
 
+// --- game versions ---
+export interface GameVersion {
+  id: string
+  label: string
+}
+export interface GameVersions {
+  latest: string
+  versions: GameVersion[]
+}
+
 // --- character_list ---
 export interface CharacterEntry {
   character_code: string

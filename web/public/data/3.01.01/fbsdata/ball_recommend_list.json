@@ -1,0 +1,3085 @@
+{
+  "version": 1,
+  "data": {
+    "recommend_group_0": [
+      {
+        "character_hash": 2802412287,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_GRF_029",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_045"
+      },
+      {
+        "character_hash": 2802412287,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_GRF_035",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_062",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 2802412287,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_GRF_001",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_029",
+        "unk_3": 10,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 2802412287,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_GRF_030",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_048",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 3909547504,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_PIG_057",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_PIG_057"
+      },
+      {
+        "character_hash": 3909547504,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_PIG_119",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_062",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 3909547504,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_PIG_047",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_059",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 3909547504,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_PIG_023",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 748126445,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_PGN_022",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_032"
+      },
+      {
+        "character_hash": 748126445,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_PGN_049",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_059",
+        "unk_3": 5,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 748126445,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_PGN_021",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_029",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 748126445,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_PGN_035",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_045",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 1791216549,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_ANT_020",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020",
+        "unk_3": 8
+      },
+      {
+        "character_hash": 1791216549,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_ANT_002",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_042",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 1791216549,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_ANT_018",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_ANT_018",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 1791216549,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_ANT_067",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_ANT_067",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 3283482507,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_GRL_027",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_GRL_027"
+      },
+      {
+        "character_hash": 3283482507,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_GRL_017",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_GRL_017",
+        "unk_3": 5,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 3283482507,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_GRL_038",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_060",
+        "unk_3": 10,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 3283482507,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_GRL_053",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_GRL_053",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 3716978005,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_RAT_016",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020"
+      },
+      {
+        "character_hash": 3716978005,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_RAT_136",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_SNK_047",
+        "unk_3": 5,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 3716978005,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_RAT_021",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_029",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 3716978005,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_RAT_040",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_RAT_040",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 1009826274,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_AML_018",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_021"
+      },
+      {
+        "character_hash": 1009826274,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_AML_061",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_063",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 1009826274,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_AML_036",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_037",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 1009826274,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_AML_042",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_045",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 1862528861,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_LZD_022",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_032"
+      },
+      {
+        "character_hash": 1862528861,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_LZD_015",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 1862528861,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_LZD_040",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_062",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 1862528861,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_LZD_050",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_075",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 2691931401,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CCN_033",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_041"
+      },
+      {
+        "character_hash": 2691931401,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CCN_126",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_032",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 2691931401,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CCN_012",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020",
+        "unk_3": 6,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 2691931401,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CCN_055",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_069",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 1066975102,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_KAL_141",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_KLW_022",
+        "unk_3": 8
+      },
+      {
+        "character_hash": 1066975102,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_KAL_035",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_032",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 1066975102,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_KAL_026",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 1066975102,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_KAL_060",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_053",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 1870866276,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_HMS_024",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_033"
+      },
+      {
+        "character_hash": 1870866276,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_HMS_035",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_045",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 1870866276,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_HMS_021",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_026",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 1870866276,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_HMS_036",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_046",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 2620373223,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_DER_042",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_046"
+      },
+      {
+        "character_hash": 2620373223,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_DER_000",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_032",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 2620373223,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_DER_033",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_029",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 2620373223,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_DER_074",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_DER_074",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 3109625382,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_SNK_056",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_077"
+      },
+      {
+        "character_hash": 3109625382,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_SNK_034",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_038",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 3109625382,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_SNK_035",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_039",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 3109625382,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_SNK_043",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_059",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 2046353711,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_BBN_013",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_BBN_008"
+      },
+      {
+        "character_hash": 2046353711,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_BBN_021",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_032",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 2046353711,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_BBN_002",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_BBN_040",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 2046353711,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_BBN_094",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_BBN_068",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 97192667,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CTR_044",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_072"
+      },
+      {
+        "character_hash": 97192667,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CTR_039",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_062",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 97192667,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CTR_017",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_026",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 97192667,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CTR_033",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_057",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 823174094,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CHT_052",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_072"
+      },
+      {
+        "character_hash": 823174094,
+        "move_name_key": "TEXT_200_MOVELIST_NAME_CHT_302",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_069",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 823174094,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CHT_029",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_039",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 823174094,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CHT_053",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_073",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 1281269543,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CRW_049",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_071"
+      },
+      {
+        "character_hash": 1281269543,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CRW_044",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_059",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 1281269543,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CRW_051",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_075",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 1281269543,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CRW_062",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_086",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 1597287972,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_JLY_051",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_JLY_051"
+      },
+      {
+        "character_hash": 1597287972,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_JLY_056",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_032",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 1597287972,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_JLY_043",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_060",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 1597287972,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_JLY_028",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_041",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 3155198250,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_BSN_015",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020",
+        "unk_3": 8
+      },
+      {
+        "character_hash": 3155198250,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_BSN_033",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_052",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 3155198250,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_BSN_041",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_067",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 3155198250,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_BSN_098",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_KLW_052",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 2172508408,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_MNT_001",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020",
+        "unk_3": 8
+      },
+      {
+        "character_hash": 2172508408,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_MNT_049",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_062",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 2172508408,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_MNT_019",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_MNT_014",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 2172508408,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_MNT_071",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_086",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 3826916785,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_KLW_003",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_062",
+        "unk_3": 8
+      },
+      {
+        "character_hash": 3826916785,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_KLW_002",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_032",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 3826916785,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_KLW_032",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_041",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 3826916785,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_KLW_029",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_037",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 2262000005,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_GHP_052",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_071"
+      },
+      {
+        "character_hash": 2262000005,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_GHP_018",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 2262000005,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_GHP_029",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_037",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 2262000005,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_GHP_103",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_GHP_104",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 3480598787,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_WLF_049",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_060"
+      },
+      {
+        "character_hash": 3480598787,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_WLF_002",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_063",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 3480598787,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_WLF_024",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 3480598787,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_WLF_051",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_WLF_051",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 310559474,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_HRS_023",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_033"
+      },
+      {
+        "character_hash": 310559474,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_HRS_045",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_063",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 310559474,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_HRS_025",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_037",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 310559474,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_HRS_033",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_051",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 731112246,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_KMD_107",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_071"
+      },
+      {
+        "character_hash": 731112246,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_KMD_018",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 731112246,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_KMD_044",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_059",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 731112246,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_KMD_083",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_083",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 1230214467,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_SWL_036",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_062"
+      },
+      {
+        "character_hash": 1230214467,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_SWL_025",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_042",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 1230214467,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_SWL_040",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_070",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 1230214467,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_SWL_039",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_SWL_039",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 1633518270,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_RBT_000",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020",
+        "unk_3": 8
+      },
+      {
+        "character_hash": 1633518270,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_RBT_001",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_054",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 1633518270,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_RBT_050",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_070",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 1633518270,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_RBT_039",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_063",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 236224321,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_RBT_000",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020",
+        "unk_3": 8
+      },
+      {
+        "character_hash": 236224321,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_RBT_001",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_054",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 236224321,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_RBT_050",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_070",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 236224321,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_RBT_039",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_063",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 1941891036,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CML_060",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_068"
+      },
+      {
+        "character_hash": 1941891036,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CML_026",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_029",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 1941891036,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CML_024",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_026",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 1941891036,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CML_015",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_019",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 26846036,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_ZBR_013",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020"
+      },
+      {
+        "character_hash": 26846036,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_ZBR_034",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_062",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 26846036,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_ZBR_039",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_057",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 26846036,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_ZBR_041",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_060",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 3098177400,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CAT_039",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_072"
+      },
+      {
+        "character_hash": 3098177400,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CAT_014",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_032",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 3098177400,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CAT_031",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_057",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 3098177400,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CAT_040",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_077",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 840871906,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_LON_020",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_032"
+      },
+      {
+        "character_hash": 840871906,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_LON_047",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_062",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 840871906,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_LON_041",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_060",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 840871906,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_LON_037",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_045",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 3651497509,
+        "move_name_key": "TEXT_003_MOVELIST_NAME_DOG_052",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_073"
+      },
+      {
+        "character_hash": 3651497509,
+        "move_name_key": "TEXT_003_MOVELIST_NAME_DOG_002",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_063",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 3651497509,
+        "move_name_key": "TEXT_003_MOVELIST_NAME_DOG_051",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_072",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 3651497509,
+        "move_name_key": "TEXT_003_MOVELIST_NAME_DOG_023",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_037",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 3013172036,
+        "move_name_key": "TEXT_006_MOVELIST_NAME_CBR_056",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_072"
+      },
+      {
+        "character_hash": 3013172036,
+        "move_name_key": "TEXT_006_MOVELIST_NAME_CBR_002",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_062",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 3013172036,
+        "move_name_key": "TEXT_006_MOVELIST_NAME_CBR_050",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_060",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 3013172036,
+        "move_name_key": "TEXT_006_MOVELIST_NAME_CBR_071",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_086",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 1575337196,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_ZBR_013",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020"
+      },
+      {
+        "character_hash": 1575337196,
+        "move_name_key": "TEXT_008_MOVELIST_NAME_BEE_042",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_069",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 1575337196,
+        "move_name_key": "TEXT_008_MOVELIST_NAME_BEE_044",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_072",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 1575337196,
+        "move_name_key": "TEXT_008_MOVELIST_NAME_BEE_045",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_075",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 1806241895,
+        "move_name_key": "TEXT_010_MOVELIST_NAME_OKM_1160",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_032",
+        "unk_3": 8
+      },
+      {
+        "character_hash": 1806241895,
+        "move_name_key": "TEXT_010_MOVELIST_NAME_OKM_1320",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_062",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 1806241895,
+        "move_name_key": "TEXT_010_MOVELIST_NAME_OKM_1290",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_054",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 1806241895,
+        "move_name_key": "TEXT_010_MOVELIST_NAME_OKM_1240",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_045",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 3302278637,
+        "move_name_key": "TEXT_200_MOVELIST_NAME_KGR_001",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_021",
+        "unk_3": 8
+      },
+      {
+        "character_hash": 3302278637,
+        "move_name_key": "TEXT_200_MOVELIST_NAME_KGR_048",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_062",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 3302278637,
+        "move_name_key": "TEXT_200_MOVELIST_NAME_KGR_047",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_060",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 3302278637,
+        "move_name_key": "TEXT_200_MOVELIST_NAME_KGR_053",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_072",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 2508721799,
+        "move_name_key": "TEXT_203_MOVELIST_NAME_TGR_046",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_JLY_040"
+      },
+      {
+        "character_hash": 2508721799,
+        "move_name_key": "TEXT_203_MOVELIST_NAME_TGR_025",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_SWL_020",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 2508721799,
+        "move_name_key": "TEXT_203_MOVELIST_NAME_TGR_048",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_059",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 2508721799,
+        "move_name_key": "TEXT_203_MOVELIST_NAME_TGR_069",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_KLW_079",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 3908942186,
+        "move_name_key": "TEXT_206_MOVELIST_NAME_KNK_029",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_GRF_018"
+      },
+      {
+        "character_hash": 3908942186,
+        "move_name_key": "TEXT_206_MOVELIST_NAME_KNK_028",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_032",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 3908942186,
+        "move_name_key": "TEXT_206_MOVELIST_NAME_KNK_051",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_063",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 3908942186,
+        "move_name_key": "TEXT_206_MOVELIST_NAME_KNK_099",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_SWL_107",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 761728323,
+        "move_name_key": "TEXT_208_MOVELIST_NAME_WKZ_016",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_GRF_000"
+      },
+      {
+        "character_hash": 761728323,
+        "move_name_key": "TEXT_208_MOVELIST_NAME_WKZ_041",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_062",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 761728323,
+        "move_name_key": "TEXT_208_MOVELIST_NAME_WKZ_053",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_077",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 761728323,
+        "move_name_key": "TEXT_208_MOVELIST_NAME_WKZ_031",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_045",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 3099443275,
+        "move_name_key": "TEXT_301_MOVELIST_NAME_KER_020",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_032",
+        "unk_3": 8
+      },
+      {
+        "character_hash": 3099443275,
+        "move_name_key": "TEXT_301_MOVELIST_NAME_KER_032",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_046",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 3099443275,
+        "move_name_key": "TEXT_301_MOVELIST_NAME_KER_013",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_KAL_023",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 3099443275,
+        "move_name_key": "TEXT_301_MOVELIST_NAME_KER_056",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_075",
+        "unk_3": 4,
+        "unk_4": 4
+      }
+    ],
+    "recommend_group_1": [
+      {
+        "character_hash": 2802412287,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_GRF_029",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_045"
+      },
+      {
+        "character_hash": 2802412287,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_GRF_035",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_062",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 2802412287,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_GRF_001",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_029",
+        "unk_3": 10,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 2802412287,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_GRF_030",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_048",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 3909547504,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_PIG_057",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_PIG_057"
+      },
+      {
+        "character_hash": 3909547504,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_PIG_119",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_062",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 3909547504,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_PIG_047",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_059",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 3909547504,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_PIG_023",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 748126445,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_PGN_022",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_032"
+      },
+      {
+        "character_hash": 748126445,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_PGN_049",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_059",
+        "unk_3": 5,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 748126445,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_PGN_021",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_029",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 748126445,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_PGN_035",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_045",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 1791216549,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_ANT_020",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020",
+        "unk_3": 8
+      },
+      {
+        "character_hash": 1791216549,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_ANT_002",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_042",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 1791216549,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_ANT_018",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_ANT_018",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 1791216549,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_ANT_067",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_ANT_067",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 3283482507,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_GRL_027",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_GRL_027"
+      },
+      {
+        "character_hash": 3283482507,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_GRL_017",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_GRL_017",
+        "unk_3": 5,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 3283482507,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_GRL_038",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_060",
+        "unk_3": 10,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 3283482507,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_GRL_053",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_GRL_053",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 3716978005,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_RAT_016",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020"
+      },
+      {
+        "character_hash": 3716978005,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_RAT_136",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_SNK_047",
+        "unk_3": 5,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 3716978005,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_RAT_021",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_029",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 3716978005,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_RAT_040",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_RAT_040",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 1009826274,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_AML_018",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_021"
+      },
+      {
+        "character_hash": 1009826274,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_AML_061",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_063",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 1009826274,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_AML_036",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_037",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 1009826274,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_AML_042",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_045",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 1862528861,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_LZD_022",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_032"
+      },
+      {
+        "character_hash": 1862528861,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_LZD_015",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 1862528861,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_LZD_040",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_062",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 1862528861,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_LZD_050",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_075",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 2691931401,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CCN_033",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_041"
+      },
+      {
+        "character_hash": 2691931401,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CCN_126",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_032",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 2691931401,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CCN_012",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020",
+        "unk_3": 6,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 2691931401,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CCN_055",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_069",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 1066975102,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_KAL_141",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_KLW_022",
+        "unk_3": 8
+      },
+      {
+        "character_hash": 1066975102,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_KAL_035",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_032",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 1066975102,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_KAL_026",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 1066975102,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_KAL_060",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_053",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 1870866276,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_HMS_024",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_033"
+      },
+      {
+        "character_hash": 1870866276,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_HMS_035",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_045",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 1870866276,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_HMS_021",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_026",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 1870866276,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_HMS_036",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_046",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 2620373223,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_DER_042",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_046"
+      },
+      {
+        "character_hash": 2620373223,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_DER_000",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_032",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 2620373223,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_DER_033",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_029",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 2620373223,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_DER_074",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_DER_074",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 3109625382,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_SNK_056",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_077"
+      },
+      {
+        "character_hash": 3109625382,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_SNK_034",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_038",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 3109625382,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_SNK_035",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_039",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 3109625382,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_SNK_043",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_059",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 2046353711,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_BBN_013",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_BBN_008"
+      },
+      {
+        "character_hash": 2046353711,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_BBN_021",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_032",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 2046353711,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_BBN_002",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_BBN_040",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 2046353711,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_BBN_094",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_BBN_068",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 97192667,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CTR_044",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_072"
+      },
+      {
+        "character_hash": 97192667,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CTR_039",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_062",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 97192667,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CTR_017",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_026",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 97192667,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CTR_033",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_057",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 823174094,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CHT_052",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_072"
+      },
+      {
+        "character_hash": 823174094,
+        "move_name_key": "TEXT_200_MOVELIST_NAME_CHT_302",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_069",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 823174094,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CHT_029",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_039",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 823174094,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CHT_053",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_073",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 1281269543,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CRW_049",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_071"
+      },
+      {
+        "character_hash": 1281269543,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CRW_044",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_059",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 1281269543,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CRW_051",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_075",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 1281269543,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CRW_062",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_086",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 1597287972,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_JLY_051",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_JLY_051"
+      },
+      {
+        "character_hash": 1597287972,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_JLY_056",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_032",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 1597287972,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_JLY_043",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_060",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 1597287972,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_JLY_028",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_041",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 3155198250,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_BSN_015",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020",
+        "unk_3": 8
+      },
+      {
+        "character_hash": 3155198250,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_BSN_033",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_052",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 3155198250,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_BSN_041",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_067",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 3155198250,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_BSN_098",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_KLW_052",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 2172508408,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_MNT_001",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020",
+        "unk_3": 8
+      },
+      {
+        "character_hash": 2172508408,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_MNT_049",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_062",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 2172508408,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_MNT_019",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_MNT_014",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 2172508408,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_MNT_071",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_086",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 3826916785,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_KLW_003",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_062",
+        "unk_3": 8
+      },
+      {
+        "character_hash": 3826916785,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_KLW_002",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_032",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 3826916785,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_KLW_032",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_041",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 3826916785,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_KLW_029",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_037",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 2262000005,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_GHP_052",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_071"
+      },
+      {
+        "character_hash": 2262000005,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_GHP_018",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 2262000005,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_GHP_029",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_037",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 2262000005,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_GHP_103",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_GHP_104",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 3480598787,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_WLF_049",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_060"
+      },
+      {
+        "character_hash": 3480598787,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_WLF_002",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_063",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 3480598787,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_WLF_024",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 3480598787,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_WLF_051",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_WLF_051",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 310559474,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_HRS_023",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_033"
+      },
+      {
+        "character_hash": 310559474,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_HRS_045",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_063",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 310559474,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_HRS_025",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_037",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 310559474,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_HRS_033",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_051",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 731112246,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_KMD_107",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_071"
+      },
+      {
+        "character_hash": 731112246,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_KMD_018",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 731112246,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_KMD_044",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_059",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 731112246,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_KMD_083",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_083",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 1230214467,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_SWL_036",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_062"
+      },
+      {
+        "character_hash": 1230214467,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_SWL_025",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_042",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 1230214467,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_SWL_040",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_070",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 1230214467,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_SWL_039",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_SWL_039",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 1633518270,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_RBT_000",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020",
+        "unk_3": 8
+      },
+      {
+        "character_hash": 1633518270,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_RBT_001",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_054",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 1633518270,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_RBT_050",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_070",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 1633518270,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_RBT_039",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_063",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 236224321,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_RBT_000",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020",
+        "unk_3": 8
+      },
+      {
+        "character_hash": 236224321,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_RBT_001",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_054",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 236224321,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_RBT_050",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_070",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 236224321,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_RBT_039",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_063",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 1941891036,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CML_060",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_068"
+      },
+      {
+        "character_hash": 1941891036,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CML_026",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_029",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 1941891036,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CML_024",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_026",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 1941891036,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CML_015",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_019",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 26846036,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_ZBR_013",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020"
+      },
+      {
+        "character_hash": 26846036,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_ZBR_034",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_062",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 26846036,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_ZBR_039",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_057",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 26846036,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_ZBR_041",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_060",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 3098177400,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CAT_039",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_072"
+      },
+      {
+        "character_hash": 3098177400,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CAT_014",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_032",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 3098177400,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CAT_031",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_057",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 3098177400,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CAT_040",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_077",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 840871906,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_LON_020",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_032"
+      },
+      {
+        "character_hash": 840871906,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_LON_047",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_062",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 840871906,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_LON_041",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_060",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 840871906,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_LON_037",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_045",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 3651497509,
+        "move_name_key": "TEXT_003_MOVELIST_NAME_DOG_052",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_073"
+      },
+      {
+        "character_hash": 3651497509,
+        "move_name_key": "TEXT_003_MOVELIST_NAME_DOG_002",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_063",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 3651497509,
+        "move_name_key": "TEXT_003_MOVELIST_NAME_DOG_051",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_072",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 3651497509,
+        "move_name_key": "TEXT_003_MOVELIST_NAME_DOG_023",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_037",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 3013172036,
+        "move_name_key": "TEXT_006_MOVELIST_NAME_CBR_056",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_072"
+      },
+      {
+        "character_hash": 3013172036,
+        "move_name_key": "TEXT_006_MOVELIST_NAME_CBR_002",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_062",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 3013172036,
+        "move_name_key": "TEXT_006_MOVELIST_NAME_CBR_050",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_060",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 3013172036,
+        "move_name_key": "TEXT_006_MOVELIST_NAME_CBR_071",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_086",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 1575337196,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_ZBR_013",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020"
+      },
+      {
+        "character_hash": 1575337196,
+        "move_name_key": "TEXT_008_MOVELIST_NAME_BEE_042",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_069",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 1575337196,
+        "move_name_key": "TEXT_008_MOVELIST_NAME_BEE_044",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_072",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 1575337196,
+        "move_name_key": "TEXT_008_MOVELIST_NAME_BEE_045",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_075",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 1806241895,
+        "move_name_key": "TEXT_010_MOVELIST_NAME_OKM_1160",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_032",
+        "unk_3": 8
+      },
+      {
+        "character_hash": 1806241895,
+        "move_name_key": "TEXT_010_MOVELIST_NAME_OKM_1320",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_062",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 1806241895,
+        "move_name_key": "TEXT_010_MOVELIST_NAME_OKM_1290",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_054",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 1806241895,
+        "move_name_key": "TEXT_010_MOVELIST_NAME_OKM_1240",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_045",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 3302278637,
+        "move_name_key": "TEXT_200_MOVELIST_NAME_KGR_001",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_021",
+        "unk_3": 8
+      },
+      {
+        "character_hash": 3302278637,
+        "move_name_key": "TEXT_200_MOVELIST_NAME_KGR_048",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_062",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 3302278637,
+        "move_name_key": "TEXT_200_MOVELIST_NAME_KGR_047",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_060",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 3302278637,
+        "move_name_key": "TEXT_200_MOVELIST_NAME_KGR_053",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_072",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 2508721799,
+        "move_name_key": "TEXT_203_MOVELIST_NAME_TGR_046",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_JLY_040"
+      },
+      {
+        "character_hash": 2508721799,
+        "move_name_key": "TEXT_203_MOVELIST_NAME_TGR_025",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_SWL_020",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 2508721799,
+        "move_name_key": "TEXT_203_MOVELIST_NAME_TGR_048",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_059",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 2508721799,
+        "move_name_key": "TEXT_203_MOVELIST_NAME_TGR_069",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_KLW_079",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 3908942186,
+        "move_name_key": "TEXT_206_MOVELIST_NAME_KNK_029",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_GRF_018"
+      },
+      {
+        "character_hash": 3908942186,
+        "move_name_key": "TEXT_206_MOVELIST_NAME_KNK_028",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_032",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 3908942186,
+        "move_name_key": "TEXT_206_MOVELIST_NAME_KNK_051",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_063",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 3908942186,
+        "move_name_key": "TEXT_206_MOVELIST_NAME_KNK_099",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_SWL_107",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 761728323,
+        "move_name_key": "TEXT_208_MOVELIST_NAME_WKZ_016",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_GRF_000"
+      },
+      {
+        "character_hash": 761728323,
+        "move_name_key": "TEXT_208_MOVELIST_NAME_WKZ_041",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_062",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 761728323,
+        "move_name_key": "TEXT_208_MOVELIST_NAME_WKZ_053",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_077",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 761728323,
+        "move_name_key": "TEXT_208_MOVELIST_NAME_WKZ_031",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_045",
+        "unk_3": 4,
+        "unk_4": 4
+      }
+    ],
+    "recommend_group_2": [
+      {
+        "character_hash": 2802412287,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_GRF_029",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_045"
+      },
+      {
+        "character_hash": 2802412287,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_GRF_035",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_062",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 2802412287,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_GRF_001",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_029",
+        "unk_3": 10,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 2802412287,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_GRF_030",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_048",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 3909547504,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_PIG_057",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_PIG_057"
+      },
+      {
+        "character_hash": 3909547504,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_PIG_062",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_077",
+        "unk_3": 9,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 3909547504,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_PIG_047",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_059",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 3909547504,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_PIG_023",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 748126445,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_PGN_022",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_032"
+      },
+      {
+        "character_hash": 748126445,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_PGN_049",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_059",
+        "unk_3": 5,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 748126445,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_PGN_021",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_029",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 748126445,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_PGN_035",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_045",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 1791216549,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_ANT_020",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020",
+        "unk_3": 8
+      },
+      {
+        "character_hash": 1791216549,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_ANT_002",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_042",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 1791216549,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_ANT_018",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_ANT_018",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 1791216549,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_ANT_067",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_ANT_067",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 3283482507,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_GRL_027",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_GRL_027"
+      },
+      {
+        "character_hash": 3283482507,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_GRL_017",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_GRL_017",
+        "unk_3": 5,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 3283482507,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_GRL_038",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_060",
+        "unk_3": 10,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 3283482507,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_GRL_053",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_GRL_053",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 3716978005,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_RAT_016",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020"
+      },
+      {
+        "character_hash": 3716978005,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_RAT_136",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_SNK_047",
+        "unk_3": 5,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 3716978005,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_RAT_021",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_029",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 3716978005,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_RAT_040",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_RAT_040",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 1009826274,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_AML_018",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_021"
+      },
+      {
+        "character_hash": 1009826274,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_AML_061",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_063",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 1009826274,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_AML_036",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_037",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 1009826274,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_AML_042",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_045",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 1862528861,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_LZD_022",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_032"
+      },
+      {
+        "character_hash": 1862528861,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_LZD_015",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 1862528861,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_LZD_040",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_062",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 1862528861,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_LZD_050",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_075",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 2691931401,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CCN_033",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_041"
+      },
+      {
+        "character_hash": 2691931401,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CCN_126",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_032",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 2691931401,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CCN_012",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020",
+        "unk_3": 6,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 2691931401,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CCN_055",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_069",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 1066975102,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_KAL_141",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_KLW_022",
+        "unk_3": 8
+      },
+      {
+        "character_hash": 1066975102,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_KAL_035",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_032",
+        "unk_3": 9,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 1066975102,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_KAL_026",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 1066975102,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_KAL_060",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_053",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 1870866276,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_HMS_024",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_033"
+      },
+      {
+        "character_hash": 1870866276,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_HMS_035",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_045",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 1870866276,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_HMS_021",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_026",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 1870866276,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_HMS_036",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_046",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 2620373223,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_DER_042",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_046"
+      },
+      {
+        "character_hash": 2620373223,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_DER_000",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_032",
+        "unk_3": 9,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 2620373223,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_DER_033",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_029",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 2620373223,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_DER_074",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_DER_074",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 3109625382,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_SNK_056",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_077"
+      },
+      {
+        "character_hash": 3109625382,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_SNK_034",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_038",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 3109625382,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_SNK_035",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_039",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 3109625382,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_SNK_043",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_059",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 2046353711,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_BBN_013",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_BBN_008"
+      },
+      {
+        "character_hash": 2046353711,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_BBN_021",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_032",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 2046353711,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_BBN_002",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_BBN_040",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 2046353711,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_BBN_094",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_BBN_068",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 97192667,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CTR_044",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_072"
+      },
+      {
+        "character_hash": 97192667,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CTR_039",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_062",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 97192667,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CTR_017",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_026",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 97192667,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CTR_033",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_057",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 823174094,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CHT_052",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_072"
+      },
+      {
+        "character_hash": 823174094,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CHT_023",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_032",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 823174094,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CHT_029",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_039",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 823174094,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CHT_053",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_073",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 1281269543,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CRW_049",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_071"
+      },
+      {
+        "character_hash": 1281269543,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CRW_044",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_059",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 1281269543,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CRW_051",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_075",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 1281269543,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CRW_062",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_086",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 1597287972,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_JLY_051",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_JLY_051"
+      },
+      {
+        "character_hash": 1597287972,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_JLY_056",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_032",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 1597287972,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_JLY_043",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_060",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 1597287972,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_JLY_028",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_041",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 3155198250,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_BSN_015",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020",
+        "unk_3": 8
+      },
+      {
+        "character_hash": 3155198250,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_BSN_033",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_052",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 3155198250,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_BSN_041",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_067",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 3155198250,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_BSN_057",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_091",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 2172508408,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_MNT_001",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020",
+        "unk_3": 8
+      },
+      {
+        "character_hash": 2172508408,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_MNT_049",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_062",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 2172508408,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_MNT_019",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_MNT_014",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 2172508408,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_MNT_071",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_086",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 3826916785,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_KLW_003",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_062",
+        "unk_3": 8
+      },
+      {
+        "character_hash": 3826916785,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_KLW_002",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_032",
+        "unk_3": 9,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 3826916785,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_KLW_032",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_041",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 3826916785,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_KLW_029",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_037",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 2262000005,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_GHP_052",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_071"
+      },
+      {
+        "character_hash": 2262000005,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_GHP_018",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 2262000005,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_GHP_029",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_037",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 2262000005,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_GHP_103",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_GHP_104",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 3480598787,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_WLF_049",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_060"
+      },
+      {
+        "character_hash": 3480598787,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_WLF_002",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_063",
+        "unk_3": 9,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 3480598787,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_WLF_024",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 3480598787,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_WLF_051",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_WLF_051",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 310559474,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_HRS_023",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_033"
+      },
+      {
+        "character_hash": 310559474,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_HRS_045",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_063",
+        "unk_3": 9,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 310559474,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_HRS_025",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_037",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 310559474,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_HRS_033",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_051",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 731112246,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_KMD_107",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_071"
+      },
+      {
+        "character_hash": 731112246,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_KMD_018",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 731112246,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_KMD_044",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_059",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 731112246,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_KMD_083",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_083",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 1230214467,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_SWL_036",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_062"
+      },
+      {
+        "character_hash": 1230214467,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_SWL_025",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_042",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 1230214467,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_SWL_040",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_070",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 1230214467,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_SWL_039",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_SWL_039",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 1633518270,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_RBT_000",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020",
+        "unk_3": 8
+      },
+      {
+        "character_hash": 1633518270,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_RBT_001",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_054",
+        "unk_3": 9,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 1633518270,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_RBT_050",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_070",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 1633518270,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_RBT_039",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_063",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 236224321,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_RBT_000",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020",
+        "unk_3": 8
+      },
+      {
+        "character_hash": 236224321,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_RBT_001",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_054",
+        "unk_3": 9,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 236224321,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_RBT_050",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_070",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 236224321,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_RBT_039",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_063",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 1941891036,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CML_060",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_068"
+      },
+      {
+        "character_hash": 1941891036,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CML_026",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_029",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 1941891036,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CML_024",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_026",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 1941891036,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CML_015",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_019",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 26846036,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_ZBR_013",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020"
+      },
+      {
+        "character_hash": 26846036,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_ZBR_034",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_062",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 26846036,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_ZBR_039",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_057",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 26846036,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_ZBR_041",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_060",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 3098177400,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CAT_039",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_072"
+      },
+      {
+        "character_hash": 3098177400,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CAT_014",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_032",
+        "unk_3": 9,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 3098177400,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CAT_031",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_057",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 3098177400,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_CAT_040",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_077",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 840871906,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_LON_020",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_032"
+      },
+      {
+        "character_hash": 840871906,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_LON_047",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_062",
+        "unk_3": 9,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 840871906,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_LON_041",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_060",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 840871906,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_LON_037",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_045",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 3651497509,
+        "move_name_key": "TEXT_003_MOVELIST_NAME_DOG_052",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_073"
+      },
+      {
+        "character_hash": 3651497509,
+        "move_name_key": "TEXT_003_MOVELIST_NAME_DOG_002",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_063",
+        "unk_3": 9,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 3651497509,
+        "move_name_key": "TEXT_003_MOVELIST_NAME_DOG_051",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_072",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 3651497509,
+        "move_name_key": "TEXT_003_MOVELIST_NAME_DOG_023",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_037",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 3013172036,
+        "move_name_key": "TEXT_006_MOVELIST_NAME_CBR_056",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_072"
+      },
+      {
+        "character_hash": 3013172036,
+        "move_name_key": "TEXT_006_MOVELIST_NAME_CBR_002",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_062",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 3013172036,
+        "move_name_key": "TEXT_006_MOVELIST_NAME_CBR_050",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_060",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 3013172036,
+        "move_name_key": "TEXT_006_MOVELIST_NAME_CBR_071",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_086",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 1575337196,
+        "move_name_key": "TEXT_000_MOVELIST_NAME_ZBR_013",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_020"
+      },
+      {
+        "character_hash": 1575337196,
+        "move_name_key": "TEXT_008_MOVELIST_NAME_BEE_042",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_069",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 1575337196,
+        "move_name_key": "TEXT_008_MOVELIST_NAME_BEE_044",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_072",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 1575337196,
+        "move_name_key": "TEXT_008_MOVELIST_NAME_BEE_045",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_075",
+        "unk_3": 4,
+        "unk_4": 4
+      },
+      {
+        "character_hash": 1806241895,
+        "move_name_key": "TEXT_010_MOVELIST_NAME_OKM_1160",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_032",
+        "unk_3": 8
+      },
+      {
+        "character_hash": 1806241895,
+        "move_name_key": "TEXT_010_MOVELIST_NAME_OKM_1320",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_062",
+        "unk_3": 1,
+        "unk_4": 1
+      },
+      {
+        "character_hash": 1806241895,
+        "move_name_key": "TEXT_010_MOVELIST_NAME_OKM_1290",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_054",
+        "unk_3": 2,
+        "unk_4": 2
+      },
+      {
+        "character_hash": 1806241895,
+        "move_name_key": "TEXT_010_MOVELIST_NAME_OKM_1240",
+        "command_text_key": "TEXT_000_MOVELIST_COMMAND_CMN_045",
+        "unk_3": 4,
+        "unk_4": 4
+      }
+    ],
+    "unk_values": [
+      33176,
+      16792,
+      4
+    ]
+  }
+}

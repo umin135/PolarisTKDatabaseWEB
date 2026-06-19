@@ -27,7 +27,19 @@
       "Bash(find a:\\\\\\\\Z_GitProjects\\\\\\\\PolarisTKDatabaseWEB\\\\\\\\web\\\\\\\\public\\\\\\\\data -name \"*locali*\" -o -name \"*text*\" -o -name \"*string*\")",
       "Bash(find a:\\\\\\\\Z_GitProjects\\\\\\\\PolarisTKDatabaseWEB -type f \\\\\\( -iname \"*locali*\" -o -iname \"*translation*\" -o -iname \"*string*\" \\\\\\))",
       "PowerShell(Get-ChildItem -Path \"a:\\\\Z_GitProjects\\\\PolarisTKDatabaseWEB\" | Where-Object { $_.PSIsContainer } | Select-Object Name)",
-      "Bash(grep -r \"locali\\\\|translation\\\\|string\" a:\\\\\\\\Z_GitProjects\\\\\\\\PolarisTKDatabaseWEB\\\\\\\\scripts --include=\"*.py\")"
+      "Bash(grep -r \"locali\\\\|translation\\\\|string\" a:\\\\\\\\Z_GitProjects\\\\\\\\PolarisTKDatabaseWEB\\\\\\\\scripts --include=\"*.py\")",
+      "PowerShell(Get-ChildItem \"a:\\\\Z_GitProjects\\\\PolarisTKDatabaseWEB\\\\web\\\\public\\\\data\" -Force | Where-Object {$_.PSIsContainer})",
+      "PowerShell(Get-ChildItem \"a:\\\\Z_GitProjects\\\\PolarisTKDatabaseWEB\\\\web\\\\public\\\\data\" -Force | Select-Object Name | ForEach-Object {$_.Name})",
+      "PowerShell(\\(dir \"a:\\\\Z_GitProjects\\\\PolarisTKDatabaseWEB\\\\web\\\\public\\\\data\\\\3.01.01\\\\fbsdata\"\\).Count; \\(dir \"a:\\\\Z_GitProjects\\\\PolarisTKDatabaseWEB\\\\web\\\\public\\\\data\\\\3.01.01\\\\localize\"\\).Count)",
+      "Bash(npm run *)",
+      "Bash(where node *)",
+      "Read(//usr/local/bin/**)",
+      "Bash(export PATH=\"/c/Program Files/nodejs:$PATH\")",
+      "Bash(curl -s http://localhost:5173/)",
+      "Bash(curl -s \"http://localhost:5174/PolarisTKDatabaseWEB/data/GameVersions.json\")",
+      "Bash(curl -s \"http://localhost:5174/PolarisTKDatabaseWEB/data/3.01.01/fbsdata/customize_item_common_list.json\")",
+      "Bash(curl -s \"http://localhost:5174/PolarisTKDatabaseWEB/data/3.01.01/localize/loc_en.json\")",
+      "Bash(curl -s \"http://localhost:5174/PolarisTKDatabaseWEB/data/3.01.01/localize/loc_ko.json\")"
     ]
   }
 }
