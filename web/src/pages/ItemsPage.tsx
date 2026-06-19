@@ -146,7 +146,7 @@ function CopyToast({ text }: { text: string }) {
 //   ACI_                 →  no thumbnail images exist
 //   sho_f_ items         →  cmn/T_UI_CUS_CH_item_cf0_sho_f_{name}.png  (all female shoes shared)
 //   sho_m_ items         →  cmn/T_UI_CUS_CH_item_cm0_sho_m_{name}.png  (all male shoes shared)
-//   BEI_cmn_eye_*        →  aml/ folder (common eyes have per-char files; aml used as proxy)
+//   BEI_cmn_eye_*        →  {char}/ folder (asset_name has cmn but image files are per-character)
 //   acc items (IP_ only) →  try char folder first, fallback to cmn/ on 404
 const CMN_PREFIXES = new Set(['cf0', 'cm0', 'cmn'])
 // ACI_ (Aura) included — files exist as T_UI_CUS_CH_item_cmn_ara_*.png
@@ -184,9 +184,11 @@ function imageUrl(assetName: string | undefined | null, charCode?: string): stri
     }
   }
 
-  // BEI_cmn_eye_* → per-char files only; use aml as representative
+  // BEI_cmn_eye_* → image exists per-character; requires charCode to resolve
   if (assetName.startsWith('BEI_') && char === 'cmn') {
-    return `${ITEMS_BASE}aml/T_UI_CUS_CH_item_aml_${parts.slice(1).join('_')}.png`
+    const c = charCode?.toLowerCase()
+    if (!c) return null
+    return `${ITEMS_BASE}${c}/T_UI_CUS_CH_item_${c}_${parts.slice(1).join('_')}.png`
   }
 
   const folder = CMN_PREFIXES.has(char) ? 'cmn' : char
