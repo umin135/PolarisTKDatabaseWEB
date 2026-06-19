@@ -160,7 +160,7 @@ function imageUrl(assetName: string | undefined | null, charCode?: string): stri
   // Suntan: no prefix, image is "{char}/T_UI_CUS_CH_item_{char}_suntan.png"
   if (assetName === 'Suntan') {
     const c = charCode?.toLowerCase()
-    return c ? `${import.meta.env.BASE_URL}items/${c}/T_UI_CUS_CH_item_${c}_suntan.png` : null
+    return c ? `${ITEMS_BASE}${c}/T_UI_CUS_CH_item_${c}_suntan.png` : null
   }
 
   const rest = stripPrefix(assetName)
@@ -175,19 +175,19 @@ function imageUrl(assetName: string | undefined | null, charCode?: string): stri
     const g = parts[2]
     if (g === 'f' || g === 'm') {
       const gChar = g === 'f' ? 'cf0' : 'cm0'
-      return `${import.meta.env.BASE_URL}items/cmn/T_UI_CUS_CH_item_${gChar}_${parts.slice(1).join('_')}.png`
+      return `${ITEMS_BASE}cmn/T_UI_CUS_CH_item_${gChar}_${parts.slice(1).join('_')}.png`
     }
   }
 
   // BEI_cmn_eye_* → per-char files only; use aml as representative
   if (assetName.startsWith('BEI_') && char === 'cmn') {
-    return `${import.meta.env.BASE_URL}items/aml/T_UI_CUS_CH_item_aml_${parts.slice(1).join('_')}.png`
+    return `${ITEMS_BASE}aml/T_UI_CUS_CH_item_aml_${parts.slice(1).join('_')}.png`
   }
 
   const folder = CMN_PREFIXES.has(char) ? 'cmn' : char
   // Stage files (stg slot) use capital 'I' in "Item"; all others use lowercase
   const fileTag = slot === 'stg' ? 'T_UI_CUS_CH_Item_' : 'T_UI_CUS_CH_item_'
-  return `${import.meta.env.BASE_URL}items/${folder}/${fileTag}${rest}.png`
+  return `${ITEMS_BASE}${folder}/${fileTag}${rest}.png`
 }
 
 // acc fallback: shared 146 acc images live in cmn/ (e.g. cmn_acc_butterfly)
@@ -198,7 +198,7 @@ function imageAccFallback(assetName: string | undefined | null): string | null {
   const parts = rest.split('_')
   if (parts.length < 3 || parts[1] !== 'acc' || CMN_PREFIXES.has(parts[0])) return null
   const name = parts.slice(2).join('_')
-  return `${import.meta.env.BASE_URL}items/cmn/T_UI_CUS_CH_item_cmn_acc_${name}.png`
+  return `${ITEMS_BASE}cmn/T_UI_CUS_CH_item_cmn_acc_${name}.png`
 }
 
 // ---------------------------------------------------------------------------
@@ -279,7 +279,11 @@ const ROW_STYLE = { borderBottom: '1px solid rgba(255,255,255,0.04)' }
 // Grid card
 // ---------------------------------------------------------------------------
 
-const ICON_BASE = `${import.meta.env.BASE_URL}icons/`
+// In production (GitHub Pages), images are served from jsDelivr CDN pointing at
+// the res/ folder in the repo. In dev, local junctions under public/ are used.
+const _CDN = 'https://cdn.jsdelivr.net/gh/umin135/PolarisTKDatabaseWEB@main/res/'
+const ITEMS_BASE = import.meta.env.PROD ? `${_CDN}CUS_CH_Item/` : `${import.meta.env.BASE_URL}items/`
+const ICON_BASE  = import.meta.env.PROD ? `${_CDN}CUS_CH/`      : `${import.meta.env.BASE_URL}icons/`
 const ICON_BODY   = `${ICON_BASE}T_UI_CUS_CH_Icon_Body.png`
 const ICON_REMOVE = `${ICON_BASE}T_UI_CUS_CH_Icon_StRemove.png`
 
