@@ -7,8 +7,9 @@
 /web/node_modules
 /web/dist
 
-# Item images junction (local dev only – 1.9 GB, too large for git)
+# Image junctions (local dev only – too large for git)
 /web/public/items
+/web/public/icons
 
 # Python artifacts
 /scripts/__pycache__

@@ -144,7 +144,8 @@ function CopyToast({ text }: { text: string }) {
 //   BEI_cmn_eye_*        →  aml/ folder (common eyes have per-char files; aml used as proxy)
 //   acc items (IP_ only) →  try char folder first, fallback to cmn/ on 404
 const CMN_PREFIXES = new Set(['cf0', 'cm0', 'cmn'])
-const ASSET_PREFIXES = ['BMI_', 'ECI_', 'BEI_', 'IP_'] as const
+// ACI_ (Aura) included — files exist as T_UI_CUS_CH_item_cmn_ara_*.png
+const ASSET_PREFIXES = ['BMI_', 'ECI_', 'BEI_', 'ACI_', 'IP_'] as const
 
 function stripPrefix(assetName: string): string | null {
   for (const p of ASSET_PREFIXES) {
@@ -153,8 +154,15 @@ function stripPrefix(assetName: string): string | null {
   return null
 }
 
-function imageUrl(assetName: string | undefined | null): string | null {
+function imageUrl(assetName: string | undefined | null, charCode?: string): string | null {
   if (!assetName) return null
+
+  // Suntan: no prefix, image is "{char}/T_UI_CUS_CH_item_{char}_suntan.png"
+  if (assetName === 'Suntan') {
+    const c = charCode?.toLowerCase()
+    return c ? `${import.meta.env.BASE_URL}items/${c}/T_UI_CUS_CH_item_${c}_suntan.png` : null
+  }
+
   const rest = stripPrefix(assetName)
   if (rest === null) return null
 
@@ -177,7 +185,9 @@ function imageUrl(assetName: string | undefined | null): string | null {
   }
 
   const folder = CMN_PREFIXES.has(char) ? 'cmn' : char
-  return `${import.meta.env.BASE_URL}items/${folder}/T_UI_CUS_CH_item_${rest}.png`
+  // Stage files (stg slot) use capital 'I' in "Item"; all others use lowercase
+  const fileTag = slot === 'stg' ? 'T_UI_CUS_CH_Item_' : 'T_UI_CUS_CH_item_'
+  return `${import.meta.env.BASE_URL}items/${folder}/${fileTag}${rest}.png`
 }
 
 // acc fallback: shared 146 acc images live in cmn/ (e.g. cmn_acc_butterfly)
@@ -269,42 +279,62 @@ const ROW_STYLE = { borderBottom: '1px solid rgba(255,255,255,0.04)' }
 // Grid card
 // ---------------------------------------------------------------------------
 
-function ItemCard({ assetName, label, pos }: { assetName: string | undefined; label: string; pos: string }) {
-  const primary  = imageUrl(assetName)
-  const fallback = imageAccFallback(assetName)
+const ICON_BASE = `${import.meta.env.BASE_URL}icons/`
+const ICON_BODY   = `${ICON_BASE}T_UI_CUS_CH_Icon_Body.png`
+const ICON_REMOVE = `${ICON_BASE}T_UI_CUS_CH_Icon_StRemove.png`
+
+const RARITY_COLORS = ['', 'Gray', 'Green', 'Blue', 'Purple', 'Gold'] as const
+function rarityBgUrl(r: number)   { return r > 0 ? `${ICON_BASE}T_UI_CUS_CH_Rarity_${RARITY_COLORS[r]}.png`      : null }
+function rarityIconUrl(r: number) { return r > 0 ? `${ICON_BASE}T_UI_CUS_CH_Rarity_Icon_${RARITY_COLORS[r]}.png` : null }
+
+function ItemCard({ assetName, label, pos, charCode, rarity = 0 }: {
+  assetName: string | undefined; label: string; pos: string; charCode?: string; rarity?: number
+}) {
+  const isRemove = assetName === 'REMOVE'
+  const primary  = isRemove ? ICON_REMOVE : imageUrl(assetName, charCode)
+  const fallback = isRemove ? null        : imageAccFallback(assetName)
   const color = ITEM_POS_COLORS[pos]
   const [errCount, setErrCount] = useState(0)
 
-  const src = errCount === 0 ? primary : errCount === 1 ? fallback : null
+  const src = errCount === 0 ? primary
+            : errCount === 1 ? (fallback ?? ICON_BODY)
+            : ICON_BODY
+
+  const bgUrl   = rarityBgUrl(rarity)
+  const iconUrl = rarityIconUrl(rarity)
 
   return (
     <div
-      className="flex flex-col rounded-lg overflow-hidden transition-all duration-150 hover:scale-[1.03] hover:shadow-lg"
+      className="flex flex-col overflow-hidden transition-all duration-150 hover:scale-[1.03] hover:shadow-lg"
       style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}
     >
-      <div
-        className="relative flex items-center justify-center"
-        style={{ background: 'rgba(0,0,0,0.3)', aspectRatio: '1' }}
-      >
-        {src ? (
-          <img
-            src={src}
-            alt={label}
-            className="w-full h-full object-contain p-1"
-            onError={() => setErrCount(c => c + 1)}
-          />
-        ) : (
-          <div className="text-slate-700 text-[10px] font-mono text-center px-2 leading-tight">
-            {assetName ?? '—'}
-          </div>
+      <div className="relative" style={{ background: 'rgba(0,0,0,0.3)', aspectRatio: '1' }}>
+        {/* Rarity background */}
+        {bgUrl && (
+          <img src={bgUrl} aria-hidden className="absolute inset-0 w-full h-full object-cover" />
         )}
+
+        {/* Item thumbnail */}
+        <img
+          src={src ?? ICON_BODY}
+          alt={label}
+          className="absolute inset-0 w-full h-full object-contain p-1"
+          onError={() => setErrCount(c => Math.min(c + 1, 2))}
+        />
+
+        {/* Rarity icon — top-left */}
+        {iconUrl && (
+          <img src={iconUrl} aria-hidden className="absolute top-1 left-1 w-6 h-6 object-contain" />
+        )}
+
+        {/* Item position badge — top-right */}
         {pos && pos !== 'none' && pos !== 'NONE' && (
           <span
-            className="absolute top-1 right-1 text-[9px] px-1 py-0.5 rounded font-medium"
+            className="absolute top-1 right-1 text-[9px] px-1 py-0.5 rounded font-medium leading-none"
             style={{
-              background: `${color ?? '#94a3b8'}18`,
+              background: `${color ?? '#94a3b8'}28`,
               color: color ?? '#94a3b8',
-              border: `1px solid ${color ?? '#94a3b8'}40`,
+              border: `1px solid ${color ?? '#94a3b8'}50`,
             }}
           >
             {ITEM_POS_LABEL[pos] ?? pos}
@@ -490,8 +520,10 @@ function CommonItemsTab({ data }: { data: CustomizeItemCommonEntry[] }) {
               <ItemCard
                 key={e.char_item_id}
                 assetName={e.asset_name}
-                label={e.asset_name?.replace(/^IP_/, '') ?? String(e.char_item_id)}
+                label={e.asset_name?.replace(/^(?:IP|BMI|ECI|BEI|ACI)_/, '') ?? String(e.char_item_id)}
                 pos={posCode(e.hash_1)}
+                charCode={CHAR_HASH[e.character_hash ?? 0]}
+                rarity={e.unk_11 ?? 0}
               />
             ))}
           </div>
@@ -657,8 +689,10 @@ function UniqueItemsTab({
               <ItemCard
                 key={e.char_item_id ?? i}
                 assetName={e.asset_name}
-                label={e.asset_name?.replace(/^IP_/, '') ?? String(e.char_item_id ?? i)}
+                label={e.asset_name?.replace(/^(?:IP|BMI|ECI|BEI|ACI)_/, '') ?? String(e.char_item_id ?? i)}
                 pos={posCode(e.hash_1)}
+                charCode={CHAR_HASH[e.character_hash ?? 0]}
+                rarity={e.unk_10 ?? 0}
               />
             ))}
           </div>
