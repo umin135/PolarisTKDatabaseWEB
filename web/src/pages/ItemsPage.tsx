@@ -8,6 +8,7 @@ import type {
   CustomizeItemCommonEntry,
   CustomizeItemUniqueList,
   CustomizeItemUniqueEntry,
+  LocDict,
 } from '../lib/types'
 
 // ---------------------------------------------------------------------------
@@ -97,6 +98,11 @@ function hexStr(n: number | undefined | null): string {
 
 function boolVal(v: boolean | undefined): string {
   return String(v ?? false)
+}
+
+function resolveLoc(key: string | undefined | null, loc: LocDict): string {
+  if (!key) return ''
+  return loc[key] ?? key
 }
 
 function useCopyToast() {
@@ -381,7 +387,7 @@ function ViewToggle({ mode, onChange }: { mode: ViewMode; onChange: (m: ViewMode
 // Common Items Tab
 // ---------------------------------------------------------------------------
 
-function CommonItemsTab({ data }: { data: CustomizeItemCommonEntry[] }) {
+function CommonItemsTab({ data, loc }: { data: CustomizeItemCommonEntry[]; loc: LocDict }) {
   const [charFilter, setCharFilter] = useState('')
   const [posFilter, setPosFilter] = useState('')
   const [q, setQ] = useState('')
@@ -473,14 +479,14 @@ function CommonItemsTab({ data }: { data: CustomizeItemCommonEntry[] }) {
                     </td>
                     <td className="px-3 py-2 font-mono text-slate-300 whitespace-nowrap" data-value={String(e.character_hash ?? 0)}>{charLabel(e.character_hash)}</td>
                     <td className="px-3 py-2 whitespace-nowrap" data-value={String(e.hash_1 ?? 0)}><PosBadge pos={pos} /></td>
-                    <td className="px-3 py-2 font-mono text-slate-400 whitespace-nowrap" style={{ maxWidth: 220 }}>
-                      <span className="block truncate">{e.text_key ?? 0}</span>
+                    <td className="px-3 py-2 text-slate-300 whitespace-nowrap" data-value={e.text_key ?? ''} style={{ maxWidth: 220 }}>
+                      <span className="block truncate">{resolveLoc(e.text_key, loc)}</span>
                     </td>
-                    <td className="px-3 py-2 font-mono text-slate-500 whitespace-nowrap" style={{ maxWidth: 200 }}>
-                      <span className="block truncate">{e.extra_text_key_1 ?? 0}</span>
+                    <td className="px-3 py-2 font-mono text-slate-500 whitespace-nowrap" data-value={e.extra_text_key_1 ?? ''} style={{ maxWidth: 200 }}>
+                      <span className="block truncate">{resolveLoc(e.extra_text_key_1, loc) || (e.extra_text_key_1 ?? 0)}</span>
                     </td>
-                    <td className="px-3 py-2 font-mono text-slate-500 whitespace-nowrap" style={{ maxWidth: 200 }}>
-                      <span className="block truncate">{e.extra_text_key_2 ?? 0}</span>
+                    <td className="px-3 py-2 font-mono text-slate-500 whitespace-nowrap" data-value={e.extra_text_key_2 ?? ''} style={{ maxWidth: 200 }}>
+                      <span className="block truncate">{resolveLoc(e.extra_text_key_2, loc) || (e.extra_text_key_2 ?? 0)}</span>
                     </td>
                     <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_8 ?? 0}</td>
                     <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.shop_sort_id ?? 0}</td>
@@ -524,7 +530,7 @@ function CommonItemsTab({ data }: { data: CustomizeItemCommonEntry[] }) {
               <ItemCard
                 key={e.char_item_id}
                 assetName={e.asset_name}
-                label={e.asset_name?.replace(/^(?:IP|BMI|ECI|BEI|ACI)_/, '') ?? String(e.char_item_id)}
+                label={resolveLoc(e.text_key, loc) || e.asset_name?.replace(/^(?:IP|BMI|ECI|BEI|ACI)_/, '') || String(e.char_item_id)}
                 pos={posCode(e.hash_1)}
                 charCode={CHAR_HASH[e.character_hash ?? 0]}
                 rarity={e.unk_11 ?? 0}
@@ -553,10 +559,11 @@ function CommonItemsTab({ data }: { data: CustomizeItemCommonEntry[] }) {
 // ---------------------------------------------------------------------------
 
 function UniqueItemsTab({
-  entries, bodyEntries,
+  entries, bodyEntries, loc,
 }: {
   entries: CustomizeItemUniqueEntry[]
   bodyEntries: { asset_name: string; char_item_id: number }[]
+  loc: LocDict
 }) {
   const [charFilter, setCharFilter] = useState('')
   const [posFilter, setPosFilter] = useState('')
@@ -647,14 +654,14 @@ function UniqueItemsTab({
                     </td>
                     <td className="px-3 py-2 font-mono text-slate-300 whitespace-nowrap" data-value={String(e.character_hash ?? 0)}>{charLabel(e.character_hash)}</td>
                     <td className="px-3 py-2 whitespace-nowrap" data-value={String(e.hash_1 ?? 0)}><PosBadge pos={pos} /></td>
-                    <td className="px-3 py-2 font-mono text-slate-400 whitespace-nowrap" style={{ maxWidth: 220 }}>
-                      <span className="block truncate">{e.text_key ?? 0}</span>
+                    <td className="px-3 py-2 text-slate-300 whitespace-nowrap" data-value={e.text_key ?? ''} style={{ maxWidth: 220 }}>
+                      <span className="block truncate">{resolveLoc(e.text_key, loc)}</span>
                     </td>
-                    <td className="px-3 py-2 font-mono text-slate-500 whitespace-nowrap" style={{ maxWidth: 200 }}>
-                      <span className="block truncate">{e.extra_text_key_1 ?? 0}</span>
+                    <td className="px-3 py-2 font-mono text-slate-500 whitespace-nowrap" data-value={e.extra_text_key_1 ?? ''} style={{ maxWidth: 200 }}>
+                      <span className="block truncate">{resolveLoc(e.extra_text_key_1, loc) || (e.extra_text_key_1 ?? 0)}</span>
                     </td>
-                    <td className="px-3 py-2 font-mono text-slate-500 whitespace-nowrap" style={{ maxWidth: 200 }}>
-                      <span className="block truncate">{e.extra_text_key_2 ?? 0}</span>
+                    <td className="px-3 py-2 font-mono text-slate-500 whitespace-nowrap" data-value={e.extra_text_key_2 ?? ''} style={{ maxWidth: 200 }}>
+                      <span className="block truncate">{resolveLoc(e.extra_text_key_2, loc) || (e.extra_text_key_2 ?? 0)}</span>
                     </td>
                     <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.flag_7 ?? 0}</td>
                     <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_8 ?? 0}</td>
@@ -693,7 +700,7 @@ function UniqueItemsTab({
               <ItemCard
                 key={e.char_item_id ?? i}
                 assetName={e.asset_name}
-                label={e.asset_name?.replace(/^(?:IP|BMI|ECI|BEI|ACI)_/, '') ?? String(e.char_item_id ?? i)}
+                label={resolveLoc(e.text_key, loc) || e.asset_name?.replace(/^(?:IP|BMI|ECI|BEI|ACI)_/, '') || String(e.char_item_id ?? i)}
                 pos={posCode(e.hash_1)}
                 charCode={CHAR_HASH[e.character_hash ?? 0]}
                 rarity={e.unk_10 ?? 0}
@@ -745,10 +752,12 @@ export function ItemsPage() {
 
   const commonResult = useData<CustomizeItemCommonList>('customize_item_common_list')
   const uniqueResult = useData<CustomizeItemUniqueList>('customize_item_unique_list')
+  const locResult    = useData<LocDict>('loc_en')
 
   const commonEntries = commonResult.data?.data?.entries ?? []
   const uniqueEntries = uniqueResult.data?.data?.entries ?? []
   const bodyEntries   = uniqueResult.data?.data?.body_entries ?? []
+  const loc           = locResult.data ?? {}
 
   const isLoading = tab === 'common' ? commonResult.loading : uniqueResult.loading
   const hasError  = tab === 'common' ? commonResult.error   : uniqueResult.error
@@ -795,10 +804,10 @@ export function ItemsPage() {
       {hasError  && <ErrorState error={hasError} />}
 
       {!isLoading && !hasError && tab === 'common' && (
-        <CommonItemsTab data={commonEntries} />
+        <CommonItemsTab data={commonEntries} loc={loc} />
       )}
       {!isLoading && !hasError && tab === 'unique' && (
-        <UniqueItemsTab entries={uniqueEntries} bodyEntries={bodyEntries} />
+        <UniqueItemsTab entries={uniqueEntries} bodyEntries={bodyEntries} loc={loc} />
       )}
     </div>
   )

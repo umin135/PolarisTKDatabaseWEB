@@ -1,3 +1,6 @@
+// --- localization ---
+export type LocDict = Record<string, string>
+
 // --- character_list ---
 export interface CharacterEntry {
   character_code: string

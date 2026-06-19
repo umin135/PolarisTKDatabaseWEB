@@ -18,7 +18,16 @@
       "Bash(python3 -c ' *)",
       "PowerShell(cmd /c mklink /J \"a:\\\\Z_GitProjects\\\\PolarisTKDatabaseWEB\\\\web\\\\public\\\\icons\" \"a:\\\\Z_GitProjects\\\\PolarisTKDatabaseWEB\\\\res\\\\CUS_CH\")",
       "PowerShell(python --version 2>&1)",
-      "PowerShell(python -c \"import PIL; print\\(PIL.__version__\\)\" 2>&1)"
+      "PowerShell(python -c \"import PIL; print\\(PIL.__version__\\)\" 2>&1)",
+      "Bash(find a:\\\\\\\\Z_GitProjects\\\\\\\\PolarisTKDatabaseWEB -type f -name \"*locali*\" -o -name \"*translation*\" -o -name \"*lang*\")",
+      "Bash(powershell -Command \"Get-Content 'a:\\\\Z_GitProjects\\\\PolarisTKDatabaseWEB\\\\web\\\\public\\\\data\\\\customize_item_common_list.json' | ConvertFrom-Json -Depth 10 | Select-Object -ExpandProperty data | Select-Object -ExpandProperty entries | Select-Object -First 20 | Select-Object char_item_id, asset_name, text_key, extra_text_key_1, extra_text_key_2 | Format-Table -AutoSize\")",
+      "Bash(find a:\\\\\\\\Z_GitProjects\\\\\\\\PolarisTKDatabaseWEB\\\\\\\\web\\\\\\\\public\\\\\\\\data -type f -name \"*.json\")",
+      "PowerShell(Get-ChildItem -Path \"a:\\\\Z_GitProjects\\\\PolarisTKDatabaseWEB\\\\web\\\\public\\\\data\" | Select-Object Name, @{Name=\"Type\";Expression={if\\($_.PSIsContainer\\){\"Dir\"}else{\"File\"}}} | Sort-Object Name)",
+      "PowerShell(\\(Get-ChildItem -Path \"a:\\\\Z_GitProjects\\\\PolarisTKDatabaseWEB\\\\web\\\\public\\\\data\" -File | Measure-Object\\).Count)",
+      "Bash(find a:\\\\\\\\Z_GitProjects\\\\\\\\PolarisTKDatabaseWEB\\\\\\\\web\\\\\\\\public\\\\\\\\data -name \"*locali*\" -o -name \"*text*\" -o -name \"*string*\")",
+      "Bash(find a:\\\\\\\\Z_GitProjects\\\\\\\\PolarisTKDatabaseWEB -type f \\\\\\( -iname \"*locali*\" -o -iname \"*translation*\" -o -iname \"*string*\" \\\\\\))",
+      "PowerShell(Get-ChildItem -Path \"a:\\\\Z_GitProjects\\\\PolarisTKDatabaseWEB\" | Where-Object { $_.PSIsContainer } | Select-Object Name)",
+      "Bash(grep -r \"locali\\\\|translation\\\\|string\" a:\\\\\\\\Z_GitProjects\\\\\\\\PolarisTKDatabaseWEB\\\\\\\\scripts --include=\"*.py\")"
     ]
   }
 }
