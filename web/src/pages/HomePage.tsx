@@ -40,16 +40,12 @@ export function HomePage() {
     <div className="p-6 max-w-4xl mx-auto">
       {/* Hero */}
       <div className="mb-10 mt-4">
-        <h1
-          className="text-4xl font-bold mb-3"
-          style={{
-            background: 'linear-gradient(135deg, #a78bfa 0%, #60a5fa 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-          }}
-        >
-          Polaris TK Database
-        </h1>
+        <img
+          src={`${import.meta.env.BASE_URL}title.png`}
+          alt="Polaris TK Database"
+          className="mb-3"
+          style={{ height: 72, width: 'auto' }}
+        />
         <p className="text-slate-400 text-base">
           Tekken 8 game data extracted from <code className="text-violet-400 bg-violet-500/10 px-1 rounded">tkdata.bin</code> and parsed from FlatBuffers binary format.
         </p>

@@ -106,7 +106,7 @@ function useCopyToast() {
   function handleCellClick(e: React.MouseEvent<HTMLTableElement>) {
     const td = (e.target as HTMLElement).closest('td')
     if (!td) return
-    const value = td.innerText.trim()
+    const value = td.dataset.value ?? td.innerText.trim()
     navigator.clipboard.writeText(value)
     clearTimeout(timer.current)
     setText(value)
@@ -471,8 +471,8 @@ function CommonItemsTab({ data }: { data: CustomizeItemCommonEntry[] }) {
                     <td className="px-3 py-2 font-mono text-slate-300 whitespace-nowrap" style={{ maxWidth: 220 }}>
                       <span className="block truncate">{e.asset_name ?? 0}</span>
                     </td>
-                    <td className="px-3 py-2 font-mono text-slate-300 whitespace-nowrap">{charLabel(e.character_hash)}</td>
-                    <td className="px-3 py-2 whitespace-nowrap"><PosBadge pos={pos} /></td>
+                    <td className="px-3 py-2 font-mono text-slate-300 whitespace-nowrap" data-value={String(e.character_hash ?? 0)}>{charLabel(e.character_hash)}</td>
+                    <td className="px-3 py-2 whitespace-nowrap" data-value={String(e.hash_1 ?? 0)}><PosBadge pos={pos} /></td>
                     <td className="px-3 py-2 font-mono text-slate-400 whitespace-nowrap" style={{ maxWidth: 220 }}>
                       <span className="block truncate">{e.text_key ?? 0}</span>
                     </td>
@@ -488,7 +488,7 @@ function CommonItemsTab({ data }: { data: CustomizeItemCommonEntry[] }) {
                       {boolVal(e.is_enabled)}
                     </td>
                     <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_11 ?? 0}</td>
-                    <td className="px-3 py-2 text-slate-300 whitespace-nowrap text-right">
+                    <td className="px-3 py-2 text-slate-300 whitespace-nowrap text-right" data-value={String(e.price ?? 0)}>
                       {(e.price ?? 0).toLocaleString()}
                     </td>
                     <td className="px-3 py-2 whitespace-nowrap" style={{ color: e.unk_13 === true ? '#34d399' : '#f87171' }}>
@@ -500,12 +500,12 @@ function CommonItemsTab({ data }: { data: CustomizeItemCommonEntry[] }) {
                       {boolVal(e.unk_16)}
                     </td>
                     <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_17 ?? 0}</td>
-                    <td className="px-3 py-2 font-mono text-slate-600 whitespace-nowrap">{hexStr(e.hash_3)}</td>
+                    <td className="px-3 py-2 font-mono text-slate-600 whitespace-nowrap" data-value={String(e.hash_3 ?? 0)}>{hexStr(e.hash_3)}</td>
                     <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_19 ?? 0}</td>
                     <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_20 ?? 0}</td>
                     <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_21 ?? 0}</td>
                     <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_22 ?? 0}</td>
-                    <td className="px-3 py-2 font-mono text-slate-600 whitespace-nowrap">{hexStr(e.hash_4)}</td>
+                    <td className="px-3 py-2 font-mono text-slate-600 whitespace-nowrap" data-value={String(e.hash_4 ?? 0)}>{hexStr(e.hash_4)}</td>
                     <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_24 ?? 0}</td>
                     <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.sort_group ?? 0}</td>
                   </tr>
@@ -645,8 +645,8 @@ function UniqueItemsTab({
                     <td className="px-3 py-2 font-mono text-slate-300 whitespace-nowrap" style={{ maxWidth: 220 }}>
                       <span className="block truncate">{e.asset_name || ''}</span>
                     </td>
-                    <td className="px-3 py-2 font-mono text-slate-300 whitespace-nowrap">{charLabel(e.character_hash)}</td>
-                    <td className="px-3 py-2 whitespace-nowrap"><PosBadge pos={pos} /></td>
+                    <td className="px-3 py-2 font-mono text-slate-300 whitespace-nowrap" data-value={String(e.character_hash ?? 0)}>{charLabel(e.character_hash)}</td>
+                    <td className="px-3 py-2 whitespace-nowrap" data-value={String(e.hash_1 ?? 0)}><PosBadge pos={pos} /></td>
                     <td className="px-3 py-2 font-mono text-slate-400 whitespace-nowrap" style={{ maxWidth: 220 }}>
                       <span className="block truncate">{e.text_key ?? 0}</span>
                     </td>
@@ -662,17 +662,17 @@ function UniqueItemsTab({
                       {boolVal(e.flag_9)}
                     </td>
                     <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_10 ?? 0}</td>
-                    <td className="px-3 py-2 text-slate-300 whitespace-nowrap text-right">
+                    <td className="px-3 py-2 text-slate-300 whitespace-nowrap text-right" data-value={String(e.price ?? 0)}>
                       {(e.price ?? 0).toLocaleString()}
                     </td>
                     <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_12 ?? 0}</td>
                     <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_13 ?? 0}</td>
-                    <td className="px-3 py-2 font-mono text-slate-600 whitespace-nowrap">{hexStr(e.hash_2)}</td>
+                    <td className="px-3 py-2 font-mono text-slate-600 whitespace-nowrap" data-value={String(e.hash_2 ?? 0)}>{hexStr(e.hash_2)}</td>
                     <td className="px-3 py-2 whitespace-nowrap" style={{ color: e.flag_15 === true ? '#34d399' : '#f87171' }}>
                       {boolVal(e.flag_15)}
                     </td>
                     <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_16 ?? 0}</td>
-                    <td className="px-3 py-2 font-mono text-slate-600 whitespace-nowrap">{hexStr(e.hash_3)}</td>
+                    <td className="px-3 py-2 font-mono text-slate-600 whitespace-nowrap" data-value={String(e.hash_3 ?? 0)}>{hexStr(e.hash_3)}</td>
                     <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_18 ?? 0}</td>
                     <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_19 ?? 0}</td>
                     <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_20 ?? 0}</td>

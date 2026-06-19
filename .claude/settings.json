@@ -16,7 +16,9 @@
       "Bash(python3 -c \"import os; total=sum\\(os.path.getsize\\(os.path.join\\(r,f\\)\\) for r,d,fs in os.walk\\(r'a:\\\\Z_GitProjects\\\\PolarisTKDatabaseWEB\\\\res\\\\CUS_CH_Item'\\) for f in fs\\); print\\(f'{total/1024/1024:.1f} MB, files: {sum\\(1 for r,d,fs in os.walk\\(r\\\\\"a:\\\\Z_GitProjects\\\\PolarisTKDatabaseWEB\\\\res\\\\CUS_CH_Item\\\\\"\\) for f in fs\\)}'\\)\")",
       "PowerShell(cmd /c mklink /J \"a:\\\\Z_GitProjects\\\\PolarisTKDatabaseWEB\\\\web\\\\public\\\\items\" \"a:\\\\Z_GitProjects\\\\PolarisTKDatabaseWEB\\\\res\\\\CUS_CH_Item\")",
       "Bash(python3 -c ' *)",
-      "PowerShell(cmd /c mklink /J \"a:\\\\Z_GitProjects\\\\PolarisTKDatabaseWEB\\\\web\\\\public\\\\icons\" \"a:\\\\Z_GitProjects\\\\PolarisTKDatabaseWEB\\\\res\\\\CUS_CH\")"
+      "PowerShell(cmd /c mklink /J \"a:\\\\Z_GitProjects\\\\PolarisTKDatabaseWEB\\\\web\\\\public\\\\icons\" \"a:\\\\Z_GitProjects\\\\PolarisTKDatabaseWEB\\\\res\\\\CUS_CH\")",
+      "PowerShell(python --version 2>&1)",
+      "PowerShell(python -c \"import PIL; print\\(PIL.__version__\\)\" 2>&1)"
     ]
   }
 }
