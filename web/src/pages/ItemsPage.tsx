@@ -53,15 +53,15 @@ export const SERIES_HASH: Record<number, string> = {
 const PAGE_SIZE = 100
 
 const ITEM_POS_LABEL: Record<string, string> = {
-  hed: 'Head',        har: 'Hair',         hef: 'Head Feature',
-  fah: 'Face',        fac: 'Face',         fap: 'Face Paint',
-  eye: 'Eyes',        eym: 'Eye Makeup',   lip: 'Lips',
-  chk: 'Cheeks',      bdu: 'Body / Suit',  bdf: 'Body Feature',
-  btm: 'Bottom',      gla: 'Gloves',       sho: 'Shoes',
-  ara: 'Aura Item',   acc: 'Accessory',    eff: 'Effect',
-  stg: 'Stage',       stn: 'Stage',
-  ex0: 'Extra 0',     ex1: 'Extra 1',      ex2: 'Extra 2',   ex3: 'Extra 3',
-  none: '–',          NONE: '–',
+  hed: 'Head',        har: 'Hair',         hef: 'Full-Face',
+  fah: 'Face hair',   fac: 'Face',         fap: 'Face Paint',
+  eye: 'Eyes',        eym: 'Eye makeup',   lip: 'Lips',
+  chk: 'Cheeks',      bdu: 'Upper body',   bdf: 'Entire body',
+  btm: 'Lower body',  gla: 'Glasses',      sho: 'Shoes',
+  ara: 'Aura',        acc: 'Accessory',    eff: 'Hit Effect',
+  stg: 'Stage',       stn: 'Suntan',
+  ex0: 'Unique 1',     ex1: 'Unique 2',      ex2: 'Unique 3',   ex3: 'Unique 4',
+  none: 'none',          NONE: 'NONE',
 }
 
 const ITEM_POS_COLORS: Record<string, string> = {
@@ -86,13 +86,18 @@ function posCode(hash1: number | undefined): string {
 }
 
 function charLabel(h: number | undefined): string {
-  if (h === undefined || h === null) return '–'
+  if (h === undefined || h === null) return '0'
   return CHAR_HASH[h] ?? hexStr(h)
 }
 
 function hexStr(n: number | undefined | null): string {
-  if (n === undefined || n === null) return '–'
+  if (n === undefined || n === null) return '0'
   return `0x${(n >>> 0).toString(16).toUpperCase().padStart(8, '0')}`
+}
+
+function boolVal(v: boolean | undefined): string {
+  if (v === undefined || v === null) return ''
+  return String(v)
 }
 
 // ---------------------------------------------------------------------------
@@ -181,7 +186,7 @@ function CommonItemsTab({ data }: { data: CustomizeItemCommonEntry[] }) {
 
   const charOptions = useMemo(() => {
     const hashes = new Set(data.map(e => e.character_hash).filter((h): h is number => h !== undefined))
-    return [...hashes].sort((a, b) => (CHAR_HASH[a] ?? '').localeCompare(CHAR_HASH[b] ?? ''))
+    return [...hashes].sort((a, b) => (CHAR_HASH[a] ?? 0).localeCompare(CHAR_HASH[b] ?? 0))
   }, [data])
 
   const posOptions = useMemo(() => {
@@ -255,47 +260,47 @@ function CommonItemsTab({ data }: { data: CustomizeItemCommonEntry[] }) {
               return (
                 <tr key={e.char_item_id} className="hover:bg-white/[0.03] transition-colors" style={ROW_STYLE}>
                   <td className="px-3 py-2 font-mono text-violet-300 whitespace-nowrap">{e.char_item_id}</td>
-                  <td className="px-3 py-2 font-mono text-slate-500 whitespace-nowrap text-right">{e.base_id ?? '–'}</td>
+                  <td className="px-3 py-2 font-mono text-slate-500 whitespace-nowrap text-right">{e.base_id ?? 0}</td>
                   <td className="px-3 py-2 font-mono text-slate-300 whitespace-nowrap" style={{ maxWidth: 220 }}>
-                    <span className="block truncate">{e.asset_name ?? '–'}</span>
+                    <span className="block truncate">{e.asset_name ?? 0}</span>
                   </td>
                   <td className="px-3 py-2 font-mono text-slate-300 whitespace-nowrap">{charLabel(e.character_hash)}</td>
                   <td className="px-3 py-2 whitespace-nowrap"><PosBadge pos={pos} /></td>
                   <td className="px-3 py-2 font-mono text-slate-400 whitespace-nowrap" style={{ maxWidth: 220 }}>
-                    <span className="block truncate">{e.text_key ?? '–'}</span>
+                    <span className="block truncate">{e.text_key ?? 0}</span>
                   </td>
                   <td className="px-3 py-2 font-mono text-slate-500 whitespace-nowrap" style={{ maxWidth: 200 }}>
-                    <span className="block truncate">{e.extra_text_key_1 ?? '–'}</span>
+                    <span className="block truncate">{e.extra_text_key_1 ?? 0}</span>
                   </td>
                   <td className="px-3 py-2 font-mono text-slate-500 whitespace-nowrap" style={{ maxWidth: 200 }}>
-                    <span className="block truncate">{e.extra_text_key_2 ?? '–'}</span>
+                    <span className="block truncate">{e.extra_text_key_2 ?? 0}</span>
                   </td>
-                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_8 ?? '–'}</td>
-                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.shop_sort_id ?? '–'}</td>
-                  <td className="px-3 py-2 whitespace-nowrap" style={{ color: e.is_enabled ? '#34d399' : '#6b7280' }}>
-                    {e.is_enabled ? '✓' : '–'}
+                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_8 ?? 0}</td>
+                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.shop_sort_id ?? 0}</td>
+                  <td className="px-3 py-2 whitespace-nowrap" style={{ color: e.is_enabled === true ? '#34d399' : '#6b7280' }}>
+                    {boolVal(e.is_enabled)}
                   </td>
-                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_11 ?? '–'}</td>
+                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_11 ?? 0}</td>
                   <td className="px-3 py-2 text-slate-300 whitespace-nowrap text-right">
-                    {e.price !== undefined ? e.price.toLocaleString() : '–'}
+                    {(e.price ?? 0).toLocaleString()}
                   </td>
-                  <td className="px-3 py-2 whitespace-nowrap" style={{ color: e.unk_13 ? '#34d399' : '#6b7280' }}>
-                    {e.unk_13 !== undefined ? (e.unk_13 ? '✓' : '–') : '–'}
+                  <td className="px-3 py-2 whitespace-nowrap" style={{ color: e.unk_13 === true ? '#34d399' : '#6b7280' }}>
+                    {boolVal(e.unk_13)}
                   </td>
-                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_14 ?? '–'}</td>
-                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_15 ?? '–'}</td>
-                  <td className="px-3 py-2 whitespace-nowrap" style={{ color: e.unk_16 ? '#34d399' : '#6b7280' }}>
-                    {e.unk_16 !== undefined ? (e.unk_16 ? '✓' : '–') : '–'}
+                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_14 ?? 0}</td>
+                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_15 ?? 0}</td>
+                  <td className="px-3 py-2 whitespace-nowrap" style={{ color: e.unk_16 === true ? '#34d399' : '#6b7280' }}>
+                    {boolVal(e.unk_16)}
                   </td>
-                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_17 ?? '–'}</td>
+                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_17 ?? 0}</td>
                   <td className="px-3 py-2 font-mono text-slate-600 whitespace-nowrap">{hexStr(e.hash_3)}</td>
-                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_19 ?? '–'}</td>
-                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_20 ?? '–'}</td>
-                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_21 ?? '–'}</td>
-                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_22 ?? '–'}</td>
+                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_19 ?? 0}</td>
+                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_20 ?? 0}</td>
+                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_21 ?? 0}</td>
+                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_22 ?? 0}</td>
                   <td className="px-3 py-2 font-mono text-slate-600 whitespace-nowrap">{hexStr(e.hash_4)}</td>
-                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_24 ?? '–'}</td>
-                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.sort_group ?? '–'}</td>
+                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_24 ?? 0}</td>
+                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.sort_group ?? 0}</td>
                 </tr>
               )
             })}
@@ -329,7 +334,7 @@ function UniqueItemsTab({
 
   const charOptions = useMemo(() => {
     const hashes = new Set(entries.map(e => e.character_hash).filter((h): h is number => h !== undefined))
-    return [...hashes].sort((a, b) => (CHAR_HASH[a] ?? '').localeCompare(CHAR_HASH[b] ?? ''))
+    return [...hashes].sort((a, b) => (CHAR_HASH[a] ?? 0).localeCompare(CHAR_HASH[b] ?? 0))
   }, [entries])
 
   const posOptions = useMemo(() => {
@@ -346,7 +351,7 @@ function UniqueItemsTab({
       if (lq &&
         !(e.asset_name ?? '').toLowerCase().includes(lq) &&
         !(e.text_key ?? '').toLowerCase().includes(lq) &&
-        !String(e.char_item_id ?? '').includes(lq)) return false
+        !String(e.char_item_id ?? 0).includes(lq)) return false
       return true
     })
   }, [entries, charFilter, posFilter, q])
@@ -387,10 +392,10 @@ function UniqueItemsTab({
           <thead>
             <tr className="sticky top-0" style={{ background: 'rgba(15,15,22,0.97)', backdropFilter: 'blur(8px)' }}>
               {[
-                'char_item_id', 'asset_name', 'character', 'item_position',
-                'text_key', 'extra_text_key_1', 'extra_text_key_2',
-                'flag_7', 'unk_8', 'flag_9', 'unk_10', 'price', 'unk_12', 'unk_13',
-                'hash_2', 'flag_15', 'unk_16', 'hash_3', 'unk_18', 'unk_19', 'unk_20', 'unk_21',
+                'Item ID', 'AssetName', 'Character ID', 'ItemPosition ID',
+                'Name Key', 'Extra Text Key 1', 'Extra Text Key 2',
+                'IsDefault', 'unk_8', 'Visiblity', 'Rarity', 'Price', 'unk_12', 'unk_13',
+                'hash_2', 'isColorable', 'unk_16', 'hash_3', 'unk_18', 'unk_19', 'unk_20', 'Game Version',
               ].map(h => (
                 <th key={h} className={TH} style={TH_STYLE}>{h}</th>
               ))}
@@ -401,42 +406,42 @@ function UniqueItemsTab({
               const pos = posCode(e.hash_1)
               return (
                 <tr key={e.char_item_id ?? i} className="hover:bg-white/[0.03] transition-colors" style={ROW_STYLE}>
-                  <td className="px-3 py-2 font-mono text-violet-300 whitespace-nowrap">{e.char_item_id ?? '–'}</td>
+                  <td className="px-3 py-2 font-mono text-violet-300 whitespace-nowrap">{e.char_item_id ?? 0}</td>
                   <td className="px-3 py-2 font-mono text-slate-300 whitespace-nowrap" style={{ maxWidth: 220 }}>
-                    <span className="block truncate">{e.asset_name || '–'}</span>
+                    <span className="block truncate">{e.asset_name || ''}</span>
                   </td>
                   <td className="px-3 py-2 font-mono text-slate-300 whitespace-nowrap">{charLabel(e.character_hash)}</td>
                   <td className="px-3 py-2 whitespace-nowrap"><PosBadge pos={pos} /></td>
                   <td className="px-3 py-2 font-mono text-slate-400 whitespace-nowrap" style={{ maxWidth: 220 }}>
-                    <span className="block truncate">{e.text_key ?? '–'}</span>
+                    <span className="block truncate">{e.text_key ?? 0}</span>
                   </td>
                   <td className="px-3 py-2 font-mono text-slate-500 whitespace-nowrap" style={{ maxWidth: 200 }}>
-                    <span className="block truncate">{e.extra_text_key_1 ?? '–'}</span>
+                    <span className="block truncate">{e.extra_text_key_1 ?? 0}</span>
                   </td>
                   <td className="px-3 py-2 font-mono text-slate-500 whitespace-nowrap" style={{ maxWidth: 200 }}>
-                    <span className="block truncate">{e.extra_text_key_2 ?? '–'}</span>
+                    <span className="block truncate">{e.extra_text_key_2 ?? 0}</span>
                   </td>
-                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.flag_7 ?? '–'}</td>
-                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_8 ?? '–'}</td>
-                  <td className="px-3 py-2 whitespace-nowrap" style={{ color: e.flag_9 ? '#34d399' : '#6b7280' }}>
-                    {e.flag_9 !== undefined ? (e.flag_9 ? '✓' : '–') : '–'}
+                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.flag_7 ?? 0}</td>
+                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_8 ?? 0}</td>
+                  <td className="px-3 py-2 whitespace-nowrap" style={{ color: e.flag_9 === true ? '#34d399' : '#6b7280' }}>
+                    {boolVal(e.flag_9)}
                   </td>
-                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_10 ?? '–'}</td>
+                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_10 ?? 0}</td>
                   <td className="px-3 py-2 text-slate-300 whitespace-nowrap text-right">
-                    {e.price !== undefined ? e.price.toLocaleString() : '–'}
+                    {(e.price ?? 0).toLocaleString()}
                   </td>
-                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_12 ?? '–'}</td>
-                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_13 ?? '–'}</td>
+                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_12 ?? 0}</td>
+                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_13 ?? 0}</td>
                   <td className="px-3 py-2 font-mono text-slate-600 whitespace-nowrap">{hexStr(e.hash_2)}</td>
-                  <td className="px-3 py-2 whitespace-nowrap" style={{ color: e.flag_15 ? '#34d399' : '#6b7280' }}>
-                    {e.flag_15 !== undefined ? (e.flag_15 ? '✓' : '–') : '–'}
+                  <td className="px-3 py-2 whitespace-nowrap" style={{ color: e.flag_15 === true ? '#34d399' : '#6b7280' }}>
+                    {boolVal(e.flag_15)}
                   </td>
-                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_16 ?? '–'}</td>
+                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_16 ?? 0}</td>
                   <td className="px-3 py-2 font-mono text-slate-600 whitespace-nowrap">{hexStr(e.hash_3)}</td>
-                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_18 ?? '–'}</td>
-                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_19 ?? '–'}</td>
-                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_20 ?? '–'}</td>
-                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_21 ?? '–'}</td>
+                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_18 ?? 0}</td>
+                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_19 ?? 0}</td>
+                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_20 ?? 0}</td>
+                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_21 ?? 0}</td>
                 </tr>
               )
             })}
