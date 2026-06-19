@@ -14,7 +14,8 @@
       "Bash(Select-String \"cm0\")",
       "Bash(python3 -c \"import json,sys; data=json.load\\(sys.stdin\\); entries=data['data']['entries']; print\\([e.get\\('asset_name',''\\) for e in entries[:20]]\\)\")",
       "Bash(python3 -c \"import os; total=sum\\(os.path.getsize\\(os.path.join\\(r,f\\)\\) for r,d,fs in os.walk\\(r'a:\\\\Z_GitProjects\\\\PolarisTKDatabaseWEB\\\\res\\\\CUS_CH_Item'\\) for f in fs\\); print\\(f'{total/1024/1024:.1f} MB, files: {sum\\(1 for r,d,fs in os.walk\\(r\\\\\"a:\\\\Z_GitProjects\\\\PolarisTKDatabaseWEB\\\\res\\\\CUS_CH_Item\\\\\"\\) for f in fs\\)}'\\)\")",
-      "PowerShell(cmd /c mklink /J \"a:\\\\Z_GitProjects\\\\PolarisTKDatabaseWEB\\\\web\\\\public\\\\items\" \"a:\\\\Z_GitProjects\\\\PolarisTKDatabaseWEB\\\\res\\\\CUS_CH_Item\")"
+      "PowerShell(cmd /c mklink /J \"a:\\\\Z_GitProjects\\\\PolarisTKDatabaseWEB\\\\web\\\\public\\\\items\" \"a:\\\\Z_GitProjects\\\\PolarisTKDatabaseWEB\\\\res\\\\CUS_CH_Item\")",
+      "Bash(python3 -c ' *)"
     ]
   }
 }

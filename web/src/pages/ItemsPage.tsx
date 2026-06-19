@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useRef } from 'react'
 import { useData } from '../hooks/useData'
 import { SearchBar } from '../components/SearchBar'
 import { LoadingState, ErrorState } from '../components/LoadingState'
@@ -99,21 +99,96 @@ function boolVal(v: boolean | undefined): string {
   return String(v ?? false)
 }
 
-function handleCellClick(e: React.MouseEvent<HTMLTableElement>) {
-  const td = (e.target as HTMLElement).closest('td')
-  if (!td) return
-  navigator.clipboard.writeText(td.innerText.trim())
+function useCopyToast() {
+  const [text, setText] = useState<string | null>(null)
+  const timer = useRef<ReturnType<typeof setTimeout>>()
+
+  function handleCellClick(e: React.MouseEvent<HTMLTableElement>) {
+    const td = (e.target as HTMLElement).closest('td')
+    if (!td) return
+    const value = td.innerText.trim()
+    navigator.clipboard.writeText(value)
+    clearTimeout(timer.current)
+    setText(value)
+    timer.current = setTimeout(() => setText(null), 1600)
+  }
+
+  return { handleCellClick, copyText: text }
 }
 
-// asset_name "IP_grf_hed_hachimaki" → "{base}items/grf/T_UI_CUS_CH_item_grf_hed_hachimaki.png"
-// cf0/cm0/cmn all live in the "cmn" subfolder
+function CopyToast({ text }: { text: string }) {
+  return (
+    <div
+      className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-sm shadow-2xl pointer-events-none"
+      style={{
+        background: 'rgba(109,40,217,0.93)',
+        backdropFilter: 'blur(12px)',
+        border: '1px solid rgba(167,139,250,0.35)',
+        color: '#ede9fe',
+        animation: 'fadeSlideUp 0.15s ease-out',
+      }}
+    >
+      <span className="text-violet-300 text-xs">Copied</span>
+      <span className="font-mono text-xs text-white truncate" style={{ maxWidth: 260 }}>
+        {text.length > 50 ? text.slice(0, 50) + '…' : text}
+      </span>
+    </div>
+  )
+}
+
+// Prefix → image mapping rules:
+//   IP_/BMI_/ECI_/BEI_  →  {char}/T_UI_CUS_CH_item_{rest}.png
+//   ACI_                 →  no thumbnail images exist
+//   sho_f_ items         →  cmn/T_UI_CUS_CH_item_cf0_sho_f_{name}.png  (all female shoes shared)
+//   sho_m_ items         →  cmn/T_UI_CUS_CH_item_cm0_sho_m_{name}.png  (all male shoes shared)
+//   BEI_cmn_eye_*        →  aml/ folder (common eyes have per-char files; aml used as proxy)
+//   acc items (IP_ only) →  try char folder first, fallback to cmn/ on 404
 const CMN_PREFIXES = new Set(['cf0', 'cm0', 'cmn'])
+const ASSET_PREFIXES = ['BMI_', 'ECI_', 'BEI_', 'IP_'] as const
+
+function stripPrefix(assetName: string): string | null {
+  for (const p of ASSET_PREFIXES) {
+    if (assetName.startsWith(p)) return assetName.slice(p.length)
+  }
+  return null
+}
+
 function imageUrl(assetName: string | undefined | null): string | null {
-  if (!assetName || !assetName.startsWith('IP_')) return null
-  const rest = assetName.slice(3)
-  const char = rest.split('_')[0]
+  if (!assetName) return null
+  const rest = stripPrefix(assetName)
+  if (rest === null) return null
+
+  const parts = rest.split('_')
+  const char  = parts[0]
+  const slot  = parts[1]
+
+  // female shoes → cmn/cf0_sho_f_*, male shoes → cmn/cm0_sho_m_*
+  if (slot === 'sho' && parts.length > 2) {
+    const g = parts[2]
+    if (g === 'f' || g === 'm') {
+      const gChar = g === 'f' ? 'cf0' : 'cm0'
+      return `${import.meta.env.BASE_URL}items/cmn/T_UI_CUS_CH_item_${gChar}_${parts.slice(1).join('_')}.png`
+    }
+  }
+
+  // BEI_cmn_eye_* → per-char files only; use aml as representative
+  if (assetName.startsWith('BEI_') && char === 'cmn') {
+    return `${import.meta.env.BASE_URL}items/aml/T_UI_CUS_CH_item_aml_${parts.slice(1).join('_')}.png`
+  }
+
   const folder = CMN_PREFIXES.has(char) ? 'cmn' : char
   return `${import.meta.env.BASE_URL}items/${folder}/T_UI_CUS_CH_item_${rest}.png`
+}
+
+// acc fallback: shared 146 acc images live in cmn/ (e.g. cmn_acc_butterfly)
+function imageAccFallback(assetName: string | undefined | null): string | null {
+  if (!assetName) return null
+  const rest = stripPrefix(assetName)
+  if (rest === null) return null
+  const parts = rest.split('_')
+  if (parts.length < 3 || parts[1] !== 'acc' || CMN_PREFIXES.has(parts[0])) return null
+  const name = parts.slice(2).join('_')
+  return `${import.meta.env.BASE_URL}items/cmn/T_UI_CUS_CH_item_cmn_acc_${name}.png`
 }
 
 // ---------------------------------------------------------------------------
@@ -195,9 +270,12 @@ const ROW_STYLE = { borderBottom: '1px solid rgba(255,255,255,0.04)' }
 // ---------------------------------------------------------------------------
 
 function ItemCard({ assetName, label, pos }: { assetName: string | undefined; label: string; pos: string }) {
-  const src = imageUrl(assetName)
+  const primary  = imageUrl(assetName)
+  const fallback = imageAccFallback(assetName)
   const color = ITEM_POS_COLORS[pos]
-  const [imgError, setImgError] = useState(false)
+  const [errCount, setErrCount] = useState(0)
+
+  const src = errCount === 0 ? primary : errCount === 1 ? fallback : null
 
   return (
     <div
@@ -208,12 +286,12 @@ function ItemCard({ assetName, label, pos }: { assetName: string | undefined; la
         className="relative flex items-center justify-center"
         style={{ background: 'rgba(0,0,0,0.3)', aspectRatio: '1' }}
       >
-        {src && !imgError ? (
+        {src ? (
           <img
             src={src}
             alt={label}
             className="w-full h-full object-contain p-1"
-            onError={() => setImgError(true)}
+            onError={() => setErrCount(c => c + 1)}
           />
         ) : (
           <div className="text-slate-700 text-[10px] font-mono text-center px-2 leading-tight">
@@ -275,6 +353,7 @@ function CommonItemsTab({ data }: { data: CustomizeItemCommonEntry[] }) {
   const [q, setQ] = useState('')
   const [page, setPage] = useState(0)
   const [view, setView] = useState<ViewMode>('table')
+  const { handleCellClick, copyText } = useCopyToast()
 
   const charOptions = useMemo(() => {
     const hashes = new Set(data.map(e => e.character_hash).filter((h): h is number => h !== undefined))
@@ -428,6 +507,7 @@ function CommonItemsTab({ data }: { data: CustomizeItemCommonEntry[] }) {
         pageSize={view === 'table' ? PAGE_SIZE : GRID_PAGE_SIZE}
         onChange={setPage}
       />
+      {copyText && <CopyToast text={copyText} />}
     </>
   )
 }
@@ -447,6 +527,7 @@ function UniqueItemsTab({
   const [q, setQ] = useState('')
   const [page, setPage] = useState(0)
   const [view, setView] = useState<ViewMode>('table')
+  const { handleCellClick, copyText } = useCopyToast()
 
   const charOptions = useMemo(() => {
     const hashes = new Set(entries.map(e => e.character_hash).filter((h): h is number => h !== undefined))
@@ -610,6 +691,7 @@ function UniqueItemsTab({
         pageSize={view === 'table' ? PAGE_SIZE : GRID_PAGE_SIZE}
         onChange={setPage}
       />
+      {copyText && <CopyToast text={copyText} />}
     </>
   )
 }
