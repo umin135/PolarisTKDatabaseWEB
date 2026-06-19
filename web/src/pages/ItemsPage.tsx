@@ -96,8 +96,7 @@ function hexStr(n: number | undefined | null): string {
 }
 
 function boolVal(v: boolean | undefined): string {
-  if (v === undefined || v === null) return ''
-  return String(v)
+  return String(v ?? false)
 }
 
 // ---------------------------------------------------------------------------
@@ -277,19 +276,19 @@ function CommonItemsTab({ data }: { data: CustomizeItemCommonEntry[] }) {
                   </td>
                   <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_8 ?? 0}</td>
                   <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.shop_sort_id ?? 0}</td>
-                  <td className="px-3 py-2 whitespace-nowrap" style={{ color: e.is_enabled === true ? '#34d399' : '#6b7280' }}>
+                  <td className="px-3 py-2 whitespace-nowrap" style={{ color: e.is_enabled === true ? '#34d399' : '#f87171' }}>
                     {boolVal(e.is_enabled)}
                   </td>
                   <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_11 ?? 0}</td>
                   <td className="px-3 py-2 text-slate-300 whitespace-nowrap text-right">
                     {(e.price ?? 0).toLocaleString()}
                   </td>
-                  <td className="px-3 py-2 whitespace-nowrap" style={{ color: e.unk_13 === true ? '#34d399' : '#6b7280' }}>
+                  <td className="px-3 py-2 whitespace-nowrap" style={{ color: e.unk_13 === true ? '#34d399' : '#f87171' }}>
                     {boolVal(e.unk_13)}
                   </td>
                   <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_14 ?? 0}</td>
                   <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_15 ?? 0}</td>
-                  <td className="px-3 py-2 whitespace-nowrap" style={{ color: e.unk_16 === true ? '#34d399' : '#6b7280' }}>
+                  <td className="px-3 py-2 whitespace-nowrap" style={{ color: e.unk_16 === true ? '#34d399' : '#f87171' }}>
                     {boolVal(e.unk_16)}
                   </td>
                   <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_17 ?? 0}</td>
@@ -423,7 +422,7 @@ function UniqueItemsTab({
                   </td>
                   <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.flag_7 ?? 0}</td>
                   <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_8 ?? 0}</td>
-                  <td className="px-3 py-2 whitespace-nowrap" style={{ color: e.flag_9 === true ? '#34d399' : '#6b7280' }}>
+                  <td className="px-3 py-2 whitespace-nowrap" style={{ color: e.flag_9 === true ? '#34d399' : '#f87171' }}>
                     {boolVal(e.flag_9)}
                   </td>
                   <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_10 ?? 0}</td>
@@ -433,7 +432,7 @@ function UniqueItemsTab({
                   <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_12 ?? 0}</td>
                   <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_13 ?? 0}</td>
                   <td className="px-3 py-2 font-mono text-slate-600 whitespace-nowrap">{hexStr(e.hash_2)}</td>
-                  <td className="px-3 py-2 whitespace-nowrap" style={{ color: e.flag_15 === true ? '#34d399' : '#6b7280' }}>
+                  <td className="px-3 py-2 whitespace-nowrap" style={{ color: e.flag_15 === true ? '#34d399' : '#f87171' }}>
                     {boolVal(e.flag_15)}
                   </td>
                   <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_16 ?? 0}</td>
