@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useData } from '../hooks/useData'
-import type { CharacterList, StageList, JukeboxList, CustomizeItemCommonList } from '../lib/types'
+import type { CharacterList, CustomizeItemCommonList, CustomizeItemUniqueList } from '../lib/types'
 
 interface StatCardProps {
   label: string
@@ -28,15 +28,13 @@ function StatCard({ label, value, to, accent }: StatCardProps) {
 }
 
 export function HomePage() {
-  const chars  = useData<CharacterList>('character_list')
-  const stages = useData<StageList>('stage_list')
-  const bgm    = useData<JukeboxList>('jukebox_list')
-  const items  = useData<CustomizeItemCommonList>('customize_item_common_list')
+  const chars   = useData<CharacterList>('character_list')
+  const common  = useData<CustomizeItemCommonList>('customize_item_common_list')
+  const unique  = useData<CustomizeItemUniqueList>('customize_item_unique_list')
 
-  const charCount  = chars.data?.data?.entries?.length ?? '...'
-  const stageCount = stages.data?.data?.entries?.length ?? '...'
-  const bgmCount   = bgm.data?.data?.entries?.length ?? '...'
-  const itemCount  = items.data?.data?.entries?.length ?? '...'
+  const charCount   = chars.data?.data?.entries?.length ?? '...'
+  const commonCount = common.data?.data?.entries?.length ?? '...'
+  const uniqueCount = unique.data?.data?.entries?.length ?? '...'
 
   return (
     <div className="p-6 max-w-4xl mx-auto">
@@ -60,11 +58,10 @@ export function HomePage() {
       {/* Stats Grid */}
       <section className="mb-10">
         <h2 className="text-xs font-semibold text-slate-500 uppercase tracking-widest mb-3">Data Overview</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-          <StatCard label="Characters"       value={charCount}  to="/characters" accent="#a78bfa" />
-          <StatCard label="Stages"           value={stageCount} to="/stages"     accent="#60a5fa" />
-          <StatCard label="BGM Tracks"       value={bgmCount}   to="/jukebox"    accent="#34d399" />
-          <StatCard label="Customize Items"  value={itemCount}  to="/items"      accent="#fb923c" />
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+          <StatCard label="Characters"          value={charCount}   to="/items"  accent="#a78bfa" />
+          <StatCard label="Common Items"        value={commonCount} to="/items"  accent="#fb923c" />
+          <StatCard label="Unique Items"        value={uniqueCount} to="/items"  accent="#f472b6" />
         </div>
       </section>
 
@@ -73,16 +70,9 @@ export function HomePage() {
         <h2 className="text-xs font-semibold text-slate-500 uppercase tracking-widest mb-3">Available Datasets</h2>
         <div className="rounded-xl border overflow-hidden" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
           {[
-            { name: 'Characters',         file: 'character_list',              to: '/characters' },
-            { name: 'Stages',             file: 'stage_list',                  to: '/stages' },
-            { name: 'Jukebox / BGM',      file: 'jukebox_list',                to: '/jukebox' },
-            { name: 'Ranks',              file: 'rank_list',                   to: '/ranks' },
-            { name: 'Customize Items',    file: 'customize_item_common_list',  to: '/items' },
-            { name: 'Gallery Illusts',    file: 'gallery_illust_list',         to: '/gallery' },
-            { name: 'Gallery Movies',     file: 'gallery_movie_list',          to: '/movies' },
-            { name: 'Episodes',           file: 'character_episode_list',      to: '/episodes' },
-            { name: 'Fighter Basic Info', file: 'per_fighter_basic_info_list', to: '/characters' },
-            { name: 'Fighter Battle Info',file: 'per_fighter_battle_info_list',to: '/characters' },
+            { name: 'Common Customize Items', file: 'customize_item_common_list', to: '/items' },
+            { name: 'Unique Customize Items', file: 'customize_item_unique_list', to: '/items' },
+            { name: 'Characters',             file: 'character_list',             to: '/items' },
           ].map((row, i) => (
             <Link
               key={row.file}

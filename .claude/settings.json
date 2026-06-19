@@ -9,7 +9,8 @@
       "Bash(curl -s http://localhost:5173/PolarisTKDatabaseWEB/data/character_list.json)",
       "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(f'  characters: {len\\(d[\\\\\"data\\\\\"][\\\\\"entries\\\\\"]\\)}'\\)\")",
       "Bash(ls \"C:/Users/KooMinu/.claude/projects/a--Z-GitProjects-PolarisTKDatabaseWEB/\" 2>/dev/null || echo \"Directory does not exist\")",
-      "Read(//c/Users/KooMinu/.claude/projects/a--Z-GitProjects-PolarisTKDatabaseWEB/**)"
+      "Read(//c/Users/KooMinu/.claude/projects/a--Z-GitProjects-PolarisTKDatabaseWEB/**)",
+      "PowerShell($env:PATH = $env:PATH + \";C:\\\\Program Files\\\\nodejs\"; cd \"a:\\\\Z_GitProjects\\\\PolarisTKDatabaseWEB\\\\web\"; npm run build 2>&1)"
     ]
   }
 }

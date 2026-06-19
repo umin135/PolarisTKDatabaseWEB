@@ -1,106 +1,541 @@
 import { useState, useMemo } from 'react'
 import { useData } from '../hooks/useData'
-import { PageHeader } from '../components/PageHeader'
 import { SearchBar } from '../components/SearchBar'
 import { LoadingState, ErrorState } from '../components/LoadingState'
-import type { CustomizeItemCommonList } from '../lib/types'
+import { clsx } from '../lib/utils'
+import type {
+  CustomizeItemCommonList,
+  CustomizeItemCommonEntry,
+  CustomizeItemUniqueList,
+  CustomizeItemUniqueEntry,
+} from '../lib/types'
+
+// ---------------------------------------------------------------------------
+// Hash lookup tables
+// ---------------------------------------------------------------------------
+
+const CHAR_HASH: Record<number, string> = {
+  26846036:   'ZBR', 97192667:   'CTR', 236224321:  'TTR', 310559474:  'HRS',
+  731112246:  'KMD', 748126445:  'PGN', 761728323:  'WKZ', 823174094:  'CHT',
+  840871906:  'LON', 1009826274: 'AML', 1066975102: 'KAL', 1230214467: 'SWL',
+  1281269543: 'CRW', 1575337196: 'BEE', 1597287972: 'JLY', 1633518270: 'RBT',
+  1791216549: 'ANT', 1806241895: 'OKM', 1862528861: 'LZD', 1870866276: 'HMS',
+  1941891036: 'CML', 2046353711: 'BBN', 2172508408: 'MNT', 2262000005: 'GHP',
+  2508721799: 'TGR', 2620373223: 'DER', 2691931401: 'CCN', 2802412287: 'GRF',
+  3013172036: 'CBR', 3098177400: 'CAT', 3109625382: 'SNK', 3155198250: 'BSN',
+  3269129674: 'GOT', 3283482507: 'GRL', 3302278637: 'KGR', 3480598787: 'WLF',
+  3651497509: 'DOG', 3716978005: 'RAT', 3826916785: 'KLW', 3908942186: 'KNK',
+  3909547504: 'PIG', 2897068730: 'DEK', 2492561663: 'CMN', 1489967222: 'XXA',
+  1000005316: 'XXB', 3374534069: 'XXC', 1859904795: 'XXD', 2243376126: 'XXE',
+  2887689737: 'XXF', 694498012:  'XXG', 3099443275: 'KER',
+}
+
+const ITEM_POS_HASH: Record<number, string> = {
+  398673939:  'gla', 784860974:  'btm', 952745790:  'bdf', 1291920003: 'fac',
+  1575090356: 'ex0', 2118278548: 'ex1', 2325958612: 'hed', 2562980590: 'ex2',
+  2682927175: 'har', 2731567485: 'hef', 3083618261: 'eff', 3104230581: 'fah',
+  3216997551: 'acc', 3672180440: 'ex3', 3859820991: 'bdu', 4277548013: 'ara',
+  472135170:  'sho', 32350386:   'stn', 164982311:  'stg', 2086639496: 'lip',
+  4136406133: 'eye', 2715668717: 'chk', 1208725833: 'fap', 2615564137: 'eym',
+  2462554855: 'none', 3229833922: 'NONE',
+}
+
+export const SERIES_HASH: Record<number, string> = {
+  2607418557: 'TK1', 1374241517: 'TK2', 1802801095: 'TK3', 2533226375: 'TTT',
+  2337280880: 'TK4', 2080240599: 'TK5', 3084700453: 'TK6', 58512809:   'TTT2',
+  2372343475: 'TKR', 1515707469: 'TK7', 2641885965: 'TK8',
+}
+
+// ---------------------------------------------------------------------------
+// Display constants
+// ---------------------------------------------------------------------------
 
 const PAGE_SIZE = 100
 
-export function ItemsPage() {
-  const { data, loading, error } = useData<CustomizeItemCommonList>('customize_item_common_list')
+const ITEM_POS_LABEL: Record<string, string> = {
+  hed: 'Head',        har: 'Hair',         hef: 'Head Feature',
+  fah: 'Face',        fac: 'Face',         fap: 'Face Paint',
+  eye: 'Eyes',        eym: 'Eye Makeup',   lip: 'Lips',
+  chk: 'Cheeks',      bdu: 'Body / Suit',  bdf: 'Body Feature',
+  btm: 'Bottom',      gla: 'Gloves',       sho: 'Shoes',
+  ara: 'Aura Item',   acc: 'Accessory',    eff: 'Effect',
+  stg: 'Stage',       stn: 'Stage',
+  ex0: 'Extra 0',     ex1: 'Extra 1',      ex2: 'Extra 2',   ex3: 'Extra 3',
+  none: '–',          NONE: '–',
+}
+
+const ITEM_POS_COLORS: Record<string, string> = {
+  hed: '#a78bfa', har: '#a78bfa', hef: '#a78bfa',
+  fah: '#f9a8d4', fac: '#f9a8d4', fap: '#f9a8d4',
+  eye: '#f9a8d4', eym: '#f9a8d4', lip: '#f9a8d4', chk: '#f9a8d4',
+  bdu: '#60a5fa', bdf: '#60a5fa',
+  btm: '#34d399', gla: '#34d399',
+  sho: '#fb923c',
+  ara: '#c084fc', acc: '#fbbf24', eff: '#fbbf24',
+  stg: '#94a3b8', stn: '#94a3b8',
+  ex0: '#64748b', ex1: '#64748b', ex2: '#64748b', ex3: '#64748b',
+}
+
+// ---------------------------------------------------------------------------
+// Helpers
+// ---------------------------------------------------------------------------
+
+function posCode(hash1: number | undefined): string {
+  if (hash1 === undefined || hash1 === null) return ''
+  return ITEM_POS_HASH[hash1] ?? ''
+}
+
+function charLabel(h: number | undefined): string {
+  if (h === undefined || h === null) return '–'
+  return CHAR_HASH[h] ?? hexStr(h)
+}
+
+function hexStr(n: number | undefined | null): string {
+  if (n === undefined || n === null) return '–'
+  return `0x${(n >>> 0).toString(16).toUpperCase().padStart(8, '0')}`
+}
+
+// ---------------------------------------------------------------------------
+// Sub-components
+// ---------------------------------------------------------------------------
+
+function PosBadge({ pos }: { pos: string }) {
+  if (!pos || pos === 'none' || pos === 'NONE')
+    return <span className="text-slate-600">–</span>
+  const color = ITEM_POS_COLORS[pos] ?? '#94a3b8'
+  return (
+    <span
+      className="inline-block px-1.5 py-0.5 rounded text-[10px] font-medium whitespace-nowrap"
+      style={{ background: `${color}18`, color, border: `1px solid ${color}40` }}
+    >
+      {ITEM_POS_LABEL[pos] ?? pos}
+    </span>
+  )
+}
+
+function FilterSelect({
+  value, onChange, children, placeholder,
+}: {
+  value: string; onChange: (v: string) => void; children: React.ReactNode; placeholder: string
+}) {
+  return (
+    <select
+      value={value}
+      onChange={e => onChange(e.target.value)}
+      className="text-xs rounded-lg px-3 py-1.5 outline-none cursor-pointer"
+      style={{
+        background: 'rgba(255,255,255,0.05)',
+        border: '1px solid rgba(255,255,255,0.1)',
+        color: value ? '#e2e8f0' : '#64748b',
+      }}
+    >
+      <option value="">{placeholder}</option>
+      {children}
+    </select>
+  )
+}
+
+function Pagination({ page, total, pageSize, onChange }: {
+  page: number; total: number; pageSize: number; onChange: (p: number) => void
+}) {
+  const totalPages = Math.ceil(total / pageSize)
+  if (totalPages <= 1) return null
+  const start = page * pageSize + 1
+  const end = Math.min((page + 1) * pageSize, total)
+  return (
+    <div
+      className="flex items-center justify-between px-4 py-2.5 border-t text-xs text-slate-500 flex-shrink-0"
+      style={{ borderColor: 'rgba(255,255,255,0.07)' }}
+    >
+      <span>{start}–{end} of {total.toLocaleString()}</span>
+      <div className="flex items-center gap-1">
+        <button disabled={page === 0} onClick={() => onChange(0)}
+          className="px-2 py-1 rounded disabled:opacity-30 hover:bg-white/10 transition-colors">«</button>
+        <button disabled={page === 0} onClick={() => onChange(page - 1)}
+          className="px-2 py-1 rounded disabled:opacity-30 hover:bg-white/10 transition-colors">‹</button>
+        <span className="px-3 py-1 rounded" style={{ background: 'rgba(255,255,255,0.07)' }}>
+          {page + 1} / {totalPages}
+        </span>
+        <button disabled={page >= totalPages - 1} onClick={() => onChange(page + 1)}
+          className="px-2 py-1 rounded disabled:opacity-30 hover:bg-white/10 transition-colors">›</button>
+        <button disabled={page >= totalPages - 1} onClick={() => onChange(totalPages - 1)}
+          className="px-2 py-1 rounded disabled:opacity-30 hover:bg-white/10 transition-colors">»</button>
+      </div>
+    </div>
+  )
+}
+
+const TH = 'px-3 py-2.5 text-left font-medium text-slate-400 border-b whitespace-nowrap'
+const TH_STYLE = { borderColor: 'rgba(255,255,255,0.07)' }
+const ROW_STYLE = { borderBottom: '1px solid rgba(255,255,255,0.04)' }
+
+// ---------------------------------------------------------------------------
+// Common Items Tab
+// ---------------------------------------------------------------------------
+
+function CommonItemsTab({ data }: { data: CustomizeItemCommonEntry[] }) {
+  const [charFilter, setCharFilter] = useState('')
+  const [posFilter, setPosFilter] = useState('')
   const [q, setQ] = useState('')
   const [page, setPage] = useState(0)
 
+  const charOptions = useMemo(() => {
+    const hashes = new Set(data.map(e => e.character_hash).filter((h): h is number => h !== undefined))
+    return [...hashes].sort((a, b) => (CHAR_HASH[a] ?? '').localeCompare(CHAR_HASH[b] ?? ''))
+  }, [data])
+
+  const posOptions = useMemo(() => {
+    const codes = new Set(data.map(e => posCode(e.hash_1)).filter(Boolean))
+    return [...codes].sort()
+  }, [data])
+
   const filtered = useMemo(() => {
-    const list = data?.data?.entries ?? []
-    if (!q) return list
+    const charHash = charFilter ? Number(charFilter) : null
     const lq = q.toLowerCase()
-    return list.filter(e =>
-      (e.asset_name ?? '').toLowerCase().includes(lq) ||
-      (e.text_key ?? '').toLowerCase().includes(lq) ||
-      String(e.char_item_id).includes(lq)
-    )
-  }, [data, q])
+    return data.filter(e => {
+      if (charHash !== null && e.character_hash !== charHash) return false
+      if (posFilter && posCode(e.hash_1) !== posFilter) return false
+      if (lq &&
+        !(e.asset_name ?? '').toLowerCase().includes(lq) &&
+        !(e.text_key ?? '').toLowerCase().includes(lq) &&
+        !String(e.char_item_id).includes(lq)) return false
+      return true
+    })
+  }, [data, charFilter, posFilter, q])
 
   const paged = filtered.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE)
-  const totalPages = Math.ceil(filtered.length / PAGE_SIZE)
 
-  if (loading) return <LoadingState message="Loading customize items (large dataset)..." />
-  if (error)   return <ErrorState error={error} />
-
-  const all = data?.data?.entries ?? []
+  function handleCharChange(v: string) { setCharFilter(v); setPage(0) }
+  function handlePosChange(v: string)  { setPosFilter(v);  setPage(0) }
+  function handleSearch(v: string)     { setQ(v);          setPage(0) }
 
   return (
-    <div className="flex flex-col h-full">
-      <PageHeader title="Customize Items" count={all.length} description="Common customize item catalog">
-        <div className="w-64">
-          <SearchBar value={q} onChange={setQ} placeholder="Search name, key, or ID..." />
+    <>
+      <div className="flex items-center gap-2 px-4 py-3 border-b flex-wrap flex-shrink-0"
+        style={{ borderColor: 'rgba(255,255,255,0.07)' }}>
+        <FilterSelect value={charFilter} onChange={handleCharChange} placeholder="All Characters">
+          {charOptions.map(h => (
+            <option key={h} value={String(h)}>{CHAR_HASH[h] ?? hexStr(h)}</option>
+          ))}
+        </FilterSelect>
+
+        <FilterSelect value={posFilter} onChange={handlePosChange} placeholder="All Item Positions">
+          {posOptions.map(p => (
+            <option key={p} value={p}>{ITEM_POS_LABEL[p] ?? p} ({p})</option>
+          ))}
+        </FilterSelect>
+
+        <div className="flex-1 min-w-[180px] max-w-xs">
+          <SearchBar value={q} onChange={handleSearch} placeholder="Search asset / key / ID…" />
         </div>
-      </PageHeader>
+
+        <span className="text-xs text-slate-500 ml-auto">
+          {filtered.length.toLocaleString()} items
+        </span>
+      </div>
 
       <div className="flex-1 overflow-auto">
-        <table className="w-full text-xs border-collapse min-w-[700px]">
+        <table className="text-xs border-collapse" style={{ minWidth: '2400px' }}>
           <thead>
-            <tr
-              className="sticky top-0 text-left"
-              style={{ background: 'rgba(15,15,22,0.95)', backdropFilter: 'blur(8px)' }}
-            >
-              {['ID', 'Asset Name', 'Text Key', 'Char Hash', 'Price', 'Enabled', 'Sort Group'].map(h => (
-                <th key={h} className="px-3 py-2.5 font-medium text-slate-400 border-b" style={{ borderColor: 'rgba(255,255,255,0.07)' }}>
-                  {h}
-                </th>
+            <tr className="sticky top-0" style={{ background: 'rgba(15,15,22,0.97)', backdropFilter: 'blur(8px)' }}>
+              {[
+                'Item ID', 'Local Item ID', 'AssetName', 'Character ID', 'ItemPosition ID',
+                'Name Key', 'Extra Text Key 1', 'Extra Text Key 2',
+                'isDefaultKey', 'shop_sort_id', 'Visiblity', 'Rarity', 'Price', 'unk_13',
+                'category_no', 'hash_2', 'isColorable', 'unk_17',
+                'hash_3', 'unk_19', 'unk_20', 'unk_21', 'unk_22', 'hash_4', 'unk_24', 'Game Version',
+              ].map(h => (
+                <th key={h} className={TH} style={TH_STYLE}>{h}</th>
               ))}
             </tr>
           </thead>
           <tbody>
-            {paged.map((e) => (
-              <tr
-                key={e.char_item_id}
-                className="hover:bg-white/5 transition-colors"
-                style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}
-              >
-                <td className="px-3 py-2 font-mono text-violet-300">{e.char_item_id}</td>
-                <td className="px-3 py-2 font-mono text-slate-300 max-w-[180px] truncate">{e.asset_name ?? '–'}</td>
-                <td className="px-3 py-2 text-slate-400 max-w-[200px] truncate">{e.text_key ?? '–'}</td>
-                <td className="px-3 py-2 font-mono text-slate-500">
-                  {e.character_hash ? `0x${(e.character_hash >>> 0).toString(16).toUpperCase()}` : '–'}
-                </td>
-                <td className="px-3 py-2 text-slate-300">{e.price?.toLocaleString() ?? '–'}</td>
-                <td className="px-3 py-2">
-                  <span style={{ color: e.is_enabled ? '#34d399' : '#6b7280' }}>
+            {paged.map(e => {
+              const pos = posCode(e.hash_1)
+              return (
+                <tr key={e.char_item_id} className="hover:bg-white/[0.03] transition-colors" style={ROW_STYLE}>
+                  <td className="px-3 py-2 font-mono text-violet-300 whitespace-nowrap">{e.char_item_id}</td>
+                  <td className="px-3 py-2 font-mono text-slate-500 whitespace-nowrap text-right">{e.base_id ?? '–'}</td>
+                  <td className="px-3 py-2 font-mono text-slate-300 whitespace-nowrap" style={{ maxWidth: 220 }}>
+                    <span className="block truncate">{e.asset_name ?? '–'}</span>
+                  </td>
+                  <td className="px-3 py-2 font-mono text-slate-300 whitespace-nowrap">{charLabel(e.character_hash)}</td>
+                  <td className="px-3 py-2 whitespace-nowrap"><PosBadge pos={pos} /></td>
+                  <td className="px-3 py-2 font-mono text-slate-400 whitespace-nowrap" style={{ maxWidth: 220 }}>
+                    <span className="block truncate">{e.text_key ?? '–'}</span>
+                  </td>
+                  <td className="px-3 py-2 font-mono text-slate-500 whitespace-nowrap" style={{ maxWidth: 200 }}>
+                    <span className="block truncate">{e.extra_text_key_1 ?? '–'}</span>
+                  </td>
+                  <td className="px-3 py-2 font-mono text-slate-500 whitespace-nowrap" style={{ maxWidth: 200 }}>
+                    <span className="block truncate">{e.extra_text_key_2 ?? '–'}</span>
+                  </td>
+                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_8 ?? '–'}</td>
+                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.shop_sort_id ?? '–'}</td>
+                  <td className="px-3 py-2 whitespace-nowrap" style={{ color: e.is_enabled ? '#34d399' : '#6b7280' }}>
                     {e.is_enabled ? '✓' : '–'}
-                  </span>
-                </td>
-                <td className="px-3 py-2 text-slate-500">{e.sort_group ?? '–'}</td>
-              </tr>
-            ))}
+                  </td>
+                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_11 ?? '–'}</td>
+                  <td className="px-3 py-2 text-slate-300 whitespace-nowrap text-right">
+                    {e.price !== undefined ? e.price.toLocaleString() : '–'}
+                  </td>
+                  <td className="px-3 py-2 whitespace-nowrap" style={{ color: e.unk_13 ? '#34d399' : '#6b7280' }}>
+                    {e.unk_13 !== undefined ? (e.unk_13 ? '✓' : '–') : '–'}
+                  </td>
+                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_14 ?? '–'}</td>
+                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_15 ?? '–'}</td>
+                  <td className="px-3 py-2 whitespace-nowrap" style={{ color: e.unk_16 ? '#34d399' : '#6b7280' }}>
+                    {e.unk_16 !== undefined ? (e.unk_16 ? '✓' : '–') : '–'}
+                  </td>
+                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_17 ?? '–'}</td>
+                  <td className="px-3 py-2 font-mono text-slate-600 whitespace-nowrap">{hexStr(e.hash_3)}</td>
+                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_19 ?? '–'}</td>
+                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_20 ?? '–'}</td>
+                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_21 ?? '–'}</td>
+                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_22 ?? '–'}</td>
+                  <td className="px-3 py-2 font-mono text-slate-600 whitespace-nowrap">{hexStr(e.hash_4)}</td>
+                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_24 ?? '–'}</td>
+                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.sort_group ?? '–'}</td>
+                </tr>
+              )
+            })}
           </tbody>
         </table>
 
-        {/* Pagination */}
-        {totalPages > 1 && (
-          <div className="flex items-center justify-center gap-3 py-4 border-t" style={{ borderColor: 'rgba(255,255,255,0.07)' }}>
-            <button
-              disabled={page === 0}
-              onClick={() => setPage(p => p - 1)}
-              className="px-3 py-1 rounded text-xs disabled:opacity-30 transition-colors hover:bg-white/10 text-slate-300"
-            >
-              ← Prev
-            </button>
-            <span className="text-xs text-slate-500">
-              Page {page + 1} of {totalPages} ({filtered.length.toLocaleString()} items)
-            </span>
-            <button
-              disabled={page >= totalPages - 1}
-              onClick={() => setPage(p => p + 1)}
-              className="px-3 py-1 rounded text-xs disabled:opacity-30 transition-colors hover:bg-white/10 text-slate-300"
-            >
-              Next →
-            </button>
-          </div>
+        {paged.length === 0 && (
+          <div className="text-center text-slate-600 py-16 text-sm">No items match filters</div>
         )}
       </div>
+
+      <Pagination page={page} total={filtered.length} pageSize={PAGE_SIZE} onChange={setPage} />
+    </>
+  )
+}
+
+// ---------------------------------------------------------------------------
+// Unique Items Tab
+// ---------------------------------------------------------------------------
+
+function UniqueItemsTab({
+  entries, bodyEntries,
+}: {
+  entries: CustomizeItemUniqueEntry[]
+  bodyEntries: { asset_name: string; char_item_id: number }[]
+}) {
+  const [charFilter, setCharFilter] = useState('')
+  const [posFilter, setPosFilter] = useState('')
+  const [q, setQ] = useState('')
+  const [page, setPage] = useState(0)
+
+  const charOptions = useMemo(() => {
+    const hashes = new Set(entries.map(e => e.character_hash).filter((h): h is number => h !== undefined))
+    return [...hashes].sort((a, b) => (CHAR_HASH[a] ?? '').localeCompare(CHAR_HASH[b] ?? ''))
+  }, [entries])
+
+  const posOptions = useMemo(() => {
+    const codes = new Set(entries.map(e => posCode(e.hash_1)).filter(Boolean))
+    return [...codes].sort()
+  }, [entries])
+
+  const filtered = useMemo(() => {
+    const charHash = charFilter ? Number(charFilter) : null
+    const lq = q.toLowerCase()
+    return entries.filter(e => {
+      if (charHash !== null && e.character_hash !== charHash) return false
+      if (posFilter && posCode(e.hash_1) !== posFilter) return false
+      if (lq &&
+        !(e.asset_name ?? '').toLowerCase().includes(lq) &&
+        !(e.text_key ?? '').toLowerCase().includes(lq) &&
+        !String(e.char_item_id ?? '').includes(lq)) return false
+      return true
+    })
+  }, [entries, charFilter, posFilter, q])
+
+  const paged = filtered.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE)
+
+  function handleCharChange(v: string) { setCharFilter(v); setPage(0) }
+  function handlePosChange(v: string)  { setPosFilter(v);  setPage(0) }
+  function handleSearch(v: string)     { setQ(v);          setPage(0) }
+
+  return (
+    <>
+      <div className="flex items-center gap-2 px-4 py-3 border-b flex-wrap flex-shrink-0"
+        style={{ borderColor: 'rgba(255,255,255,0.07)' }}>
+        <FilterSelect value={charFilter} onChange={handleCharChange} placeholder="All Characters">
+          {charOptions.map(h => (
+            <option key={h} value={String(h)}>{CHAR_HASH[h] ?? hexStr(h)}</option>
+          ))}
+        </FilterSelect>
+
+        <FilterSelect value={posFilter} onChange={handlePosChange} placeholder="All Item Positions">
+          {posOptions.map(p => (
+            <option key={p} value={p}>{ITEM_POS_LABEL[p] ?? p} ({p})</option>
+          ))}
+        </FilterSelect>
+
+        <div className="flex-1 min-w-[180px] max-w-xs">
+          <SearchBar value={q} onChange={handleSearch} placeholder="Search asset / key / ID…" />
+        </div>
+
+        <span className="text-xs text-slate-500 ml-auto">
+          {filtered.length.toLocaleString()} items
+        </span>
+      </div>
+
+      <div className="flex-1 overflow-auto">
+        <table className="text-xs border-collapse" style={{ minWidth: '2200px' }}>
+          <thead>
+            <tr className="sticky top-0" style={{ background: 'rgba(15,15,22,0.97)', backdropFilter: 'blur(8px)' }}>
+              {[
+                'char_item_id', 'asset_name', 'character', 'item_position',
+                'text_key', 'extra_text_key_1', 'extra_text_key_2',
+                'flag_7', 'unk_8', 'flag_9', 'unk_10', 'price', 'unk_12', 'unk_13',
+                'hash_2', 'flag_15', 'unk_16', 'hash_3', 'unk_18', 'unk_19', 'unk_20', 'unk_21',
+              ].map(h => (
+                <th key={h} className={TH} style={TH_STYLE}>{h}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {paged.map((e, i) => {
+              const pos = posCode(e.hash_1)
+              return (
+                <tr key={e.char_item_id ?? i} className="hover:bg-white/[0.03] transition-colors" style={ROW_STYLE}>
+                  <td className="px-3 py-2 font-mono text-violet-300 whitespace-nowrap">{e.char_item_id ?? '–'}</td>
+                  <td className="px-3 py-2 font-mono text-slate-300 whitespace-nowrap" style={{ maxWidth: 220 }}>
+                    <span className="block truncate">{e.asset_name || '–'}</span>
+                  </td>
+                  <td className="px-3 py-2 font-mono text-slate-300 whitespace-nowrap">{charLabel(e.character_hash)}</td>
+                  <td className="px-3 py-2 whitespace-nowrap"><PosBadge pos={pos} /></td>
+                  <td className="px-3 py-2 font-mono text-slate-400 whitespace-nowrap" style={{ maxWidth: 220 }}>
+                    <span className="block truncate">{e.text_key ?? '–'}</span>
+                  </td>
+                  <td className="px-3 py-2 font-mono text-slate-500 whitespace-nowrap" style={{ maxWidth: 200 }}>
+                    <span className="block truncate">{e.extra_text_key_1 ?? '–'}</span>
+                  </td>
+                  <td className="px-3 py-2 font-mono text-slate-500 whitespace-nowrap" style={{ maxWidth: 200 }}>
+                    <span className="block truncate">{e.extra_text_key_2 ?? '–'}</span>
+                  </td>
+                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.flag_7 ?? '–'}</td>
+                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_8 ?? '–'}</td>
+                  <td className="px-3 py-2 whitespace-nowrap" style={{ color: e.flag_9 ? '#34d399' : '#6b7280' }}>
+                    {e.flag_9 !== undefined ? (e.flag_9 ? '✓' : '–') : '–'}
+                  </td>
+                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_10 ?? '–'}</td>
+                  <td className="px-3 py-2 text-slate-300 whitespace-nowrap text-right">
+                    {e.price !== undefined ? e.price.toLocaleString() : '–'}
+                  </td>
+                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_12 ?? '–'}</td>
+                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_13 ?? '–'}</td>
+                  <td className="px-3 py-2 font-mono text-slate-600 whitespace-nowrap">{hexStr(e.hash_2)}</td>
+                  <td className="px-3 py-2 whitespace-nowrap" style={{ color: e.flag_15 ? '#34d399' : '#6b7280' }}>
+                    {e.flag_15 !== undefined ? (e.flag_15 ? '✓' : '–') : '–'}
+                  </td>
+                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_16 ?? '–'}</td>
+                  <td className="px-3 py-2 font-mono text-slate-600 whitespace-nowrap">{hexStr(e.hash_3)}</td>
+                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_18 ?? '–'}</td>
+                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_19 ?? '–'}</td>
+                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_20 ?? '–'}</td>
+                  <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_21 ?? '–'}</td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+
+        {paged.length === 0 && (
+          <div className="text-center text-slate-600 py-16 text-sm">No items match filters</div>
+        )}
+      </div>
+
+      {bodyEntries.length > 0 && (
+        <details className="border-t flex-shrink-0" style={{ borderColor: 'rgba(255,255,255,0.07)' }}>
+          <summary className="px-4 py-2.5 text-xs text-slate-400 cursor-pointer hover:text-slate-200 select-none">
+            Body Entries ({bodyEntries.length})
+          </summary>
+          <div className="px-4 pb-4 grid grid-cols-2 gap-1.5 md:grid-cols-3 lg:grid-cols-4">
+            {bodyEntries.map((b, i) => (
+              <div key={i} className="flex items-center gap-2 px-3 py-2 rounded-lg"
+                style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)' }}>
+                <span className="font-mono text-[10px] text-violet-300">{b.char_item_id}</span>
+                <span className="font-mono text-[10px] text-slate-400 truncate">{b.asset_name}</span>
+              </div>
+            ))}
+          </div>
+        </details>
+      )}
+
+      <Pagination page={page} total={filtered.length} pageSize={PAGE_SIZE} onChange={setPage} />
+    </>
+  )
+}
+
+// ---------------------------------------------------------------------------
+// Main Page
+// ---------------------------------------------------------------------------
+
+type Tab = 'common' | 'unique'
+
+export function ItemsPage() {
+  const [tab, setTab] = useState<Tab>('common')
+
+  const commonResult = useData<CustomizeItemCommonList>('customize_item_common_list')
+  const uniqueResult = useData<CustomizeItemUniqueList>('customize_item_unique_list')
+
+  const commonEntries = commonResult.data?.data?.entries ?? []
+  const uniqueEntries = uniqueResult.data?.data?.entries ?? []
+  const bodyEntries   = uniqueResult.data?.data?.body_entries ?? []
+
+  const isLoading = tab === 'common' ? commonResult.loading : uniqueResult.loading
+  const hasError  = tab === 'common' ? commonResult.error   : uniqueResult.error
+
+  return (
+    <div className="flex flex-col h-full">
+      <div
+        className="flex items-center border-b flex-shrink-0"
+        style={{
+          background: 'rgba(15,15,22,0.95)',
+          backdropFilter: 'blur(12px)',
+          borderColor: 'rgba(255,255,255,0.07)',
+        }}
+      >
+        {([
+          ['common', 'Common Items', commonEntries.length],
+          ['unique', 'Unique Items', uniqueEntries.length],
+        ] as [Tab, string, number][]).map(([key, label, count]) => (
+          <button
+            key={key}
+            onClick={() => setTab(key)}
+            className={clsx(
+              'flex items-center gap-2 px-5 py-4 text-sm font-medium border-b-2 transition-all duration-150',
+              tab === key
+                ? 'border-violet-500 text-violet-300'
+                : 'border-transparent text-slate-500 hover:text-slate-300',
+            )}
+          >
+            {label}
+            <span
+              className="text-[10px] px-1.5 py-0.5 rounded-full"
+              style={{
+                background: tab === key ? 'rgba(124,58,237,0.2)' : 'rgba(255,255,255,0.05)',
+                color: tab === key ? '#a78bfa' : '#64748b',
+              }}
+            >
+              {count > 0 ? count.toLocaleString() : '…'}
+            </span>
+          </button>
+        ))}
+      </div>
+
+      {isLoading && <LoadingState message={`Loading ${tab} items…`} />}
+      {hasError  && <ErrorState error={hasError} />}
+
+      {!isLoading && !hasError && tab === 'common' && (
+        <CommonItemsTab data={commonEntries} />
+      )}
+      {!isLoading && !hasError && tab === 'unique' && (
+        <UniqueItemsTab entries={uniqueEntries} bodyEntries={bodyEntries} />
+      )}
     </div>
   )
 }

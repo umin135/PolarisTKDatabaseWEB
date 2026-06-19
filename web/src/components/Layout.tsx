@@ -1,21 +1,10 @@
 import { Link, useLocation } from 'react-router-dom'
-import {
-  Home, Users, Map, Music, Trophy, Shirt,
-  Image, Film, BookOpen, Database, ChevronRight
-} from 'lucide-react'
+import { Home, Shirt, ChevronRight } from 'lucide-react'
 import { clsx } from '../lib/utils'
 
 const NAV = [
-  { to: '/',            icon: Home,     label: 'Home' },
-  { to: '/characters',  icon: Users,    label: 'Characters' },
-  { to: '/stages',      icon: Map,      label: 'Stages' },
-  { to: '/items',       icon: Shirt,    label: 'Customize Items' },
-  { to: '/jukebox',     icon: Music,    label: 'Jukebox / BGM' },
-  { to: '/ranks',       icon: Trophy,   label: 'Ranks' },
-  { to: '/gallery',     icon: Image,    label: 'Gallery Illust' },
-  { to: '/movies',      icon: Film,     label: 'Gallery Movies' },
-  { to: '/episodes',    icon: BookOpen, label: 'Episodes' },
-  { to: '/raw',         icon: Database, label: 'Raw Data' },
+  { to: '/',      icon: Home,  label: 'Home' },
+  { to: '/items', icon: Shirt, label: 'Customize Items' },
 ]
 
 function NavItem({ to, icon: Icon, label }: { to: string; icon: typeof Home; label: string }) {
@@ -42,7 +31,6 @@ function NavItem({ to, icon: Icon, label }: { to: string; icon: typeof Home; lab
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex h-screen overflow-hidden" style={{ background: '#0f0f13' }}>
-      {/* Sidebar */}
       <aside
         className="flex-shrink-0 flex flex-col border-r"
         style={{
@@ -51,7 +39,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
           borderColor: 'rgba(255,255,255,0.07)',
         }}
       >
-        {/* Logo */}
         <div className="px-4 py-5 border-b" style={{ borderColor: 'rgba(255,255,255,0.07)' }}>
           <div className="flex items-center gap-2">
             <div
@@ -67,7 +54,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
           </div>
         </div>
 
-        {/* Nav */}
         <nav className="flex-1 overflow-y-auto px-2 py-3 space-y-0.5">
           {NAV.map(item => <NavItem key={item.to} {...item} />)}
         </nav>
@@ -77,7 +63,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
         </div>
       </aside>
 
-      {/* Main */}
       <main className="flex-1 overflow-y-auto">
         {children}
       </main>

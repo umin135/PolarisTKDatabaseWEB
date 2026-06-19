@@ -6,13 +6,7 @@ export interface CharacterEntry {
   is_selectable?: boolean
   is_playable?: boolean
   group?: string
-  camera_offset?: number
   sort_order?: number
-  full_name_key?: string
-  short_name_key?: string
-  fighting_style_key?: string
-  height_key?: string
-  weight_key?: string
 }
 
 export interface CharacterList {
@@ -20,160 +14,76 @@ export interface CharacterList {
   data: { entries: CharacterEntry[] }
 }
 
-// --- stage_list ---
-export interface StageEntry {
-  stage_code: string
-  stage_hash: number
-  is_selectable?: boolean
-  is_active?: boolean
-  flag_balcony?: boolean
-  flag_ocean?: boolean
-  flag_infinite?: boolean
-  flag_battle?: boolean
-  is_online_enabled?: boolean
-  is_ranked_enabled?: boolean
-  arena_width?: number
-  arena_depth?: number
-  stage_name_key?: string
-  level_name?: string
-  sound_bank?: string
-  group_id?: string
-  extra_group?: string
-  stage_mode?: number
-  is_default_variant?: boolean
-}
-
-export interface StageList {
-  version: number
-  data: { entries: StageEntry[] }
-}
-
-// --- jukebox_list ---
-export interface JukeboxEntry {
-  bgm_hash: number
-  series_hash?: number
-  cue_name?: string
-  arrangement?: string
-  display_text_key?: string
-}
-
-export interface JukeboxList {
-  version: number
-  data: { entries: JukeboxEntry[] }
-}
-
-// --- series_list ---
-export interface SeriesEntry {
-  series_hash: number
-  jacket_text_key?: string
-  logo_text_key?: string
-}
-
-export interface SeriesList {
-  version: number
-  data: { entries: SeriesEntry[] }
-}
-
-// --- rank_list ---
-export interface RankItem {
-  hash: number
-  text_key?: string
-  name?: string
-  rank?: number
-}
-export interface RankGroup {
-  group_id: number
-  entries?: RankItem[]
-}
-export interface RankList {
-  version: number
-  data: { entries: RankGroup[] }
-}
-
-// --- per_fighter_basic_info_list ---
-export interface FighterBasicEntry {
-  fighter_code_hash: number
-  [key: string]: number
-}
-export interface FighterBasicList {
-  version: number
-  data: { entries: FighterBasicEntry[] }
-}
-
-// --- per_fighter_battle_info_list ---
-export interface FighterBattleEntry {
-  fighter_code_hash: number
-  [key: string]: number
-}
-export interface FighterBattleList {
-  version: number
-  data: { entries: FighterBattleEntry[] }
-}
-
 // --- customize_item_common_list ---
-export interface CustomizeItemEntry {
-  char_item_id: number
-  base_id?: number
-  asset_name?: string
-  character_hash?: number
-  text_key?: string
-  is_enabled?: boolean
-  price?: number
-  sort_group?: number
+export interface CustomizeItemCommonEntry {
+  char_item_id: number    // id: 0
+  base_id?: number        // id: 1
+  asset_name?: string     // id: 2
+  character_hash?: number // id: 3
+  hash_1?: number         // id: 4
+  text_key?: string       // id: 5
+  extra_text_key_1?: string // id: 6
+  extra_text_key_2?: string // id: 7
+  unk_8?: number          // id: 8
+  shop_sort_id?: number   // id: 9
+  is_enabled?: boolean    // id: 10
+  unk_11?: number         // id: 11
+  price?: number          // id: 12
+  unk_13?: boolean        // id: 13
+  unk_14?: number         // id: 14
+  unk_15?: number         // id: 15
+  unk_16?: boolean        // id: 16
+  unk_17?: number         // id: 17
+  hash_3?: number         // id: 18
+  unk_19?: number         // id: 19
+  unk_20?: number         // id: 20
+  unk_21?: number         // id: 21
+  unk_22?: number         // id: 22
+  hash_4?: number         // id: 23
+  unk_24?: number         // id: 24
+  sort_group?: number     // id: 25
 }
+
 export interface CustomizeItemCommonList {
   version: number
-  data: { entries: CustomizeItemEntry[] }
+  data: { entries: CustomizeItemCommonEntry[] }
 }
 
-// --- gallery_illust_list ---
-export interface GalleryIllustEntry {
-  title_hash?: number
-  illust_id?: number
-  thumbnail_key?: string
-  entry_index?: number
-  unlock_price?: number
-}
-export interface GalleryIllustList {
-  version: number
-  data: { entries: GalleryIllustEntry[] }
-}
-
-// --- gallery_movie_list ---
-export interface GalleryMovieEntry {
-  title_hash?: number
-  movie_id?: number
-  thumbnail_key?: string
-  text_key?: string
-}
-export interface GalleryMovieList {
-  version: number
-  data: { entries: GalleryMovieEntry[] }
-}
-
-// --- character_episode_list ---
-export interface EpisodeRecord {
-  player_character_hash?: number
-  battle_index?: number
-  episode_stage_hash?: number
-  opponent_character_hash?: number
-  battles_count?: number
-}
-export interface EpisodeTable {
-  unk00?: number
-  records?: EpisodeRecord[]
-}
-export interface EpisodeList {
-  version: number
-  data: EpisodeTable
+// --- customize_item_unique_list ---
+export interface CustomizeItemUniqueEntry {
+  char_item_id?: number   // id: 0
+  asset_name?: string     // id: 1
+  character_hash?: number // id: 2
+  hash_1?: number         // id: 3
+  text_key?: string       // id: 4
+  extra_text_key_1?: string // id: 5
+  extra_text_key_2?: string // id: 6
+  flag_7?: number         // id: 7
+  unk_8?: number          // id: 8
+  flag_9?: boolean        // id: 9
+  unk_10?: number         // id: 10
+  price?: number          // id: 11
+  unk_12?: number         // id: 12
+  unk_13?: number         // id: 13
+  hash_2?: number         // id: 14
+  flag_15?: boolean       // id: 15
+  unk_16?: number         // id: 16
+  hash_3?: number         // id: 17
+  unk_18?: number         // id: 18
+  unk_19?: number         // id: 19
+  unk_20?: number         // id: 20
+  unk_21?: number         // id: 21
 }
 
-// --- tam_mission_list ---
-export interface MissionEntry {
-  mission_id?: number
-  [key: string]: number | undefined
+export interface CustomizeItemUniqueBodyEntry {
+  asset_name: string
+  char_item_id: number
 }
-export interface MissionList {
+
+export interface CustomizeItemUniqueList {
   version: number
-  data: { entries: MissionEntry[] }
+  data: {
+    entries: CustomizeItemUniqueEntry[]
+    body_entries?: CustomizeItemUniqueBodyEntry[]
+  }
 }
