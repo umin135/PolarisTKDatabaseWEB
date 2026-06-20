@@ -2,6 +2,8 @@ import { useState, useMemo, useRef } from 'react'
 import { useGameData } from '../hooks/useGameData'
 import { SearchBar } from '../components/SearchBar'
 import { LoadingState, ErrorState } from '../components/LoadingState'
+import { Tooltip } from '../components/Tooltip'
+import { ItemImageTooltip } from '../components/ItemImageTooltip'
 import { clsx } from '../lib/utils'
 import type {
   CustomizeItemCommonList,
@@ -10,93 +12,21 @@ import type {
   CustomizeItemUniqueEntry,
   LocDict,
 } from '../lib/types'
-
-// ---------------------------------------------------------------------------
-// Hash lookup tables
-// ---------------------------------------------------------------------------
-
-const CHAR_HASH: Record<number, string> = {
-  26846036:   'ZBR', 97192667:   'CTR', 236224321:  'TTR', 310559474:  'HRS',
-  731112246:  'KMD', 748126445:  'PGN', 761728323:  'WKZ', 823174094:  'CHT',
-  840871906:  'LON', 1009826274: 'AML', 1066975102: 'KAL', 1230214467: 'SWL',
-  1281269543: 'CRW', 1575337196: 'BEE', 1597287972: 'JLY', 1633518270: 'RBT',
-  1791216549: 'ANT', 1806241895: 'OKM', 1862528861: 'LZD', 1870866276: 'HMS',
-  1941891036: 'CML', 2046353711: 'BBN', 2172508408: 'MNT', 2262000005: 'GHP',
-  2508721799: 'TGR', 2620373223: 'DER', 2691931401: 'CCN', 2802412287: 'GRF',
-  3013172036: 'CBR', 3098177400: 'CAT', 3109625382: 'SNK', 3155198250: 'BSN',
-  3269129674: 'GOT', 3283482507: 'GRL', 3302278637: 'KGR', 3480598787: 'WLF',
-  3651497509: 'DOG', 3716978005: 'RAT', 3826916785: 'KLW', 3908942186: 'KNK',
-  3909547504: 'PIG', 2897068730: 'DEK', 2492561663: 'CMN', 1489967222: 'XXA',
-  1000005316: 'XXB', 3374534069: 'XXC', 1859904795: 'XXD', 2243376126: 'XXE',
-  2887689737: 'XXF', 694498012:  'XXG', 3099443275: 'KER',
-}
-
-const ITEM_POS_HASH: Record<number, string> = {
-  398673939:  'gla', 784860974:  'btm', 952745790:  'bdf', 1291920003: 'fac',
-  1575090356: 'ex0', 2118278548: 'ex1', 2325958612: 'hed', 2562980590: 'ex2',
-  2682927175: 'har', 2731567485: 'hef', 3083618261: 'eff', 3104230581: 'fah',
-  3216997551: 'acc', 3672180440: 'ex3', 3859820991: 'bdu', 4277548013: 'ara',
-  472135170:  'sho', 32350386:   'stn', 164982311:  'stg', 2086639496: 'lip',
-  4136406133: 'eye', 2715668717: 'chk', 1208725833: 'fap', 2615564137: 'eym',
-  2462554855: 'none', 3229833922: 'NONE',
-}
-
-export const SERIES_HASH: Record<number, string> = {
-  2607418557: 'TK1', 1374241517: 'TK2', 1802801095: 'TK3', 2533226375: 'TTT',
-  2337280880: 'TK4', 2080240599: 'TK5', 3084700453: 'TK6', 58512809:   'TTT2',
-  2372343475: 'TKR', 1515707469: 'TK7', 2641885965: 'TK8',
-}
-
-// ---------------------------------------------------------------------------
-// Display constants
-// ---------------------------------------------------------------------------
-
-
-const ITEM_POS_LABEL: Record<string, string> = {
-  hed: 'Head',        har: 'Hair',         hef: 'Full-Face',
-  fah: 'Face hair',   fac: 'Face',         fap: 'Face Paint',
-  eye: 'Eyes',        eym: 'Eye makeup',   lip: 'Lips',
-  chk: 'Cheeks',      bdu: 'Upper body',   bdf: 'Entire body',
-  btm: 'Lower body',  gla: 'Glasses',      sho: 'Shoes',
-  ara: 'Aura',        acc: 'Accessory',    eff: 'Hit Effect',
-  stg: 'Stage',       stn: 'Suntan',
-  ex0: 'Unique 1',     ex1: 'Unique 2',      ex2: 'Unique 3',   ex3: 'Unique 4',
-  none: 'none',          NONE: 'NONE',
-}
-
-const ITEM_POS_COLORS: Record<string, string> = {
-  hed: '#a78bfa', har: '#a78bfa', hef: '#a78bfa',
-  fah: '#f9a8d4', fac: '#f9a8d4', fap: '#f9a8d4',
-  eye: '#f9a8d4', eym: '#f9a8d4', lip: '#f9a8d4', chk: '#f9a8d4',
-  bdu: '#60a5fa', bdf: '#60a5fa',
-  btm: '#34d399', gla: '#34d399',
-  sho: '#fb923c',
-  ara: '#c084fc', acc: '#fbbf24', eff: '#fbbf24',
-  stg: '#94a3b8', stn: '#94a3b8',
-  ex0: '#64748b', ex1: '#64748b', ex2: '#64748b', ex3: '#64748b',
-}
+import { hexStr, getPosCode, getCharLabel } from '../lib/common'
+import { CHAR_HASH, ITEM_POS_COLORS, ITEM_POS_LABEL } from '../lib/constants'
+import {
+  ICON_BODY,
+  rarityBgUrl,
+  rarityIconUrl,
+  resolveItemImageSrc,
+} from '../lib/itemImages'
 
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
 
-function posCode(hash1: number | undefined): string {
-  if (hash1 === undefined || hash1 === null) return ''
-  return ITEM_POS_HASH[hash1] ?? ''
-}
-
-function charLabel(h: number | undefined): string {
-  if (h === undefined || h === null) return '0'
-  return CHAR_HASH[h] ?? hexStr(h)
-}
-
-function hexStr(n: number | undefined | null): string {
-  if (n === undefined || n === null) return '0'
-  return `0x${(n >>> 0).toString(16).toUpperCase().padStart(8, '0')}`
-}
-
 function boolVal(v: boolean | undefined): string {
-  return String(v ?? false)
+  return v ? "True" : "False";
 }
 
 function resolveLoc(key: string | undefined | null, loc: LocDict): string {
@@ -139,73 +69,6 @@ function CopyToast({ text }: { text: string }) {
       </span>
     </div>
   )
-}
-
-// Prefix → image mapping rules:
-//   IP_/BMI_/ECI_/BEI_  →  {char}/T_UI_CUS_CH_item_{rest}.png
-//   ACI_                 →  no thumbnail images exist
-//   sho_f_ items         →  cmn/T_UI_CUS_CH_item_cf0_sho_f_{name}.png  (all female shoes shared)
-//   sho_m_ items         →  cmn/T_UI_CUS_CH_item_cm0_sho_m_{name}.png  (all male shoes shared)
-//   BEI_cmn_eye_*        →  {char}/ folder (asset_name has cmn but image files are per-character)
-//   acc items (IP_ only) →  try char folder first, fallback to cmn/ on 404
-const CMN_PREFIXES = new Set(['cf0', 'cm0', 'cmn'])
-// ACI_ (Aura) included — files exist as T_UI_CUS_CH_item_cmn_ara_*.png
-const ASSET_PREFIXES = ['BMI_', 'ECI_', 'BEI_', 'ACI_', 'IP_'] as const
-
-function stripPrefix(assetName: string): string | null {
-  for (const p of ASSET_PREFIXES) {
-    if (assetName.startsWith(p)) return assetName.slice(p.length)
-  }
-  return null
-}
-
-function imageUrl(assetName: string | undefined | null, charCode?: string): string | null {
-  if (!assetName) return null
-
-  // Suntan: no prefix, image is "{char}/T_UI_CUS_CH_item_{char}_suntan.png"
-  if (assetName === 'Suntan') {
-    const c = charCode?.toLowerCase()
-    return c ? `${ITEMS_BASE}${c}/T_UI_CUS_CH_item_${c}_suntan.png` : null
-  }
-
-  const rest = stripPrefix(assetName)
-  if (rest === null) return null
-
-  const parts = rest.split('_')
-  const char  = parts[0]
-  const slot  = parts[1]
-
-  // female shoes → cmn/cf0_sho_f_*, male shoes → cmn/cm0_sho_m_*
-  if (slot === 'sho' && parts.length > 2) {
-    const g = parts[2]
-    if (g === 'f' || g === 'm') {
-      const gChar = g === 'f' ? 'cf0' : 'cm0'
-      return `${ITEMS_BASE}cmn/T_UI_CUS_CH_item_${gChar}_${parts.slice(1).join('_')}.png`
-    }
-  }
-
-  // BEI_cmn_eye_* → image exists per-character; requires charCode to resolve
-  if (assetName.startsWith('BEI_') && char === 'cmn') {
-    const c = charCode?.toLowerCase()
-    if (!c) return null
-    return `${ITEMS_BASE}${c}/T_UI_CUS_CH_item_${c}_${parts.slice(1).join('_')}.png`
-  }
-
-  const folder = CMN_PREFIXES.has(char) ? 'cmn' : char
-  // Stage files (stg slot) use capital 'I' in "Item"; all others use lowercase
-  const fileTag = slot === 'stg' ? 'T_UI_CUS_CH_Item_' : 'T_UI_CUS_CH_item_'
-  return `${ITEMS_BASE}${folder}/${fileTag}${rest}.png`
-}
-
-// acc fallback: shared 146 acc images live in cmn/ (e.g. cmn_acc_butterfly)
-function imageAccFallback(assetName: string | undefined | null): string | null {
-  if (!assetName) return null
-  const rest = stripPrefix(assetName)
-  if (rest === null) return null
-  const parts = rest.split('_')
-  if (parts.length < 3 || parts[1] !== 'acc' || CMN_PREFIXES.has(parts[0])) return null
-  const name = parts.slice(2).join('_')
-  return `${ITEMS_BASE}cmn/T_UI_CUS_CH_item_cmn_acc_${name}.png`
 }
 
 // ---------------------------------------------------------------------------
@@ -257,7 +120,7 @@ function Pagination({ page, total, pageSize, onChange }: {
   const end = Math.min((page + 1) * pageSize, total)
   return (
     <div
-      className="flex items-center justify-between px-4 py-2.5 border-t text-xs text-slate-500 flex-shrink-0"
+      className="flex items-center justify-between px-4 py-2.5 border-t text-xs text-slate-500 shrink-0"
       style={{ borderColor: 'rgba(255,255,255,0.07)' }}
     >
       <span>{start}–{end} of {total.toLocaleString()}</span>
@@ -286,40 +149,24 @@ const ROW_STYLE = { borderBottom: '1px solid rgba(255,255,255,0.04)' }
 // Grid card
 // ---------------------------------------------------------------------------
 
-// In production (GitHub Pages), images are served from jsDelivr CDN pointing at
-// the res/ folder in the repo. In dev, local junctions under public/ are used.
-const _CDN = 'https://cdn.jsdelivr.net/gh/umin135/PolarisTKDatabaseWEB@main/res/'
-const ITEMS_BASE = import.meta.env.PROD ? `${_CDN}CUS_CH_Item/` : `${import.meta.env.BASE_URL}items/`
-const ICON_BASE  = import.meta.env.PROD ? `${_CDN}CUS_CH/`      : `${import.meta.env.BASE_URL}icons/`
-const ICON_BODY   = `${ICON_BASE}T_UI_CUS_CH_Icon_Body.png`
-const ICON_REMOVE = `${ICON_BASE}T_UI_CUS_CH_Icon_StRemove.png`
-
-const RARITY_COLORS = ['', 'Gray', 'Green', 'Blue', 'Purple', 'Gold'] as const
-function rarityBgUrl(r: number)   { return r > 0 ? `${ICON_BASE}T_UI_CUS_CH_Rarity_${RARITY_COLORS[r]}.png`      : null }
-function rarityIconUrl(r: number) { return r > 0 ? `${ICON_BASE}T_UI_CUS_CH_Rarity_Icon_${RARITY_COLORS[r]}.png` : null }
-
 function ItemCard({ assetName, label, pos, charCode, rarity = 0 }: {
   assetName: string | undefined; label: string; pos: string; charCode?: string; rarity?: number
 }) {
-  const isRemove = assetName === 'REMOVE'
-  const primary  = isRemove ? ICON_REMOVE : imageUrl(assetName, charCode)
-  const fallback = isRemove ? null        : imageAccFallback(assetName)
   const color = ITEM_POS_COLORS[pos]
   const [errCount, setErrCount] = useState(0)
 
-  const src = errCount === 0 ? primary
-            : errCount === 1 ? (fallback ?? ICON_BODY)
-            : ICON_BODY
+  const src = resolveItemImageSrc(assetName, charCode, errCount)
 
   const bgUrl   = rarityBgUrl(rarity)
   const iconUrl = rarityIconUrl(rarity)
 
   return (
-    <div
-      className="flex flex-col overflow-hidden transition-all duration-150 hover:scale-[1.03] hover:shadow-lg"
-      style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}
-    >
-      <div className="relative" style={{ background: 'rgba(0,0,0,0.3)', aspectRatio: '1' }}>
+    <Tooltip content={assetName ?? ''} disabled={!assetName}>
+      <div
+        className="flex flex-col overflow-hidden transition-all duration-150 hover:scale-[1.03] hover:shadow-lg"
+        style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}
+      >
+        <div className="relative" style={{ background: 'rgba(0,0,0,0.3)', aspectRatio: '1' }}>
         {/* Rarity background */}
         {bgUrl && (
           <img src={bgUrl} aria-hidden className="absolute inset-0 w-full h-full object-cover" />
@@ -352,10 +199,11 @@ function ItemCard({ assetName, label, pos, charCode, rarity = 0 }: {
           </span>
         )}
       </div>
-      <div className="px-2 py-1.5">
-        <p className="text-[10px] font-mono text-slate-400 truncate leading-tight">{label}</p>
+        <div className="px-2 py-1.5">
+          <p className="text-[10px] font-mono text-slate-400 truncate leading-tight">{label}</p>
+        </div>
       </div>
-    </div>
+    </Tooltip>
   )
 }
 
@@ -404,7 +252,7 @@ function CommonItemsTab({ data, loc }: { data: CustomizeItemCommonEntry[]; loc: 
   }, [data])
 
   const posOptions = useMemo(() => {
-    const codes = new Set(data.map(e => posCode(e.hash_1)).filter(Boolean))
+    const codes = new Set(data.map(e => getPosCode(e.hash_1)).filter(Boolean))
     return [...codes].sort()
   }, [data])
 
@@ -413,7 +261,7 @@ function CommonItemsTab({ data, loc }: { data: CustomizeItemCommonEntry[]; loc: 
     const lq = q.toLowerCase()
     return data.filter(e => {
       if (charHash !== null && e.character_hash !== charHash) return false
-      if (posFilter && posCode(e.hash_1) !== posFilter) return false
+      if (posFilter && getPosCode(e.hash_1) !== posFilter) return false
       if (lq &&
         !(e.asset_name ?? '').toLowerCase().includes(lq) &&
         !(e.text_key ?? '').toLowerCase().includes(lq) &&
@@ -432,7 +280,7 @@ function CommonItemsTab({ data, loc }: { data: CustomizeItemCommonEntry[]; loc: 
 
   return (
     <>
-      <div className="flex items-center gap-2 px-4 py-3 border-b flex-wrap flex-shrink-0"
+      <div className="flex items-center gap-2 px-4 py-3 border-b flex-wrap shrink-0"
         style={{ borderColor: 'rgba(255,255,255,0.07)' }}>
         <FilterSelect value={charFilter} onChange={handleCharChange} placeholder="All Characters">
           {charOptions.map(h => (
@@ -486,18 +334,20 @@ function CommonItemsTab({ data, loc }: { data: CustomizeItemCommonEntry[]; loc: 
             </thead>
             <tbody style={{ cursor: 'pointer' }}>
               {paged.map(e => {
-                const pos = posCode(e.hash_1)
+                const pos = getPosCode(e.hash_1)
                 return (
-                  <tr key={e.char_item_id} className="hover:bg-white/[0.03] transition-colors" style={ROW_STYLE}>
+                  <tr key={e.char_item_id} className="hover:bg-white/3 transition-colors" style={ROW_STYLE}>
                     <td className="px-3 py-2 font-mono text-violet-300 whitespace-nowrap">{e.char_item_id}</td>
                     <td className="px-3 py-2 font-mono text-slate-500 whitespace-nowrap text-right">{e.base_id ?? 0}</td>
                     <td className="px-3 py-2 font-mono text-slate-300 whitespace-nowrap" style={{ maxWidth: 220 }}>
-                      <span className="block truncate">{e.asset_name ?? 0}</span>
+                      <span className="block truncate">{e.asset_name ?? "-"}</span>
                     </td>
-                    <td className="px-3 py-2 font-mono text-slate-300 whitespace-nowrap" data-value={String(e.character_hash ?? 0)}>{charLabel(e.character_hash)}</td>
+                    <td className="px-3 py-2 font-mono text-slate-300 whitespace-nowrap" data-value={String(e.character_hash ?? 0)}>{getCharLabel(e.character_hash)}</td>
                     <td className="px-3 py-2 whitespace-nowrap" data-value={String(e.hash_1 ?? 0)}><PosBadge pos={pos} /></td>
                     <td className="px-3 py-2 text-slate-300 whitespace-nowrap" data-value={e.text_key ?? ''} style={{ maxWidth: 220 }}>
-                      <span className="block truncate">{resolveLoc(e.text_key, loc)}</span>
+                      <ItemImageTooltip assetName={e.asset_name} charCode={CHAR_HASH[e.character_hash ?? 0]}>
+                        <span className="block truncate">{resolveLoc(e.text_key, loc)}</span>
+                      </ItemImageTooltip>
                     </td>
                     <td className="px-3 py-2 font-mono text-slate-500 whitespace-nowrap" data-value={e.extra_text_key_1 ?? ''} style={{ maxWidth: 200 }}>
                       <span className="block truncate">{resolveLoc(e.extra_text_key_1, loc) || (e.extra_text_key_1 ?? 0)}</span>
@@ -548,7 +398,7 @@ function CommonItemsTab({ data, loc }: { data: CustomizeItemCommonEntry[]; loc: 
                 key={e.char_item_id}
                 assetName={e.asset_name}
                 label={resolveLoc(e.text_key, loc) || e.asset_name?.replace(/^(?:IP|BMI|ECI|BEI|ACI)_/, '') || String(e.char_item_id)}
-                pos={posCode(e.hash_1)}
+                pos={getPosCode(e.hash_1)}
                 charCode={CHAR_HASH[e.character_hash ?? 0]}
                 rarity={e.unk_11 ?? 0}
               />
@@ -596,7 +446,7 @@ function UniqueItemsTab({
   }, [entries])
 
   const posOptions = useMemo(() => {
-    const codes = new Set(entries.map(e => posCode(e.hash_1)).filter(Boolean))
+    const codes = new Set(entries.map(e => getPosCode(e.hash_1)).filter(Boolean))
     return [...codes].sort()
   }, [entries])
 
@@ -605,7 +455,7 @@ function UniqueItemsTab({
     const lq = q.toLowerCase()
     return entries.filter(e => {
       if (charHash !== null && e.character_hash !== charHash) return false
-      if (posFilter && posCode(e.hash_1) !== posFilter) return false
+      if (posFilter && getPosCode(e.hash_1) !== posFilter) return false
       if (lq &&
         !(e.asset_name ?? '').toLowerCase().includes(lq) &&
         !(e.text_key ?? '').toLowerCase().includes(lq) &&
@@ -624,7 +474,7 @@ function UniqueItemsTab({
 
   return (
     <>
-      <div className="flex items-center gap-2 px-4 py-3 border-b flex-wrap flex-shrink-0"
+      <div className="flex items-center gap-2 px-4 py-3 border-b flex-wrap shrink-0"
         style={{ borderColor: 'rgba(255,255,255,0.07)' }}>
         <FilterSelect value={charFilter} onChange={handleCharChange} placeholder="All Characters">
           {charOptions.map(h => (
@@ -677,17 +527,19 @@ function UniqueItemsTab({
             </thead>
             <tbody style={{ cursor: 'pointer' }}>
               {paged.map((e, i) => {
-                const pos = posCode(e.hash_1)
+                const pos = getPosCode(e.hash_1)
                 return (
-                  <tr key={e.char_item_id ?? i} className="hover:bg-white/[0.03] transition-colors" style={ROW_STYLE}>
+                  <tr key={e.char_item_id ?? i} className="hover:bg-white/3 transition-colors" style={ROW_STYLE}>
                     <td className="px-3 py-2 font-mono text-violet-300 whitespace-nowrap">{e.char_item_id ?? 0}</td>
                     <td className="px-3 py-2 font-mono text-slate-300 whitespace-nowrap" style={{ maxWidth: 220 }}>
-                      <span className="block truncate">{e.asset_name || ''}</span>
+                      <span className="block truncate">{e.asset_name || '-'}</span>
                     </td>
-                    <td className="px-3 py-2 font-mono text-slate-300 whitespace-nowrap" data-value={String(e.character_hash ?? 0)}>{charLabel(e.character_hash)}</td>
+                    <td className="px-3 py-2 font-mono text-slate-300 whitespace-nowrap" data-value={String(e.character_hash ?? 0)}>{getCharLabel(e.character_hash)}</td>
                     <td className="px-3 py-2 whitespace-nowrap" data-value={String(e.hash_1 ?? 0)}><PosBadge pos={pos} /></td>
                     <td className="px-3 py-2 text-slate-300 whitespace-nowrap" data-value={e.text_key ?? ''} style={{ maxWidth: 220 }}>
-                      <span className="block truncate">{resolveLoc(e.text_key, loc)}</span>
+                      <ItemImageTooltip assetName={e.asset_name} charCode={CHAR_HASH[e.character_hash ?? 0]}>
+                        <span className="block truncate">{resolveLoc(e.text_key, loc)}</span>
+                      </ItemImageTooltip>
                     </td>
                     <td className="px-3 py-2 font-mono text-slate-500 whitespace-nowrap" data-value={e.extra_text_key_1 ?? ''} style={{ maxWidth: 200 }}>
                       <span className="block truncate">{resolveLoc(e.extra_text_key_1, loc) || (e.extra_text_key_1 ?? 0)}</span>
@@ -733,7 +585,7 @@ function UniqueItemsTab({
                 key={e.char_item_id ?? i}
                 assetName={e.asset_name}
                 label={resolveLoc(e.text_key, loc) || e.asset_name?.replace(/^(?:IP|BMI|ECI|BEI|ACI)_/, '') || String(e.char_item_id ?? i)}
-                pos={posCode(e.hash_1)}
+                pos={getPosCode(e.hash_1)}
                 charCode={CHAR_HASH[e.character_hash ?? 0]}
                 rarity={e.unk_10 ?? 0}
               />
@@ -746,7 +598,7 @@ function UniqueItemsTab({
       )}
 
       {bodyEntries.length > 0 && view === 'table' && (
-        <details className="border-t flex-shrink-0" style={{ borderColor: 'rgba(255,255,255,0.07)' }}>
+        <details className="border-t shrink-0" style={{ borderColor: 'rgba(255,255,255,0.07)' }}>
           <summary className="px-4 py-2.5 text-xs text-slate-400 cursor-pointer hover:text-slate-200 select-none">
             Body Entries ({bodyEntries.length})
           </summary>
@@ -797,7 +649,7 @@ export function ItemsPage() {
   return (
     <div className="flex flex-col h-full">
       <div
-        className="flex items-center border-b flex-shrink-0"
+        className="flex items-center border-b shrink-0"
         style={{
           background: 'rgba(15,15,22,0.95)',
           backdropFilter: 'blur(12px)',
