@@ -1,11 +1,12 @@
 import { Link, useLocation } from 'react-router-dom'
-import { Home, Shirt, ChevronRight } from 'lucide-react'
+import { Home, Shirt, Users, ChevronRight } from 'lucide-react'
 import { clsx } from '../lib/utils'
 import { useVersion } from '../contexts/VersionContext'
 
 const NAV = [
-  { to: '/',      icon: Home,  label: 'Home' },
-  { to: '/items', icon: Shirt, label: 'Customize Items' },
+  { to: '/',          icon: Home,  label: 'Home' },
+  { to: '/characters', icon: Users, label: 'Characters' },
+  { to: '/items',     icon: Shirt, label: 'Customize Items' },
 ]
 
 function NavItem({ to, icon: Icon, label }: { to: string; icon: typeof Home; label: string }) {

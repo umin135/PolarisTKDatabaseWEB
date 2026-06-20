@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useGameData } from '../hooks/useGameData'
-import type { CustomizeItemCommonList, CustomizeItemUniqueList } from '../lib/types'
+import type { CharacterList, CustomizeItemCommonList, CustomizeItemUniqueList } from '../lib/types'
 
 interface StatCardProps {
   label: string
@@ -30,9 +30,11 @@ function StatCard({ label, value, to, accent }: StatCardProps) {
 export function HomePage() {
   const common = useGameData<CustomizeItemCommonList>('fbsdata', 'customize_item_common_list')
   const unique = useGameData<CustomizeItemUniqueList>('fbsdata', 'customize_item_unique_list')
+  const chars  = useGameData<CharacterList>('fbsdata', 'character_list')
 
   const commonCount = common.data?.data?.entries?.length ?? '...'
   const uniqueCount = unique.data?.data?.entries?.length ?? '...'
+  const charCount   = chars.data?.data?.entries?.length ?? '...'
 
   return (
     <div className="p-6 max-w-4xl mx-auto">
@@ -53,6 +55,7 @@ export function HomePage() {
       <section className="mb-10">
         <h2 className="text-xs font-semibold text-slate-500 uppercase tracking-widest mb-3">Data Overview</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+          <StatCard label="Characters" value={charCount} to="/characters" accent="#a78bfa" />
           <StatCard label="Common Items" value={commonCount} to="/items" accent="#fb923c" />
           <StatCard label="Unique Items" value={uniqueCount} to="/items" accent="#f472b6" />
         </div>
@@ -63,6 +66,7 @@ export function HomePage() {
         <h2 className="text-xs font-semibold text-slate-500 uppercase tracking-widest mb-3">Available Datasets</h2>
         <div className="rounded-xl border overflow-hidden" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
           {[
+            { name: 'Characters', file: 'character_list', to: '/characters' },
             { name: 'Common Customize Items', file: 'customize_item_common_list', to: '/items' },
             { name: 'Unique Customize Items', file: 'customize_item_unique_list', to: '/items' },
           ].map((row, i) => (

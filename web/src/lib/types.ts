@@ -19,7 +19,15 @@ export interface CharacterEntry {
   is_selectable?: boolean
   is_playable?: boolean
   group?: string
+  camera_offset?: number
   sort_order?: number
+  full_name_key?: string
+  short_name_jp_key?: string
+  short_name_key?: string
+  origin_key?: string
+  fighting_style_key?: string
+  height_key?: string
+  weight_key?: string
 }
 
 export interface CharacterList {
