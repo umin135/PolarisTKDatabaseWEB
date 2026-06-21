@@ -6,150 +6,180 @@
         "group_id": 1,
         "entries": [
           {
+            "hash": 893010042,
             "text_key": "TEXT_000_UI_DAN_RANK_000",
             "name": "nyumonsei"
           },
           {
+            "hash": 2755309186,
             "text_key": "TEXT_000_UI_DAN_RANK_001",
             "name": "shodan",
             "rank": 1
           },
           {
+            "hash": 2242109941,
             "text_key": "TEXT_000_UI_DAN_RANK_002",
             "name": "2dan",
             "rank": 2
           },
           {
+            "hash": 3587704258,
             "text_key": "TEXT_000_UI_DAN_RANK_003",
             "name": "yushi",
             "rank": 3
           },
           {
+            "hash": 968933164,
             "text_key": "TEXT_000_UI_DAN_RANK_004",
             "name": "sakushi",
             "rank": 4
           },
           {
+            "hash": 2848843309,
             "text_key": "TEXT_000_UI_DAN_RANK_005",
             "name": "toushi",
             "rank": 5
           },
           {
+            "hash": 2617560001,
             "text_key": "TEXT_000_UI_DAN_RANK_006",
             "name": "garou",
             "rank": 6
           },
           {
+            "hash": 2250594415,
             "text_key": "TEXT_000_UI_DAN_RANK_007",
             "name": "arawashi",
             "rank": 7
           },
           {
+            "hash": 318557708,
             "text_key": "TEXT_000_UI_DAN_RANK_008",
             "name": "mouzou",
             "rank": 8
           },
           {
+            "hash": 1050349042,
             "text_key": "TEXT_000_UI_DAN_RANK_009",
             "name": "gouken",
             "rank": 9
           },
           {
+            "hash": 1328085760,
             "text_key": "TEXT_000_UI_DAN_RANK_010",
             "name": "jaken",
             "rank": 10
           },
           {
+            "hash": 1510782184,
             "text_key": "TEXT_000_UI_DAN_RANK_011",
             "name": "kaiken",
             "rank": 11
           },
           {
+            "hash": 2590001002,
             "text_key": "TEXT_000_UI_DAN_RANK_012",
             "name": "shura",
             "rank": 12
           },
           {
+            "hash": 3108391221,
             "text_key": "TEXT_000_UI_DAN_RANK_013",
             "name": "rasetsu",
             "rank": 13
           },
           {
+            "hash": 2594815065,
             "text_key": "TEXT_000_UI_DAN_RANK_014",
             "name": "raketsu",
             "rank": 14
           },
           {
+            "hash": 2193972433,
             "text_key": "TEXT_000_UI_DAN_RANK_015",
             "name": "garyu",
             "rank": 15
           },
           {
+            "hash": 20456782,
             "text_key": "TEXT_000_UI_DAN_RANK_016",
             "name": "shinryu",
             "rank": 16
           },
           {
+            "hash": 4211666899,
             "text_key": "TEXT_000_UI_DAN_RANK_017",
             "name": "tenryu",
             "rank": 17
           },
           {
+            "hash": 2196207666,
             "text_key": "TEXT_000_UI_DAN_RANK_018",
             "name": "kentei",
             "rank": 18
           },
           {
+            "hash": 1199993303,
             "text_key": "TEXT_000_UI_DAN_RANK_019",
             "name": "entei",
             "rank": 19
           },
           {
+            "hash": 3954066463,
             "text_key": "TEXT_000_UI_DAN_RANK_020",
             "name": "sentei",
             "rank": 20
           },
           {
+            "hash": 2666872901,
             "text_key": "TEXT_000_UI_DAN_RANK_021",
             "name": "fujin",
             "rank": 21
           },
           {
+            "hash": 1276855293,
             "text_key": "TEXT_000_UI_DAN_RANK_022",
             "name": "raijin",
             "rank": 22
           },
           {
+            "hash": 529487354,
             "text_key": "TEXT_000_UI_DAN_RANK_023",
             "name": "kijin",
             "rank": 23
           },
           {
+            "hash": 3699643278,
             "text_key": "TEXT_000_UI_DAN_RANK_024",
             "name": "bushin",
             "rank": 24
           },
           {
+            "hash": 2134076302,
             "text_key": "TEXT_000_UI_DAN_RANK_025",
             "name": "tekkenou",
             "rank": 25
           },
           {
+            "hash": 4098116996,
             "text_key": "TEXT_000_UI_DAN_RANK_026",
             "name": "tekkenhaou",
             "rank": 26
           },
           {
+            "hash": 53541240,
             "text_key": "TEXT_000_UI_DAN_RANK_027",
             "name": "tekkenshin",
             "rank": 27
           },
           {
+            "hash": 2219213910,
             "text_key": "TEXT_000_UI_DAN_RANK_028",
             "name": "tekkenshingoku",
             "rank": 28
           },
           {
+            "hash": 3009306823,
             "text_key": "TEXT_000_UI_DAN_RANK_029",
             "name": "hakaishin",
             "rank": 29
@@ -160,190 +190,228 @@
         "group_id": 200,
         "entries": [
           {
+            "hash": 893010042,
             "text_key": "TEXT_000_UI_DAN_RANK_000",
             "name": "nyumonsei"
           },
           {
+            "hash": 2755309186,
             "text_key": "TEXT_000_UI_DAN_RANK_001",
             "name": "shodan",
             "rank": 1
           },
           {
+            "hash": 2242109941,
             "text_key": "TEXT_000_UI_DAN_RANK_002",
             "name": "2dan",
             "rank": 2
           },
           {
+            "hash": 3587704258,
             "text_key": "TEXT_000_UI_DAN_RANK_003",
             "name": "yushi",
             "rank": 3
           },
           {
+            "hash": 968933164,
             "text_key": "TEXT_000_UI_DAN_RANK_004",
             "name": "sakushi",
             "rank": 4
           },
           {
+            "hash": 2848843309,
             "text_key": "TEXT_000_UI_DAN_RANK_005",
             "name": "toushi",
             "rank": 5
           },
           {
+            "hash": 2617560001,
             "text_key": "TEXT_000_UI_DAN_RANK_006",
             "name": "garou",
             "rank": 6
           },
           {
+            "hash": 2250594415,
             "text_key": "TEXT_000_UI_DAN_RANK_007",
             "name": "arawashi",
             "rank": 7
           },
           {
+            "hash": 318557708,
             "text_key": "TEXT_000_UI_DAN_RANK_008",
             "name": "mouzou",
             "rank": 8
           },
           {
+            "hash": 1050349042,
             "text_key": "TEXT_000_UI_DAN_RANK_009",
             "name": "gouken",
             "rank": 9
           },
           {
+            "hash": 1328085760,
             "text_key": "TEXT_000_UI_DAN_RANK_010",
             "name": "jaken",
             "rank": 10
           },
           {
+            "hash": 1510782184,
             "text_key": "TEXT_000_UI_DAN_RANK_011",
             "name": "kaiken",
             "rank": 11
           },
           {
+            "hash": 2590001002,
             "text_key": "TEXT_000_UI_DAN_RANK_012",
             "name": "shura",
             "rank": 12
           },
           {
+            "hash": 3108391221,
             "text_key": "TEXT_000_UI_DAN_RANK_013",
             "name": "rasetsu",
             "rank": 13
           },
           {
+            "hash": 2594815065,
             "text_key": "TEXT_000_UI_DAN_RANK_014",
             "name": "raketsu",
             "rank": 14
           },
           {
+            "hash": 2193972433,
             "text_key": "TEXT_000_UI_DAN_RANK_015",
             "name": "garyu",
             "rank": 15
           },
           {
+            "hash": 20456782,
             "text_key": "TEXT_000_UI_DAN_RANK_016",
             "name": "shinryu",
             "rank": 16
           },
           {
+            "hash": 4211666899,
             "text_key": "TEXT_000_UI_DAN_RANK_017",
             "name": "tenryu",
             "rank": 17
           },
           {
+            "hash": 2196207666,
             "text_key": "TEXT_000_UI_DAN_RANK_018",
             "name": "kentei",
             "rank": 18
           },
           {
+            "hash": 1199993303,
             "text_key": "TEXT_000_UI_DAN_RANK_019",
             "name": "entei",
             "rank": 19
           },
           {
+            "hash": 3954066463,
             "text_key": "TEXT_000_UI_DAN_RANK_020",
             "name": "sentei",
             "rank": 20
           },
           {
+            "hash": 2666872901,
             "text_key": "TEXT_000_UI_DAN_RANK_021",
             "name": "fujin",
             "rank": 21
           },
           {
+            "hash": 1276855293,
             "text_key": "TEXT_000_UI_DAN_RANK_022",
             "name": "raijin",
             "rank": 22
           },
           {
+            "hash": 529487354,
             "text_key": "TEXT_000_UI_DAN_RANK_023",
             "name": "kijin",
             "rank": 23
           },
           {
+            "hash": 3699643278,
             "text_key": "TEXT_000_UI_DAN_RANK_024",
             "name": "bushin",
             "rank": 24
           },
           {
+            "hash": 2134076302,
             "text_key": "TEXT_000_UI_DAN_RANK_025",
             "name": "tekkenou",
             "rank": 25
           },
           {
+            "hash": 4098116996,
             "text_key": "TEXT_000_UI_DAN_RANK_026",
             "name": "tekkenhaou",
             "rank": 26
           },
           {
+            "hash": 53541240,
             "text_key": "TEXT_000_UI_DAN_RANK_027",
             "name": "tekkenshin",
             "rank": 27
           },
           {
+            "hash": 2219213910,
             "text_key": "TEXT_000_UI_DAN_RANK_028",
             "name": "tekkenshingoku",
             "rank": 28
           },
           {
+            "hash": 3009306823,
             "text_key": "TEXT_000_UI_DAN_RANK_029",
             "name": "hakaishin",
             "rank": 29
           },
           {
+            "hash": 3641903897,
             "text_key": "TEXT_200_UI_DAN_RANK_030",
             "name": "hakaishin01",
             "rank": 30
           },
           {
+            "hash": 991491382,
             "text_key": "TEXT_200_UI_DAN_RANK_031",
             "name": "hakaishin02",
             "rank": 31
           },
           {
+            "hash": 1483433445,
             "text_key": "TEXT_200_UI_DAN_RANK_032",
             "name": "hakaishin03",
             "rank": 32
           },
           {
+            "hash": 3062946520,
             "text_key": "TEXT_200_UI_DAN_RANK_033",
             "name": "hakaishin04",
             "rank": 33
           },
           {
+            "hash": 608816388,
             "text_key": "TEXT_200_UI_DAN_RANK_034",
             "name": "hakaishin05",
             "rank": 34
           },
           {
+            "hash": 878529332,
             "text_key": "TEXT_200_UI_DAN_RANK_035",
             "name": "hakaishin06",
             "rank": 35
           },
           {
+            "hash": 1246580919,
             "text_key": "TEXT_200_UI_DAN_RANK_036",
             "name": "hakaishin07",
             "rank": 36
           },
           {
+            "hash": 989372585,
             "text_key": "TEXT_200_UI_DAN_RANK_037",
             "name": "hakaishin08",
             "rank": 37
@@ -354,190 +422,228 @@
         "group_id": 300,
         "entries": [
           {
+            "hash": 893010042,
             "text_key": "TEXT_000_UI_DAN_RANK_000",
             "name": "nyumonsei"
           },
           {
+            "hash": 2755309186,
             "text_key": "TEXT_000_UI_DAN_RANK_001",
             "name": "shodan",
             "rank": 1
           },
           {
+            "hash": 2242109941,
             "text_key": "TEXT_000_UI_DAN_RANK_002",
             "name": "2dan",
             "rank": 2
           },
           {
+            "hash": 3587704258,
             "text_key": "TEXT_000_UI_DAN_RANK_003",
             "name": "yushi",
             "rank": 3
           },
           {
+            "hash": 968933164,
             "text_key": "TEXT_000_UI_DAN_RANK_004",
             "name": "sakushi",
             "rank": 4
           },
           {
+            "hash": 2848843309,
             "text_key": "TEXT_000_UI_DAN_RANK_005",
             "name": "toushi",
             "rank": 5
           },
           {
+            "hash": 2617560001,
             "text_key": "TEXT_000_UI_DAN_RANK_006",
             "name": "garou",
             "rank": 6
           },
           {
+            "hash": 2250594415,
             "text_key": "TEXT_000_UI_DAN_RANK_007",
             "name": "arawashi",
             "rank": 7
           },
           {
+            "hash": 318557708,
             "text_key": "TEXT_000_UI_DAN_RANK_008",
             "name": "mouzou",
             "rank": 8
           },
           {
+            "hash": 1050349042,
             "text_key": "TEXT_000_UI_DAN_RANK_009",
             "name": "gouken",
             "rank": 9
           },
           {
+            "hash": 1328085760,
             "text_key": "TEXT_000_UI_DAN_RANK_010",
             "name": "jaken",
             "rank": 10
           },
           {
+            "hash": 1510782184,
             "text_key": "TEXT_000_UI_DAN_RANK_011",
             "name": "kaiken",
             "rank": 11
           },
           {
+            "hash": 2590001002,
             "text_key": "TEXT_000_UI_DAN_RANK_012",
             "name": "shura",
             "rank": 12
           },
           {
+            "hash": 3108391221,
             "text_key": "TEXT_000_UI_DAN_RANK_013",
             "name": "rasetsu",
             "rank": 13
           },
           {
+            "hash": 2594815065,
             "text_key": "TEXT_000_UI_DAN_RANK_014",
             "name": "raketsu",
             "rank": 14
           },
           {
+            "hash": 2193972433,
             "text_key": "TEXT_000_UI_DAN_RANK_015",
             "name": "garyu",
             "rank": 15
           },
           {
+            "hash": 20456782,
             "text_key": "TEXT_000_UI_DAN_RANK_016",
             "name": "shinryu",
             "rank": 16
           },
           {
+            "hash": 4211666899,
             "text_key": "TEXT_000_UI_DAN_RANK_017",
             "name": "tenryu",
             "rank": 17
           },
           {
+            "hash": 2196207666,
             "text_key": "TEXT_000_UI_DAN_RANK_018",
             "name": "kentei",
             "rank": 18
           },
           {
+            "hash": 1199993303,
             "text_key": "TEXT_000_UI_DAN_RANK_019",
             "name": "entei",
             "rank": 19
           },
           {
+            "hash": 3954066463,
             "text_key": "TEXT_000_UI_DAN_RANK_020",
             "name": "sentei",
             "rank": 20
           },
           {
+            "hash": 2666872901,
             "text_key": "TEXT_000_UI_DAN_RANK_021",
             "name": "fujin",
             "rank": 21
           },
           {
+            "hash": 1276855293,
             "text_key": "TEXT_000_UI_DAN_RANK_022",
             "name": "raijin",
             "rank": 22
           },
           {
+            "hash": 529487354,
             "text_key": "TEXT_000_UI_DAN_RANK_023",
             "name": "kijin",
             "rank": 23
           },
           {
+            "hash": 3699643278,
             "text_key": "TEXT_000_UI_DAN_RANK_024",
             "name": "bushin",
             "rank": 24
           },
           {
+            "hash": 2134076302,
             "text_key": "TEXT_000_UI_DAN_RANK_025",
             "name": "tekkenou",
             "rank": 25
           },
           {
+            "hash": 4098116996,
             "text_key": "TEXT_000_UI_DAN_RANK_026",
             "name": "tekkenhaou",
             "rank": 26
           },
           {
+            "hash": 53541240,
             "text_key": "TEXT_000_UI_DAN_RANK_027",
             "name": "tekkenshin",
             "rank": 27
           },
           {
+            "hash": 2219213910,
             "text_key": "TEXT_000_UI_DAN_RANK_028",
             "name": "tekkenshingoku",
             "rank": 28
           },
           {
+            "hash": 3009306823,
             "text_key": "TEXT_000_UI_DAN_RANK_029",
             "name": "hakaishin",
             "rank": 29
           },
           {
+            "hash": 3641903897,
             "text_key": "TEXT_200_UI_DAN_RANK_030",
             "name": "hakaishin01",
             "rank": 30
           },
           {
+            "hash": 991491382,
             "text_key": "TEXT_200_UI_DAN_RANK_031",
             "name": "hakaishin02",
             "rank": 31
           },
           {
+            "hash": 1483433445,
             "text_key": "TEXT_200_UI_DAN_RANK_032",
             "name": "hakaishin03",
             "rank": 32
           },
           {
+            "hash": 3062946520,
             "text_key": "TEXT_200_UI_DAN_RANK_033",
             "name": "hakaishin04",
             "rank": 33
           },
           {
+            "hash": 608816388,
             "text_key": "TEXT_200_UI_DAN_RANK_034",
             "name": "hakaishin05",
             "rank": 34
           },
           {
+            "hash": 878529332,
             "text_key": "TEXT_200_UI_DAN_RANK_035",
             "name": "hakaishin06",
             "rank": 35
           },
           {
+            "hash": 1246580919,
             "text_key": "TEXT_200_UI_DAN_RANK_036",
             "name": "hakaishin07",
             "rank": 36
           },
           {
+            "hash": 989372585,
             "text_key": "TEXT_200_UI_DAN_RANK_037",
             "name": "hakaishin08",
             "rank": 37
