@@ -1,11 +1,11 @@
 {
   "name": "Polaris TK Database",
   "short_name": "TKDB",
-  "start_url": "/PolarisTKDatabaseWEB/",
+  "start_url": "/",
   "display": "browser",
   "icons": [
     {
-      "src": "/PolarisTKDatabaseWEB/favicon.png",
+      "src": "/favicon.png",
       "sizes": "512x512",
       "type": "image/png"
     }
