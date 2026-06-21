@@ -13,7 +13,7 @@ import type {
   LocDict,
 } from '../lib/types'
 import { hexStr, getPosCode, getCharLabel } from '../lib/common'
-import { CHAR_HASH, ITEM_POS_COLORS, ITEM_POS_LABEL } from '../lib/constants'
+import { ITEM_POS_COLORS, ITEM_POS_LABEL, CHARACTERS } from '../lib/constants'
 import {
   ICON_BODY,
   rarityBgUrl,
@@ -247,9 +247,14 @@ function CommonItemsTab({ data, loc }: { data: CustomizeItemCommonEntry[]; loc: 
   const { handleCellClick, copyText } = useCopyToast()
 
   const charOptions = useMemo(() => {
-    const hashes = new Set(data.map(e => e.character_hash).filter((h): h is number => h !== undefined))
-    return [...hashes].sort((a, b) => (CHAR_HASH[a] ?? 0).localeCompare(CHAR_HASH[b] ?? 0))
-  }, [data])
+    // Use CHARACTERS: Record<number, { code, fighterId?, name? }>
+    const hashes = new Set(data.map(e => e.character_hash).filter((h): h is number => h !== undefined));
+    return [...hashes].sort((a, b) => {
+      const fa = CHARACTERS[a]?.fighterId ?? Number.MAX_SAFE_INTEGER;
+      const fb = CHARACTERS[b]?.fighterId ?? Number.MAX_SAFE_INTEGER;
+      return fa - fb;
+    });
+  }, [data]);
 
   const posOptions = useMemo(() => {
     const codes = new Set(data.map(e => getPosCode(e.hash_1)).filter(Boolean))
@@ -283,9 +288,11 @@ function CommonItemsTab({ data, loc }: { data: CustomizeItemCommonEntry[]; loc: 
       <div className="flex items-center gap-2 px-4 py-3 border-b flex-wrap shrink-0"
         style={{ borderColor: 'rgba(255,255,255,0.07)' }}>
         <FilterSelect value={charFilter} onChange={handleCharChange} placeholder="All Characters">
-          {charOptions.map(h => (
-            <option key={h} value={String(h)}>{CHAR_HASH[h] ?? hexStr(h)}</option>
-          ))}
+          {charOptions.map(h => {
+            const entry = CHARACTERS[h];
+            const label = entry ? `${entry.name} (${entry.code})` : hexStr(h);
+            return <option key={h} value={String(h)}>{label}</option>;
+          })}
         </FilterSelect>
 
         <FilterSelect value={posFilter} onChange={handlePosChange} placeholder="All Item Positions">
@@ -345,7 +352,7 @@ function CommonItemsTab({ data, loc }: { data: CustomizeItemCommonEntry[]; loc: 
                     <td className="px-3 py-2 font-mono text-slate-300 whitespace-nowrap" data-value={String(e.character_hash ?? 0)}>{getCharLabel(e.character_hash)}</td>
                     <td className="px-3 py-2 whitespace-nowrap" data-value={String(e.hash_1 ?? 0)}><PosBadge pos={pos} /></td>
                     <td className="px-3 py-2 text-slate-300 whitespace-nowrap" data-value={e.text_key ?? ''} style={{ maxWidth: 220 }}>
-                      <ItemImageTooltip assetName={e.asset_name} charCode={CHAR_HASH[e.character_hash ?? 0]}>
+                      <ItemImageTooltip assetName={e.asset_name} charCode={CHARACTERS[e.character_hash!]?.code}>
                         <span className="block truncate">{resolveLoc(e.text_key, loc)}</span>
                       </ItemImageTooltip>
                     </td>
@@ -399,7 +406,7 @@ function CommonItemsTab({ data, loc }: { data: CustomizeItemCommonEntry[]; loc: 
                 assetName={e.asset_name}
                 label={resolveLoc(e.text_key, loc) || e.asset_name?.replace(/^(?:IP|BMI|ECI|BEI|ACI)_/, '') || String(e.char_item_id)}
                 pos={getPosCode(e.hash_1)}
-                charCode={CHAR_HASH[e.character_hash ?? 0]}
+                charCode={CHARACTERS[e.character_hash!].code}
                 rarity={e.unk_11 ?? 0}
               />
             ))}
@@ -441,8 +448,13 @@ function UniqueItemsTab({
   const { handleCellClick, copyText } = useCopyToast()
 
   const charOptions = useMemo(() => {
-    const hashes = new Set(entries.map(e => e.character_hash).filter((h): h is number => h !== undefined))
-    return [...hashes].sort((a, b) => (CHAR_HASH[a] ?? 0).localeCompare(CHAR_HASH[b] ?? 0))
+    // Use CHARACTERS: Record<number, { code, fighterId?, name? }>
+    const hashes = new Set(entries.map(e => e.character_hash).filter((h): h is number => h !== undefined));
+    return [...hashes].sort((a, b) => {
+      const fa = CHARACTERS[a]?.fighterId ?? Number.MAX_SAFE_INTEGER;
+      const fb = CHARACTERS[b]?.fighterId ?? Number.MAX_SAFE_INTEGER;
+      return fa - fb;
+    });
   }, [entries])
 
   const posOptions = useMemo(() => {
@@ -477,9 +489,11 @@ function UniqueItemsTab({
       <div className="flex items-center gap-2 px-4 py-3 border-b flex-wrap shrink-0"
         style={{ borderColor: 'rgba(255,255,255,0.07)' }}>
         <FilterSelect value={charFilter} onChange={handleCharChange} placeholder="All Characters">
-          {charOptions.map(h => (
-            <option key={h} value={String(h)}>{CHAR_HASH[h] ?? hexStr(h)}</option>
-          ))}
+          {charOptions.map(h => {
+            const entry = CHARACTERS[h];
+            const label = entry ? `${entry.name} (${entry.code})` : hexStr(h);
+            return <option key={h} value={String(h)}>{label}</option>;
+          })}
         </FilterSelect>
 
         <FilterSelect value={posFilter} onChange={handlePosChange} placeholder="All Item Positions">
@@ -537,7 +551,7 @@ function UniqueItemsTab({
                     <td className="px-3 py-2 font-mono text-slate-300 whitespace-nowrap" data-value={String(e.character_hash ?? 0)}>{getCharLabel(e.character_hash)}</td>
                     <td className="px-3 py-2 whitespace-nowrap" data-value={String(e.hash_1 ?? 0)}><PosBadge pos={pos} /></td>
                     <td className="px-3 py-2 text-slate-300 whitespace-nowrap" data-value={e.text_key ?? ''} style={{ maxWidth: 220 }}>
-                      <ItemImageTooltip assetName={e.asset_name} charCode={CHAR_HASH[e.character_hash ?? 0]}>
+                      <ItemImageTooltip assetName={e.asset_name} charCode={CHARACTERS[e.character_hash!]?.code}>
                         <span className="block truncate">{resolveLoc(e.text_key, loc)}</span>
                       </ItemImageTooltip>
                     </td>
@@ -586,7 +600,7 @@ function UniqueItemsTab({
                 assetName={e.asset_name}
                 label={resolveLoc(e.text_key, loc) || e.asset_name?.replace(/^(?:IP|BMI|ECI|BEI|ACI)_/, '') || String(e.char_item_id ?? i)}
                 pos={getPosCode(e.hash_1)}
-                charCode={CHAR_HASH[e.character_hash ?? 0]}
+                charCode={CHARACTERS[e.character_hash!]?.code}
                 rarity={e.unk_10 ?? 0}
               />
             ))}

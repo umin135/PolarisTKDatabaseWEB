@@ -1,8 +1,64 @@
 
 // ---------------------------------------------------------------------------
-// Hash lookup tables
+// Character lookup table (combined)
 // ---------------------------------------------------------------------------
 
+export const CHARACTERS: Record<number, { code: string; fighterId?: number; name?: string }> = {
+  26846036:   { code: 'ZBR', fighterId: 28, name: "Reina" },
+  97192667:   { code: 'CTR', fighterId: 19, name: "Claudio" },
+  236224321:  { code: 'TTR', fighterId: 24, name: "Panda" },
+  310559474:  { code: 'HRS', fighterId: 20, name: "Shaheen" },
+  731112246:  { code: 'KMD', fighterId: 15, name: "Dragunov" },
+  748126445:  { code: 'PGN', fighterId: 2, name: "King" },
+  761728323:  { code: 'WKZ', fighterId: 40, name: "Miary Zo" },
+  823174094:  { code: 'CHT', fighterId: 7, name: "Bryan" },
+  840871906:  { code: 'LON', fighterId: 30, name: "Victor" },
+  1009826274: { code: 'AML', fighterId: 27, name: "Jun" },
+  1066975102: { code: 'KAL', fighterId: 21, name: "Nina" },
+  1230214467: { code: 'SWL', fighterId: 12, name: "Devil Jin" },
+  1281269543: { code: 'CRW', fighterId: 25, name: "Zafina" },
+  1575337196: { code: 'BEE', fighterId: 35, name: "Heihachi" },
+  1597287972: { code: 'JLY', fighterId: 26, name: "Leroy" },
+  1633518270: { code: 'RBT', fighterId: 23, name: "Kuma" },
+  1791216549: { code: 'ANT', fighterId: 6, name: "Jin" },
+  1806241895: { code: 'OKM', fighterId: 36, name: "Clive" },
+  1862528861: { code: 'LZD', fighterId: 17, name: "Lars" },
+  1870866276: { code: 'HMS', fighterId: 14, name: "Lili" },
+  1941891036: { code: 'CML', fighterId: 3, name: "Yoshimitsu" },
+  2046353711: { code: 'BBN', fighterId: 31, name: "Raven" },
+  2172508408: { code: 'MNT', fighterId: 18, name: "Alisa" },
+  2262000005: { code: 'GHP', fighterId: 16, name: "Leo" },
+  2508721799: { code: 'TGR', fighterId: 38, name: "Fahkumram" },
+  2620373223: { code: 'DER', fighterId: 11, name: "Asuka" },
+  2691931401: { code: 'CCN', fighterId: 10, name: "Jack-8" },
+  2802412287: { code: 'GRF', fighterId: 0, name: "Paul" },
+  3013172036: { code: 'CBR', fighterId: 34, name: "Lidia" },
+  3098177400: { code: 'CAT', fighterId: 29, name: "Azucena" },
+  3109625382: { code: 'SNK', fighterId: 4, name: "Hwoarang" },
+  3155198250: { code: 'BSN', fighterId: 9, name: "Steve" },
+  3269129674: { code: 'GOT', fighterId: 32, name: "Azazel" },
+  3283482507: { code: 'GRL', fighterId: 8, name: "Kazuya" },
+  3302278637: { code: 'KGR', fighterId: 37, name: "Anna" },
+  3480598787: { code: 'WLF', fighterId: 22, name: "Lee" },
+  3651497509: { code: 'DOG', fighterId: 33, name: "Eddy" },
+  3716978005: { code: 'RAT', fighterId: 5, name: "Xiaoyu" },
+  3826916785: { code: 'KLW', fighterId: 13, name: "Feng" },
+  3908942186: { code: 'KNK', fighterId: 39, name: "Armor King" },
+  3909547504: { code: 'PIG', fighterId: 1, name: "Law" },
+  2897068730: { code: 'DEK', fighterId: 116, name: "Dummy" },
+  2492561663: { code: 'CMN', fighterId: -1, name: "Common" },
+  1489967222: { code: 'XXA', fighterId: 117, name: "Angel Jin" },
+  1000005316: { code: 'XXB', fighterId: 118, name: "True Devil Kazuya" },
+  3374534069: { code: 'XXC', fighterId: 119, name: "Jack-7" },
+  1859904795: { code: 'XXD', fighterId: 120, name: "Soldier" },
+  2243376126: { code: 'XXE', fighterId: 121, name: "Devil Jin" },
+  2887689737: { code: 'XXF', fighterId: 122, name: "Tekken Monk" },
+  694498012:  { code: 'XXG', fighterId: 123, name: "Seiryu" },
+  3099443275: { code: 'KER', fighterId: 41, name: "Kunimitsu" },
+  1591956335: { code: 'LAST', fighterId: 999, name: "Last" },
+}
+
+// Retain original per-hash tables for utility/compat reasons if needed:
 export const CHAR_HASH: Record<number, string> = {
   26846036:   'ZBR', 97192667:   'CTR', 236224321:  'TTR', 310559474:  'HRS',
   731112246:  'KMD', 748126445:  'PGN', 761728323:  'WKZ', 823174094:  'CHT',
@@ -19,7 +75,6 @@ export const CHAR_HASH: Record<number, string> = {
   2887689737: 'XXF', 694498012:  'XXG', 3099443275: 'KER', 1591956335: 'LAST',
 }
 
-// Key: character code hash. Value: Fighter ID
 export const CHAR_HASH_TO_FIGHTER_NAME: Record<number, number> = {
   2802412287: 0,
   3909547504: 1,
