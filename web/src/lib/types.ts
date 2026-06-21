@@ -81,6 +81,24 @@ export interface StageList {
   data: { entries: StageEntry[] }
 }
 
+// --- jukebox_list ---
+export interface JukeboxEntry {
+  bgm_hash: number
+  series_hash: number
+  unk_2?: number
+  cue_name?: string
+  arrangement?: string
+  alt_cue_name_1?: string
+  alt_cue_name_2?: string
+  alt_cue_name_3?: string
+  display_text_key?: string
+}
+
+export interface JukeboxList {
+  version: number
+  data: { entries: JukeboxEntry[] }
+}
+
 // --- customize_item_common_list ---
 export interface CustomizeItemCommonEntry {
   char_item_id: number    // id: 0

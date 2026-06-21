@@ -4,6 +4,7 @@ import { HomePage }  from './pages/HomePage'
 import { ItemsPage } from './pages/ItemsPage'
 import { CharactersPage } from './pages/CharactersPage'
 import { StagesPage } from './pages/StagesPage'
+import { JukeboxPage } from './pages/JukeboxPage'
 import { VersionProvider } from './contexts/VersionContext'
 
 export default function App() {
@@ -16,6 +17,7 @@ export default function App() {
             <Route path="/items"      element={<ItemsPage />} />
             <Route path="/characters" element={<CharactersPage />} />
             <Route path="/stages"     element={<StagesPage />} />
+            <Route path="/jukebox"    element={<JukeboxPage />} />
           </Routes>
         </Layout>
       </HashRouter>
