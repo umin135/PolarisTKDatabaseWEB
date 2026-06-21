@@ -34,6 +34,16 @@ function resolveLoc(key: string | undefined | null, loc: LocDict): string {
   return loc[key] ?? key
 }
 
+function getGameVersion(version?: number) {
+  if (!version) return '–';
+  if (version === 100) return '1.00.00';
+  const str = version.toString().padStart(5, '0');
+  const major = Number(str[0]);
+  const minor = str.slice(1, 3);
+  const patch = str.slice(3, 5);
+  return `${major}.${minor}.${patch}`;
+}
+
 function useCopyToast() {
   const [text, setText] = useState<string | null>(null)
   const timer = useRef<ReturnType<typeof setTimeout>>()
@@ -236,52 +246,192 @@ function ViewToggle({ mode, onChange }: { mode: ViewMode; onChange: (m: ViewMode
 // Common Items Tab
 // ---------------------------------------------------------------------------
 
+const COMMON_TABLE_COLUMNS = [
+  'AssetName', 'ItemPosition ID',
+  'Name Key', 'Extra Text Key 1', 'Extra Text Key 2',
+  'isDefaultKey', 'shop_sort_id', 'Visiblity', 'Rarity', 'Price', 'unk_13',
+  'category_no', 'hash_2', 'isColorable', 'unk_17',
+  'hash_3', 'unk_19', 'unk_20', 'unk_21', 'unk_22', 'hash_4', 'unk_24', 'Game Version',
+] as const
+
+interface GroupedCommonRow {
+  entry: CustomizeItemCommonEntry
+  variantCount: number
+  characterHashes: Set<number>
+  posCode: string
+}
+
+interface CommonDisplayItem {
+  entry: CustomizeItemCommonEntry
+  variantCount: number
+}
+
+function matchesCommonSearch(
+  e: CustomizeItemCommonEntry,
+  lq: string,
+  loc: LocDict,
+): boolean {
+  if ((e.asset_name ?? '').toLowerCase().includes(lq)) return true
+  if ((e.text_key ?? '').toLowerCase().includes(lq)) return true
+  if (String(e.char_item_id).includes(lq)) return true
+  if (String(e.base_id ?? 0).includes(lq)) return true
+  const key = e.text_key
+  if (key) {
+    const resolved = loc[key]
+    if (resolved && resolved.toLowerCase().includes(lq)) return true
+  }
+  return false
+}
+
+function buildGroupedRows(data: CustomizeItemCommonEntry[]): GroupedCommonRow[] {
+  const groups: GroupedCommonRow[] = []
+  const indexByBaseId = new Map<number, number>()
+
+  for (const e of data) {
+    const key = e.base_id ?? 0
+    const idx = indexByBaseId.get(key)
+    if (idx === undefined) {
+      indexByBaseId.set(key, groups.length)
+      const characterHashes = new Set<number>()
+      if (e.character_hash !== undefined) characterHashes.add(e.character_hash)
+      groups.push({
+        entry: e,
+        variantCount: 1,
+        characterHashes,
+        posCode: getPosCode(e.hash_1),
+      })
+    } else {
+      const group = groups[idx]
+      group.variantCount += 1
+      if (e.character_hash !== undefined) group.characterHashes.add(e.character_hash)
+    }
+  }
+
+  return groups
+}
+
+function filterUngroupedEntries(
+  data: CustomizeItemCommonEntry[],
+  charHash: number | null,
+  posFilter: string,
+  lq: string,
+  loc: LocDict,
+): CustomizeItemCommonEntry[] {
+  if (!charHash && !posFilter && !lq) return data
+
+  const result: CustomizeItemCommonEntry[] = []
+  for (const e of data) {
+    if (charHash !== null && e.character_hash !== charHash) continue
+    if (posFilter && getPosCode(e.hash_1) !== posFilter) continue
+    if (lq && !matchesCommonSearch(e, lq, loc)) continue
+    result.push(e)
+  }
+  return result
+}
+
+function filterGroupedRows(
+  groups: GroupedCommonRow[],
+  charHash: number | null,
+  posFilter: string,
+  lq: string,
+  loc: LocDict,
+): GroupedCommonRow[] {
+  if (!charHash && !posFilter && !lq) return groups
+
+  const result: GroupedCommonRow[] = []
+  for (const g of groups) {
+    if (charHash !== null && !g.characterHashes.has(charHash)) continue
+    if (posFilter && g.posCode !== posFilter) continue
+    if (lq && !matchesCommonSearch(g.entry, lq, loc)) continue
+    result.push(g)
+  }
+  return result
+}
 
 function CommonItemsTab({ data, loc }: { data: CustomizeItemCommonEntry[]; loc: LocDict }) {
   const [charFilter, setCharFilter] = useState('')
   const [posFilter, setPosFilter] = useState('')
+  const [groupByLocalId, setGroupByLocalId] = useState(false)
   const [q, setQ] = useState('')
   const [page, setPage] = useState(0)
   const [view, setView] = useState<ViewMode>('table')
   const [pageSize, setPageSize] = useState(100)
   const { handleCellClick, copyText } = useCopyToast()
 
-  const charOptions = useMemo(() => {
-    // Use CHARACTERS: Record<number, { code, fighterId?, name? }>
-    const hashes = new Set(data.map(e => e.character_hash).filter((h): h is number => h !== undefined));
-    return [...hashes].sort((a, b) => {
-      const fa = CHARACTERS[a]?.fighterId ?? Number.MAX_SAFE_INTEGER;
-      const fb = CHARACTERS[b]?.fighterId ?? Number.MAX_SAFE_INTEGER;
-      return fa - fb;
-    });
-  }, [data]);
+  const groupedRows = useMemo(() => buildGroupedRows(data), [data])
 
-  const posOptions = useMemo(() => {
-    const codes = new Set(data.map(e => getPosCode(e.hash_1)).filter(Boolean))
-    return [...codes].sort()
+  const charOptions = useMemo(() => {
+    const hashes = new Set<number>()
+    for (const e of data) {
+      if (e.character_hash !== undefined) hashes.add(e.character_hash)
+    }
+    return [...hashes].sort((a, b) => {
+      const fa = CHARACTERS[a]?.fighterId ?? Number.MAX_SAFE_INTEGER
+      const fb = CHARACTERS[b]?.fighterId ?? Number.MAX_SAFE_INTEGER
+      return fa - fb
+    })
   }, [data])
 
-  const filtered = useMemo(() => {
-    const charHash = charFilter ? Number(charFilter) : null
-    const lq = q.toLowerCase()
-    return data.filter(e => {
-      if (charHash !== null && e.character_hash !== charHash) return false
-      if (posFilter && getPosCode(e.hash_1) !== posFilter) return false
-      if (lq &&
-        !(e.asset_name ?? '').toLowerCase().includes(lq) &&
-        !(e.text_key ?? '').toLowerCase().includes(lq) &&
-        !resolveLoc(e.text_key, loc).toLowerCase().includes(lq) &&
-        !String(e.char_item_id).includes(lq)) return false
-      return true
-    })
-  }, [data, charFilter, posFilter, q, loc])
+  const posOptions = useMemo(() => {
+    const codes = new Set<string>()
+    for (const g of groupedRows) {
+      if (g.posCode) codes.add(g.posCode)
+    }
+    return [...codes].sort()
+  }, [groupedRows])
 
-  const paged = filtered.slice(page * pageSize, (page + 1) * pageSize)
+  const charHash = charFilter ? Number(charFilter) : null
+  const lq = q.toLowerCase()
+
+  const filteredUngrouped = useMemo(
+    () => groupByLocalId ? [] : filterUngroupedEntries(data, charHash, posFilter, lq, loc),
+    [data, charHash, posFilter, lq, loc, groupByLocalId],
+  )
+
+  const filteredGrouped = useMemo(
+    () => groupByLocalId ? filterGroupedRows(groupedRows, charHash, posFilter, lq, loc) : [],
+    [groupedRows, charHash, posFilter, lq, loc, groupByLocalId],
+  )
+
+  const displayCount = groupByLocalId ? filteredGrouped.length : filteredUngrouped.length
+
+  const groupedRowCount = useMemo(
+    () => filteredGrouped.reduce((sum, g) => sum + g.variantCount, 0),
+    [filteredGrouped],
+  )
+
+  const paged = useMemo((): CommonDisplayItem[] => {
+    const start = page * pageSize
+    const end = start + pageSize
+    if (groupByLocalId) {
+      return filteredGrouped.slice(start, end).map(g => ({
+        entry: g.entry,
+        variantCount: g.variantCount,
+      }))
+    }
+    return filteredUngrouped.slice(start, end).map(e => ({
+      entry: e,
+      variantCount: 1,
+    }))
+  }, [groupByLocalId, filteredGrouped, filteredUngrouped, page, pageSize])
 
   function handleCharChange(v: string) { setCharFilter(v); setPage(0) }
   function handlePosChange(v: string)  { setPosFilter(v);  setPage(0) }
   function handleSearch(v: string)     { setQ(v);          setPage(0) }
   function handlePageSize(v: number)   { setPageSize(v);   setPage(0) }
+  function handleGroupByLocalId(v: boolean) { setGroupByLocalId(v); setPage(0) }
+
+  const tableColumns = useMemo(() => {
+    if (groupByLocalId) {
+      return ['Local Item ID', 'Variants', ...COMMON_TABLE_COLUMNS]
+    }
+    return [
+      'Item ID', 'Local Item ID',
+      ...COMMON_TABLE_COLUMNS.slice(0, 1),
+      'Character ID',
+      ...COMMON_TABLE_COLUMNS.slice(1),
+    ]
+  }, [groupByLocalId])
 
   return (
     <>
@@ -301,11 +451,37 @@ function CommonItemsTab({ data, loc }: { data: CustomizeItemCommonEntry[]; loc: 
           ))}
         </FilterSelect>
 
+        <label
+          className={clsx(
+            'flex items-center gap-2 text-xs cursor-pointer select-none rounded-lg px-3 py-1.5 transition-colors',
+            groupByLocalId ? 'text-violet-300' : 'text-slate-400',
+          )}
+          style={{
+            background: '#16161f',
+            border: groupByLocalId
+              ? '1px solid rgba(124,58,237,0.35)'
+              : '1px solid rgba(255,255,255,0.12)',
+          }}
+        >
+          <input
+            type="checkbox"
+            checked={groupByLocalId}
+            onChange={e => handleGroupByLocalId(e.target.checked)}
+            className="rounded accent-violet-500"
+          />
+          Group by Local Item ID
+        </label>
+
         <div className="flex-1 min-w-[180px] max-w-xs">
           <SearchBar value={q} onChange={handleSearch} placeholder="Search asset / key / ID…" />
         </div>
 
-        <span className="text-xs text-slate-500">{filtered.length.toLocaleString()} items</span>
+        <span className="text-xs text-slate-500">
+          {displayCount.toLocaleString()} {groupByLocalId ? 'local items' : 'items'}
+          {groupByLocalId && groupedRowCount !== displayCount && (
+            <span className="text-slate-600"> ({groupedRowCount.toLocaleString()} rows)</span>
+          )}
+        </span>
         <label className="flex items-center gap-1.5 text-xs text-slate-400"
           style={{ border: '1px solid rgba(255,255,255,0.12)', borderRadius: 8, background: '#16161f', padding: '0 10px' }}>
           <span>Show</span>
@@ -328,28 +504,34 @@ function CommonItemsTab({ data, loc }: { data: CustomizeItemCommonEntry[]; loc: 
           <table className="text-xs border-collapse" style={{ minWidth: '2400px' }} onClick={handleCellClick}>
             <thead>
               <tr className="sticky top-0" style={{ background: 'rgba(15,15,22,0.97)', backdropFilter: 'blur(8px)' }}>
-                {[
-                  'Item ID', 'Local Item ID', 'AssetName', 'Character ID', 'ItemPosition ID',
-                  'Name Key', 'Extra Text Key 1', 'Extra Text Key 2',
-                  'isDefaultKey', 'shop_sort_id', 'Visiblity', 'Rarity', 'Price', 'unk_13',
-                  'category_no', 'hash_2', 'isColorable', 'unk_17',
-                  'hash_3', 'unk_19', 'unk_20', 'unk_21', 'unk_22', 'hash_4', 'unk_24', 'Game Version',
-                ].map(h => (
+                {tableColumns.map(h => (
                   <th key={h} className={TH} style={TH_STYLE}>{h}</th>
                 ))}
               </tr>
             </thead>
             <tbody style={{ cursor: 'pointer' }}>
-              {paged.map(e => {
+              {paged.map(({ entry: e, variantCount }) => {
                 const pos = getPosCode(e.hash_1)
+                const rowKey = groupByLocalId ? `base-${e.base_id ?? 0}` : e.char_item_id
                 return (
-                  <tr key={e.char_item_id} className="hover:bg-white/3 transition-colors" style={ROW_STYLE}>
-                    <td className="px-3 py-2 font-mono text-violet-300 whitespace-nowrap">{e.char_item_id}</td>
-                    <td className="px-3 py-2 font-mono text-slate-500 whitespace-nowrap text-right">{e.base_id ?? 0}</td>
+                  <tr key={rowKey} className="hover:bg-white/3 transition-colors" style={ROW_STYLE}>
+                    {!groupByLocalId && (
+                      <td className="px-3 py-2 font-mono text-violet-300 whitespace-nowrap">{e.char_item_id}</td>
+                    )}
+                    <td className="px-3 py-2 font-mono text-violet-300 whitespace-nowrap text-right" data-value={String(e.base_id ?? 0)}>
+                      {e.base_id ?? 0}
+                    </td>
+                    {groupByLocalId && (
+                      <td className="px-3 py-2 text-slate-400 whitespace-nowrap text-right" data-value={String(variantCount)}>
+                        {variantCount.toLocaleString()}
+                      </td>
+                    )}
                     <td className="px-3 py-2 font-mono text-slate-300 whitespace-nowrap" style={{ maxWidth: 220 }}>
                       <span className="block truncate">{e.asset_name ?? "-"}</span>
                     </td>
-                    <td className="px-3 py-2 font-mono text-slate-300 whitespace-nowrap" data-value={String(e.character_hash ?? 0)}>{getCharLabel(e.character_hash)}</td>
+                    {!groupByLocalId && (
+                      <td className="px-3 py-2 font-mono text-slate-300 whitespace-nowrap" data-value={String(e.character_hash ?? 0)}>{getCharLabel(e.character_hash)}</td>
+                    )}
                     <td className="px-3 py-2 whitespace-nowrap" data-value={String(e.hash_1 ?? 0)}><PosBadge pos={pos} /></td>
                     <td className="px-3 py-2 text-slate-300 whitespace-nowrap" data-value={e.text_key ?? ''} style={{ maxWidth: 220 }}>
                       <ItemImageTooltip assetName={e.asset_name} charCode={CHARACTERS[e.character_hash!]?.code}>
@@ -387,7 +569,7 @@ function CommonItemsTab({ data, loc }: { data: CustomizeItemCommonEntry[]; loc: 
                     <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_22 ?? 0}</td>
                     <td className="px-3 py-2 font-mono text-slate-600 whitespace-nowrap" data-value={String(e.hash_4 ?? 0)}>{hexStr(e.hash_4)}</td>
                     <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_24 ?? 0}</td>
-                    <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.sort_group ?? 0}</td>
+                    <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{getGameVersion(e.sort_group)}</td>
                   </tr>
                 )
               })}
@@ -400,18 +582,18 @@ function CommonItemsTab({ data, loc }: { data: CustomizeItemCommonEntry[]; loc: 
       ) : (
         <div className="flex-1 overflow-auto p-4">
           <div className="grid gap-2" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))' }}>
-            {filtered.slice(page * pageSize, (page + 1) * pageSize).map(e => (
+            {paged.map(({ entry: e }) => (
               <ItemCard
-                key={e.char_item_id}
+                key={groupByLocalId ? `base-${e.base_id ?? 0}` : e.char_item_id}
                 assetName={e.asset_name}
-                label={resolveLoc(e.text_key, loc) || e.asset_name?.replace(/^(?:IP|BMI|ECI|BEI|ACI)_/, '') || String(e.char_item_id)}
+                label={resolveLoc(e.text_key, loc) || e.asset_name?.replace(/^(?:IP|BMI|ECI|BEI|ACI)_/, '') || String(groupByLocalId ? e.base_id ?? 0 : e.char_item_id)}
                 pos={getPosCode(e.hash_1)}
-                charCode={CHARACTERS[e.character_hash!].code}
+                charCode={groupByLocalId ? undefined : CHARACTERS[e.character_hash!]?.code}
                 rarity={e.unk_11 ?? 0}
               />
             ))}
           </div>
-          {filtered.length === 0 && (
+          {displayCount === 0 && (
             <div className="text-center text-slate-600 py-16 text-sm">No items match filters</div>
           )}
         </div>
@@ -419,7 +601,7 @@ function CommonItemsTab({ data, loc }: { data: CustomizeItemCommonEntry[]; loc: 
 
       <Pagination
         page={page}
-        total={filtered.length}
+        total={displayCount}
         pageSize={pageSize}
         onChange={setPage}
       />
@@ -581,7 +763,7 @@ function UniqueItemsTab({
                     <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_18 ?? 0}</td>
                     <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_19 ?? 0}</td>
                     <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_20 ?? 0}</td>
-                    <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{e.unk_21 ?? 0}</td>
+                    <td className="px-3 py-2 text-slate-500 whitespace-nowrap text-right">{getGameVersion(e.unk_21)}</td>
                   </tr>
                 )
               })}
