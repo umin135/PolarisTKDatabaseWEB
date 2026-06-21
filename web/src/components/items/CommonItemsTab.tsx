@@ -176,7 +176,7 @@ export function CommonItemsTab({ data, loc }: CommonItemsTabProps) {
                 assetName={e.asset_name}
                 label={itemLabel(e.text_key, e.asset_name, groupByLocalId ? e.base_id ?? 0 : e.char_item_id, loc)}
                 pos={getPosCode(e.hash_1)}
-                charCode={groupByLocalId ? undefined : CHARACTERS[e.character_hash!]?.code}
+                charCode={groupByLocalId ? "GRF" : CHARACTERS[e.character_hash!]?.code}
                 rarity={e.unk_11 ?? 0}
               />
             ))}
