@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { Home, Shirt, Users, MapPin, Music, ChevronRight } from 'lucide-react'
+import { Home, Shirt, Users, MapPin, Music, Trophy, ChevronRight } from 'lucide-react'
 import { clsx } from '../lib/utils'
 import { useVersion } from '../contexts/VersionContext'
 
@@ -8,6 +8,7 @@ const NAV = [
   { to: '/characters', icon: Users,  label: 'Characters' },
   { to: '/stages',     icon: MapPin, label: 'Stages' },
   { to: '/jukebox',    icon: Music,  label: 'Jukebox' },
+  { to: '/ranks',      icon: Trophy, label: 'Ranks' },
   { to: '/items',      icon: Shirt,  label: 'Customize Items' },
 ]
 

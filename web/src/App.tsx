@@ -5,6 +5,7 @@ import { ItemsPage } from './pages/ItemsPage'
 import { CharactersPage } from './pages/CharactersPage'
 import { StagesPage } from './pages/StagesPage'
 import { JukeboxPage } from './pages/JukeboxPage'
+import { RanksPage } from './pages/RanksPage'
 import { VersionProvider } from './contexts/VersionContext'
 
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
             <Route path="/characters" element={<CharactersPage />} />
             <Route path="/stages"     element={<StagesPage />} />
             <Route path="/jukebox"    element={<JukeboxPage />} />
+            <Route path="/ranks"      element={<RanksPage />} />
           </Routes>
         </Layout>
       </HashRouter>

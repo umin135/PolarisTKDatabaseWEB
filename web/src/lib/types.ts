@@ -99,6 +99,24 @@ export interface JukeboxList {
   data: { entries: JukeboxEntry[] }
 }
 
+// --- rank_list ---
+export interface RankItem {
+  hash: number
+  text_key?: string
+  name?: string
+  rank?: number
+}
+
+export interface RankGroup {
+  group_id: number
+  entries: RankItem[]
+}
+
+export interface RankList {
+  version: number
+  data: { entries: RankGroup[] }
+}
+
 // --- customize_item_common_list ---
 export interface CustomizeItemCommonEntry {
   char_item_id: number    // id: 0
