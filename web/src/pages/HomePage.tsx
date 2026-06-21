@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useGameData } from '../hooks/useGameData'
-import type { CharacterList, CustomizeItemCommonList, CustomizeItemUniqueList } from '../lib/types'
+import type { CharacterList, CustomizeItemCommonList, CustomizeItemUniqueList, StageList } from '../lib/types'
 
 interface StatCardProps {
   label: string
@@ -31,10 +31,12 @@ export function HomePage() {
   const common = useGameData<CustomizeItemCommonList>('fbsdata', 'customize_item_common_list')
   const unique = useGameData<CustomizeItemUniqueList>('fbsdata', 'customize_item_unique_list')
   const chars  = useGameData<CharacterList>('fbsdata', 'character_list')
+  const stages = useGameData<StageList>('fbsdata', 'stage_list')
 
   const commonCount = common.data?.data?.entries?.length ?? '...'
   const uniqueCount = unique.data?.data?.entries?.length ?? '...'
   const charCount   = chars.data?.data?.entries?.length ?? '...'
+  const stageCount  = stages.data?.data?.entries?.length ?? '...'
 
   return (
     <div className="p-6 max-w-4xl mx-auto">
@@ -54,8 +56,9 @@ export function HomePage() {
       {/* Stats Grid */}
       <section className="mb-10">
         <h2 className="text-xs font-semibold text-slate-500 uppercase tracking-widest mb-3">Data Overview</h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           <StatCard label="Characters" value={charCount} to="/characters" accent="#a78bfa" />
+          <StatCard label="Stages" value={stageCount} to="/stages" accent="#38bdf8" />
           <StatCard label="Common Items" value={commonCount} to="/items" accent="#fb923c" />
           <StatCard label="Unique Items" value={uniqueCount} to="/items" accent="#f472b6" />
         </div>
@@ -67,6 +70,7 @@ export function HomePage() {
         <div className="rounded-xl border overflow-hidden" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
           {[
             { name: 'Characters', file: 'character_list', to: '/characters' },
+            { name: 'Stages', file: 'stage_list', to: '/stages' },
             { name: 'Common Customize Items', file: 'customize_item_common_list', to: '/items' },
             { name: 'Unique Customize Items', file: 'customize_item_unique_list', to: '/items' },
           ].map((row, i) => (
