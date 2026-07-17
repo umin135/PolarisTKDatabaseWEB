@@ -1,6 +1,6 @@
 # Polaris TK Database
 
-Website link: [https://tekken-tkdata.com/](CLICK ME!!!)
+Website link: https://tekken-tkdata.com/
 
 Tekken 8 game data extracted from `tkdata.bin` (BNBinPak format) and browsable as a web database.
 
