@@ -7,7 +7,7 @@ Usage:
     python scripts/3_extract_localization.py --lang ko # Korean
 
 Output:
-    web/public/data/loc_{lang}.json  →  {"TEXT_UI_000_cmn_hed_hachimaki": "Hachimaki", ...}
+    web/public/data/{version}/localize/loc_{lang}.json  →  {"TEXT_UI_000_cmn_hed_hachimaki": "Hachimaki", ...}
 
 Processing order (later files override earlier keys):
     1. Non-update GTB files (GTB_Custom_Item, GTB_System, etc.)
@@ -36,8 +36,8 @@ def sort_key(path: Path) -> tuple:
     return (1, ver, path.stem)
 
 
-def extract_lang(lang: str) -> dict[str, str]:
-    loc_dir = ROOT / '_extract' / 'Localize' / lang
+def extract_lang(lang: str, version: str) -> dict[str, str]:
+    loc_dir = ROOT / '_extract' / version / 'Localize' / lang
     if not loc_dir.exists():
         sys.exit(f'[!] Not found: {loc_dir}')
 
@@ -61,13 +61,13 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__,
         formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('--lang', default='en',
-        help='Language code matching _extract/Localize/{lang}/ (default: en)')
+        help='Language code matching _extract/{version}/Localize/{lang}/ (default: en)')
     parser.add_argument('--version', default='3.01.01',
-        help='Game version string used for output path (default: 3.01.01)')
+        help='Game version string for input & output paths (default: 3.01.01)')
     args = parser.parse_args()
 
-    print(f'[*] Extracting: {args.lang}', file=sys.stderr)
-    loc = extract_lang(args.lang)
+    print(f'[*] Extracting: {args.lang} ({args.version})', file=sys.stderr)
+    loc = extract_lang(args.lang, args.version)
     print(f'[*] Total keys: {len(loc)}', file=sys.stderr)
 
     out_dir = ROOT / 'web' / 'public' / 'data' / args.version / 'localize'

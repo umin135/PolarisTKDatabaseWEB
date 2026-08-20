@@ -6,8 +6,13 @@
 flatc 컴파일러 없이 순수 Python으로 FlatBuffers 바이너리 포맷을 읽습니다.
 
 Usage:
-  python scripts/2_parse_fbs.py
-  python scripts/2_parse_fbs.py --input extracted/fbsdata --schemas _tkdata_structure/fbsdata --output web/public/data
+  python scripts/2_parse_fbs.py                     # 기본 버전(3.01.01)
+  python scripts/2_parse_fbs.py --version 3.02.01
+  python scripts/2_parse_fbs.py --input extracted/3.01.01/fbsdata --schemas _tkdata_structure/fbsdata --output web/public/data/3.01.01/fbsdata
+
+입출력 기본 경로는 --version 으로 결정됩니다 (스키마 디렉토리는 버전 무관, 공용):
+  입력 : extracted/{version}/fbsdata
+  출력 : web/public/data/{version}/fbsdata
 """
 
 from __future__ import annotations
@@ -248,15 +253,20 @@ def convert_bin_to_json(bin_path: Path, schemas: AllSchemas, root_type: str) -> 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description='FlatBuffers .bin → JSON 변환')
-    parser.add_argument('--input',   default=str(PROJECT_ROOT / 'extracted' / 'fbsdata'))
+    parser.add_argument('--version', default='3.01.01',
+                        help='게임 버전. 기본 입출력 경로 산정에 사용 (기본: 3.01.01)')
+    parser.add_argument('--input',   default=None,
+                        help='기본: extracted/{version}/fbsdata')
     parser.add_argument('--schemas', default=str(PROJECT_ROOT / '_tkdata_structure' / 'fbsdata'))
-    parser.add_argument('--output',  default=str(PROJECT_ROOT / 'web' / 'public' / 'data'))
+    parser.add_argument('--output',  default=None,
+                        help='기본: web/public/data/{version}/fbsdata')
     parser.add_argument('--only',    nargs='*', help='특정 파일만 변환 (예: character_list stage_list)')
     args = parser.parse_args()
 
-    input_dir  = Path(args.input)
+    ver = args.version
+    input_dir  = Path(args.input)  if args.input  else PROJECT_ROOT / 'extracted' / ver / 'fbsdata'
     schema_dir = Path(args.schemas)
-    output_dir = Path(args.output)
+    output_dir = Path(args.output) if args.output else PROJECT_ROOT / 'web' / 'public' / 'data' / ver / 'fbsdata'
     output_dir.mkdir(parents=True, exist_ok=True)
 
     print(f'Loading schemas from {schema_dir} ...')

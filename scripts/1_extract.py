@@ -6,9 +6,15 @@ tkdata.bin에서 fbsdata/*.bin 파일만 추출합니다.
 name_hash.json을 사용해 해시값을 파일명으로 변환합니다.
 
 Usage:
-  python scripts/1_extract.py
-  python scripts/1_extract.py --input _extract/tkdata.bin --output extracted/ --filter fbsdata
+  python scripts/1_extract.py                       # 기본 버전(3.01.01)
+  python scripts/1_extract.py --version 3.02.01
+  python scripts/1_extract.py --input _extract/3.01.01/tkdata.bin --output extracted/3.01.01/ --filter fbsdata
   python scripts/1_extract.py --all  # fbsdata 필터 없이 전체 추출
+
+입출력 기본 경로는 --version 으로 결정됩니다:
+  입력 : _extract/{version}/tkdata.bin,  _extract/name_hash.json (공용)
+  출력 : extracted/{version}/            (fbsdata/ 하위 폴더가 생성됨)
+--input / --names / --output 를 직접 주면 그 값이 우선합니다.
 """
 
 from __future__ import annotations
@@ -179,17 +185,27 @@ def extract(bin_path: Path, out_path: Path, name_hash_path: Path, prefix_filter:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="tkdata.bin 파일 추출기")
-    parser.add_argument("--input",  default=str(PROJECT_ROOT / "_extract" / "tkdata.bin"))
-    parser.add_argument("--output", default=str(PROJECT_ROOT / "extracted"))
-    parser.add_argument("--names",  default=str(PROJECT_ROOT / "_extract" / "name_hash.json"))
+    parser.add_argument("--version", default="3.01.01",
+                        help="게임 버전. 기본 입출력 경로 산정에 사용 (기본: 3.01.01)")
+    parser.add_argument("--input",  default=None,
+                        help="기본: _extract/{version}/tkdata.bin")
+    parser.add_argument("--output", default=None,
+                        help="기본: extracted/{version}")
+    parser.add_argument("--names",  default=None,
+                        help="기본: _extract/name_hash.json (버전 공용)")
     parser.add_argument("--filter", default="fbsdata", dest="prefix",
                         help="이 prefix로 시작하는 파일만 추출 (기본: fbsdata). 전체 추출은 --filter ''")
     parser.add_argument("--all", action="store_true",
                         help="전체 파일 추출 (--filter '' 와 동일)")
     args = parser.parse_args()
 
+    ver = args.version
+    input_path  = Path(args.input)  if args.input  else PROJECT_ROOT / "_extract" / ver / "tkdata.bin"
+    output_path = Path(args.output) if args.output else PROJECT_ROOT / "extracted" / ver
+    names_path  = Path(args.names)  if args.names  else PROJECT_ROOT / "_extract" / "name_hash.json"
+
     prefix = None if args.all else (args.prefix or None)
-    extract(Path(args.input), Path(args.output), Path(args.names), prefix_filter=prefix)
+    extract(input_path, output_path, names_path, prefix_filter=prefix)
 
 
 if __name__ == "__main__":
