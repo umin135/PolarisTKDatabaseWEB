@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "data": {
+    "entries": [
+      {
+        "series_hash": 2625953449,
+        "jacket_text_key": "TEXT_000_UI_JUKEBOX_011",
+        "jacket_icon_key": "T_UI_JB_Jacket_TK1",
+        "logo_text_key": "TEXT_000_UI_JUKEBOX_029",
+        "logo_icon_key": "T_UI_JB_Logo_TK1"
+      },
+      {
+        "series_hash": 1956972586,
+        "jacket_text_key": "TEXT_000_UI_JUKEBOX_012",
+        "jacket_icon_key": "T_UI_JB_Jacket_TK2",
+        "logo_text_key": "TEXT_000_UI_JUKEBOX_030",
+        "logo_icon_key": "T_UI_JB_Logo_TK2"
+      },
+      {
+        "series_hash": 3928632378,
+        "jacket_text_key": "TEXT_000_UI_JUKEBOX_013",
+        "jacket_icon_key": "T_UI_JB_Jacket_TK3",
+        "logo_text_key": "TEXT_000_UI_JUKEBOX_031",
+        "logo_icon_key": "T_UI_JB_Logo_TK3"
+      },
+      {
+        "series_hash": 571730609,
+        "jacket_text_key": "TEXT_000_UI_JUKEBOX_014",
+        "jacket_icon_key": "T_UI_JB_Jacket_TTT",
+        "logo_text_key": "TEXT_000_UI_JUKEBOX_032",
+        "logo_icon_key": "T_UI_JB_Logo_TTT"
+      },
+      {
+        "series_hash": 1118030971,
+        "jacket_text_key": "TEXT_000_UI_JUKEBOX_015",
+        "jacket_icon_key": "T_UI_JB_Jacket_TK4",
+        "logo_text_key": "TEXT_000_UI_JUKEBOX_033",
+        "logo_icon_key": "T_UI_JB_Logo_TK4"
+      },
+      {
+        "series_hash": 1989898243,
+        "jacket_text_key": "TEXT_000_UI_JUKEBOX_016",
+        "jacket_icon_key": "T_UI_JB_Jacket_TK5",
+        "logo_text_key": "TEXT_000_UI_JUKEBOX_034",
+        "logo_icon_key": "T_UI_JB_Logo_TK5"
+      },
+      {
+        "series_hash": 3531108566,
+        "jacket_text_key": "TEXT_000_UI_JUKEBOX_017",
+        "jacket_icon_key": "T_UI_JB_Jacket_TK6",
+        "logo_text_key": "TEXT_000_UI_JUKEBOX_035",
+        "logo_icon_key": "T_UI_JB_Logo_TK6"
+      },
+      {
+        "series_hash": 3378833073,
+        "jacket_text_key": "TEXT_000_UI_JUKEBOX_018",
+        "jacket_icon_key": "T_UI_JB_Jacket_TTT2",
+        "logo_text_key": "TEXT_000_UI_JUKEBOX_036",
+        "logo_icon_key": "T_UI_JB_Logo_TTT2"
+      },
+      {
+        "series_hash": 2911883122,
+        "jacket_text_key": "TEXT_000_UI_JUKEBOX_019",
+        "jacket_icon_key": "T_UI_JB_Jacket_TKR",
+        "logo_text_key": "TEXT_000_UI_JUKEBOX_037",
+        "logo_icon_key": "T_UI_JB_Logo_TKR"
+      },
+      {
+        "series_hash": 3831916532,
+        "jacket_text_key": "TEXT_000_UI_JUKEBOX_020",
+        "jacket_icon_key": "T_UI_JB_Jacket_TK7",
+        "logo_text_key": "TEXT_000_UI_JUKEBOX_038",
+        "logo_icon_key": "T_UI_JB_Logo_TK7"
+      },
+      {
+        "series_hash": 3012255468,
+        "jacket_text_key": "TEXT_000_UI_JUKEBOX_021",
+        "jacket_icon_key": "T_UI_JB_Jacket_TK8",
+        "logo_text_key": "TEXT_000_UI_JUKEBOX_039",
+        "logo_icon_key": "T_UI_JB_Logo_TK8"
+      },
+      {
+        "series_hash": 3914063903,
+        "jacket_text_key": "TEXT_000_UI_JUKEBOX_022",
+        "jacket_icon_key": "T_UI_JB_Jacket_All",
+        "logo_text_key": "TEXT_000_UI_JUKEBOX_042",
+        "logo_icon_key": "T_UI_JB_Logo_TK8"
+      }
+    ]
+  }
+}

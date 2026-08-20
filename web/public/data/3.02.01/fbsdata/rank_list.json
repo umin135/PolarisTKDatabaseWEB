@@ -1,0 +1,549 @@
+{
+  "version": 1,
+  "data": {
+    "entries": [
+      {
+        "group_id": 1,
+        "entries": [
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_000",
+            "name": "nyumonsei"
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_001",
+            "name": "shodan",
+            "rank": 1
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_002",
+            "name": "2dan",
+            "rank": 2
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_003",
+            "name": "yushi",
+            "rank": 3
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_004",
+            "name": "sakushi",
+            "rank": 4
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_005",
+            "name": "toushi",
+            "rank": 5
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_006",
+            "name": "garou",
+            "rank": 6
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_007",
+            "name": "arawashi",
+            "rank": 7
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_008",
+            "name": "mouzou",
+            "rank": 8
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_009",
+            "name": "gouken",
+            "rank": 9
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_010",
+            "name": "jaken",
+            "rank": 10
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_011",
+            "name": "kaiken",
+            "rank": 11
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_012",
+            "name": "shura",
+            "rank": 12
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_013",
+            "name": "rasetsu",
+            "rank": 13
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_014",
+            "name": "raketsu",
+            "rank": 14
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_015",
+            "name": "garyu",
+            "rank": 15
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_016",
+            "name": "shinryu",
+            "rank": 16
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_017",
+            "name": "tenryu",
+            "rank": 17
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_018",
+            "name": "kentei",
+            "rank": 18
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_019",
+            "name": "entei",
+            "rank": 19
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_020",
+            "name": "sentei",
+            "rank": 20
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_021",
+            "name": "fujin",
+            "rank": 21
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_022",
+            "name": "raijin",
+            "rank": 22
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_023",
+            "name": "kijin",
+            "rank": 23
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_024",
+            "name": "bushin",
+            "rank": 24
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_025",
+            "name": "tekkenou",
+            "rank": 25
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_026",
+            "name": "tekkenhaou",
+            "rank": 26
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_027",
+            "name": "tekkenshin",
+            "rank": 27
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_028",
+            "name": "tekkenshingoku",
+            "rank": 28
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_029",
+            "name": "hakaishin",
+            "rank": 29
+          }
+        ]
+      },
+      {
+        "group_id": 200,
+        "entries": [
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_000",
+            "name": "nyumonsei"
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_001",
+            "name": "shodan",
+            "rank": 1
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_002",
+            "name": "2dan",
+            "rank": 2
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_003",
+            "name": "yushi",
+            "rank": 3
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_004",
+            "name": "sakushi",
+            "rank": 4
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_005",
+            "name": "toushi",
+            "rank": 5
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_006",
+            "name": "garou",
+            "rank": 6
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_007",
+            "name": "arawashi",
+            "rank": 7
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_008",
+            "name": "mouzou",
+            "rank": 8
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_009",
+            "name": "gouken",
+            "rank": 9
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_010",
+            "name": "jaken",
+            "rank": 10
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_011",
+            "name": "kaiken",
+            "rank": 11
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_012",
+            "name": "shura",
+            "rank": 12
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_013",
+            "name": "rasetsu",
+            "rank": 13
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_014",
+            "name": "raketsu",
+            "rank": 14
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_015",
+            "name": "garyu",
+            "rank": 15
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_016",
+            "name": "shinryu",
+            "rank": 16
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_017",
+            "name": "tenryu",
+            "rank": 17
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_018",
+            "name": "kentei",
+            "rank": 18
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_019",
+            "name": "entei",
+            "rank": 19
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_020",
+            "name": "sentei",
+            "rank": 20
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_021",
+            "name": "fujin",
+            "rank": 21
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_022",
+            "name": "raijin",
+            "rank": 22
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_023",
+            "name": "kijin",
+            "rank": 23
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_024",
+            "name": "bushin",
+            "rank": 24
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_025",
+            "name": "tekkenou",
+            "rank": 25
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_026",
+            "name": "tekkenhaou",
+            "rank": 26
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_027",
+            "name": "tekkenshin",
+            "rank": 27
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_028",
+            "name": "tekkenshingoku",
+            "rank": 28
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_029",
+            "name": "hakaishin",
+            "rank": 29
+          },
+          {
+            "text_key": "TEXT_200_UI_DAN_RANK_030",
+            "name": "hakaishin01",
+            "rank": 30
+          },
+          {
+            "text_key": "TEXT_200_UI_DAN_RANK_031",
+            "name": "hakaishin02",
+            "rank": 31
+          },
+          {
+            "text_key": "TEXT_200_UI_DAN_RANK_032",
+            "name": "hakaishin03",
+            "rank": 32
+          },
+          {
+            "text_key": "TEXT_200_UI_DAN_RANK_033",
+            "name": "hakaishin04",
+            "rank": 33
+          },
+          {
+            "text_key": "TEXT_200_UI_DAN_RANK_034",
+            "name": "hakaishin05",
+            "rank": 34
+          },
+          {
+            "text_key": "TEXT_200_UI_DAN_RANK_035",
+            "name": "hakaishin06",
+            "rank": 35
+          },
+          {
+            "text_key": "TEXT_200_UI_DAN_RANK_036",
+            "name": "hakaishin07",
+            "rank": 36
+          },
+          {
+            "text_key": "TEXT_200_UI_DAN_RANK_037",
+            "name": "hakaishin08",
+            "rank": 37
+          }
+        ]
+      },
+      {
+        "group_id": 300,
+        "entries": [
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_000",
+            "name": "nyumonsei"
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_001",
+            "name": "shodan",
+            "rank": 1
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_002",
+            "name": "2dan",
+            "rank": 2
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_003",
+            "name": "yushi",
+            "rank": 3
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_004",
+            "name": "sakushi",
+            "rank": 4
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_005",
+            "name": "toushi",
+            "rank": 5
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_006",
+            "name": "garou",
+            "rank": 6
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_007",
+            "name": "arawashi",
+            "rank": 7
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_008",
+            "name": "mouzou",
+            "rank": 8
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_009",
+            "name": "gouken",
+            "rank": 9
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_010",
+            "name": "jaken",
+            "rank": 10
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_011",
+            "name": "kaiken",
+            "rank": 11
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_012",
+            "name": "shura",
+            "rank": 12
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_013",
+            "name": "rasetsu",
+            "rank": 13
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_014",
+            "name": "raketsu",
+            "rank": 14
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_015",
+            "name": "garyu",
+            "rank": 15
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_016",
+            "name": "shinryu",
+            "rank": 16
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_017",
+            "name": "tenryu",
+            "rank": 17
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_018",
+            "name": "kentei",
+            "rank": 18
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_019",
+            "name": "entei",
+            "rank": 19
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_020",
+            "name": "sentei",
+            "rank": 20
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_021",
+            "name": "fujin",
+            "rank": 21
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_022",
+            "name": "raijin",
+            "rank": 22
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_023",
+            "name": "kijin",
+            "rank": 23
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_024",
+            "name": "bushin",
+            "rank": 24
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_025",
+            "name": "tekkenou",
+            "rank": 25
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_026",
+            "name": "tekkenhaou",
+            "rank": 26
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_027",
+            "name": "tekkenshin",
+            "rank": 27
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_028",
+            "name": "tekkenshingoku",
+            "rank": 28
+          },
+          {
+            "text_key": "TEXT_000_UI_DAN_RANK_029",
+            "name": "hakaishin",
+            "rank": 29
+          },
+          {
+            "text_key": "TEXT_200_UI_DAN_RANK_030",
+            "name": "hakaishin01",
+            "rank": 30
+          },
+          {
+            "text_key": "TEXT_200_UI_DAN_RANK_031",
+            "name": "hakaishin02",
+            "rank": 31
+          },
+          {
+            "text_key": "TEXT_200_UI_DAN_RANK_032",
+            "name": "hakaishin03",
+            "rank": 32
+          },
+          {
+            "text_key": "TEXT_200_UI_DAN_RANK_033",
+            "name": "hakaishin04",
+            "rank": 33
+          },
+          {
+            "text_key": "TEXT_200_UI_DAN_RANK_034",
+            "name": "hakaishin05",
+            "rank": 34
+          },
+          {
+            "text_key": "TEXT_200_UI_DAN_RANK_035",
+            "name": "hakaishin06",
+            "rank": 35
+          },
+          {
+            "text_key": "TEXT_200_UI_DAN_RANK_036",
+            "name": "hakaishin07",
+            "rank": 36
+          },
+          {
+            "text_key": "TEXT_200_UI_DAN_RANK_037",
+            "name": "hakaishin08",
+            "rank": 37
+          }
+        ]
+      }
+    ]
+  }
+}
