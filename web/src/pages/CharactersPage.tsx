@@ -264,7 +264,8 @@ export function CharactersPage() {
         return fa - fb
       })
     } else {
-      list.sort((a, b) => (a.sort_order ?? 0) - (b.sort_order ?? 0))
+      // Characters without a sort_order (e.g. newly added) go last, not first.
+      list.sort((a, b) => (a.sort_order ?? Number.MAX_SAFE_INTEGER) - (b.sort_order ?? Number.MAX_SAFE_INTEGER))
     }
 
     return list

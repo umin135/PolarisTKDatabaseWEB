@@ -8,6 +8,7 @@ export const CHARACTERS: Record<number, { code: string; fighterId?: number; name
   97192667:   { code: 'CTR', fighterId: 19, name: "Claudio" },
   236224321:  { code: 'TTR', fighterId: 24, name: "Panda" },
   310559474:  { code: 'HRS', fighterId: 20, name: "Shaheen" },
+  322921862:  { code: 'USI', fighterId: 42, name: "Bob" },
   731112246:  { code: 'KMD', fighterId: 15, name: "Dragunov" },
   748126445:  { code: 'PGN', fighterId: 2, name: "King" },
   761728323:  { code: 'WKZ', fighterId: 40, name: "Miary Zo" },
@@ -73,6 +74,7 @@ export const CHAR_HASH: Record<number, string> = {
   3909547504: 'PIG', 2897068730: 'DEK', 2492561663: 'CMN', 1489967222: 'XXA',
   1000005316: 'XXB', 3374534069: 'XXC', 1859904795: 'XXD', 2243376126: 'XXE',
   2887689737: 'XXF', 694498012:  'XXG', 3099443275: 'KER', 1591956335: 'LAST',
+  322921862:  'USI',
 }
 
 export const CHAR_HASH_TO_FIGHTER_NAME: Record<number, number> = {
@@ -118,6 +120,7 @@ export const CHAR_HASH_TO_FIGHTER_NAME: Record<number, number> = {
   3908942186: 39,
   761728323: 40,
   3099443275: 41,
+  322921862: 42,
   2897068730: 116,
   1489967222: 117,
   1000005316: 118,
