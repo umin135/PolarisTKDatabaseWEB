@@ -166,12 +166,14 @@ const COLUMNS = [
   'Sound Bank',
   'Wall A',
   'Wall B',
-  'Has Weather',
-  'Battle',
-  'Infinite',
-  'Balcony',
-  'Ocean',
-  'Interlocked',
+  'Has Floor Break', // was has_weather
+  'Has Hard Floor Break', // was flag_13
+  'Has Wall Bound', // was flag_battle
+  'Has Wall Blast', // was flag_infinite
+  'Has Floor Blast', // was flag_balcony
+  'Has Balcony Break', // was flag_ocean
+  'Has Wall Break', // was flag_interlocked
+  'Has Hard Wall Break', // was flag_10
 ] as const
 
 // ---------------------------------------------------------------------------
@@ -368,12 +370,22 @@ function StageRow({ entry: e, loc }: { entry: StageEntry; loc: LocDict }) {
       >
         {e.wall_distance_b ?? '–'}
       </td>
+      {/* `has_weather` is now `has_floor_break` */}
       <BoolCell value={e.has_weather} />
+      {/* `flag_13` is now `has_hard_floor_break` */}
+      <BoolCell value={e.flag_13} />
+      {/* `flag_battle` is now `has_wall_bound` */}
       <BoolCell value={e.flag_battle} />
+      {/* `flag_infinite` is now `has_wall_blast` */}
       <BoolCell value={e.flag_infinite} />
+      {/* `flag_balcony` is now `has_floor_blast` */}
       <BoolCell value={e.flag_balcony} />
+      {/* `flag_ocean` is now `has_balcony_break` */}
       <BoolCell value={e.flag_ocean} />
+      {/* `flag_interlocked` is now `has_wall_break` */}
       <BoolCell value={e.flag_interlocked} />
+      {/* `flag_10` is now `has_hard_wall_break` */}
+      <BoolCell value={e.flag_10} />
     </tr>
   )
 }
