@@ -39,6 +39,8 @@ export function HudPortrait({
     )
   }
 
+  // "Middle ground" layout: center-cropped, but slightly biased left, not full object-left.
+  // Use object-[15%_top] or similar to shift cropping subtly.
   return (
     <img
       src={hudIconUrl(code)}
@@ -46,7 +48,12 @@ export function HudPortrait({
       width={size}
       height={size}
       className={clsx('rounded-lg object-cover object-top', className)}
-      style={{ width: size, height: size, background: 'rgba(255,255,255,0.04)' }}
+      style={{
+        width: size,
+        height: size,
+        background: 'rgba(255,255,255,0.04)',
+        objectPosition: '33% top',
+      }}
       onError={() => setFailed(true)}
     />
   )

@@ -52,7 +52,7 @@ export const CHARACTERS: Record<number, { code: string; fighterId?: number; name
   1000005316: { code: 'XXB', fighterId: 118, name: "True Devil Kazuya" },
   3374534069: { code: 'XXC', fighterId: 119, name: "Jack-7" },
   1859904795: { code: 'XXD', fighterId: 120, name: "Soldier" },
-  2243376126: { code: 'XXE', fighterId: 121, name: "Devil Jin" },
+  2243376126: { code: 'XXE', fighterId: 121, name: "Devil Jin (Story)" },
   2887689737: { code: 'XXF', fighterId: 122, name: "Tekken Monk" },
   694498012:  { code: 'XXG', fighterId: 123, name: "Seiryu" },
   3099443275: { code: 'KER', fighterId: 41, name: "Kunimitsu" },

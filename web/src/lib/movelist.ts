@@ -33,6 +33,7 @@ export function isHiddenMovelistCode(code: string): boolean {
 }
 
 export function hudIconUrl(code: string): string {
+  code = code === 'xxe' ? 'swl3' : code;
   const file = `T_UI_HUD_Character_Icon_L_${code.toLowerCase()}.png`
   if (import.meta.env.PROD) return `${HUD_CDN}${file}`
   const base = import.meta.env.BASE_URL.replace(/\/$/, '')
