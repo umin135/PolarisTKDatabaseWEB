@@ -13,26 +13,18 @@ import {
 export function UnrestoredText({
   value,
   length,
-  hash,
 }: {
   value: string | null
   length: number
-  hash: number
 }) {
   if (value) {
-    return (
-      <Tooltip content={formatHash(hash)}>
-        <span className="block truncate text-slate-200">{value}</span>
-      </Tooltip>
-    )
+    return <span className="block truncate text-slate-200">{value}</span>
   }
 
   return (
-    <Tooltip content={formatHash(hash)}>
-      <span className="block truncate font-mono text-amber-400/90">
-        {unrestoredLabel(length)}
-      </span>
-    </Tooltip>
+    <span className="block truncate font-mono text-amber-400/90">
+      {unrestoredLabel(length)}
+    </span>
   )
 }
 

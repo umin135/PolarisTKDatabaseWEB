@@ -193,21 +193,19 @@ export function MovelistPage() {
                           <UnrestoredText
                             value={g.kind === 'anim_name_key' || g.kind === 'anim_key' ? g.move.anim_name : g.move.name}
                             length={g.kind === 'anim_name_key' || g.kind === 'anim_key' ? g.move.anim_name_length : g.move.name_length}
-                            hash={g.kind === 'anim_key' ? (g.move.anim_key ?? g.move.anim_name_key) : g.kind === 'anim_name_key' ? g.move.anim_name_key : g.move.name_key}
                           />
                           {g.kind !== 'anim_key' && (
                             <div className="text-[11px] text-slate-500 mt-0.5">
                               <UnrestoredText
                                 value={g.kind === 'name_key' ? g.move.anim_name : g.move.name}
                                 length={g.kind === 'name_key' ? g.move.anim_name_length : g.move.name_length}
-                                hash={g.kind === 'name_key' ? g.move.anim_name_key : g.move.name_key}
                               />
                             </div>
                           )}
                           <div className="mt-1 text-[11px] font-mono text-slate-600 flex flex-wrap gap-x-3 gap-y-0.5">
-                            <span>name_key <HashCell value={g.move.name_key} /></span>
-                            <span>anim_name_key <HashCell value={g.move.anim_name_key} /></span>
-                            <span>anim_key <HashCell value={g.move.anim_key} /></span>
+                            <span>Name Key <HashCell value={g.move.name_key} /></span>
+                            <span>Anim Name Key <HashCell value={g.move.anim_name_key} /></span>
+                            <span>Anim Key <HashCell value={g.move.anim_key} /></span>
                           </div>
                         </div>
                       </div>

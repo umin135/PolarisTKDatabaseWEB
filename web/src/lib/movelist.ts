@@ -114,9 +114,9 @@ export function formatHash(n: number | null | undefined): string {
 }
 
 export const MATCH_FIELD_LABEL: Record<MatchField, string> = {
-  name: 'name',
-  anim: 'anim',
-  name_key: 'name_key',
-  anim_name_key: 'anim_name_key',
-  anim_key: 'anim_key',
+  name: 'Name',
+  anim: 'Anim',
+  name_key: 'Name Key',
+  anim_name_key: 'Anim Name Key',
+  anim_key: 'Anim Key',
 }

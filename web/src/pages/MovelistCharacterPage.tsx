@@ -20,7 +20,7 @@ const TH = 'px-3 py-2.5 text-left font-medium text-slate-400 border-b whitespace
 const TH_STYLE = { borderColor: 'rgba(255,255,255,0.07)' }
 const ROW_STYLE = { borderBottom: '1px solid rgba(255,255,255,0.04)' }
 const PAGE_SIZE = 100
-const COLUMNS = ['#', 'Move', 'name_key', 'Animation', 'anim_name_key', 'anim_key']
+const COLUMNS = ['#', 'Move', 'Name Key', 'Animation', 'Anim Name Key', 'Anim Key']
 
 export function MovelistCharacterPage() {
   const { code = '' } = useParams()
@@ -134,7 +134,7 @@ export function MovelistCharacterPage() {
                   <tr key={i} className="hover:bg-white/3 transition-colors" style={ROW_STYLE}>
                     <td className="px-3 py-2 font-mono text-slate-600 whitespace-nowrap text-right">{i}</td>
                     <td className="px-3 py-2 max-w-70">
-                      <UnrestoredText value={move.name} length={move.name_length} hash={move.name_key} />
+                      <UnrestoredText value={move.name} length={move.name_length} />
                       {(fields.includes('name') || fields.includes('name_key')) && (
                         <div className="mt-1">
                           <MatchBadges fields={fields.filter(f => f === 'name' || f === 'name_key')} />
@@ -145,7 +145,7 @@ export function MovelistCharacterPage() {
                       <HashCell value={move.name_key} />
                     </td>
                     <td className="px-3 py-2 max-w-70">
-                      <UnrestoredText value={move.anim_name} length={move.anim_name_length} hash={move.anim_name_key} />
+                      <UnrestoredText value={move.anim_name} length={move.anim_name_length} />
                       {(fields.includes('anim') || fields.includes('anim_name_key')) && (
                         <div className="mt-1">
                           <MatchBadges fields={fields.filter(f => f === 'anim' || f === 'anim_name_key')} />
