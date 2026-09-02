@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Tooltip } from '../Tooltip'
 import { HudPortrait } from '../HudPortrait'
@@ -67,6 +68,33 @@ export function CharacterChip({ ch }: { ch: MovelistChar }) {
       <HudPortrait code={ch.code} alt={ch.name} size={22} />
       <span className="text-[11px] text-slate-300 whitespace-nowrap">{ch.name}</span>
     </Link>
+  )
+}
+
+const CHIP_PREVIEW = 8
+
+export function CharacterChipList({ characters }: { characters: MovelistChar[] }) {
+  const [expanded, setExpanded] = useState(false)
+  const collapsed = !expanded && characters.length > CHIP_PREVIEW
+  const shown = collapsed ? characters.slice(0, CHIP_PREVIEW) : characters
+  const hidden = characters.length - shown.length
+
+  return (
+    <div className="flex flex-wrap gap-1.5 mt-2.5">
+      {shown.map(ch => (
+        <CharacterChip key={ch.code} ch={ch} />
+      ))}
+      {hidden > 0 && (
+        <button
+          type="button"
+          onClick={() => setExpanded(true)}
+          className="text-[11px] text-violet-300 px-2 py-0.5 rounded-lg hover:bg-white/10"
+          style={{ border: '1px solid rgba(167,139,250,0.25)' }}
+        >
+          +{hidden} more
+        </button>
+      )}
+    </div>
   )
 }
 

@@ -1,11 +1,13 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { SearchBar } from '../components/SearchBar'
 import { LoadingState, ErrorState } from '../components/LoadingState'
+import { Pagination } from '../components/items/Pagination'
 import { HudPortrait } from '../components/HudPortrait'
-import { CharacterChip, ChipCount, HashCell, MatchBadges, UnrestoredText } from '../components/movelist/MoveBits'
+import { CharacterChipList, ChipCount, HashCell, MatchBadges, UnrestoredText } from '../components/movelist/MoveBits'
 import { useGameData } from '../hooks/useGameData'
 import { useMotbinCatalog } from '../hooks/useMotbinCatalog'
+import { useDebouncedValue } from '../hooks/useDebouncedValue'
 import {
   MOVELIST_ROSTER,
   groupingForFields,
@@ -17,6 +19,8 @@ import {
   type MovelistChar,
 } from '../lib/movelist'
 import type { MotbinFile, MotbinMove } from '../lib/types'
+
+const PAGE_SIZE = 25
 
 interface SearchGroup {
   key: string
@@ -69,20 +73,32 @@ function buildGroups(catalog: Record<string, MotbinFile>, query: ReturnType<type
 export function MovelistPage() {
   const [params, setParams] = useSearchParams()
   const [q, setQ] = useState(() => params.get('q') ?? '')
-  const query = useMemo(() => parseMoveQuery(q), [q])
+  const debouncedQ = useDebouncedValue(q, 300)
+  const query = useMemo(() => parseMoveQuery(debouncedQ), [debouncedQ])
   const probe = useGameData<MotbinFile>('motbin', MOVELIST_ROSTER[0]?.code ?? 'grf')
   const catalog = useMotbinCatalog(query.ready)
+  const [page, setPage] = useState(0)
 
-  function handleQuery(next: string) {
-    setQ(next)
-    setParams(next ? { q: next } : {}, { replace: true })
-  }
+  useEffect(() => {
+    setParams(debouncedQ ? { q: debouncedQ } : {}, { replace: true })
+  }, [debouncedQ, setParams])
+
+  useEffect(() => {
+    setPage(0)
+  }, [debouncedQ])
 
   const noData = !probe.loading && !!probe.error
   const groups = useMemo(() => {
     if (!query.ready || !catalog.data) return []
     return buildGroups(catalog.data, query)
   }, [catalog.data, query])
+
+  const paged = useMemo(
+    () => groups.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE),
+    [groups, page],
+  )
+
+  const searching = q.trim() !== debouncedQ.trim() && parseMoveQuery(q).ready
 
   return (
     <div className="flex flex-col h-full">
@@ -108,7 +124,7 @@ export function MovelistPage() {
         <div className="max-w-xl">
           <SearchBar
             value={q}
-            onChange={handleQuery}
+            onChange={setQ}
             placeholder="Search name, anim, or hash (dec / 0x…)"
           />
         </div>
@@ -148,24 +164,25 @@ export function MovelistPage() {
       )}
 
       {query.ready && !noData && (
-        <div className="flex-1 overflow-auto">
+        <div className="flex-1 flex flex-col min-h-0">
           {catalog.loading && <LoadingState message="Loading movelists…" />}
           {catalog.error && !catalog.loading && <ErrorState error={catalog.error} />}
           {!catalog.loading && !catalog.error && catalog.data && (
             <>
               <div
-                className="px-5 py-2.5 text-xs text-slate-500 border-b sticky top-0 z-10"
+                className="px-5 py-2.5 text-xs text-slate-500 border-b shrink-0"
                 style={{ background: 'rgba(15,15,22,0.95)', borderColor: 'rgba(255,255,255,0.07)' }}
               >
                 {groups.length.toLocaleString()} result{groups.length === 1 ? '' : 's'}
                 {' · '}
                 searched {catalog.loadedCount} characters
+                {searching && <span className="text-violet-400/80"> · updating…</span>}
               </div>
               {groups.length === 0 ? (
                 <div className="text-center text-slate-600 py-16 text-sm">No moves match this search</div>
               ) : (
-                <div className="divide-y" style={{ borderColor: 'rgba(255,255,255,0.05)' }}>
-                  {groups.map(g => (
+                <div className="flex-1 overflow-auto divide-y" style={{ borderColor: 'rgba(255,255,255,0.05)' }}>
+                  {paged.map(g => (
                     <div key={g.key} className="px-5 py-3 hover:bg-white/2">
                       <div className="flex items-start gap-4 min-w-0">
                         <div className="flex-1 min-w-0">
@@ -187,21 +204,19 @@ export function MovelistPage() {
                               />
                             </div>
                           )}
-                          <div className="mt-1 text-[11px] font-mono text-slate-600">
-                            {g.kind}{' '}
-                            <HashCell value={g.id} />
+                          <div className="mt-1 text-[11px] font-mono text-slate-600 flex flex-wrap gap-x-3 gap-y-0.5">
+                            <span>name_key <HashCell value={g.move.name_key} /></span>
+                            <span>anim_name_key <HashCell value={g.move.anim_name_key} /></span>
+                            <span>anim_key <HashCell value={g.move.anim_key} /></span>
                           </div>
                         </div>
                       </div>
-                      <div className="flex flex-wrap gap-1.5 mt-2.5">
-                        {g.characters.map(ch => (
-                          <CharacterChip key={ch.code} ch={ch} />
-                        ))}
-                      </div>
+                      <CharacterChipList characters={g.characters} />
                     </div>
                   ))}
                 </div>
               )}
+              <Pagination page={page} total={groups.length} pageSize={PAGE_SIZE} onChange={setPage} />
             </>
           )}
         </div>
