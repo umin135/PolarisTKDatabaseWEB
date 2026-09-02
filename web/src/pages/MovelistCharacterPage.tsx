@@ -1,11 +1,11 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
-import { SearchBar } from '../components/SearchBar'
 import { LoadingState, ErrorState } from '../components/LoadingState'
 import { Pagination } from '../components/items/Pagination'
 import { HudPortrait } from '../components/HudPortrait'
 import { HashCell, MatchBadges, UnrestoredText } from '../components/movelist/MoveBits'
+import { MovelistSearchControls, searchPlaceholder } from '../components/movelist/MovelistSearchControls'
 import { useGameData } from '../hooks/useGameData'
 import { useDebouncedValue } from '../hooks/useDebouncedValue'
 import {
@@ -13,6 +13,7 @@ import {
   isHiddenMovelistCode,
   matchMove,
   parseMoveQuery,
+  type SearchField,
 } from '../lib/movelist'
 import type { MotbinFile } from '../lib/types'
 
@@ -25,6 +26,8 @@ const COLUMNS = ['#', 'Move', 'Name Key', 'Animation', 'Anim Name Key', 'Anim Ke
 export function MovelistCharacterPage() {
   const { code = '' } = useParams()
   const [q, setQ] = useState('')
+  const [field, setField] = useState<SearchField>('anim')
+  const [caseSensitive, setCaseSensitive] = useState(false)
   const debouncedQ = useDebouncedValue(q, 300)
   const query = useMemo(() => parseMoveQuery(debouncedQ), [debouncedQ])
   const hidden = isHiddenMovelistCode(code)
@@ -36,13 +39,13 @@ export function MovelistCharacterPage() {
   const filtered = useMemo(() => {
     if (!query.ready) return moves.map((move, i) => ({ move, i, fields: [] as ReturnType<typeof matchMove> }))
     return moves
-      .map((move, i) => ({ move, i, fields: matchMove(move, query) }))
+      .map((move, i) => ({ move, i, fields: matchMove(move, query, field, caseSensitive) }))
       .filter(row => row.fields.length > 0)
-  }, [moves, query])
+  }, [moves, query, field, caseSensitive])
 
   useEffect(() => {
     setPage(0)
-  }, [debouncedQ])
+  }, [debouncedQ, field, caseSensitive])
 
   const paged = useMemo(
     () => filtered.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE),
@@ -95,13 +98,15 @@ export function MovelistCharacterPage() {
             <p className="text-[11px] text-slate-600 font-mono">fighter_id {ch.fighterId}</p>
           </div>
         </div>
-        <div className="max-w-xl">
-          <SearchBar
-            value={q}
-            onChange={setQ}
-            placeholder="Filter name, anim, or hash (dec / 0x…)"
-          />
-        </div>
+        <MovelistSearchControls
+          q={q}
+          onQuery={setQ}
+          field={field}
+          onField={setField}
+          caseSensitive={caseSensitive}
+          onCaseSensitive={setCaseSensitive}
+          placeholder={searchPlaceholder(field)}
+        />
       </div>
 
       {result.loading && <LoadingState message={`Loading ${ch.name}…`} />}
