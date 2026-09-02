@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useGameData } from '../hooks/useGameData'
 import type { CharacterList, CustomizeItemCommonList, CustomizeItemUniqueList, JukeboxList, RankList, StageList } from '../lib/types'
+import { MOVELIST_ROSTER } from '../lib/movelist'
 
 interface StatCardProps {
   label: string
@@ -60,8 +61,9 @@ export function HomePage() {
       {/* Stats Grid */}
       <section className="mb-10">
         <h2 className="text-xs font-semibold text-slate-500 uppercase tracking-widest mb-3">Data Overview</h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
           <StatCard label="Characters" value={charCount} to="/characters" accent="#a78bfa" />
+          <StatCard label="Movelists" value={MOVELIST_ROSTER.length} to="/movelist" accent="#e879f9" />
           <StatCard label="Stages" value={stageCount} to="/stages" accent="#38bdf8" />
           <StatCard label="Jukebox" value={jukeboxCount} to="/jukebox" accent="#34d399" />
           <StatCard label="Ranks" value={rankCount} to="/ranks" accent="#fbbf24" />
@@ -76,6 +78,7 @@ export function HomePage() {
         <div className="rounded-xl border overflow-hidden" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
           {[
             { name: 'Characters', file: 'character_list', to: '/characters' },
+            { name: 'Movelist', file: 'motbin/*', to: '/movelist' },
             { name: 'Stages', file: 'stage_list', to: '/stages' },
             { name: 'Jukebox', file: 'jukebox_list', to: '/jukebox' },
             { name: 'Ranks', file: 'rank_list', to: '/ranks' },

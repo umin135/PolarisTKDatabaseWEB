@@ -1,0 +1,92 @@
+import { Link } from 'react-router-dom'
+import { Tooltip } from '../Tooltip'
+import { HudPortrait } from '../HudPortrait'
+import {
+  unrestoredLabel,
+  formatHash,
+  MATCH_FIELD_LABEL,
+  type MatchField,
+  type MovelistChar,
+} from '../../lib/movelist'
+
+export function UnrestoredText({
+  value,
+  length,
+  hash,
+}: {
+  value: string | null
+  length: number
+  hash: number
+}) {
+  if (value) {
+    return (
+      <Tooltip content={formatHash(hash)}>
+        <span className="block truncate text-slate-200">{value}</span>
+      </Tooltip>
+    )
+  }
+
+  return (
+    <Tooltip content={formatHash(hash)}>
+      <span className="block truncate font-mono text-amber-400/90">
+        {unrestoredLabel(length)}
+      </span>
+    </Tooltip>
+  )
+}
+
+export function MatchBadges({ fields }: { fields: MatchField[] }) {
+  if (fields.length === 0) return null
+  return (
+    <span className="inline-flex flex-wrap gap-1">
+      {fields.map(f => (
+        <span
+          key={f}
+          className="text-[10px] font-mono px-1.5 py-0.5 rounded"
+          style={{
+            background: 'rgba(124,58,237,0.15)',
+            color: '#c4b5fd',
+            border: '1px solid rgba(124,58,237,0.3)',
+          }}
+        >
+          {MATCH_FIELD_LABEL[f]}
+        </span>
+      ))}
+    </span>
+  )
+}
+
+export function CharacterChip({ ch }: { ch: MovelistChar }) {
+  return (
+    <Link
+      to={`/movelist/${ch.code}`}
+      className="inline-flex items-center gap-1.5 rounded-lg pl-0.5 pr-2 py-0.5 transition-colors hover:bg-white/10"
+      style={{ border: '1px solid rgba(255,255,255,0.08)', background: 'rgba(255,255,255,0.04)' }}
+      title={ch.name}
+    >
+      <HudPortrait code={ch.code} alt={ch.name} size={22} />
+      <span className="text-[11px] text-slate-300 whitespace-nowrap">{ch.name}</span>
+    </Link>
+  )
+}
+
+export function HashCell({ value }: { value: number | null }) {
+  const hex = formatHash(value)
+  const dec = value == null ? '' : String(value >>> 0)
+  return (
+    <Tooltip content={dec ? `${hex}  (${dec})` : hex} disabled={!dec}>
+      <span className="font-mono text-slate-400 whitespace-nowrap">{hex}</span>
+    </Tooltip>
+  )
+}
+
+export function ChipCount({ n }: { n: number }) {
+  return (
+    <span
+      className="text-[10px] px-1.5 py-0.5 rounded-full whitespace-nowrap"
+      style={{ background: 'rgba(124,58,237,0.2)', color: '#a78bfa' }}
+    >
+      {n} character{n === 1 ? '' : 's'}
+    </span>
+  )
+}
