@@ -150,10 +150,10 @@ def parse_motbin(
             "name_key": name_key,
             "anim_name_key": anim_name_key,
             "anim_key": body_keys[i] if i < len(body_keys) else None,
-            "name_offset": name_offset,
-            "anim_name_offset": anim_name_offset,
-            "name_length": name_length,
-            "anim_name_length": anim_name_length,
+            # "name_offset": name_offset,
+            # "anim_name_offset": anim_name_offset,
+            "name_length": name_length - 1, # null-terminated
+            "anim_name_length": anim_name_length - 1, # null-terminated
             "name": names.get(name_key),
             "anim_name": names.get(anim_name_key),
         })
