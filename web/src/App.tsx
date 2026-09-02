@@ -6,6 +6,8 @@ import { CharactersPage } from './pages/CharactersPage'
 import { StagesPage } from './pages/StagesPage'
 import { JukeboxPage } from './pages/JukeboxPage'
 import { RanksPage } from './pages/RanksPage'
+import { MovelistPage } from './pages/MovelistPage'
+import { MovelistCharacterPage } from './pages/MovelistCharacterPage'
 import { VersionProvider } from './contexts/VersionContext'
 
 export default function App() {
@@ -17,6 +19,8 @@ export default function App() {
             <Route path="/"      element={<HomePage />} />
             <Route path="/items"      element={<ItemsPage />} />
             <Route path="/characters" element={<CharactersPage />} />
+            <Route path="/movelist" element={<MovelistPage />} />
+            <Route path="/movelist/:code" element={<MovelistCharacterPage />} />
             <Route path="/stages"     element={<StagesPage />} />
             <Route path="/jukebox"    element={<JukeboxPage />} />
             <Route path="/ranks"      element={<RanksPage />} />

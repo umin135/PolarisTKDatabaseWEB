@@ -2,23 +2,28 @@
 """
 1_extract.py
 
-tkdata.bin에서 fbsdata/*.bin 파일만 추출합니다.
+tkdata.bin에서 선택한 경로만 추출합니다.
+기본값은 fbsdata/* 와 mothead/bin/*.motbin 입니다.
 name_hash.json을 사용해 해시값을 파일명으로 변환합니다.
 
 Usage:
   python scripts/1_extract.py                       # 기본 버전(3.01.01)
   python scripts/1_extract.py --version 3.02.01
-  python scripts/1_extract.py --input _extract/3.01.01/tkdata.bin --output extracted/3.01.01/ --filter fbsdata
-  python scripts/1_extract.py --all  # fbsdata 필터 없이 전체 추출
+  python scripts/1_extract.py --input _extract/3.01.01/tkdata.bin --output extracted/3.01.01/
+  python scripts/1_extract.py --filter fbsdata
+  python scripts/1_extract.py --filter mothead/bin/*.motbin
+  python scripts/1_extract.py --filter fbsdata mothead/bin/*.motbin
+  python scripts/1_extract.py --all  # 필터 없이 전체 추출
 
 입출력 기본 경로는 --version 으로 결정됩니다:
   입력 : _extract/{version}/tkdata.bin,  _extract/name_hash.json (공용)
-  출력 : extracted/{version}/            (fbsdata/ 하위 폴더가 생성됨)
+  출력 : extracted/{version}/            (fbsdata/, mothead/bin/ 하위 폴더가 생성됨)
 --input / --names / --output 를 직접 주면 그 값이 우선합니다.
 """
 
 from __future__ import annotations
 import argparse
+import fnmatch
 import json
 import struct
 from dataclasses import dataclass
@@ -43,6 +48,7 @@ FOOTER_SIZE = 128
 HEADER_MAGIC = b"__TEKKEN8FILES__"
 
 PROJECT_ROOT = Path(__file__).parent.parent
+DEFAULT_FILTERS = ["fbsdata", "mothead/bin/*.motbin"]
 
 
 def get_key(seed: int) -> bytes:
@@ -143,7 +149,22 @@ def parse_toc(data: bytes) -> tuple[list[Entry], bytes]:
     return entries, data
 
 
-def extract(bin_path: Path, out_path: Path, name_hash_path: Path, prefix_filter: str | None = "fbsdata") -> None:
+def matches_filter(name: str, pattern: str) -> bool:
+    """Prefix match unless the pattern contains glob wildcards."""
+    if any(ch in pattern for ch in "*?["):
+        return fnmatch.fnmatch(name, pattern)
+    return name.startswith(pattern)
+
+
+def extract(
+    bin_path: Path,
+    out_path: Path,
+    name_hash_path: Path,
+    path_filters: list[str] | None = None,
+) -> None:
+    if path_filters is None:
+        path_filters = list(DEFAULT_FILTERS)
+
     print(f"Reading {bin_path} ...")
     data = bin_path.read_bytes()
 
@@ -156,9 +177,13 @@ def extract(bin_path: Path, out_path: Path, name_hash_path: Path, prefix_filter:
     entries, data = parse_toc(data)
     print(f"TOC has {len(entries):,} entries")
 
-    if prefix_filter:
-        targets = [e for e in entries if names.get(e.hash, "").startswith(prefix_filter)]
-        print(f"Filtering to '{prefix_filter}/*': {len(targets)} files")
+    if path_filters:
+        targets = [
+            e for e in entries
+            if any(matches_filter(names.get(e.hash, ""), pattern) for pattern in path_filters)
+        ]
+        shown = ", ".join(path_filters)
+        print(f"Filtering to {shown}: {len(targets)} files")
     else:
         targets = entries
 
@@ -193,8 +218,9 @@ def main() -> None:
                         help="기본: extracted/{version}")
     parser.add_argument("--names",  default=None,
                         help="기본: _extract/name_hash.json (버전 공용)")
-    parser.add_argument("--filter", default="fbsdata", dest="prefix",
-                        help="이 prefix로 시작하는 파일만 추출 (기본: fbsdata). 전체 추출은 --filter ''")
+    parser.add_argument("--filter", nargs="*", default=None, dest="filters", metavar="PATTERN",
+                        help="추출할 경로 prefix 또는 glob. 여러 개 지정 가능 "
+                             f"(기본: {' '.join(DEFAULT_FILTERS)}). 전체 추출은 --filter '' 또는 --all")
     parser.add_argument("--all", action="store_true",
                         help="전체 파일 추출 (--filter '' 와 동일)")
     args = parser.parse_args()
@@ -204,8 +230,13 @@ def main() -> None:
     output_path = Path(args.output) if args.output else PROJECT_ROOT / "extracted" / ver
     names_path  = Path(args.names)  if args.names  else PROJECT_ROOT / "_extract" / "name_hash.json"
 
-    prefix = None if args.all else (args.prefix or None)
-    extract(input_path, output_path, names_path, prefix_filter=prefix)
+    if args.all or (args.filters is not None and not any(args.filters)):
+        filters: list[str] | None = []
+    elif args.filters is None:
+        filters = None
+    else:
+        filters = args.filters
+    extract(input_path, output_path, names_path, path_filters=filters)
 
 
 if __name__ == "__main__":

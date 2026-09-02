@@ -190,3 +190,21 @@ export interface CustomizeItemUniqueList {
     body_entries?: CustomizeItemUniqueBodyEntry[]
   }
 }
+
+// --- motbin ---
+export interface MotbinMove {
+  name_key: number
+  anim_name_key: number
+  anim_key: number | null
+  name_offset: number
+  anim_name_offset: number
+  name_length: number
+  anim_name_length: number
+  name: string | null
+  anim_name: string | null
+}
+
+export interface MotbinFile {
+  fighter_id: number
+  moves: MotbinMove[]
+}
