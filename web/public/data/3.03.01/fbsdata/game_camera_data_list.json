@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "data": {
+    "config_00": {
+      "value_0": 3400.0,
+      "value_1": 0.0,
+      "value_2": 10000.0
+    },
+    "config_01": {
+      "value_0": 200.0,
+      "value_1": 0.0,
+      "value_2": 10000.0
+    },
+    "config_02": {
+      "value_0": 2000.0,
+      "value_1": 0.0,
+      "value_2": 10000.0
+    },
+    "config_03": {
+      "value_0": 10000.0,
+      "value_1": 0.0,
+      "value_2": 10000.0
+    },
+    "config_04": {
+      "value_0": 65.0,
+      "value_1": 10.0,
+      "value_2": 180.0
+    },
+    "config_05": {
+      "value_0": 65.0,
+      "value_1": 10.0,
+      "value_2": 180.0
+    },
+    "config_06": {
+      "value_0": 3400.0,
+      "value_1": 0.0,
+      "value_2": 10000.0
+    },
+    "config_07": {
+      "value_0": 0.0,
+      "value_1": -30000.0,
+      "value_2": 30000.0
+    },
+    "config_08": {
+      "value_0": 0.0,
+      "value_1": -30000.0,
+      "value_2": 30000.0
+    },
+    "config_09": {
+      "value_0": 100.0,
+      "value_1": -30000.0,
+      "value_2": 30000.0
+    },
+    "config_10": {
+      "value_0": 0.0,
+      "value_1": -30000.0,
+      "value_2": 30000.0
+    }
+  }
+}

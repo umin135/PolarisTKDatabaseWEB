@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "data": {
+    "entries": [
+      {
+        "context_hash": 4253023907,
+        "value_1": 474,
+        "value_2": 854
+      },
+      {
+        "context_hash": 530736967,
+        "value_1": 224,
+        "value_2": 854
+      },
+      {
+        "context_hash": 482874831,
+        "value_1": 316,
+        "value_2": 316
+      },
+      {
+        "context_hash": 3637744458,
+        "value_1": 316,
+        "value_2": 316
+      },
+      {
+        "context_hash": 1148923363,
+        "value_1": 316,
+        "value_2": 316
+      }
+    ]
+  }
+}

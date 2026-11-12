@@ -56,6 +56,7 @@ export const CHARACTERS: Record<number, { code: string; fighterId?: number; name
   2887689737: { code: 'XXF', fighterId: 122, name: "Tekken Monk" },
   694498012:  { code: 'XXG', fighterId: 123, name: "Seiryu" },
   3099443275: { code: 'KER', fighterId: 41, name: "Kunimitsu" },
+  3473548694: { code: 'INU', fighterId: 43, name: "Roger Jr." },
   1591956335: { code: 'LAST', fighterId: 999, name: "Last" },
 }
 
